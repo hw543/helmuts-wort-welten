@@ -119,32 +119,22 @@
         }
         
         .btn-read {
-            background: linear-gradient(135deg, #FF6347, #FF4500);
-            color: white;
-        }
-        
-        .btn-read:hover {
-            background: linear-gradient(135deg, #FF4500, #FF2400);
-            transform: translateY(-2px);
-        }
-        
-        .btn-continue {
             background: linear-gradient(135deg, #32CD32, #228B22);
             color: white;
         }
         
-        .btn-continue:hover {
+        .btn-read:hover {
             background: linear-gradient(135deg, #228B22, #006400);
             transform: translateY(-2px);
         }
         
         .btn-stop {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #8B4513;
+            background: linear-gradient(135deg, #FF6347, #FF4500);
+            color: white;
         }
         
         .btn-stop:hover {
-            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            background: linear-gradient(135deg, #FF4500, #FF2400);
             transform: translateY(-2px);
         }
         
@@ -164,25 +154,28 @@
             margin-bottom: 20px;
         }
         
-        .word {
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .word:hover {
-            background-color: #FFE4E1;
-            border-radius: 3px;
-        }
-        
-        .current {
-            background-color: #FF69B4 !important;
-            color: white !important;
-            padding: 2px 4px;
-            border-radius: 3px;
-        }
-        
         .hidden {
             display: none;
+        }
+        
+        .status-message {
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
         
         @media (max-width: 600px) {
@@ -228,9 +221,10 @@
                 <a href="kinderbuecher.html" class="btn btn-nav">📚 Kinderbücher</a>
             </div>
             
-            <button class="btn btn-read" onclick="startReading()">🔴 <span id="btn-read-text">Vorlesen</span></button>
-            <button class="btn btn-continue" onclick="continueReading()">▶️ <span id="btn-continue-text">Weiterlesen</span></button>
-            <button class="btn btn-stop" onclick="stopReading()">⏹️ <span id="btn-stop-text">Stop</span></button>
+            <div id="status-message" class="status-message" style="display: none;"></div>
+            
+            <button class="btn btn-read" onclick="startReading()">🔊 <span id="btn-read-text">Vorlesen starten</span></button>
+            <button class="btn btn-stop" onclick="stopReading()">⏹️ <span id="btn-stop-text">Stoppen</span></button>
         </div>
         
         <!-- Deutsche Version -->
@@ -362,39 +356,36 @@
 
     <script>
         let currentSpeech = null;
-        let currentWordIndex = 0;
-        let allWords = [];
         let isReading = false;
-        let lastHighlightedWord = null;
         let currentLanguage = 'de';
-        let stoppedAtIndex = 0; // Neue Variable für Stop-Position
 
         // Spracheinstellungen
         const languageTexts = {
             de: {
                 title: "Die Zauberakademie von Morgenstern",
                 author: "von Helmut Wegner",
-                btnRead: "Vorlesen",
-                btnContinue: "Weiterlesen",
-                btnStop: "Stop",
-                lang: "de-DE"
+                btnRead: "Vorlesen starten",
+                btnStop: "Stoppen",
+                lang: "de-DE",
+                startMessage: "Vorlesen gestartet! 🔊",
+                stopMessage: "Vorlesen gestoppt. ⏹️",
+                errorMessage: "Fehler: Vorlesen wird von diesem Browser nicht unterstützt."
             },
             en: {
                 title: "The Magic Academy of Morgenstern",
                 author: "by Helmut Wegner",
-                btnRead: "Read Aloud",
-                btnContinue: "Continue",
+                btnRead: "Start Reading",
                 btnStop: "Stop",
-                lang: "en-US"
+                lang: "en-US",
+                startMessage: "Reading started! 🔊",
+                stopMessage: "Reading stopped. ⏹️",
+                errorMessage: "Error: Text-to-speech not supported by this browser."
             }
         };
 
         function switchLanguage(lang) {
             // Stoppe aktuelles Vorlesen
-            if (currentSpeech) {
-                speechSynthesis.cancel();
-                isReading = false;
-            }
+            stopReading();
             
             // Verstecke alle Sprachen
             document.querySelectorAll('.language-content').forEach(content => {
@@ -416,130 +407,91 @@
             document.getElementById('main-title').textContent = texts.title;
             document.getElementById('author').textContent = texts.author;
             document.getElementById('btn-read-text').textContent = texts.btnRead;
-            document.getElementById('btn-continue-text').textContent = texts.btnContinue;
             document.getElementById('btn-stop-text').textContent = texts.btnStop;
-            
-            // Initialisiere Wörter für neue Sprache
-            currentWordIndex = 0;
-            stoppedAtIndex = 0; // Reset bei Sprachwechsel
-            clearHighlights();
-            initializeWords();
         }
 
-        function initializeWords() {
-            const storyText = document.querySelector('#' + currentLanguage + '-content .story-text');
-            if (!storyText) return;
+        function showStatus(message, isError = false) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = message;
+            statusDiv.className = `status-message ${isError ? 'status-error' : 'status-success'}`;
+            statusDiv.style.display = 'block';
             
-            const paragraphs = storyText.querySelectorAll('p');
-            allWords = [];
-            
-            paragraphs.forEach((paragraph) => {
-                const paragraphText = paragraph.textContent;
-                const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
-                
-                let paragraphHTML = '';
-                paragraphWords.forEach((word) => {
-                    paragraphHTML += `<span class="word" data-word-index="${allWords.length}" onclick="startFromWord(${allWords.length})">${word}</span> `;
-                    allWords.push(word);
-                });
-                
-                paragraph.innerHTML = paragraphHTML;
-            });
+            // Nachricht nach 3 Sekunden ausblenden
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 3000);
         }
 
         function startReading() {
-            currentWordIndex = 0;
-            stoppedAtIndex = 0; // Reset bei Neustart
-            clearHighlights();
-            continueReading();
-        }
-
-        function continueReading() {
-            if (currentSpeech) {
-                speechSynthesis.cancel();
+            // Prüfe ob Browser Text-to-Speech unterstützt
+            if (!('speechSynthesis' in window)) {
+                showStatus(languageTexts[currentLanguage].errorMessage, true);
+                return;
             }
+
+            // Stoppe vorheriges Vorlesen
+            stopReading();
+
+            // Hole den Text der aktuellen Sprache
+            const storyElement = document.querySelector(`#${currentLanguage}-content .story-text`);
+            if (!storyElement) {
+                showStatus("Fehler: Text nicht gefunden.", true);
+                return;
+            }
+
+            const textToRead = storyElement.textContent;
             
-            if (allWords && allWords.length > 0) {
-                const remainingText = allWords.slice(currentWordIndex).join(' ');
-                
-                currentSpeech = new SpeechSynthesisUtterance(remainingText);
-                currentSpeech.rate = 1.0;
-                currentSpeech.lang = languageTexts[currentLanguage].lang;
-                
-                let wordCount = currentWordIndex;
-                
-                currentSpeech.onboundary = function(event) {
-                    if (event.name === 'word') {
-                        highlightCurrentWord(wordCount);
-                        wordCount++;
-                        currentWordIndex = wordCount;
-                    }
-                };
-                
-                currentSpeech.onend = function() {
-                    isReading = false;
-                };
-                
+            // Erstelle neue Sprachausgabe
+            currentSpeech = new SpeechSynthesisUtterance(textToRead);
+            currentSpeech.lang = languageTexts[currentLanguage].lang;
+            currentSpeech.rate = 0.9; // Etwas langsamer für bessere Verständlichkeit
+            currentSpeech.volume = 1.0;
+            currentSpeech.pitch = 1.0;
+
+            // Event-Handler
+            currentSpeech.onstart = function() {
                 isReading = true;
-                speechSynthesis.speak(currentSpeech);
-            }
-        }
+                showStatus(languageTexts[currentLanguage].startMessage);
+            };
 
-        function startFromWord(wordIndex) {
-            currentWordIndex = wordIndex;
-            stoppedAtIndex = wordIndex; // Position auch für Stop setzen
-            clearHighlights();
-            continueReading();
-        }
+            currentSpeech.onend = function() {
+                isReading = false;
+                showStatus("Vorlesen beendet. ✅");
+            };
 
-        function highlightCurrentWord(wordIndex) {
-            if (lastHighlightedWord) {
-                lastHighlightedWord.classList.remove('current');
-            }
-            
-            const wordSpan = document.querySelector(`#${currentLanguage}-content [data-word-index="${wordIndex}"]`);
-            if (wordSpan) {
-                wordSpan.classList.add('current');
-                lastHighlightedWord = wordSpan;
-                
-                // Sanftes Scrolling OHNE die Controls aus dem Blickfeld zu nehmen
-                const rect = wordSpan.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                const controlsHeight = 150; // Platz für die Controls
-                
-                // Nur scrollen wenn das Wort zu weit unten oder oben ist
-                if (rect.bottom > windowHeight - 100 || rect.top < controlsHeight + 50) {
-                    wordSpan.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'nearest',
-                        inline: 'nearest'
-                    });
-                }
-            }
-        }
+            currentSpeech.onerror = function(event) {
+                isReading = false;
+                showStatus("Fehler beim Vorlesen: " + event.error, true);
+            };
 
-        function clearHighlights() {
-            document.querySelectorAll('.current').forEach(el => {
-                el.classList.remove('current');
-            });
-            lastHighlightedWord = null;
+            // Starte Vorlesen
+            speechSynthesis.speak(currentSpeech);
         }
 
         function stopReading() {
-            if (currentSpeech) {
+            if (currentSpeech && isReading) {
                 speechSynthesis.cancel();
                 currentSpeech = null;
                 isReading = false;
+                showStatus(languageTexts[currentLanguage].stopMessage);
             }
-            // Aktuelle Position für Weiterlesen merken
-            stoppedAtIndex = currentWordIndex;
-            // WICHTIG: Markierung NICHT löschen!
-            // Die blaue Markierung bleibt stehen für "Weiterlesen"
         }
 
-        // Initialisierung beim Seitenstart
+        // Browser-Kompatibilität prüfen beim Laden
         document.addEventListener('DOMContentLoaded', function() {
-            initializeWords();
+            if (!('speechSynthesis' in window)) {
+                console.warn('Text-to-Speech wird von diesem Browser nicht unterstützt');
+                // Buttons deaktivieren aber nicht verstecken
+                document.querySelector('.btn-read').style.opacity = '0.5';
+                document.querySelector('.btn-read').style.cursor = 'not-allowed';
+            }
+        });
+
+        // Cleanup beim Verlassen der Seite
+        window.addEventListener('beforeunload', function() {
+            if (currentSpeech && isReading) {
+                speechSynthesis.cancel();
+            }
         });
     </script>
 </body>
