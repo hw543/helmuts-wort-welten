@@ -118,11 +118,6 @@
             color: white;
         }
 
-        .btn-continue {
-            background: linear-gradient(135deg, #17a2b8, #6f42c1);
-            color: white;
-        }
-
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -146,6 +141,27 @@
         .btn-band.active, .btn-lang.active {
             border-color: #FFD700;
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .status-message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        .status-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
         .content {
@@ -179,25 +195,6 @@
 
         .text-content p {
             margin-bottom: 1.5em;
-        }
-
-        .word {
-            cursor: pointer;
-            transition: all 0.2s ease;
-            padding: 1px 2px;
-            border-radius: 3px;
-        }
-
-        .word:hover {
-            background-color: rgba(255, 215, 0, 0.2);
-        }
-
-        .word-highlight {
-            background-color: #4169E1;
-            color: white;
-            padding: 2px 4px;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(65, 105, 225, 0.3);
         }
 
         .hidden {
@@ -245,11 +242,12 @@
 
         <div class="controls">
             <div class="control-buttons">
-                <button class="btn btn-play" onclick="startReading()">🔴 Vorlesen</button>
-                <button class="btn btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
-                <button class="btn btn-pause" onclick="pauseReading()">⏸️ Pause</button>
-                <button class="btn btn-stop" onclick="stopReading()">⏹️ Stop</button>
+                <button class="btn btn-play" onclick="startReading()">🔴 <span id="btn-read-text">Vorlesen</span></button>
+                <button class="btn btn-pause" onclick="pauseReading()">⏸️ <span id="btn-pause-text">Pause</span></button>
+                <button class="btn btn-stop" onclick="stopReading()">⏹️ <span id="btn-stop-text">Stop</span></button>
             </div>
+
+            <div class="status-message" id="statusMessage"></div>
 
             <div class="language-navigation">
                 <button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
@@ -477,62 +475,92 @@
         let currentSpeech = null;
         let currentBand = 1;
         let currentLanguage = 'de';
-        let currentWordIndex = 0;
-        let allBandWords = {};
+        let isPaused = false;
         let isReading = false;
-        let lastHighlightedWord = null;
 
-        function initializeAllBands() {
-            ['de', 'en'].forEach(lang => {
-                allBandWords[lang] = {};
-                for (let bandNumber = 1; bandNumber <= 4; bandNumber++) {
-                    const bandContent = document.querySelector(`#${lang}-band${bandNumber} .text-content`);
-                    if (bandContent && !bandContent.querySelector('.word')) {
-                        const paragraphs = bandContent.querySelectorAll('p');
-                        let wordCounter = 0;
-                        let bandWords = [];
+        // Spracheinstellungen
+        const languageTexts = {
+            de: {
+                btnRead: "Vorlesen",
+                btnPause: "Pause",
+                btnStop: "Stop",
+                statusPlaying: "📢 Wird vorgelesen...",
+                statusPaused: "⏸️ Pausiert",
+                statusStopped: "⏹️ Gestoppt",
+                statusError: "❌ Vorlesen wird von diesem Browser nicht unterstützt",
+                lang: "de-DE"
+            },
+            en: {
+                btnRead: "Read Aloud",
+                btnPause: "Pause",
+                btnStop: "Stop",
+                statusPlaying: "📢 Reading aloud...",
+                statusPaused: "⏸️ Paused",
+                statusStopped: "⏹️ Stopped",
+                statusError: "❌ Text-to-speech not supported by this browser",
+                lang: "en-US"
+            }
+        };
 
-                        paragraphs.forEach((paragraph) => {
-                            const paragraphText = paragraph.textContent;
-                            const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
-
-                            let paragraphHTML = '';
-                            paragraphWords.forEach((word) => {
-                                paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
-                                bandWords.push(word);
-                                wordCounter++;
-                            });
-
-                            paragraph.innerHTML = paragraphHTML;
-                        });
-
-                        allBandWords[lang][bandNumber] = bandWords;
-                    }
-                }
-            });
+        function showStatus(message, isError = false) {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.textContent = message;
+            statusDiv.className = isError ? 'status-message status-error' : 'status-message status-success';
+            statusDiv.style.display = 'block';
+            
+            // Status nach 3 Sekunden ausblenden (außer bei Fehlern)
+            if (!isError) {
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                }, 3000);
+            }
         }
 
         function switchLanguage(lang) {
-            pauseReading();
+            // Stoppe aktuelles Vorlesen
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+            }
+            
+            // Verstecke alle Sprachen
             document.querySelectorAll('.language-content').forEach(content => {
                 content.classList.add('hidden');
             });
+            
+            // Zeige ausgewählte Sprache
             document.getElementById(lang + '-content').classList.remove('hidden');
-
+            
+            // Update Sprachbuttons
             document.querySelectorAll('.btn-lang').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
-
+            
+            // Update Texte
             currentLanguage = lang;
-            currentWordIndex = 0;
-            clearHighlight();
+            const texts = languageTexts[lang];
+            document.getElementById('btn-read-text').textContent = texts.btnRead;
+            document.getElementById('btn-pause-text').textContent = texts.btnPause;
+            document.getElementById('btn-stop-text').textContent = texts.btnStop;
+            
+            // Status verstecken
+            document.getElementById('statusMessage').style.display = 'none';
+            
+            // Zeige aktuellen Band
             showBand(currentBand);
         }
 
         function showBand(bandNumber) {
-            pauseReading();
+            // Stoppe aktuelles Vorlesen
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+                isReading = false;
+                isPaused = false;
+            }
 
+            // Verstecke alle Bände
             for (let i = 1; i <= 4; i++) {
                 const bandElement = document.getElementById(`${currentLanguage}-band${i}`);
                 if (bandElement) {
@@ -540,6 +568,7 @@
                 }
             }
 
+            // Update Band-Buttons
             document.querySelectorAll('.btn-band').forEach((btn, index) => {
                 btn.classList.remove('active');
                 if (index === bandNumber - 1) {
@@ -547,83 +576,87 @@
                 }
             });
 
+            // Zeige gewählten Band
             const targetBand = document.getElementById(`${currentLanguage}-band${bandNumber}`);
             if (targetBand) {
                 targetBand.classList.remove('hidden');
             }
 
             currentBand = bandNumber;
-            currentWordIndex = 0;
-            clearHighlight();
+            document.getElementById('statusMessage').style.display = 'none';
         }
 
         function startReading() {
-            currentWordIndex = 0;
-            clearHighlight();
-            continueReading();
-        }
+            // Prüfe Browser-Unterstützung
+            if (!('speechSynthesis' in window)) {
+                showStatus(languageTexts[currentLanguage].statusError, true);
+                return;
+            }
 
-        function continueReading() {
+            // Stoppe vorherige Sprache
             if (currentSpeech) {
-                currentSpeech.cancel();
+                speechSynthesis.cancel();
             }
 
-            const currentWords = allBandWords[currentLanguage] && allBandWords[currentLanguage][currentBand];
-            if (currentWords && currentWords.length > 0) {
-                const remainingText = currentWords.slice(currentWordIndex).join(' ');
-                currentSpeech = new SpeechSynthesisUtterance(remainingText);
-                currentSpeech.rate = 0.9;
-                currentSpeech.lang = currentLanguage === 'de' ? 'de-DE' : 'en-US';
+            // Hole Text des aktuellen Bandes
+            const storyText = document.querySelector(`#${currentLanguage}-band${currentBand} .text-content`);
+            if (!storyText) {
+                showStatus("❌ Text nicht gefunden", true);
+                return;
+            }
 
-                let wordCount = currentWordIndex;
-                currentSpeech.onboundary = function(event) {
-                    if (event.name === 'word') {
-                        highlightCurrentWord(wordCount);
-                        wordCount++;
-                        currentWordIndex = wordCount;
-                    }
-                };
+            const textToRead = storyText.textContent;
+            
+            // Erstelle neue Sprachausgabe
+            currentSpeech = new SpeechSynthesisUtterance(textToRead);
+            currentSpeech.rate = 0.9;
+            currentSpeech.pitch = 1.0;
+            currentSpeech.volume = 1.0;
+            currentSpeech.lang = languageTexts[currentLanguage].lang;
 
-                currentSpeech.onend = function() {
-                    isReading = false;
-                };
-
+            // Event-Handler
+            currentSpeech.onstart = function() {
                 isReading = true;
+                isPaused = false;
+                showStatus(languageTexts[currentLanguage].statusPlaying);
+            };
+
+            currentSpeech.onend = function() {
+                isReading = false;
+                isPaused = false;
+                showStatus(languageTexts[currentLanguage].statusStopped);
+            };
+
+            currentSpeech.onerror = function(event) {
+                isReading = false;
+                isPaused = false;
+                console.log('Sprach-Fehler:', event.error);
+                showStatus(languageTexts[currentLanguage].statusError, true);
+            };
+
+            // Starte Vorlesen
+            try {
                 speechSynthesis.speak(currentSpeech);
+            } catch (error) {
+                console.log('Fehler beim Starten:', error);
+                showStatus(languageTexts[currentLanguage].statusError, true);
             }
-        }
-
-        function startFromWord(wordIndex) {
-            currentWordIndex = wordIndex;
-            clearHighlight();
-            continueReading();
-        }
-
-        function highlightCurrentWord(wordIndex) {
-            if (lastHighlightedWord) {
-                lastHighlightedWord.classList.remove('word-highlight');
-            }
-
-            const wordSpan = document.querySelector(`#${currentLanguage}-band${currentBand} [data-word-index="${wordIndex}"]`);
-            if (wordSpan) {
-                wordSpan.classList.add('word-highlight');
-                lastHighlightedWord = wordSpan;
-                wordSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
-        function clearHighlight() {
-            document.querySelectorAll('.word-highlight').forEach(el => {
-                el.classList.remove('word-highlight');
-            });
-            lastHighlightedWord = null;
         }
 
         function pauseReading() {
-            if (currentSpeech) {
-                speechSynthesis.cancel();
-                currentSpeech = null;
-                isReading = false;
+            if (!('speechSynthesis' in window)) {
+                showStatus(languageTexts[currentLanguage].statusError, true);
+                return;
+            }
+
+            if (isReading && !isPaused) {
+                speechSynthesis.pause();
+                isPaused = true;
+                showStatus(languageTexts[currentLanguage].statusPaused);
+            } else if (isPaused) {
+                speechSynthesis.resume();
+                isPaused = false;
+                showStatus(languageTexts[currentLanguage].statusPlaying);
             }
         }
 
@@ -632,13 +665,22 @@
                 speechSynthesis.cancel();
                 currentSpeech = null;
                 isReading = false;
+                isPaused = false;
+                showStatus(languageTexts[currentLanguage].statusStopped);
             }
-            currentWordIndex = 0;
-            clearHighlight();
         }
 
+        // Initialisierung beim Seitenstart
         document.addEventListener('DOMContentLoaded', function() {
-            initializeAllBands();
+            // Browser-Unterstützung prüfen
+            if (!('speechSynthesis' in window)) {
+                console.log('Browser unterstützt kein Text-to-Speech');
+            }
+            
+            // Status-Meldung verstecken
+            document.getElementById('statusMessage').style.display = 'none';
+            
+            // Zeige ersten Band
             showBand(1);
         });
     </script>
