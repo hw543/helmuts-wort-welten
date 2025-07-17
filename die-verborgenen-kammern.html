@@ -1,1 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌹 Die Verborgenen Kammern - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #2c1810;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFB6C1 25%, #FF69B4 50%, #FFC0CB 75%, #FFCCCB 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #FFF8F0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #C2185B, #E91E63);
+            color: #FFF8F0;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .back-button-header {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .book-item {
+            background: linear-gradient(135deg, #FFF0F5, #FFE4E6);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .book-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .book-cover {
+            width: 200px;
+            height: 280px;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .book-title {
+            font-size: 1.5em;
+            color: #C2185B;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .book-description {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .read-button {
+            background: linear-gradient(135deg, #4285f4, #1976d2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .read-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+        }
+
+        .amazon-button {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .amazon-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .amazon-button.disabled {
+            background: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+        }
+
+        .amazon-button.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .book-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .back-button-header {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 15px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="back-button-header">
+                <a href="romantik-fiktion.html" class="back-button">← Zurück zur Romantik</a>
+            </div>
+            <h1>🌹 Die Verborgenen Kammern</h1>
+            <p>Geheimnisvolle Romanzen - 3 Bände</p>
+        </div>
+
+        <div class="content">
+            <div class="book-grid">
+                <!-- Band 1: Hinter verschlossenen Türen -->
+                <div class="book-item">
+                    <div class="book-cover">
+                        <img src="hinter-verschlossenen-tueren.jpg" alt="Hinter verschlossenen Türen Cover">
+                    </div>
+                    <h2 class="book-title">Band 1: Hinter verschlossenen Türen</h2>
+                    <p class="book-description">
+                        Elena Winters, Restauratorin in Berlin, trifft auf den geheimnisvollen Kunstsammler Marcus Castellano. 
+                        Zwischen ihnen entsteht eine Leidenschaft, die so intensiv wie gefährlich ist.
+                    </p>
+                    <div class="button-group">
+                        <a href="hinter-verschlossenen-tueren-lesen.html" class="read-button">📖 Lesen</a>
+                        <a href="https://amazon.de/dp/B0F1YC3J79" target="_blank" class="amazon-button">🛒 Bei Amazon kaufen</a>
+                    </div>
+                </div>
+
+                <!-- Band 2: Die Kunst der Hingabe -->
+                <div class="book-item">
+                    <div class="book-cover">
+                        <img src="die-kunst-der-hingabe.jpg" alt="Die Kunst der Hingabe Cover">
+                    </div>
+                    <h2 class="book-title">Band 2: Die Kunst der Hingabe</h2>
+                    <p class="book-description">
+                        Elena und Marcus' Beziehung wird auf die Probe gestellt, als eine Auktion in Venedig 
+                        Geheimnisse aus Marcus' Vergangenheit enthüllt.
+                    </p>
+                    <div class="button-group">
+                        <a href="die-kunst-der-hingabe-lesen.html" class="read-button">📖 Lesen</a>
+                        <a href="#" class="amazon-button disabled">📝 In Vorbereitung</a>
+                    </div>
+                </div>
+
+                <!-- Band 3: Die Tiefe der Begierde -->
+                <div class="book-item">
+                    <div class="book-cover">
+                        <img src="die-tiefe-der-begierde.jpg" alt="Die Tiefe der Begierde Cover">
+                    </div>
+                    <h2 class="book-title">Band 3: Die Tiefe der Begierde</h2>
+                    <p class="book-description">
+                        Das Vermächtnis von Marcus' Tante Marie führt das Paar in die Toskana, 
+                        wo sie sich den tiefsten Geheimnissen der Familie stellen müssen.
+                    </p>
+                    <div class="button-group">
+                        <a href="die-tiefe-der-begierde-lesen.html" class="read-button">📖 Lesen</a>
+                        <a href="#" class="amazon-button disabled">📝 In Vorbereitung</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
