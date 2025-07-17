@@ -203,27 +203,28 @@
             font-weight: bold;
         }
 
-        .word {
-            cursor: pointer;
-            transition: all 0.2s ease;
-            padding: 1px 2px;
-            border-radius: 3px;
-        }
-
-        .word:hover {
-            background-color: #FFE5E5;
-        }
-
-        .word-highlight {
-            background-color: #4169E1;
-            color: white;
-            padding: 2px 4px;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(65, 105, 225, 0.3);
-        }
-
         .hidden {
             display: none;
+        }
+
+        .status-message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .status-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
         @media (max-width: 600px) {
@@ -271,6 +272,8 @@
                 <button class="btn btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
                 <button class="btn btn-stop" onclick="stopReading()">⏹️ Stop</button>
             </div>
+
+            <div id="status-message" class="status-message hidden"></div>
 
             <div class="language-navigation">
                 <button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
@@ -923,49 +926,22 @@
     <script>
         let currentSpeech = null;
         let currentLanguage = 'de';
-        let currentWordIndex = 0;
-        let allLanguageWords = {
-            'de': [],
-            'en': [],
-            'es': []
-        };
         let isReading = false;
-        let lastHighlightedWord = null;
 
-        // Initialisiere ALLE Sprachen beim Seitenstart
-        function initializeAllLanguages() {
-            ['de', 'en', 'es'].forEach(lang => {
-                processLanguageContent(lang);
-            });
-        }
-
-        function processLanguageContent(lang) {
-            const textContent = document.querySelector(`#${lang}-textContent`);
-            if (textContent && !textContent.querySelector('.word')) {
-                const paragraphs = textContent.querySelectorAll('p');
-                let wordCounter = 0;
-                allLanguageWords[lang] = [];
-
-                paragraphs.forEach((paragraph) => {
-                    const paragraphText = paragraph.textContent;
-                    const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
-
-                    let paragraphHTML = '';
-                    paragraphWords.forEach((word) => {
-                        paragraphHTML += `<span class="word" data-word-index="${wordCounter}" data-lang="${lang}" onclick="startFromWord(${wordCounter})">${word}</span> `;
-                        allLanguageWords[lang].push(word);
-                        wordCounter++;
-                    });
-
-                    paragraph.innerHTML = paragraphHTML;
-                });
-            }
+        function showStatus(message, isSuccess = true) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = message;
+            statusDiv.className = `status-message ${isSuccess ? 'status-success' : 'status-error'}`;
+            statusDiv.classList.remove('hidden');
+            
+            setTimeout(() => {
+                statusDiv.classList.add('hidden');
+            }, 3000);
         }
 
         function switchLanguage(lang) {
-            // Stoppe aktuelles Vorlesen
             stopReading();
-
+            
             // Verstecke alle Sprachen
             document.querySelectorAll('.language-content').forEach(content => {
                 content.classList.add('hidden');
@@ -978,102 +954,104 @@
             document.querySelectorAll('.btn-lang').forEach(btn => {
                 btn.classList.remove('active');
             });
-
             event.target.classList.add('active');
 
             currentLanguage = lang;
-            currentWordIndex = 0;
-            clearHighlight();
         }
 
         function startReading() {
-            currentWordIndex = 0;
-            clearHighlight();
-            continueReading();
+            stopReading();
+            
+            const textContent = document.querySelector(`#${currentLanguage}-textContent`);
+            if (!textContent) {
+                showStatus('Text nicht gefunden!', false);
+                return;
+            }
+
+            const text = textContent.textContent || textContent.innerText;
+            if (!text.trim()) {
+                showStatus('Kein Text zum Vorlesen vorhanden!', false);
+                return;
+            }
+
+            // Prüfe ob Browser Text-to-Speech unterstützt
+            if (!('speechSynthesis' in window)) {
+                showStatus('Ihr Browser unterstützt keine Vorlese-Funktion!', false);
+                return;
+            }
+
+            currentSpeech = new SpeechSynthesisUtterance(text);
+            currentSpeech.rate = 0.9;
+            currentSpeech.volume = 1.0;
+            currentSpeech.pitch = 1.0;
+
+            // Sprach-Einstellungen
+            if (currentLanguage === 'de') {
+                currentSpeech.lang = 'de-DE';
+            } else if (currentLanguage === 'en') {
+                currentSpeech.lang = 'en-US';
+            } else if (currentLanguage === 'es') {
+                currentSpeech.lang = 'es-ES';
+            }
+
+            currentSpeech.onstart = function() {
+                isReading = true;
+                showStatus('🔊 Vorlesen gestartet');
+            };
+
+            currentSpeech.onend = function() {
+                isReading = false;
+                showStatus('✅ Vorlesen beendet');
+            };
+
+            currentSpeech.onerror = function(event) {
+                isReading = false;
+                showStatus('❌ Fehler beim Vorlesen: ' + event.error, false);
+            };
+
+            try {
+                speechSynthesis.speak(currentSpeech);
+                showStatus('🔊 Starte Vorlesen...');
+            } catch (error) {
+                showStatus('❌ Fehler beim Starten der Vorlese-Funktion!', false);
+            }
         }
 
         function continueReading() {
-            if (currentSpeech) {
-                currentSpeech.cancel();
+            if (isReading) {
+                showStatus('⏸️ Vorlesen bereits aktiv');
+                return;
             }
-
-            const currentWords = allLanguageWords[currentLanguage];
-            if (currentWords && currentWords.length > 0) {
-                // Text ab der aktuellen Position
-                const remainingText = currentWords.slice(currentWordIndex).join(' ');
-
-                currentSpeech = new SpeechSynthesisUtterance(remainingText);
-                currentSpeech.rate = 0.9;
-                
-                if (currentLanguage === 'de') {
-                    currentSpeech.lang = 'de-DE';
-                } else if (currentLanguage === 'en') {
-                    currentSpeech.lang = 'en-US';
-                } else if (currentLanguage === 'es') {
-                    currentSpeech.lang = 'es-ES';
-                }
-
-                let wordCount = currentWordIndex;
-
-                currentSpeech.onboundary = function(event) {
-                    if (event.name === 'word') {
-                        highlightCurrentWord(wordCount);
-                        wordCount++;
-                        currentWordIndex = wordCount;
-                    }
-                };
-
-                currentSpeech.onend = function() {
-                    isReading = false;
-                };
-
+            
+            if (speechSynthesis.paused) {
+                speechSynthesis.resume();
+                showStatus('▶️ Vorlesen fortgesetzt');
                 isReading = true;
-                speechSynthesis.speak(currentSpeech);
+            } else {
+                startReading();
             }
-        }
-
-        function startFromWord(wordIndex) {
-            currentWordIndex = wordIndex;
-            clearHighlight();
-            continueReading();
-        }
-
-        function highlightCurrentWord(wordIndex) {
-            // Entferne vorherige Highlights
-            if (lastHighlightedWord) {
-                lastHighlightedWord.classList.remove('word-highlight');
-            }
-
-            // Highlights das entsprechende Wort in der aktuellen Sprache
-            const wordSpan = document.querySelector(`#${currentLanguage}-textContent [data-word-index="${wordIndex}"]`);
-            if (wordSpan) {
-                wordSpan.classList.add('word-highlight');
-                lastHighlightedWord = wordSpan;
-            }
-        }
-
-        function clearHighlight() {
-            document.querySelectorAll('.word-highlight').forEach(el => {
-                el.classList.remove('word-highlight');
-            });
-            lastHighlightedWord = null;
         }
 
         function stopReading() {
-            if (currentSpeech) {
+            if (speechSynthesis.speaking || speechSynthesis.paused) {
                 speechSynthesis.cancel();
-                currentSpeech = null;
                 isReading = false;
+                showStatus('⏹️ Vorlesen gestoppt');
             }
-
-            // Zurück zum Anfang + alle Markierungen löschen
-            currentWordIndex = 0;
-            clearHighlight();
+            
+            if (currentSpeech) {
+                currentSpeech = null;
+            }
         }
 
-        // Initialisierung beim Seitenstart - ALLE SPRACHEN
+        // Initialisierung beim Seitenstart
         document.addEventListener('DOMContentLoaded', function() {
-            initializeAllLanguages();
+            showStatus('✅ Vorlese-System bereit');
+        });
+
+        // Cleanup bei Seitenwechsel
+        window.addEventListener('beforeunload', function() {
+            stopReading();
         });
     </script>
 </body>
