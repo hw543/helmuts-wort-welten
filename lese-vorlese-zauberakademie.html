@@ -358,6 +358,7 @@
         let currentSpeech = null;
         let isReading = false;
         let currentLanguage = 'de';
+        let availableVoices = [];
 
         // Spracheinstellungen
         const languageTexts = {
@@ -369,7 +370,8 @@
                 lang: "de-DE",
                 startMessage: "Vorlesen gestartet! 🔊",
                 stopMessage: "Vorlesen gestoppt. ⏹️",
-                errorMessage: "Fehler: Vorlesen wird von diesem Browser nicht unterstützt."
+                errorMessage: "Fehler: Vorlesen wird von diesem Browser nicht unterstützt.",
+                noVoiceMessage: "Hinweis: Keine deutsche Stimme verfügbar. Verwende Standardstimme."
             },
             en: {
                 title: "The Magic Academy of Morgenstern",
@@ -379,9 +381,50 @@
                 lang: "en-US",
                 startMessage: "Reading started! 🔊",
                 stopMessage: "Reading stopped. ⏹️",
-                errorMessage: "Error: Text-to-speech not supported by this browser."
+                errorMessage: "Error: Text-to-speech not supported by this browser.",
+                noVoiceMessage: "Note: No English voice available. Using default voice."
             }
         };
+
+        function loadVoices() {
+            return new Promise((resolve) => {
+                availableVoices = speechSynthesis.getVoices();
+                
+                if (availableVoices.length > 0) {
+                    resolve(availableVoices);
+                } else {
+                    // Fallback für Browser die Stimmen verzögert laden
+                    speechSynthesis.addEventListener('voiceschanged', function() {
+                        availableVoices = speechSynthesis.getVoices();
+                        resolve(availableVoices);
+                    }, { once: true });
+                    
+                    // Timeout falls voiceschanged nicht feuert
+                    setTimeout(() => {
+                        availableVoices = speechSynthesis.getVoices();
+                        resolve(availableVoices);
+                    }, 1000);
+                }
+            });
+        }
+
+        function findBestVoice(targetLang) {
+            if (availableVoices.length === 0) {
+                return null;
+            }
+
+            // Suche nach perfekter Übereinstimmung
+            let voice = availableVoices.find(v => v.lang === targetLang);
+            if (voice) return voice;
+
+            // Suche nach Sprach-Familie (z.B. de für de-DE)
+            const langFamily = targetLang.split('-')[0];
+            voice = availableVoices.find(v => v.lang.startsWith(langFamily));
+            if (voice) return voice;
+
+            // Fallback: erste verfügbare Stimme
+            return availableVoices[0];
+        }
 
         function switchLanguage(lang) {
             // Stoppe aktuelles Vorlesen
@@ -416,13 +459,13 @@
             statusDiv.className = `status-message ${isError ? 'status-error' : 'status-success'}`;
             statusDiv.style.display = 'block';
             
-            // Nachricht nach 3 Sekunden ausblenden
+            // Nachricht nach 5 Sekunden ausblenden
             setTimeout(() => {
                 statusDiv.style.display = 'none';
-            }, 3000);
+            }, 5000);
         }
 
-        function startReading() {
+        async function startReading() {
             // Prüfe ob Browser Text-to-Speech unterstützt
             if (!('speechSynthesis' in window)) {
                 showStatus(languageTexts[currentLanguage].errorMessage, true);
@@ -432,67 +475,155 @@
             // Stoppe vorheriges Vorlesen
             stopReading();
 
-            // Hole den Text der aktuellen Sprache
-            const storyElement = document.querySelector(`#${currentLanguage}-content .story-text`);
-            if (!storyElement) {
-                showStatus("Fehler: Text nicht gefunden.", true);
-                return;
+            try {
+                // Lade verfügbare Stimmen
+                await loadVoices();
+
+                // Hole den Text der aktuellen Sprache
+                const storyElement = document.querySelector(`#${currentLanguage}-content .story-text`);
+                if (!storyElement) {
+                    showStatus("Fehler: Text nicht gefunden.", true);
+                    return;
+                }
+
+                // Teile Text in kleinere Abschnitte (bessere Kompatibilität)
+                const paragraphs = storyElement.querySelectorAll('p');
+                if (paragraphs.length === 0) {
+                    showStatus("Fehler: Keine Textabschnitte gefunden.", true);
+                    return;
+                }
+
+                // Erstelle Text aus ersten 3 Absätzen (für bessere Performance)
+                let textToRead = '';
+                for (let i = 0; i < Math.min(3, paragraphs.length); i++) {
+                    textToRead += paragraphs[i].textContent + ' ';
+                }
+
+                if (textToRead.trim().length === 0) {
+                    showStatus("Fehler: Kein Text zum Vorlesen gefunden.", true);
+                    return;
+                }
+
+                // Erstelle neue Sprachausgabe
+                currentSpeech = new SpeechSynthesisUtterance(textToRead.trim());
+                
+                // Wähle beste verfügbare Stimme
+                const targetLang = languageTexts[currentLanguage].lang;
+                const bestVoice = findBestVoice(targetLang);
+                
+                if (bestVoice) {
+                    currentSpeech.voice = bestVoice;
+                    currentSpeech.lang = bestVoice.lang;
+                } else {
+                    currentSpeech.lang = targetLang;
+                    showStatus(languageTexts[currentLanguage].noVoiceMessage, false);
+                }
+
+                // Optimierte Einstellungen für bessere Kompatibilität
+                currentSpeech.rate = 0.8;  // Langsamer für bessere Verständlichkeit
+                currentSpeech.volume = 1.0;
+                currentSpeech.pitch = 1.0;
+
+                // Event-Handler
+                currentSpeech.onstart = function() {
+                    isReading = true;
+                    showStatus(languageTexts[currentLanguage].startMessage);
+                };
+
+                currentSpeech.onend = function() {
+                    isReading = false;
+                    currentSpeech = null;
+                    showStatus("Vorlesen beendet. ✅");
+                };
+
+                currentSpeech.onerror = function(event) {
+                    isReading = false;
+                    currentSpeech = null;
+                    console.error('Speech error:', event);
+                    showStatus("Fehler beim Vorlesen. Browser-Problem erkannt.", true);
+                };
+
+                // Starte Vorlesen mit Fallback
+                try {
+                    speechSynthesis.speak(currentSpeech);
+                    
+                    // Zusätzliche Prüfung nach 2 Sekunden
+                    setTimeout(() => {
+                        if (currentSpeech && !speechSynthesis.speaking && !speechSynthesis.pending) {
+                            showStatus("Vorlesen konnte nicht gestartet werden. Browser-Einschränkung.", true);
+                            isReading = false;
+                            currentSpeech = null;
+                        }
+                    }, 2000);
+                    
+                } catch (error) {
+                    console.error('Speech synthesis error:', error);
+                    showStatus("Fehler: " + error.message, true);
+                    isReading = false;
+                    currentSpeech = null;
+                }
+
+            } catch (error) {
+                console.error('General error:', error);
+                showStatus("Unerwarteter Fehler beim Vorlesen.", true);
+                isReading = false;
+                currentSpeech = null;
             }
-
-            const textToRead = storyElement.textContent;
-            
-            // Erstelle neue Sprachausgabe
-            currentSpeech = new SpeechSynthesisUtterance(textToRead);
-            currentSpeech.lang = languageTexts[currentLanguage].lang;
-            currentSpeech.rate = 0.9; // Etwas langsamer für bessere Verständlichkeit
-            currentSpeech.volume = 1.0;
-            currentSpeech.pitch = 1.0;
-
-            // Event-Handler
-            currentSpeech.onstart = function() {
-                isReading = true;
-                showStatus(languageTexts[currentLanguage].startMessage);
-            };
-
-            currentSpeech.onend = function() {
-                isReading = false;
-                showStatus("Vorlesen beendet. ✅");
-            };
-
-            currentSpeech.onerror = function(event) {
-                isReading = false;
-                showStatus("Fehler beim Vorlesen: " + event.error, true);
-            };
-
-            // Starte Vorlesen
-            speechSynthesis.speak(currentSpeech);
         }
 
         function stopReading() {
-            if (currentSpeech && isReading) {
+            if (speechSynthesis.speaking || speechSynthesis.pending) {
                 speechSynthesis.cancel();
+            }
+            
+            if (currentSpeech) {
                 currentSpeech = null;
+            }
+            
+            if (isReading) {
                 isReading = false;
                 showStatus(languageTexts[currentLanguage].stopMessage);
             }
         }
 
         // Browser-Kompatibilität prüfen beim Laden
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             if (!('speechSynthesis' in window)) {
                 console.warn('Text-to-Speech wird von diesem Browser nicht unterstützt');
-                // Buttons deaktivieren aber nicht verstecken
-                document.querySelector('.btn-read').style.opacity = '0.5';
-                document.querySelector('.btn-read').style.cursor = 'not-allowed';
+                showStatus("Vorlesen wird von diesem Browser nicht unterstützt.", true);
+                
+                // Buttons deaktivieren
+                const readBtn = document.querySelector('.btn-read');
+                readBtn.style.opacity = '0.5';
+                readBtn.style.cursor = 'not-allowed';
+                readBtn.onclick = function() {
+                    showStatus("Vorlesen wird von diesem Browser nicht unterstützt.", true);
+                };
+            } else {
+                // Lade Stimmen vorab
+                try {
+                    await loadVoices();
+                    console.log('Verfügbare Stimmen:', availableVoices.length);
+                } catch (error) {
+                    console.error('Fehler beim Laden der Stimmen:', error);
+                }
             }
         });
 
         // Cleanup beim Verlassen der Seite
         window.addEventListener('beforeunload', function() {
-            if (currentSpeech && isReading) {
-                speechSynthesis.cancel();
-            }
+            stopReading();
         });
+
+        // Mobile Safari Fix
+        document.addEventListener('touchstart', function() {
+            if (!speechSynthesis.speaking && !speechSynthesis.pending) {
+                // Dummy-Speech für Mobile Safari Aktivierung
+                const dummySpeech = new SpeechSynthesisUtterance('');
+                dummySpeech.volume = 0;
+                speechSynthesis.speak(dummySpeech);
+            }
+        }, { once: true });
     </script>
 </body>
 </html>
