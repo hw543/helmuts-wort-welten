@@ -67,7 +67,7 @@
             box-shadow: 0 5px 15px rgba(255,182,193,0.3);
         }
         
-        .language-navigation {
+        .navigation {
             display: flex;
             gap: 10px;
             justify-content: center;
@@ -128,6 +128,16 @@
             transform: translateY(-2px);
         }
         
+        .btn-continue {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #8B4513;
+        }
+        
+        .btn-continue:hover {
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            transform: translateY(-2px);
+        }
+        
         .btn-stop {
             background: linear-gradient(135deg, #FF6347, #FF4500);
             color: white;
@@ -154,28 +164,25 @@
             margin-bottom: 20px;
         }
         
+        .word {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .word:hover {
+            background-color: #FFE4E1;
+            border-radius: 3px;
+        }
+        
+        .current {
+            background-color: #FF69B4 !important;
+            color: white !important;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
         .hidden {
             display: none;
-        }
-        
-        .status-message {
-            text-align: center;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-        
-        .status-success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .status-error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
         }
         
         @media (max-width: 600px) {
@@ -198,7 +205,7 @@
                 width: 200px;
             }
             
-            .language-navigation {
+            .navigation {
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
@@ -214,17 +221,16 @@
         <p class="author" id="author">von Helmut Wegner</p>
         
         <div class="controls">
-            <div class="language-navigation">
+            <div class="navigation">
                 <a href="index.html" class="btn btn-nav">🏠 Startseite</a>
                 <button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
                 <button class="btn btn-lang" onclick="switchLanguage('en')">🇬🇧 English</button>
                 <a href="kinderbuecher.html" class="btn btn-nav">📚 Kinderbücher</a>
             </div>
             
-            <div id="status-message" class="status-message" style="display: none;"></div>
-            
-            <button class="btn btn-read" onclick="startReading()">🔊 <span id="btn-read-text">Vorlesen starten</span></button>
-            <button class="btn btn-stop" onclick="stopReading()">⏹️ <span id="btn-stop-text">Stoppen</span></button>
+            <button class="btn btn-read" onclick="startReading()">🔴 <span id="btn-read-text">Vorlesen</span></button>
+            <button class="btn btn-continue" onclick="continueReading()">▶️ <span id="btn-continue-text">Weiterlesen</span></button>
+            <button class="btn btn-stop" onclick="stopReading()">⏹️ <span id="btn-stop-text">Stop</span></button>
         </div>
         
         <!-- Deutsche Version -->
@@ -253,40 +259,6 @@
                 <p>Nach einem langen Tag voller peinlicher Momente und schiefer Blicke eilte Leonas nach Hause. Der kleine Hof seiner Familie, umgeben von dichten Hecken aus Weißdorn und Holunder und blühenden Wildblumen, die seine Mutter liebevoll pflegte, bot ihm zumindest etwas Geborgenheit. Seine Mutter bemerkte seine niedergeschlagene Stimmung. "War es wieder schlimm heute?", fragte sie sanft und strich ihm über das Haar. Leonas nickte nur.</p>
 
                 <p>Er verbrachte den Nachmittag wie gewohnt in seinem Lieblingsversteck, einer kleinen Lichtung im Wald, wo ein alter Baum mit knorrigen Wurzeln stand. Es war sein Zufluchtsort, sein Heiligtum, der einzige Ort auf der Welt, wo er sich vollkommen zu Hause fühlte. Der alte Baum war gewaltig und ehrfurchtgebietend, sein Stamm so dick, dass drei Erwachsene ihn nicht hätten umfassen können.</p>
-
-                <p>Ein Rotkehlchen landete auf einem Ast in seiner Nähe und betrachtete ihn neugierig mit seinen kleinen, glänzenden schwarzen Augen. Leonas bewegte sich nicht, atmete kaum, und nach einer Weile kam der Vogel näher und noch näher. Es war ein magischer Moment, einer von vielen, die er in diesem Wald erlebt hatte, Momente, die ihm das Gefühl gaben, mit etwas Größerem verbunden zu sein.</p>
-
-                <p>Doch heute war etwas anders, etwas, das die gewohnte Ruhe des Waldes durchbrach. Die Luft schien gespannter, elektrischer, als läge ein Gewitter in der Luft, obwohl der Himmel klar und blau war. Als er die Augen öffnete, bemerkte er eine seltsame Gestalt, die neben dem Stamm des alten Baumes stand, als wäre sie aus dem Nichts erschienen.</p>
-
-                <p>Es war ein Mann, hochgewachsen und von edler, königlicher Haltung, in einen schimmernden, dunkelblauen Mantel gehüllt, der im gedämpften Licht des Waldes zu funkeln schien wie der Nachthimmel voller Sterne. Das Haar des Mannes war silbern wie frisch gefallener Schnee im Mondschein und fiel ihm in weichen, geschmeidigen Wellen über die Schultern. Seine Augen funkelten wie Sterne in einer klaren Winternacht.</p>
-
-                <p>"Leonas Grünfeld, nehme ich an?", fragte der Mann mit einer warmen und ruhigen Stimme, die trotzdem die Stille des Waldes mit einer besonderen Macht durchdrang. "Ja, das bin ich", stammelte Leonas und fragte sich, woher dieser fremde Mann seinen Namen kannte. "Wer sind Sie? Und woher wissen Sie, wer ich bin?"</p>
-
-                <p>Der Mann lächelte, und sein Gesicht wurde von einer inneren Güte erleuchtet, die Leonas sofort vertraute. "Mein Name ist Elias Nachtflug. Ich bin ein Bote der Zauberakademie von Morgenstern. Und ich habe eine besondere Einladung für dich, junger Leonas." Mit diesen Worten zog er eine Pergamentrolle aus seinem Mantel. Das Pergament schimmerte in einem sanften goldenen Licht, als wäre es von Magie durchdrungen.</p>
-
-                <p>Leonas starrte den Mann ungläubig an. "Eine Zauberakademie?", flüsterte er. "Aber... aber das gibt es doch gar nicht. Das sind nur Märchen." Elias' Lächeln wurde breiter. "Märchen, sagst du? Schau dich um, Leonas. Siehst du nicht die Magie, die dich jeden Tag umgibt? Die Art, wie die Tiere zu dir kommen, wie die Pflanzen unter deinen Händen zu gedeihen scheinen? Du hast schon immer gewusst, dass du anders bist."</p>
-
-                <p>Leonas nahm die Rolle mit zitternden Händen entgegen. Als er sie entrollte, schien es in einem sanften Licht zu schimmern, und die Buchstaben auf dem Papier bewegten sich sanft, als wären sie lebendig. Die Schrift war elegant und kunstvoll, mit goldenen Akzenten verziert: "An Leonas Grünfeld, das Schicksal hat dich auserwählt, ein Schüler der Zauberakademie von Morgenstern zu werden."</p>
-
-                <p>Leonas' Kopf schwirrte. Eine Zauberakademie? Er hatte immer von Magie geträumt, aber das war doch unmöglich! Oder etwa nicht? "Das muss ein Irrtum sein", flüsterte er und blickte zu Elias auf. "Ich bin nur ein ganz normaler Junge. Ich kann nichts Besonderes." Elias schüttelte den Kopf. "Du bist alles andere als normal, Leonas. Du hast eine Gabe, die selten und wertvoll ist."</p>
-
-                <p>"Es liegt an dir, diese Gabe zu entdecken und zu entfalten", fuhr Elias fort. "In der Akademie von Morgenstern wirst du andere treffen, die ebenfalls besondere Fähigkeiten haben. Du wirst lernen, dass das, was dich anders macht, in Wahrheit deine größte Stärke ist." Die Worte des Boten schienen direkt in Leonas' Herz zu dringen.</p>
-
-                <p>"Aber was ist, wenn ich nicht gut genug bin?", fragte Leonas leise. "Was ist, wenn ich alle enttäusche?" Elias legte eine warme Hand auf seine Schulter. "Mut ist nicht die Abwesenheit von Angst, Leonas. Mut ist, trotz der Angst das Richtige zu tun. Du hast bereits mehr Mut gezeigt, als du weißt."</p>
-
-                <p>Als Elias zu verschwinden begann, sein Körper wurde durchsichtig wie Nebel, fügte er hinzu: "Die Entscheidung liegt bei dir, Leonas. Aber denk daran: Manchmal führen uns die Wege, die uns am meisten Angst machen, zu den schönsten Zielen." Als Elias verschwunden war, kehrte Leonas nach Hause zurück. Der Wald um ihn schien anders zu sein, erfüllt von neuen Möglichkeiten.</p>
-
-                <p>Die Nacht zog sich endlos hin. Leonas lag wach in seinem Bett und starrte an die Decke, während seine Gedanken zwischen Aufregung und Furcht hin und her sprangen. Mit zitternden, aber entschlossenen Händen packte Leonas eine kleine Tasche: ein Notizbuch, seinen Lieblingsstift aus Holz, den sein Großvater geschnitzt hatte, und ein altes Amulett, das seiner verstorbenen Mutter gehört hatte.</p>
-
-                <p>Als die ersten Sonnenstrahlen durch sein Fenster fielen, hörte er ein sanftes Klopfen an der Haustür. Sein Herz setzte einen Schlag aus. Es war Zeit. Er sprang aus dem Bett, griff seine gepackte Tasche und eilte nach draußen. Vor dem Haus stand eine prachtvolle Kutsche, prächtiger als alles, was er je gesehen hatte. Sie war aus dunklem Holz geschnitzt und mit goldenen Verzierungen versehen, die in der Morgensonne funkelten wie Edelsteine.</p>
-
-                <p>Gezogen wurde sie von zwei schneeweißen, geflügelten Pferden, deren Flügel im Morgenlicht schimmerten wie Perlmutt. Ein Kutscher in einem sternenbesetzten Umhang öffnete die Tür der Kutsche und lächelte ihm freundlich zu. "Bereit für dein Abenteuer, junger Herr Grünfeld? Die Akademie wartet auf dich." Leonas nickte, obwohl seine Knie zitterten.</p>
-
-                <p>Er warf einen letzten Blick auf sein Zuhause, auf das kleine Dorf mit seinen vertrauten Häusern und Gärten, das sein ganzes Leben lang seine Welt gewesen war. Er sah seine Mutter am Fenster stehen, Tränen in den Augen, aber auch Stolz in ihrem Lächeln. Sie winkte ihm zu und formte mit den Lippen die Worte: "Ich liebe dich."</p>
-
-                <p>Dann stieg er in die Kutsche und spürte, wie sich unter seinen Füßen etwas Wunderbares veränderte. Das Innere der Kutsche war noch prächtiger als das Äußere. Die Sitze waren mit samtweichem, tiefblauem Stoff bezogen, und die Wände waren mit schimmernden Symbolen verziert, die im Licht zu tanzen schienen.</p>
-
-                <p>Als die Kutsche sich in die Lüfte erhob und die geflügelten Pferde ihre majestätischen Schwingen ausbreiteten, blickte Leonas durch das Fenster auf die Welt hinab, die kleiner und kleiner wurde. Er fühlte keine Angst beim Fliegen, nur Staunen und eine tiefe Dankbarkeit für dieses unglaubliche Erlebnis. Das Abenteuer, von dem er immer geträumt hatte, hatte endlich begonnen, und obwohl er nicht wusste, was ihn erwartete, spürte er zum ersten Mal in seinem Leben, dass er bereit war, mutig zu sein.</p>
             </div>
         </div>
         
@@ -316,314 +288,186 @@
                 <p>After a long day full of embarrassing moments and sideways glances, Leonas hurried home. His family's small yard, surrounded by dense hedges of hawthorn and elderberry and blooming wildflowers that his mother lovingly tended, offered him at least some comfort. His mother noticed his dejected mood. "Was it bad again today?" she asked gently, stroking his hair. Leonas just nodded.</p>
 
                 <p>He spent the afternoon as usual in his favorite hiding place, a small clearing in the forest where an old tree with gnarled roots stood. It was his refuge, his sanctuary, the only place in the world where he felt completely at home. The old tree was massive and awe-inspiring, its trunk so thick that three adults couldn't have embraced it.</p>
-
-                <p>A robin landed on a branch near him and looked at him curiously with its small, shining black eyes. Leonas didn't move, barely breathed, and after a while the bird came closer and closer. It was a magical moment, one of many he had experienced in this forest, moments that made him feel connected to something greater.</p>
-
-                <p>But today something was different, something that broke the familiar peace of the forest. The air seemed more tense, more electric, as if a thunderstorm was in the air, although the sky was clear and blue. When he opened his eyes, he noticed a strange figure standing next to the trunk of the old tree, as if it had appeared from nowhere.</p>
-
-                <p>It was a man, tall and of noble, royal bearing, wrapped in a shimmering, dark blue cloak that seemed to sparkle in the dim light of the forest like the night sky full of stars. The man's hair was silver like freshly fallen snow in moonlight and fell in soft, smooth waves over his shoulders. His eyes twinkled like stars in a clear winter night.</p>
-
-                <p>"Leonas Grünfeld, I presume?" asked the man with a warm and calm voice that still penetrated the silence of the forest with a special power. "Yes, that's me," stammered Leonas, wondering how this strange man knew his name. "Who are you? And how do you know who I am?"</p>
-
-                <p>The man smiled, and his face was illuminated by an inner kindness that Leonas immediately trusted. "My name is Elias Nightflight. I am a messenger from the Magic Academy of Morgenstern. And I have a special invitation for you, young Leonas." With these words, he pulled a parchment scroll from his cloak. The parchment shimmered in a gentle golden light, as if it were infused with magic.</p>
-
-                <p>Leonas stared at the man incredulously. "A magic academy?" he whispered. "But... but that doesn't exist. Those are just fairy tales." Elias' smile grew wider. "Fairy tales, you say? Look around you, Leonas. Don't you see the magic that surrounds you every day? The way animals come to you, how plants seem to thrive under your hands? You've always known that you're different."</p>
-
-                <p>Leonas took the scroll with trembling hands. As he unrolled it, it seemed to shimmer in a gentle light, and the letters on the paper moved gently, as if they were alive. The writing was elegant and artistic, decorated with golden accents: "To Leonas Grünfeld, fate has chosen you to become a student of the Magic Academy of Morgenstern."</p>
-
-                <p>Leonas' head was spinning. A magic academy? He had always dreamed of magic, but this was impossible! Or wasn't it? "This must be a mistake," he whispered, looking up at Elias. "I'm just a completely normal boy. I can't do anything special." Elias shook his head. "You are anything but normal, Leonas. You have a gift that is rare and valuable."</p>
-
-                <p>"It's up to you to discover and develop this gift," continued Elias. "At the Academy of Morgenstern you will meet others who also have special abilities. You will learn that what makes you different is actually your greatest strength." The messenger's words seemed to penetrate directly into Leonas' heart.</p>
-
-                <p>"But what if I'm not good enough?" asked Leonas quietly. "What if I disappoint everyone?" Elias placed a warm hand on his shoulder. "Courage is not the absence of fear, Leonas. Courage is doing the right thing despite fear. You have already shown more courage than you know."</p>
-
-                <p>As Elias began to disappear, his body becoming transparent like mist, he added: "The decision is yours, Leonas. But remember: sometimes the paths that frighten us the most lead to the most beautiful destinations." When Elias had disappeared, Leonas returned home. The forest around him seemed different, filled with new possibilities.</p>
-
-                <p>The night dragged on endlessly. Leonas lay awake in his bed staring at the ceiling, his thoughts jumping back and forth between excitement and fear. With trembling but determined hands, Leonas packed a small bag: a notebook, his favorite wooden pen that his grandfather had carved, and an old amulet that had belonged to his deceased mother.</p>
-
-                <p>When the first rays of sunlight fell through his window, he heard a gentle knock at the front door. His heart skipped a beat. It was time. He jumped out of bed, grabbed his packed bag and hurried outside. In front of the house stood a magnificent carriage, more magnificent than anything he had ever seen. It was carved from dark wood and adorned with golden decorations that sparkled in the morning sun like precious stones.</p>
-
-                <p>It was pulled by two snow-white, winged horses whose wings shimmered like mother-of-pearl in the morning light. A coachman in a star-studded cloak opened the carriage door and smiled at him kindly. "Ready for your adventure, young Mr. Grünfeld? The academy awaits you." Leonas nodded, although his knees were shaking.</p>
-
-                <p>He took one last look at his home, at the small village with its familiar houses and gardens that had been his world all his life. He saw his mother standing at the window, tears in her eyes, but also pride in her smile. She waved to him and mouthed the words: "I love you."</p>
-
-                <p>Then he got into the carriage and felt something wonderful change beneath his feet. The interior of the carriage was even more magnificent than the exterior. The seats were covered with velvet-soft, deep blue fabric, and the walls were decorated with shimmering symbols that seemed to dance in the light.</p>
-
-                <p>As the carriage rose into the air and the winged horses spread their majestic wings, Leonas looked through the window at the world below, which became smaller and smaller. He felt no fear while flying, only wonder and deep gratitude for this incredible experience. The adventure he had always dreamed of had finally begun, and although he didn't know what awaited him, he felt for the first time in his life that he was ready to be brave.</p>
             </div>
         </div>
     </div>
 
     <script>
         let currentSpeech = null;
+        let currentWordIndex = 0;
+        let allWords = {};
         let isReading = false;
+        let lastHighlightedWord = null;
         let currentLanguage = 'de';
-        let availableVoices = [];
+        let stoppedAtIndex = 0;
 
         // Spracheinstellungen
         const languageTexts = {
             de: {
                 title: "Die Zauberakademie von Morgenstern",
                 author: "von Helmut Wegner",
-                btnRead: "Vorlesen starten",
-                btnStop: "Stoppen",
-                lang: "de-DE",
-                startMessage: "Vorlesen gestartet! 🔊",
-                stopMessage: "Vorlesen gestoppt. ⏹️",
-                errorMessage: "Fehler: Vorlesen wird von diesem Browser nicht unterstützt.",
-                noVoiceMessage: "Hinweis: Keine deutsche Stimme verfügbar. Verwende Standardstimme."
+                btnRead: "Vorlesen",
+                btnContinue: "Weiterlesen",
+                btnStop: "Stop",
+                lang: "de-DE"
             },
             en: {
                 title: "The Magic Academy of Morgenstern",
                 author: "by Helmut Wegner",
-                btnRead: "Start Reading",
+                btnRead: "Read Aloud",
+                btnContinue: "Continue",
                 btnStop: "Stop",
-                lang: "en-US",
-                startMessage: "Reading started! 🔊",
-                stopMessage: "Reading stopped. ⏹️",
-                errorMessage: "Error: Text-to-speech not supported by this browser.",
-                noVoiceMessage: "Note: No English voice available. Using default voice."
+                lang: "en-US"
             }
         };
 
-        function loadVoices() {
-            return new Promise((resolve) => {
-                availableVoices = speechSynthesis.getVoices();
-                
-                if (availableVoices.length > 0) {
-                    resolve(availableVoices);
-                } else {
-                    // Fallback für Browser die Stimmen verzögert laden
-                    speechSynthesis.addEventListener('voiceschanged', function() {
-                        availableVoices = speechSynthesis.getVoices();
-                        resolve(availableVoices);
-                    }, { once: true });
+        // Initialisiere Wörter beim Seitenstart
+        function initializeWords() {
+            ['de', 'en'].forEach(lang => {
+                const storyElement = document.querySelector(`#${lang}-content .story-text`);
+                if (storyElement && !storyElement.querySelector('.word')) {
+                    const paragraphs = storyElement.querySelectorAll('p');
+                    let wordCounter = 0;
+                    let langWords = [];
                     
-                    // Timeout falls voiceschanged nicht feuert
-                    setTimeout(() => {
-                        availableVoices = speechSynthesis.getVoices();
-                        resolve(availableVoices);
-                    }, 1000);
+                    paragraphs.forEach((paragraph) => {
+                        const paragraphText = paragraph.textContent;
+                        const paragraphWords = paragraphText.split(/\s+/).filter(word => word.length > 0);
+                        
+                        let paragraphHTML = '';
+                        paragraphWords.forEach((word) => {
+                            paragraphHTML += `<span class="word" data-word-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
+                            langWords.push(word);
+                            wordCounter++;
+                        });
+                        
+                        paragraph.innerHTML = paragraphHTML;
+                    });
+                    
+                    allWords[lang] = langWords;
                 }
             });
         }
 
-        function findBestVoice(targetLang) {
-            if (availableVoices.length === 0) {
-                return null;
-            }
-
-            // Suche nach perfekter Übereinstimmung
-            let voice = availableVoices.find(v => v.lang === targetLang);
-            if (voice) return voice;
-
-            // Suche nach Sprach-Familie (z.B. de für de-DE)
-            const langFamily = targetLang.split('-')[0];
-            voice = availableVoices.find(v => v.lang.startsWith(langFamily));
-            if (voice) return voice;
-
-            // Fallback: erste verfügbare Stimme
-            return availableVoices[0];
-        }
-
         function switchLanguage(lang) {
-            // Stoppe aktuelles Vorlesen
-            stopReading();
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+                isReading = false;
+            }
             
-            // Verstecke alle Sprachen
             document.querySelectorAll('.language-content').forEach(content => {
                 content.classList.add('hidden');
             });
             
-            // Zeige ausgewählte Sprache
             document.getElementById(lang + '-content').classList.remove('hidden');
             
-            // Update Sprachbuttons
             document.querySelectorAll('.btn-lang').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
             
-            // Update Texte
             currentLanguage = lang;
             const texts = languageTexts[lang];
             document.getElementById('main-title').textContent = texts.title;
             document.getElementById('author').textContent = texts.author;
             document.getElementById('btn-read-text').textContent = texts.btnRead;
+            document.getElementById('btn-continue-text').textContent = texts.btnContinue;
             document.getElementById('btn-stop-text').textContent = texts.btnStop;
-        }
-
-        function showStatus(message, isError = false) {
-            const statusDiv = document.getElementById('status-message');
-            statusDiv.textContent = message;
-            statusDiv.className = `status-message ${isError ? 'status-error' : 'status-success'}`;
-            statusDiv.style.display = 'block';
             
-            // Nachricht nach 5 Sekunden ausblenden
-            setTimeout(() => {
-                statusDiv.style.display = 'none';
-            }, 5000);
+            currentWordIndex = 0;
+            stoppedAtIndex = 0;
+            clearHighlights();
         }
 
-        async function startReading() {
-            // Prüfe ob Browser Text-to-Speech unterstützt
-            if (!('speechSynthesis' in window)) {
-                showStatus(languageTexts[currentLanguage].errorMessage, true);
-                return;
-            }
-
-            // Stoppe vorheriges Vorlesen
-            stopReading();
-
-            try {
-                // Lade verfügbare Stimmen
-                await loadVoices();
-
-                // Hole den Text der aktuellen Sprache
-                const storyElement = document.querySelector(`#${currentLanguage}-content .story-text`);
-                if (!storyElement) {
-                    showStatus("Fehler: Text nicht gefunden.", true);
-                    return;
-                }
-
-                // Teile Text in kleinere Abschnitte (bessere Kompatibilität)
-                const paragraphs = storyElement.querySelectorAll('p');
-                if (paragraphs.length === 0) {
-                    showStatus("Fehler: Keine Textabschnitte gefunden.", true);
-                    return;
-                }
-
-                // Erstelle Text aus ersten 3 Absätzen (für bessere Performance)
-                let textToRead = '';
-                for (let i = 0; i < Math.min(3, paragraphs.length); i++) {
-                    textToRead += paragraphs[i].textContent + ' ';
-                }
-
-                if (textToRead.trim().length === 0) {
-                    showStatus("Fehler: Kein Text zum Vorlesen gefunden.", true);
-                    return;
-                }
-
-                // Erstelle neue Sprachausgabe
-                currentSpeech = new SpeechSynthesisUtterance(textToRead.trim());
-                
-                // Wähle beste verfügbare Stimme
-                const targetLang = languageTexts[currentLanguage].lang;
-                const bestVoice = findBestVoice(targetLang);
-                
-                if (bestVoice) {
-                    currentSpeech.voice = bestVoice;
-                    currentSpeech.lang = bestVoice.lang;
-                } else {
-                    currentSpeech.lang = targetLang;
-                    showStatus(languageTexts[currentLanguage].noVoiceMessage, false);
-                }
-
-                // Optimierte Einstellungen für bessere Kompatibilität
-                currentSpeech.rate = 0.8;  // Langsamer für bessere Verständlichkeit
-                currentSpeech.volume = 1.0;
-                currentSpeech.pitch = 1.0;
-
-                // Event-Handler
-                currentSpeech.onstart = function() {
-                    isReading = true;
-                    showStatus(languageTexts[currentLanguage].startMessage);
-                };
-
-                currentSpeech.onend = function() {
-                    isReading = false;
-                    currentSpeech = null;
-                    showStatus("Vorlesen beendet. ✅");
-                };
-
-                currentSpeech.onerror = function(event) {
-                    isReading = false;
-                    currentSpeech = null;
-                    console.error('Speech error:', event);
-                    showStatus("Fehler beim Vorlesen. Browser-Problem erkannt.", true);
-                };
-
-                // Starte Vorlesen mit Fallback
-                try {
-                    speechSynthesis.speak(currentSpeech);
-                    
-                    // Zusätzliche Prüfung nach 2 Sekunden
-                    setTimeout(() => {
-                        if (currentSpeech && !speechSynthesis.speaking && !speechSynthesis.pending) {
-                            showStatus("Vorlesen konnte nicht gestartet werden. Browser-Einschränkung.", true);
-                            isReading = false;
-                            currentSpeech = null;
-                        }
-                    }, 2000);
-                    
-                } catch (error) {
-                    console.error('Speech synthesis error:', error);
-                    showStatus("Fehler: " + error.message, true);
-                    isReading = false;
-                    currentSpeech = null;
-                }
-
-            } catch (error) {
-                console.error('General error:', error);
-                showStatus("Unerwarteter Fehler beim Vorlesen.", true);
-                isReading = false;
-                currentSpeech = null;
-            }
+        function startReading() {
+            currentWordIndex = 0;
+            stoppedAtIndex = 0;
+            clearHighlights();
+            continueReading();
         }
 
-        function stopReading() {
-            if (speechSynthesis.speaking || speechSynthesis.pending) {
+        function continueReading() {
+            if (currentSpeech) {
                 speechSynthesis.cancel();
             }
             
-            if (currentSpeech) {
-                currentSpeech = null;
-            }
-            
-            if (isReading) {
-                isReading = false;
-                showStatus(languageTexts[currentLanguage].stopMessage);
+            const currentWords = allWords[currentLanguage];
+            if (currentWords && currentWords.length > 0) {
+                const remainingText = currentWords.slice(currentWordIndex).join(' ');
+                
+                currentSpeech = new SpeechSynthesisUtterance(remainingText);
+                currentSpeech.rate = 1.0;
+                currentSpeech.lang = languageTexts[currentLanguage].lang;
+                
+                let wordCount = currentWordIndex;
+                
+                currentSpeech.onboundary = function(event) {
+                    if (event.name === 'word') {
+                        highlightCurrentWord(wordCount);
+                        wordCount++;
+                        currentWordIndex = wordCount;
+                    }
+                };
+                
+                currentSpeech.onend = function() {
+                    isReading = false;
+                };
+                
+                isReading = true;
+                speechSynthesis.speak(currentSpeech);
             }
         }
 
-        // Browser-Kompatibilität prüfen beim Laden
-        document.addEventListener('DOMContentLoaded', async function() {
-            if (!('speechSynthesis' in window)) {
-                console.warn('Text-to-Speech wird von diesem Browser nicht unterstützt');
-                showStatus("Vorlesen wird von diesem Browser nicht unterstützt.", true);
+        function startFromWord(wordIndex) {
+            currentWordIndex = wordIndex;
+            stoppedAtIndex = wordIndex;
+            clearHighlights();
+            continueReading();
+        }
+
+        function highlightCurrentWord(wordIndex) {
+            if (lastHighlightedWord) {
+                lastHighlightedWord.classList.remove('current');
+            }
+            
+            const wordSpan = document.querySelector(`#${currentLanguage}-content [data-word-index="${wordIndex}"]`);
+            if (wordSpan) {
+                wordSpan.classList.add('current');
+                lastHighlightedWord = wordSpan;
                 
-                // Buttons deaktivieren
-                const readBtn = document.querySelector('.btn-read');
-                readBtn.style.opacity = '0.5';
-                readBtn.style.cursor = 'not-allowed';
-                readBtn.onclick = function() {
-                    showStatus("Vorlesen wird von diesem Browser nicht unterstützt.", true);
-                };
-            } else {
-                // Lade Stimmen vorab
-                try {
-                    await loadVoices();
-                    console.log('Verfügbare Stimmen:', availableVoices.length);
-                } catch (error) {
-                    console.error('Fehler beim Laden der Stimmen:', error);
+                const rect = wordSpan.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                const controlsHeight = 150;
+                
+                if (rect.bottom > windowHeight - 100 || rect.top < controlsHeight + 50) {
+                    wordSpan.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest',
+                        inline: 'nearest'
+                    });
                 }
             }
-        });
+        }
 
-        // Cleanup beim Verlassen der Seite
-        window.addEventListener('beforeunload', function() {
-            stopReading();
-        });
+        function clearHighlights() {
+            document.querySelectorAll('.current').forEach(el => {
+                el.classList.remove('current');
+            });
+            lastHighlightedWord = null;
+        }
 
-        // Mobile Safari Fix
-        document.addEventListener('touchstart', function() {
-            if (!speechSynthesis.speaking && !speechSynthesis.pending) {
-                // Dummy-Speech für Mobile Safari Aktivierung
-                const dummySpeech = new SpeechSynthesisUtterance('');
-                dummySpeech.volume = 0;
-                speechSynthesis.speak(dummySpeech);
+        function stopReading() {
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+                currentSpeech = null;
+                isReading = false;
             }
-        }, { once: true });
+            stoppedAtIndex = currentWordIndex;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeWords();
+        });
     </script>
 </body>
 </html>
