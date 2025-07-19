@@ -1,1 +1,495 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemeinsam in die Zukunft - Vorlesen</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFB6C1 50%, #FFC0CB 100%);
+            min-height: 100vh;
+        }
+        
+        .rainbow-header {
+            height: 20px;
+            background: linear-gradient(90deg, 
+                #FF69B4 0%, 
+                #FFB6C1 16%, 
+                #FFC0CB 32%, 
+                #FFD4E5 48%, 
+                #FF1493 64%, 
+                #C71585 80%, 
+                #DB7093 100%);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #FFF8F8 0%, #FFF0F5 100%);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 3px solid #FF69B4;
+        }
+        
+        h1 {
+            color: #C71585;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(199,21,133,0.3);
+        }
+        
+        .author {
+            text-align: center;
+            color: #DB7093;
+            font-style: italic;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .controls {
+            position: sticky;
+            top: 20px;
+            text-align: center;
+            margin: 30px 0 10px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 100%);
+            border-radius: 15px;
+            border: 2px solid #FFB6C1;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(255,182,193,0.3);
+        }
+        
+        .language-navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 5px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn-lang {
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            color: white;
+            border: 2px solid transparent;
+        }
+        
+        .btn-lang.active {
+            border-color: #FFD700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+        
+        .btn-lang:hover {
+            background: linear-gradient(135deg, #FF1493, #C71585);
+            transform: translateY(-2px);
+        }
+        
+        .btn-nav {
+            background: linear-gradient(135deg, #9370DB, #8A2BE2);
+            color: white;
+            text-decoration: none;
+            border: 2px solid transparent;
+        }
+        
+        .btn-nav:hover {
+            background: linear-gradient(135deg, #8A2BE2, #7B68EE);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138,43,226,0.4);
+        }
+        
+        .btn-read {
+            background: linear-gradient(135deg, #32CD32, #228B22);
+            color: white;
+        }
+        
+        .btn-read:hover {
+            background: linear-gradient(135deg, #228B22, #006400);
+            transform: translateY(-2px);
+        }
+        
+        .btn-stop {
+            background: linear-gradient(135deg, #FF6347, #FF4500);
+            color: white;
+        }
+        
+        .btn-stop:hover {
+            background: linear-gradient(135deg, #FF4500, #FF2400);
+            transform: translateY(-2px);
+        }
+        
+        .story-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #2F4F4F;
+            text-align: justify;
+            background: linear-gradient(135deg, #FFFAF0 0%, #FFF8DC 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #FFB6C1;
+            box-shadow: 0 5px 15px rgba(255,182,193,0.2);
+        }
+        
+        .story-text p {
+            margin-bottom: 20px;
+        }
+        
+        .status-message {
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .controls {
+                padding: 15px;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 200px;
+            }
+            
+            .language-navigation {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="rainbow-header"></div>
+    
+    <div class="container">
+        <h1 id="main-title">Gemeinsam in die Zukunft</h1>
+        <p class="author" id="author">von Helmut Wegner</p>
+        
+        <div class="controls">
+            <div class="language-navigation">
+                <a href="index.html" class="btn btn-nav">🏠 Startseite</a>
+                <button class="btn btn-lang active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="btn btn-lang" onclick="switchLanguage('en')">🇬🇧 English</button>
+                <a href="verlangen-der-herzen.html" class="btn btn-nav">📚 Zurück zur Serie</a>
+            </div>
+            
+            <div id="status-message" class="status-message" style="display: none;"></div>
+            
+            <button class="btn btn-read" onclick="startReading()">🔊 <span id="btn-read-text">Vorlesen starten</span></button>
+            <button class="btn btn-stop" onclick="stopReading()">⏹️ <span id="btn-stop-text">Stoppen</span></button>
+        </div>
+        
+        <!-- Deutsche Version -->
+        <div id="de-content" class="language-content">
+            <div class="story-text" id="storyText">
+                <p>Die ersten Strahlen der Morgensonne fielen durch die hohen Fenster des alten Farmhauses und ließen den Staub in der Luft glitzern wie winzige Diamanten. Clara stand barfuß auf den knarrenden Holzdielen, ihre Hände fest um eine dampfende Tasse Kaffee geschlungen. Vor ihr erstreckten sich weitläufige Felder, noch von einem feinen Nebelschleier umhüllt. Es war ihr erster Morgen auf der Farm - ihr neues Zuhause, ihr Neuanfang. Als Alex zu ihr trat und sanft eine Hand auf ihre Schulter legte, füllte die stille Einigkeit zwischen ihnen den Raum wie ein vertrauter Atemzug. "Bereit für unsere Bestandsaufnahme?" fragte er lächelnd.</p>
 
+                <p>Gemeinsam gingen sie durch das alte Gebäude, das so viel Potenzial versprach. Die Küche war das Herzstück mit einer massiven Arbeitsplatte aus Holz, die von Generationen poliert worden war. "Die Fenster müssen erneuert werden", bemerkte Alex kritisch. "Und die Elektrik sollten wir überprüfen lassen." Clara lächelte: "Es hat Charakter. Das Haus erzählt eine Geschichte." Draußen war die Luft frisch und kühl, erfüllt von den ersten Geräuschen des Tages. "Die Felder könnten unglaublich fruchtbar sein", sagte Alex, während er die Erde zwischen seinen Fingern rieb. "Wir könnten mit ein paar Hühnern und Ziegen anfangen." Am nahegelegenen See setzte sich Clara auf einen glatten Stein. "Hier ist es perfekt zum Nachdenken."</p>
+
+                <p>Der erste Tag endete mit einer leisen Entschlossenheit und einem Gefühl der Dankbarkeit. Als sie abends vor dem Kamin saßen, ihre Hände fest ineinander verschränkt, spürten sie, dass dies nur der Anfang war. Sie hatten sich nicht nur ein neues Zuhause geschaffen, sondern eine neue Grundlage für alles, was vor ihnen lag. "Wir werden das schaffen", sagte Clara leise, ihre Stimme ein Flüstern im Schein des Feuers. Alex zog sie näher an sich: "Nicht nur schaffen, Clara. Wir werden hier etwas Wunderschönes erschaffen." Das leise Knistern der Flammen erfüllte den Raum, während draußen die Sterne über ihrer neuen Welt leuchteten. Die Zukunft gehörte ihnen.</p>
+            </div>
+        </div>
+        
+        <!-- Englische Version -->
+        <div id="en-content" class="language-content hidden">
+            <div class="story-text" id="storyTextEn">
+                <p>The first rays of morning sun fell through the tall windows of the old farmhouse, making the dust in the air glitter like tiny diamonds. Clara stood barefoot on the creaking wooden floors, her hands firmly wrapped around a steaming cup of coffee. Before her stretched vast fields, still shrouded in a fine veil of mist. It was her first morning on the farm - her new home, her fresh start. As Alex approached and gently placed a hand on her shoulder, the quiet unity between them filled the room like a familiar breath. "Ready for our assessment?" he asked with a smile.</p>
+
+                <p>Together they walked through the old building that promised so much potential. The kitchen was the heart of the house with a massive wooden worktop that had been polished by generations. "The windows need to be replaced," Alex noted critically. "And we should have the electrical system checked." Clara smiled: "It has character. The house tells a story." Outside, the air was fresh and cool, filled with the first sounds of the day. "The fields could be incredibly fertile," Alex said, rubbing the soil between his fingers. "We could start with a few chickens and goats." At the nearby lake, Clara sat on a smooth stone. "Here it's perfect for thinking."</p>
+
+                <p>The first day ended with quiet determination and a feeling of gratitude. As they sat by the fireplace in the evening, their hands firmly intertwined, they felt this was only the beginning. They had not only created a new home for themselves, but a new foundation for everything that lay ahead. "We'll make it," Clara said softly, her voice a whisper in the glow of the fire. Alex drew her closer: "Not just make it, Clara. We'll create something beautiful here." The quiet crackling of the flames filled the room while outside the stars shone over their new world. The future belonged to them.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSpeech = null;
+        let isReading = false;
+        let currentLanguage = 'de';
+        let availableVoices = [];
+
+        // Spracheinstellungen
+        const languageTexts = {
+            de: {
+                title: "Gemeinsam in die Zukunft",
+                author: "von Helmut Wegner",
+                btnRead: "Vorlesen starten",
+                btnStop: "Stoppen",
+                lang: "de-DE",
+                startMessage: "Vorlesen gestartet! 🔊",
+                stopMessage: "Vorlesen gestoppt. ⏹️",
+                errorMessage: "Fehler: Vorlesen wird von diesem Browser nicht unterstützt.",
+                noVoiceMessage: "Hinweis: Keine deutsche Stimme verfügbar. Verwende Standardstimme."
+            },
+            en: {
+                title: "Together into the Future",
+                author: "by Helmut Wegner",
+                btnRead: "Start Reading",
+                btnStop: "Stop",
+                lang: "en-US",
+                startMessage: "Reading started! 🔊",
+                stopMessage: "Reading stopped. ⏹️",
+                errorMessage: "Error: Text-to-speech not supported by this browser.",
+                noVoiceMessage: "Note: No English voice available. Using default voice."
+            }
+        };
+
+        function loadVoices() {
+            return new Promise((resolve) => {
+                availableVoices = speechSynthesis.getVoices();
+                if (availableVoices.length > 0) {
+                    resolve(availableVoices);
+                } else {
+                    speechSynthesis.addEventListener('voiceschanged', function() {
+                        availableVoices = speechSynthesis.getVoices();
+                        resolve(availableVoices);
+                    }, { once: true });
+                    setTimeout(() => {
+                        availableVoices = speechSynthesis.getVoices();
+                        resolve(availableVoices);
+                    }, 1000);
+                }
+            });
+        }
+
+        function findBestVoice(targetLang) {
+            if (availableVoices.length === 0) return null;
+            let voice = availableVoices.find(v => v.lang === targetLang);
+            if (voice) return voice;
+            const langFamily = targetLang.split('-')[0];
+            voice = availableVoices.find(v => v.lang.startsWith(langFamily));
+            if (voice) return voice;
+            return availableVoices[0];
+        }
+
+        function showStatus(message, isError = false) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = message;
+            statusDiv.className = `status-message ${isError ? 'status-error' : 'status-success'}`;
+            statusDiv.style.display = 'block';
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function switchLanguage(lang) {
+            // Stoppe aktuelles Vorlesen
+            stopReading();
+            
+            // Verstecke alle Sprachen
+            document.querySelectorAll('.language-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Zeige ausgewählte Sprache
+            document.getElementById(lang + '-content').classList.remove('hidden');
+            
+            // Update Sprachbuttons
+            document.querySelectorAll('.btn-lang').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update Texte
+            currentLanguage = lang;
+            const texts = languageTexts[lang];
+            document.getElementById('main-title').textContent = texts.title;
+            document.getElementById('author').textContent = texts.author;
+            document.getElementById('btn-read-text').textContent = texts.btnRead;
+            document.getElementById('btn-stop-text').textContent = texts.btnStop;
+            
+            // Status verstecken
+            document.getElementById('status-message').style.display = 'none';
+        }
+
+        async function startReading() {
+            if (!('speechSynthesis' in window)) {
+                showStatus(languageTexts[currentLanguage].errorMessage, true);
+                return;
+            }
+
+            stopReading();
+
+            try {
+                await loadVoices();
+
+                const storyElement = document.querySelector(`#${currentLanguage}-content .story-text`);
+                if (!storyElement) {
+                    showStatus("Fehler: Text nicht gefunden.", true);
+                    return;
+                }
+
+                const paragraphs = storyElement.querySelectorAll('p');
+                if (paragraphs.length === 0) {
+                    showStatus("Fehler: Keine Textabschnitte gefunden.", true);
+                    return;
+                }
+
+                // NUR ERSTE 3 ABSÄTZE (WELTWEIT KOMPATIBEL)
+                let textToRead = '';
+                for (let i = 0; i < Math.min(3, paragraphs.length); i++) {
+                    textToRead += paragraphs[i].textContent + ' ';
+                }
+
+                if (textToRead.trim().length === 0) {
+                    showStatus("Fehler: Kein Text zum Vorlesen gefunden.", true);
+                    return;
+                }
+
+                currentSpeech = new SpeechSynthesisUtterance(textToRead.trim());
+
+                const targetLang = languageTexts[currentLanguage].lang;
+                const bestVoice = findBestVoice(targetLang);
+
+                if (bestVoice) {
+                    currentSpeech.voice = bestVoice;
+                    currentSpeech.lang = bestVoice.lang;
+                } else {
+                    currentSpeech.lang = targetLang;
+                    showStatus(languageTexts[currentLanguage].noVoiceMessage, false);
+                }
+
+                // OPTIMIERTE EINSTELLUNGEN
+                currentSpeech.rate = 0.8;
+                currentSpeech.volume = 1.0;
+                currentSpeech.pitch = 1.0;
+
+                currentSpeech.onstart = function() {
+                    isReading = true;
+                    showStatus(languageTexts[currentLanguage].startMessage);
+                };
+
+                currentSpeech.onend = function() {
+                    isReading = false;
+                    currentSpeech = null;
+                    showStatus("Vorlesen beendet. ✅");
+                };
+
+                currentSpeech.onerror = function(event) {
+                    isReading = false;
+                    currentSpeech = null;
+                    console.error('Speech error:', event);
+                    showStatus("Fehler beim Vorlesen. Browser-Problem erkannt.", true);
+                };
+
+                try {
+                    speechSynthesis.speak(currentSpeech);
+                    setTimeout(() => {
+                        if (currentSpeech && !speechSynthesis.speaking && !speechSynthesis.pending) {
+                            showStatus("Vorlesen konnte nicht gestartet werden. Browser-Einschränkung.", true);
+                            isReading = false;
+                            currentSpeech = null;
+                        }
+                    }, 2000);
+                } catch (error) {
+                    console.error('Speech synthesis error:', error);
+                    showStatus("Fehler: " + error.message, true);
+                    isReading = false;
+                    currentSpeech = null;
+                }
+
+            } catch (error) {
+                console.error('General error:', error);
+                showStatus("Unerwarteter Fehler beim Vorlesen.", true);
+                isReading = false;
+                currentSpeech = null;
+            }
+        }
+
+        function stopReading() {
+            if (speechSynthesis.speaking || speechSynthesis.pending) {
+                speechSynthesis.cancel();
+            }
+            if (currentSpeech) {
+                currentSpeech = null;
+            }
+            if (isReading) {
+                isReading = false;
+                showStatus(languageTexts[currentLanguage].stopMessage);
+            }
+        }
+
+        // BROWSER-KOMPATIBILITÄT PRÜFUNG
+        document.addEventListener('DOMContentLoaded', async function() {
+            if (!('speechSynthesis' in window)) {
+                console.warn('Text-to-Speech wird von diesem Browser nicht unterstützt');
+                showStatus("Vorlesen wird von diesem Browser nicht unterstützt.", true);
+                const readBtn = document.querySelector('.btn-read');
+                readBtn.style.opacity = '0.5';
+                readBtn.style.cursor = 'not-allowed';
+                readBtn.onclick = function() {
+                    showStatus("Vorlesen wird von diesem Browser nicht unterstützt.", true);
+                };
+            } else {
+                try {
+                    await loadVoices();
+                    console.log('Verfügbare Stimmen:', availableVoices.length);
+                } catch (error) {
+                    console.error('Fehler beim Laden der Stimmen:', error);
+                }
+            }
+        });
+
+        // CLEANUP
+        window.addEventListener('beforeunload', function() {
+            stopReading();
+        });
+
+        // MOBILE SAFARI FIX
+        document.addEventListener('touchstart', function() {
+            if (!speechSynthesis.speaking && !speechSynthesis.pending) {
+                const dummySpeech = new SpeechSynthesisUtterance('');
+                dummySpeech.volume = 0;
+                speechSynthesis.speak(dummySpeech);
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
