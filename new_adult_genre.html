@@ -153,13 +153,18 @@
         }
 
         .serie-cover {
-            width: 80px;
-            height: 120px;
+            width: 120px;
+            height: 160px;
             border-radius: 10px;
-            border: 2px solid #FF69B4;
+            border: 3px solid #FFD700;
             object-fit: cover;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             margin: 0 auto 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .serie-cover:hover {
+            transform: scale(1.05);
         }
 
         .einzelbuecher-preview {
@@ -231,6 +236,11 @@
                 top: 0;
                 left: 0;
                 margin-bottom: 15px;
+            }
+
+            .serie-cover {
+                width: 100px;
+                height: 130px;
             }
         }
     </style>
