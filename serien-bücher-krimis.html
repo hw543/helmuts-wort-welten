@@ -1,1 +1,307 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die Serie - Mysterien der Heide | Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #2c1810 0%, #8B0000 50%, #B22222 100%);
+            min-height: 100vh;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .back-buttons {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .back-button {
+            background: rgba(178, 34, 34, 0.8);
+            color: white;
+            padding: 8px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .back-button:hover {
+            background: rgba(178, 34, 34, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .series-badge {
+            color: #f0f0f0;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #DC143C;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            color: #f0f0f0;
+            font-style: italic;
+        }
+
+        .series-description {
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.1) 0%, rgba(220, 20, 60, 0.05) 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            border: 2px solid rgba(220, 20, 60, 0.2);
+        }
+
+        .series-description h2 {
+            color: #DC143C;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .series-description p {
+            font-size: 1.2em;
+            line-height: 1.7;
+            color: #f0f0f0;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .book-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            border: 2px solid rgba(178, 34, 34, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            border-color: rgba(220, 20, 60, 0.6);
+        }
+
+        .book-cover {
+            width: 150px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            border: 3px solid #FFD700;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .book-cover:hover {
+            transform: scale(1.05);
+        }
+
+        .book-number {
+            color: #DC143C;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .book-title {
+            font-size: 1.4em;
+            color: #DC143C;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .book-description {
+            font-size: 1em;
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .book-stats {
+            font-size: 0.9em;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .book-buttons {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        .lesen-button {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: black;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .lesen-button:hover {
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .back-buttons {
+                position: relative;
+                top: 0;
+                left: 0;
+                right: 0;
+                margin-bottom: 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .book-cover {
+                width: 130px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="back-buttons">
+                <a href="krimis.html" class="back-button">← Zurück zu Krimis</a>
+                <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+            </div>
+            <div class="series-badge">Die Serie</div>
+            <h1>🔍 Mysterien der Heide</h1>
+            <p>Eine fesselnde Krimi-Trilogie aus der Lüneburger Heide</p>
+        </div>
+
+        <div class="series-description">
+            <h2>Die komplette Serie</h2>
+            <p>
+                Tauchen Sie ein in die düsteren Geheimnisse der Lüneburger Heide. Diese atmosphärische Krimi-Trilogie 
+                führt Sie durch mysteriöse Ereignisse, verschwundene Personen und übernatürliche Phänomene. Von 
+                geheimnisvollen Erscheinungen bis hin zu ganzen Dörfern, die in Trance fallen - erleben Sie eine Reise in die 
+                Abgründe der menschlichen Seele und die unerklärlichen Geheimnisse der norddeutschen Heide.
+            </p>
+        </div>
+
+        <div class="books-grid">
+            <!-- Band 1 -->
+            <div class="book-card">
+                <img src="geistderheide.jpg" alt="Band 1: Der Geist der Heide" class="book-cover">
+                <div class="book-number">Band 1</div>
+                <h3 class="book-title">Der Geist der Heide</h3>
+                <div class="book-description">
+                    Elias Hartwell kommt als Arztassistent nach Heidendorf und stößt auf unerklärliche Phänomene. Menschen 
+                    verschwinden spurlos, und Lügendetektive sprechen von einer perspektivischen Gestalt, die sie in die 
+                    Nacht hinauslockt. Der Geisterjäger für die Anwälte wird bei.
+                </div>
+                <div class="book-stats">
+                    Kapitel 1: "Der Beginn" • Deutsch & Englisch • Lesen & Vorlesen
+                </div>
+                <div class="book-buttons">
+                    <a href="lese-vorlese-geist-der-heide.html" class="lesen-button">Lesen-Vorlesen</a>
+                </div>
+            </div>
+
+            <!-- Band 2 -->
+            <div class="book-card">
+                <img src="moordesvergessens.jpg" alt="Band 2: Das Moor des Vergessens" class="book-cover">
+                <div class="book-number">Band 2</div>
+                <h3 class="book-title">Das Moor des Vergessens</h3>
+                <div class="book-description">
+                    Kommissar Anna Hartmann entdeckt eine Leiche im Moor. Die Ermittlungen führen sie seit Jahren alten Fall und in ihrer eigenen 
+                    Familiengeschichte. Während sie der Wahrheit näher kommt, wird sie selbst zur Zielscheibe übernatürlicher Kräfte.
+                </div>
+                <div class="book-stats">
+                    Kapitel 1: "Der Fund im Moor" • Deutsch & Englisch • Lesen & Vorlesen
+                </div>
+                <div class="book-buttons">
+                    <a href="lese-vorlese-moor-des-vergessens.html" class="lesen-button">Lesen-Vorlesen</a>
+                </div>
+            </div>
+
+            <!-- Band 3 -->
+            <div class="book-card">
+                <img src="schattenderdoerfer.jpg" alt="Band 3: Die Schatten der Dörfer" class="book-cover">
+                <div class="book-number">Band 3</div>
+                <h3 class="book-title">Die Schatten der Dörfer</h3>
+                <div class="book-description">
+                    Sozialarbeiter Erik Lindner untersucht das verlassene Dorf Dassellbruch. Was er findet, übertrifft seine schlimmsten 
+                    Befürchtungen: Die Dorfbewohner sind in einem unnatürlichen Zustand gefangen, und dunkle 
+                    Schatten scheinen die Rückkehrer zu führen. Der finale Band der Trilogie.
+                </div>
+                <div class="book-stats">
+                    Kapitel 1: "Die ersten Schatten" • Deutsch & Englisch • Lesen & Vorlesen
+                </div>
+                <div class="book-buttons">
+                    <a href="lese-vorlese-schatten-der-doerfer.html" class="lesen-button">Lesen-Vorlesen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
