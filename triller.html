@@ -1,12 +1,9 @@
-**🔧 KORRIGIERTE TRILLER.HTML MIT JPG + TITEL-ÄNDERUNG:**
-
-```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Thriller - Helmut Wegners Wortwelten</title>
+    <title>Krimis - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -16,304 +13,262 @@
 
         body {
             font-family: 'Georgia', serif;
-            line-height: 1.8;
-            color: #2c1810;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #2c1810 0%, #8B0000 50%, #B22222 100%);
             min-height: 100vh;
-            padding: 20px;
+            color: #f5f5f5;
+            line-height: 1.6;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: #FFF8F0;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            overflow: hidden;
+            padding: 20px;
         }
 
         .header {
-            background: linear-gradient(135deg, #8B0000, #FF4500);
-            color: #FFF8F0;
-            padding: 30px;
             text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
         }
 
-        .back-button-header {
+        .back-button {
             position: absolute;
             top: 15px;
             left: 15px;
-        }
-
-        .back-button {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(178, 34, 34, 0.8);
             color: white;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            font-size: 0.9em;
-            cursor: pointer;
+            border-radius: 25px;
             text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
             font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
         }
 
         .back-button:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(178, 34, 34, 1);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #DC143C;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
         }
 
         .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
+            font-size: 1.3em;
+            color: #f0f0f0;
             font-style: italic;
         }
 
-        .content {
-            padding: 40px;
-        }
-
-        .chambers-container {
+        .content-sections {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 40px;
+            margin-top: 40px;
         }
 
-        .chamber {
-            background: linear-gradient(135deg, #FFF8F0, #FFE5E5);
+        .section {
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(178, 34, 34, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+            border-color: rgba(220, 20, 60, 0.6);
+        }
+
+        .section h2 {
+            font-size: 2.2em;
+            color: #DC143C;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .section-description {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #d0d0d0;
+            line-height: 1.6;
+        }
+
+        .series-item {
+            background: rgba(139, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(178, 34, 34, 0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .series-item:hover {
+            background: rgba(139, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .series-cover {
+            width: 120px;
+            height: 160px;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
+            border: 3px solid #FFD700;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
         }
 
-        .chamber:hover {
-            transform: translateY(-5px);
+        .series-cover:hover {
+            transform: scale(1.05);
         }
 
-        .chamber-header {
+        .series-title {
+            font-size: 1.6em;
+            color: #DC143C;
+            margin-bottom: 10px;
             text-align: center;
-            margin-bottom: 25px;
+            font-weight: bold;
         }
 
-        .chamber-icon {
-            background: linear-gradient(135deg, #8B0000, #FF4500);
+        .series-description {
+            font-size: 1em;
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .series-stats {
+            font-size: 0.9em;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .discover-button {
+            display: block;
+            background: linear-gradient(135deg, #DC143C, #8B0000);
             color: white;
             padding: 15px 30px;
-            border-radius: 25px;
-            font-size: 1.3em;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .chamber-title {
-            font-size: 1.8em;
-            color: #8B0000;
-            margin-bottom: 15px;
-        }
-
-        .chamber-description {
-            font-size: 1.2em;
-            color: #444;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .book-showcase {
-            text-align: center;
-            margin: 25px 0;
-        }
-
-        .book-cover {
-            width: 150px;
-            height: 200px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            margin: 0 auto 20px auto;
-            display: block;
-        }
-
-        .book-title {
-            font-size: 1.4em;
-            color: #8B0000;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .book-subtitle {
-            font-size: 1.1em;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .read-button {
-            background: linear-gradient(135deg, #8B0000, #FF4500);
-            color: white;
-            padding: 12px 30px;
             border: none;
             border-radius: 25px;
             font-size: 1.1em;
             font-weight: bold;
-            cursor: pointer;
             text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .read-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
-        }
-
-        .discover-text {
             text-align: center;
-            margin-top: 25px;
-            font-size: 1.3em;
-            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+            min-width: 200px;
+        }
+
+        .discover-button:hover {
+            background: linear-gradient(135deg, #FF1493, #DC143C);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+        }
+
+        .placeholder-content {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
             font-style: italic;
         }
 
+        .placeholder-content h3 {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
         @media (max-width: 768px) {
-            .chambers-container {
+            .content-sections {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 30px;
             }
-
-            .chamber {
-                padding: 25px;
-            }
-
+            
             .header h1 {
-                font-size: 2em;
+                font-size: 2.2em;
             }
-
-            .back-button-header {
+            
+            .section h2 {
+                font-size: 1.8em;
+            }
+            
+            .back-button {
                 position: relative;
                 top: 0;
                 left: 0;
-                margin-bottom: 15px;
+                margin-bottom: 20px;
+                display: inline-block;
             }
 
-            .content {
-                padding: 25px;
+            .series-cover {
+                width: 100px;
+                height: 130px;
             }
-        }
-
-        .flame-animation {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #FF4500;
-            border-radius: 50%;
-            animation: flame 3s infinite ease-in-out;
-        }
-
-        @keyframes flame {
-            0%, 100% { opacity: 0; transform: translateY(0px) scale(1); }
-            50% { opacity: 1; transform: translateY(-20px) scale(1.5); }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="back-button-header">
-                <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-            </div>
-            <h1>🔥 Thriller</h1>
-            <p>Spannung, Gefahr und dunkle Geheimnisse - Geschichten, die den Atem rauben</p>
+            <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+            <h1>Krimis</h1>
+            <p>Düstere Geheimnisse der Lüneburger Heide</p>
         </div>
 
-        <div class="content">
-            <div class="chambers-container">
-                <!-- Linke Kammer: Thriller-Serien - IN VORBEREITUNG -->
-                <div class="chamber">
-                    <div class="chamber-header">
-                        <div class="chamber-icon">🔥 Thriller-Serien</div>
-                        <div class="chamber-title">Mehrteilige Spannungsromane</div>
-                        <div class="chamber-description">
-                            Intensive Thriller-Geschichten mit durchgehenden Charakteren 
-                            und zusammenhängenden Handlungssträngen voller Spannung.
-                        </div>
+        <div class="content-sections">
+            <!-- Krimi-Serien Bereich -->
+            <div class="section">
+                <h2>Krimi-Serien</h2>
+                <p class="section-description">
+                    Mehrteilige Kriminalgeschichten mit durchgehenden Charakteren und zusammenhängenden Handlungssträngen.
+                </p>
+                
+                <div class="series-item">
+                    <img src="geistderheide.jpg" alt="Mysterien der Heide Serie Cover" class="series-cover">
+                    <div class="series-title">Mysterien der Heide</div>
+                    <div class="series-description">
+                        Eine fesselnde Krimi-Trilogie, die die dunklen Geheimnisse der Lüneburger Heide aufdeckt. Von mysteriösen Geistern bis hin zu verschwundenen Dörfern - eine atmosphärische Reise in die Abgründe der menschlichen Seele.
                     </div>
-
-                    <div class="book-showcase">
-                        <div style="width: 150px; height: 200px; background: linear-gradient(135deg, #666, #999); border-radius: 10px; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1em; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-                            Thriller-Serien<br>in Vorbereitung
-                        </div>
-                        <div class="book-title">🔥 Spannende Serien</div>
-                        <div class="book-subtitle">Mehrteilige Thriller</div>
-                        <button class="read-button" style="opacity: 0.6; cursor: not-allowed;">📝 In Vorbereitung</button>
+                    <div class="series-stats">
+                        3 Bände • Deutsch & Englisch • Lesen & Vorlesen-System
                     </div>
-
-                    <div class="discover-text">
-                        <strong>Serie entdecken</strong><br>
-                        Erscheinen demnächst mit packenden mehrteiligen Thriller-Geschichten!
-                    </div>
+                    <a href="mysterien-der-heide.html" class="discover-button">Serie entdecken</a>
                 </div>
+            </div>
 
-                <!-- Rechte Kammer: Einzelne Thriller Bücher - FLAMMEN DES VERRATS -->
-                <div class="chamber">
-                    <div class="chamber-header">
-                        <div class="chamber-icon">📚 Einzelne Thriller Bücher</div>
-                        <div class="chamber-title">Standalone Spannungsromane</div>
-                        <div class="chamber-description">
-                            Eigenständige Thriller-Geschichten mit abgeschlossenen Handlungen 
-                            und eigenständigen Charakteren.
-                        </div>
-                    </div>
-
-                    <div class="book-showcase">
-                        <img src="flammendesverrats.jpg" alt="Flammen des Verrats" class="book-cover">
-                        <div class="book-title">🔥 Flammen des Verrats</div>
-                        <div class="book-subtitle">Ein Feuerwehrmann mit dunklen Geheimnissen</div>
-                        <a href="lese-vorlese-triller.html" class="read-button">📖 Lesen & Vorlesen</a>
-                    </div>
-
-                    <div class="discover-text">
-                        <strong>Bücher entdecken</strong><br>
-                        Packende Standalone-Thriller - Deutsch & Englisch - Lesen & Vorlesen System
-                    </div>
+            <!-- Einzelne Krimis Bereich -->
+            <div class="section">
+                <h2>Einzelne Krimis</h2>
+                <p class="section-description">
+                    Standalone Kriminalromane mit abgeschlossenen Handlungen und eigenständigen Charakteren.
+                </p>
+                
+                <div class="placeholder-content">
+                    <h3>🔍 Bald verfügbar</h3>
+                    <p>Spannende Einzelkrimis befinden sich in der Entwicklung...</p>
+                    <br>
+                    <p>Freuen Sie sich auf eigenständige Geschichten mit neuen Ermittlern, frischen Fällen und überraschenden Wendungen!</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        // Flame animation effects
-        function createFlameEffect() {
-            const flames = document.createElement('div');
-            flames.className = 'flame-animation';
-            flames.style.left = Math.random() * 100 + '%';
-            flames.style.animationDelay = Math.random() * 2 + 's';
-            document.querySelector('.header').appendChild(flames);
-            
-            setTimeout(() => {
-                flames.remove();
-            }, 3000);
-        }
-
-        // Create flame effects periodically
-        setInterval(createFlameEffect, 800);
-    </script>
 </body>
 </html>
-```
-
-**✅ ÄNDERUNGEN GEMACHT:**
-1. **"📚 Einzelne Thriller Bücher"** (statt "Einzelne Thriller")
-2. **flammendesverrats.jpg** eingefügt (statt CSS-Cover)
-
-**📍 IN TRILLER.HTML EINFÜGEN!**
