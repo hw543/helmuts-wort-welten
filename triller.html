@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krimis - Helmut Wegners Wortwelten</title>
+    <title>Thriller - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #2c1810 0%, #8B0000 50%, #B22222 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #4d0000 50%, #800000 100%);
             min-height: 100vh;
             color: #f5f5f5;
             line-height: 1.6;
@@ -29,7 +29,7 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 40px 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
@@ -39,7 +39,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(178, 34, 34, 0.8);
+            background: rgba(128, 0, 0, 0.8);
             color: white;
             padding: 10px 20px;
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -51,7 +51,7 @@
         }
 
         .back-button:hover {
-            background: rgba(178, 34, 34, 1);
+            background: rgba(128, 0, 0, 1);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
@@ -59,7 +59,7 @@
         .header h1 {
             font-size: 3em;
             margin-bottom: 20px;
-            color: #DC143C;
+            color: #FF4500;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
         }
 
@@ -81,19 +81,19 @@
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            border: 2px solid rgba(178, 34, 34, 0.3);
+            border: 2px solid rgba(128, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
 
         .section:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
-            border-color: rgba(220, 20, 60, 0.6);
+            border-color: rgba(255, 69, 0, 0.6);
         }
 
         .section h2 {
             font-size: 2.2em;
-            color: #DC143C;
+            color: #FF4500;
             margin-bottom: 20px;
             text-align: center;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -108,17 +108,17 @@
         }
 
         .series-item {
-            background: rgba(139, 0, 0, 0.3);
+            background: rgba(77, 0, 0, 0.3);
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 20px;
-            border: 1px solid rgba(178, 34, 34, 0.4);
+            border: 1px solid rgba(128, 0, 0, 0.4);
             transition: all 0.3s ease;
             text-align: center;
         }
 
         .series-item:hover {
-            background: rgba(139, 0, 0, 0.5);
+            background: rgba(77, 0, 0, 0.5);
             transform: translateY(-2px);
         }
 
@@ -139,7 +139,7 @@
 
         .series-title {
             font-size: 1.6em;
-            color: #DC143C;
+            color: #FF4500;
             margin-bottom: 10px;
             text-align: center;
             font-weight: bold;
@@ -163,7 +163,7 @@
 
         .discover-button {
             display: block;
-            background: linear-gradient(135deg, #DC143C, #8B0000);
+            background: linear-gradient(135deg, #FF4500, #800000);
             color: white;
             padding: 15px 30px;
             border: none;
@@ -179,9 +179,9 @@
         }
 
         .discover-button:hover {
-            background: linear-gradient(135deg, #FF1493, #DC143C);
+            background: linear-gradient(135deg, #FF6347, #FF4500);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
         }
 
         .placeholder-content {
@@ -229,43 +229,43 @@
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-            <h1>Krimis</h1>
-            <p>Düstere Geheimnisse der Lüneburger Heide</p>
+            <h1>🔥 Thriller</h1>
+            <p>Nervenaufreibende Spannung und explosive Action</p>
         </div>
 
         <div class="content-sections">
-            <!-- Krimi-Serien Bereich -->
+            <!-- Thriller Serien Bereich -->
             <div class="section">
-                <h2>Krimi-Serien</h2>
+                <h2>Serien entdecken</h2>
                 <p class="section-description">
-                    Mehrteilige Kriminalgeschichten mit durchgehenden Charakteren und zusammenhängenden Handlungssträngen.
-                </p>
-                
-                <div class="series-item">
-                    <img src="geistderheide.jpg" alt="Mysterien der Heide Serie Cover" class="series-cover">
-                    <div class="series-title">Mysterien der Heide</div>
-                    <div class="series-description">
-                        Eine fesselnde Krimi-Trilogie, die die dunklen Geheimnisse der Lüneburger Heide aufdeckt. Von mysteriösen Geistern bis hin zu verschwundenen Dörfern - eine atmosphärische Reise in die Abgründe der menschlichen Seele.
-                    </div>
-                    <div class="series-stats">
-                        3 Bände • Deutsch & Englisch • Lesen & Vorlesen-System
-                    </div>
-                    <a href="mysterien-der-heide.html" class="discover-button">Serie entdecken</a>
-                </div>
-            </div>
-
-            <!-- Einzelne Krimis Bereich -->
-            <div class="section">
-                <h2>Einzelne Krimis</h2>
-                <p class="section-description">
-                    Standalone Kriminalromane mit abgeschlossenen Handlungen und eigenständigen Charakteren.
+                    Mehrteilige Thriller-Geschichten mit durchgehenden Charakteren und zusammenhängenden Handlungssträngen.
                 </p>
                 
                 <div class="placeholder-content">
-                    <h3>🔍 Bald verfügbar</h3>
-                    <p>Spannende Einzelkrimis befinden sich in der Entwicklung...</p>
+                    <h3>🔥 Bald verfügbar</h3>
+                    <p>Spannende Thriller-Serien befinden sich in der Entwicklung...</p>
                     <br>
-                    <p>Freuen Sie sich auf eigenständige Geschichten mit neuen Ermittlern, frischen Fällen und überraschenden Wendungen!</p>
+                    <p>Freuen Sie sich auf nervenaufreibende Fortsetzungsgeschichten mit explosiver Action!</p>
+                </div>
+            </div>
+
+            <!-- Einzelne Thriller Bereich -->
+            <div class="section">
+                <h2>Bücher entdecken</h2>
+                <p class="section-description">
+                    Standalone Thriller mit abgeschlossenen Handlungen und eigenständigen Charakteren voller Action.
+                </p>
+                
+                <div class="series-item">
+                    <img src="flammen-des-verrats.jpg" alt="Flammen des Verrats Cover" class="series-cover">
+                    <div class="series-title">🔥 Flammen des Verrats</div>
+                    <div class="series-description">
+                        Ein explosiver Thriller voller Intrigen, Verrat und tödlicher Geheimnisse. Wenn die Vergangenheit zur Gegenwart wird und Loyalitäten auf eine harte Probe gestellt werden.
+                    </div>
+                    <div class="series-stats">
+                        Einzelband • Deutsch & Englisch • Lesen & Vorlesen-System
+                    </div>
+                    <a href="flammen-des-verrats.html" class="discover-button">Buch entdecken</a>
                 </div>
             </div>
         </div>
