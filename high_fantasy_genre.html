@@ -198,6 +198,12 @@
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
+            border: 3px solid #FFD700;
+            transition: transform 0.3s ease;
+        }
+
+        .book-cover img:hover {
+            transform: scale(1.05);
         }
 
         .book-number {
@@ -287,6 +293,17 @@
             box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
         }
 
+        .amazon-button-disabled {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .amazon-button-disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
         .legend-quote {
             text-align: center;
             margin: 50px 0;
@@ -356,6 +373,11 @@
             .series-container {
                 padding: 25px;
             }
+
+            .book-cover {
+                width: 150px;
+                height: 200px;
+            }
         }
     </style>
 </head>
@@ -373,7 +395,7 @@
     </div>
 
     <div class="container">
-        <a href="high-fantasy.html" class="back-button">← Zurück zur Startseite</a>
+        <a href="index.html" class="back-button">← Zurück zur Startseite</a>
 
         <div class="header">
             <h1>High Fantasy</h1>
@@ -402,8 +424,8 @@
                         König Aldemar steht vor seiner dunkelsten Stunde. Uralte Prophezeiungen erwachen zum Leben, mysteriöse Kreaturen bedrohen das Königreich, und ein Riss im Himmel kündet von kommenden Katastrophen. Das Vermächtnis der Wächter muss entschlüsselt werden.
                     </p>
                     <div class="book-buttons">
-                        <a href="lese-vorlese-high-fantasy.html" class="lesen-button">📖 Lesen & Vorlesen</a>
-                        <a href="#" class="amazon-button">📚 Bei Amazon kaufen</a>
+                        <a href="lese-vorlese-die-prophezeiung.html" class="lesen-button">📖 Lesen & Vorlesen</a>
+                        <a href="#" class="amazon-button amazon-button-disabled">📚 Bald verfügbar</a>
                     </div>
                 </div>
 
@@ -419,8 +441,8 @@
                         Eryon und Aris kehren als Helden nach Eldoria zurück, doch der Frieden ist fragil. Elfen und Zwerge misstrauen einander, und in den Schatten sammeln sich düstere Gestalten. Der wahre Kampf um Eldorias Seele hat gerade erst begonnen.
                     </p>
                     <div class="book-buttons">
-                        <a href="lese-vorlese-high-fantasy.html" class="lesen-button">📖 Lesen & Vorlesen</a>
-                        <a href="#" class="amazon-button">📚 Bei Amazon kaufen</a>
+                        <a href="lese-vorlese-beginn-des-friedens.html" class="lesen-button">📖 Lesen & Vorlesen</a>
+                        <a href="#" class="amazon-button amazon-button-disabled">📚 Bald verfügbar</a>
                     </div>
                 </div>
 
@@ -436,8 +458,8 @@
                         Kael und Tessa begeben sich auf eine gefährliche Reise in die Nebelberge. Dort erwartet sie eine Prüfung, die ihre Freundschaft auf die härteste Probe stellt und sie zwingt, zwischen Macht und Moral zu wählen.
                     </p>
                     <div class="book-buttons">
-                        <a href="lese-vorlese-high-fantasy.html" class="lesen-button">📖 Lesen & Vorlesen</a>
-                        <a href="#" class="amazon-button">📚 Bei Amazon kaufen</a>
+                        <a href="lese-vorlese-schatten-des-vergessens.html" class="lesen-button">📖 Lesen & Vorlesen</a>
+                        <a href="#" class="amazon-button amazon-button-disabled">📚 Bald verfügbar</a>
                     </div>
                 </div>
 
@@ -453,8 +475,8 @@
                         Die Einheit von Eldoria zerbricht, als eine unbekannte Dimension von der Dunkelheit bedroht wird. Die Helden müssen sich in unbekannte Welten wagen, um das ultimative Vermächtnis der uralten Wächter zu entdecken und zu bewahren.
                     </p>
                     <div class="book-buttons">
-                        <a href="lese-vorlese-high-fantasy.html" class="lesen-button">📖 Lesen & Vorlesen</a>
-                        <a href="#" class="amazon-button">📚 Bei Amazon kaufen</a>
+                        <a href="lese-vorlese-vermaechtnis-der-waechter.html" class="lesen-button">📖 Lesen & Vorlesen</a>
+                        <a href="#" class="amazon-button amazon-button-disabled">📚 Bald verfügbar</a>
                     </div>
                 </div>
             </div>
