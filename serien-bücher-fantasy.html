@@ -1,1 +1,323 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die Serie - Das Vermächtnis von Eldoria | Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a0033 0%, #330066 50%, #4d0099 100%);
+            min-height: 100vh;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(26,0,51,0.9) 0%, rgba(77,0,153,0.7) 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 3px solid #ffd700;
+            position: relative;
+        }
+
+        .back-buttons {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .back-button {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            padding: 8px 16px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 215, 0, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .series-badge {
+            color: rgba(255,215,0,0.9);
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ffd700;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+            letter-spacing: 3px;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            color: rgba(255,215,0,0.9);
+            font-style: italic;
+        }
+
+        .series-description {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .series-description h2 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .series-description p {
+            font-size: 1.2em;
+            line-height: 1.7;
+            color: #f0f0f0;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .book-card {
+            background: linear-gradient(135deg, rgba(26,0,51,0.9) 0%, rgba(77,0,153,0.7) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .book-cover {
+            width: 150px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            border: 3px solid #FFD700;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .book-cover:hover {
+            transform: scale(1.05);
+        }
+
+        .book-number {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .book-title {
+            font-size: 1.4em;
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .book-description {
+            font-size: 1em;
+            color: #f0f0f0;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .book-stats {
+            font-size: 0.9em;
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .book-buttons {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        .lesen-button {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: black;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .lesen-button:hover {
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .back-buttons {
+                position: relative;
+                top: 0;
+                left: 0;
+                right: 0;
+                margin-bottom: 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .book-cover {
+                width: 130px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="back-buttons">
+                <a href="high-fantasy.html" class="back-button">← Zurück zu High Fantasy</a>
+                <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+            </div>
+            <div class="series-badge">Die Serie</div>
+            <h1>⚔️ Das Vermächtnis von Eldoria</h1>
+            <p>Epische Fantasy-Saga über Mut, Freundschaft und Magie</p>
+        </div>
+
+        <div class="series-description">
+            <h2>Die komplette Serie</h2>
+            <p>
+                Tauchen Sie ein in das magische Königreich Eldoria, wo uralte Prophezeiungen erwachen und das Schicksal 
+                einer ganzen Welt in den Händen mutiger Helden liegt. Diese epische Fantasy-Saga erzählt von König Aldemar, 
+                den Helden Eryon und Aris, und dem ultimativen Kampf zwischen Licht und Dunkelheit.
+            </p>
+        </div>
+
+        <div class="books-grid">
+            <!-- Band 1 -->
+            <div class="book-card">
+                <img src="die prophezeiung.jpg" alt="Band 1: Die Prophezeiung von Eldoria" class="book-cover">
+                <div class="book-number">Band 1</div>
+                <h3 class="book-title">Die Prophezeiung von Eldoria</h3>
+                <div class="book-description">
+                    König Aldemar steht vor seiner dunkelsten Stunde. Uralte Prophezeiungen erwachen zum Leben, mysteriöse 
+                    Kreaturen bedrohen das Königreich, und ein Riss im Himmel kündet von kommenden Katastrophen. Das Vermächtnis der Wächter muss entschlüsselt werden.
+                </div>
+                <div class="book-stats">
+                    Kapitel 1: "Das Erwachen der uralten Macht" • Deutsch & Englisch • Lesen & Vorlesen
+                </div>
+                <div class="book-buttons">
+                    <a href="lese-vorlese-die-prophezeiung.html" class="lesen-button">Lesen-Vorlesen</a>
+                </div>
+            </div>
+
+            <!-- Band 2 -->
+            <div class="book-card">
+                <img src="beginn des friedens.jpg" alt="Band 2: Der Beginn des Friedens" class="book-cover">
+                <div class="book-number">Band 2</div>
+                <h3 class="book-title">Der Beginn des Friedens</h3>
+                <div class="book-description">
+                    Eryon und Aris kehren als Helden nach Eldoria zurück, doch der Frieden ist fragil. Elfen und Zwerge 
+                    misstrauen einander, und in den Schatten sammeln sich düstere Gestalten. Der wahre Kampf um Eldorias Seele hat gerade erst begonnen.
+                </div>
+                <div class="book-stats">
+                    Kapitel 1: "Die Rückkehr der Helden" • Deutsch & Englisch • Lesen & Vorlesen
+                </div>
+                <div class="book-buttons">
+                    <a href="lese-vorlese-beginn-des-friedens.html" class="lesen-button">Lesen-Vorlesen</a>
+                </div>
+            </div>
+
+            <!-- Band 3 -->
+            <div class="book-card">
+                <img src="die schatten des vergessens.jpg" alt="Band 3: Die Schatten des Vergessenen" class="book-cover">
+                <div class="book-number">Band 3</div>
+                <h3 class="book-title">Die Schatten des Vergessenen</h3>
+                <div class="book-description">
+                    Kael und Tessa begeben sich auf eine gefährliche Reise in die Nebelberge. Dort erwartet sie eine Prüfung, 
+                    die ihre Freundschaft auf die härteste Probe stellt und sie zwingt, zwischen Macht und Moral zu wählen.
+                </div>
+                <div class="book-stats">
+                    Kapitel 1: "Der Funke des Abenteuers" • Deutsch & Englisch • Lesen & Vorlesen
+                </div>
+                <div class="book-buttons">
+                    <a href="lese-vorlese-schatten-des-vergessens.html" class="lesen-button">Lesen-Vorlesen</a>
+                </div>
+            </div>
+
+            <!-- Band 4 -->
+            <div class="book-card">
+                <img src="das vermächtnis der wächter.jpg" alt="Band 4: Das Vermächtnis der Wächter" class="book-cover">
+                <div class="book-number">Band 4</div>
+                <h3 class="book-title">Das Vermächtnis der Wächter</h3>
+                <div class="book-description">
+                    Die Einheit von Eldoria zerbricht, als eine unbekannte Dimension von der Dunkelheit bedroht wird. 
+                    Die Helden müssen sich in unbekannte Welten wagen, um das ultimative Vermächtnis der uralten Wächter zu entdecken und zu bewahren.
+                </div>
+                <div class="book-stats">
+                    Kapitel 1: "Das finale Schicksal" • Deutsch & Englisch • Lesen & Vorlesen
+                </div>
+                <div class="book-buttons">
+                    <a href="lese-vorlese-vermaechtnis-der-waechter.html" class="lesen-button">Lesen-Vorlesen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
