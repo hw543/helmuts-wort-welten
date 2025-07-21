@@ -38,6 +38,19 @@
             border: 3px solid #708090;
         }
         
+        .book-cover {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .book-cover img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            border: 3px solid #708090;
+        }
+        
         h1 {
             color: #708090;
             text-align: center;
@@ -184,6 +197,10 @@
                 margin: 10px;
             }
             
+            .book-cover img {
+                max-width: 150px;
+            }
+            
             h1 {
                 font-size: 2em;
             }
@@ -210,6 +227,10 @@
     <div class="rainbow-header"></div>
     
     <div class="container">
+        <div class="book-cover">
+            <img src="die-schatten-der-doerfer.jpg" alt="Die Schatten der Dörfer - Cover" />
+        </div>
+        
         <h1 id="main-title">Band 3: Die Schatten der Dörfer</h1>
         <p class="author" id="author">von Helmut Wegner</p>
         
@@ -256,7 +277,6 @@
         let currentLanguage = 'de';
         let availableVoices = [];
 
-        // Spracheinstellungen
         const languageTexts = {
             de: {
                 title: "Band 3: Die Schatten der Dörfer",
@@ -321,24 +341,19 @@
         }
 
         function switchLanguage(lang) {
-            // Stoppe aktuelles Vorlesen
             stopReading();
             
-            // Verstecke alle Sprachen
             document.querySelectorAll('.language-content').forEach(content => {
                 content.classList.add('hidden');
             });
             
-            // Zeige ausgewählte Sprache
             document.getElementById(lang + '-content').classList.remove('hidden');
             
-            // Update Sprachbuttons
             document.querySelectorAll('.btn-lang').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
             
-            // Update Texte
             currentLanguage = lang;
             const texts = languageTexts[lang];
             document.getElementById('main-title').textContent = texts.title;
@@ -346,7 +361,6 @@
             document.getElementById('btn-read-text').textContent = texts.btnRead;
             document.getElementById('btn-stop-text').textContent = texts.btnStop;
             
-            // Status verstecken
             document.getElementById('status-message').style.display = 'none';
         }
 
@@ -373,7 +387,6 @@
                     return;
                 }
 
-                // NUR ERSTE 3 ABSÄTZE (WELTWEIT KOMPATIBEL)
                 let textToRead = '';
                 for (let i = 0; i < Math.min(3, paragraphs.length); i++) {
                     textToRead += paragraphs[i].textContent + ' ';
@@ -397,7 +410,6 @@
                     showStatus(languageTexts[currentLanguage].noVoiceMessage, false);
                 }
 
-                // OPTIMIERTE EINSTELLUNGEN
                 currentSpeech.rate = 0.8;
                 currentSpeech.volume = 1.0;
                 currentSpeech.pitch = 1.0;
@@ -457,7 +469,6 @@
             }
         }
 
-        // BROWSER-KOMPATIBILITÄT PRÜFUNG
         document.addEventListener('DOMContentLoaded', async function() {
             if (!('speechSynthesis' in window)) {
                 console.warn('Text-to-Speech wird von diesem Browser nicht unterstützt');
@@ -478,12 +489,10 @@
             }
         });
 
-        // CLEANUP
         window.addEventListener('beforeunload', function() {
             stopReading();
         });
 
-        // MOBILE SAFARI FIX
         document.addEventListener('touchstart', function() {
             if (!speechSynthesis.speaking && !speechSynthesis.pending) {
                 const dummySpeech = new SpeechSynthesisUtterance('');
