@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mondstein – Vorleseabenteuer</title>
+    <title>Mondstein – Vorleseabenteuer</title>
     <style>
         /* Grundlegendes Seitenlayout */
         * {
@@ -25,14 +25,7 @@
             background: #FFF8F0;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            /*
-             * Entferne das overflow: hidden; damit Sticky-Elemente wie die
-             * Steuerungsleiste beim Scrollen sichtbar bleiben. Wenn overflow
-             * auf hidden gesetzt ist, endet der Sichtbereich der Containerbox
-             * und sticky‑Positionen lösen sich auf, sobald der Container aus
-             * dem Viewport verschwindet. Ohne overflow bleibt die Leiste am
-             * oberen Rand kleben, bis der Leser das Ende des Inhalts erreicht.
-             */
+            /* Überlauf sichtbar lassen, damit Sticky-Elemente sichtbar bleiben */
             overflow: visible;
         }
         .header {
@@ -40,6 +33,18 @@
             color: #FFF8F0;
             padding: 30px;
             text-align: center;
+        }
+        /* Buchcover-Container */
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .book-cover img {
+            max-width: 220px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            border: 3px solid #7EC850;
         }
         .header h1 {
             font-size: 2.4em;
@@ -183,7 +188,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Mondstein – Das Geheimnis des leuchtenden Fragments</h1>
+            <!-- Buchcover einfügen -->
+            <div class="book-cover">
+                <img src="mondstein.jpg" alt="Mondstein – Das Geheimnis des leuchtenden Fragments – Cover" />
+            </div>
+            <h1>Mondstein – Das Geheimnis des leuchtenden Fragments</h1>
             <p>Vorlesen und Mitlesen leicht gemacht – tauchen Sie ein in ein neues Abenteuer</p>
         </div>
         <div class="controls">
@@ -200,8 +209,8 @@
             </div>
         </div>
         <div class="content">
-            <div class="book-title">Band 1: Das Geheimnis des leuchtenden Fragments</div>
-            <div class="chapter-title">Kapitel 1: Die Entdeckung im Park</div>
+            <div class="book-title">Band 1: Das Geheimnis des leuchtenden Fragments</div>
+            <div class="chapter-title">Kapitel 1: Die Entdeckung im Park</div>
             <!-- Deutsche Fassung -->
             <div id="de-content" class="language-content">
                 <div class="text-content" id="de-textContent">
@@ -257,8 +266,6 @@
         function initializeWords() {
             ['de', 'en'].forEach(lang => {
                 allWords[lang] = [];
-                const container = document.querySelector(`#${lang}-textContent`);
-                // Fallback: in unserer Struktur heisst das Element de-textContent / en-textContent
                 const paragraphs = document.querySelectorAll(`#${lang}-textContent p`);
                 let wordCounter = 0;
                 paragraphs.forEach(paragraph => {
@@ -278,33 +285,25 @@
         /**
          * Setzt die sichtbare Sprache und aktualisiert die Beschriftungen der
          * Funktionsknöpfe. Beim Umschalten wird das Vorlesen gestoppt und der
-         * Fortschritt zurückgesetzt. Die Parameter event werden genutzt, um
-         * den aktiven Button korrekt zu markieren.
+         * Fortschritt zurückgesetzt.
          */
         function switchLanguage(lang, event) {
-            // Stoppe aktuelles Vorlesen
             stopReading();
-            // Setze die Sprache
             currentLanguage = lang;
             currentWordIndex = 0;
-            // Verstecke alle sprachspezifischen Inhalte
             document.querySelectorAll('.language-content').forEach(elem => elem.classList.add('hidden'));
-            // Zeige die ausgewählte Sprache
             document.getElementById(`${lang}-content`).classList.remove('hidden');
-            // Aktualisiere die Beschriftung der Buttons
             const labels = {
                 de: { play: 'Vorlesen', cont: 'Weiterlesen', stop: 'Stop' },
                 en: { play: 'Read', cont: 'Continue', stop: 'Stop' }
             };
-            document.getElementById('btn-play').innerHTML = (lang === 'de' ? '🔴 ' : '🔴 ') + labels[lang].play;
-            document.getElementById('btn-continue').innerHTML = (lang === 'de' ? '▶️ ' : '▶️ ') + labels[lang].cont;
-            document.getElementById('btn-stop').innerHTML = (lang === 'de' ? '⏹️ ' : '⏹️ ') + labels[lang].stop;
-            // Setze die aktive Klasse auf die Sprachknöpfe
+            document.getElementById('btn-play').innerHTML = `🔴 ${labels[lang].play}`;
+            document.getElementById('btn-continue').innerHTML = `▶️ ${labels[lang].cont}`;
+            document.getElementById('btn-stop').innerHTML = `⏹️ ${labels[lang].stop}`;
             document.querySelectorAll('.btn-lang').forEach(btn => btn.classList.remove('active'));
             if (event && event.target) {
                 event.target.classList.add('active');
             }
-            // Scroll zu Beginn des Textes
             const topElem = document.querySelector(`#${lang}-content`);
             if (topElem) {
                 topElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -312,11 +311,9 @@
         }
 
         /**
-         * Markiert das aktuelle Wort. Entfernt vorherige Markierung nur in der
-         * aktuellen Sprache.
+         * Hebt das aktuelle Wort hervor.
          */
         function highlightWord(index) {
-            // Entferne vorherige Hervorhebung
             if (lastHighlightedWord) {
                 lastHighlightedWord.classList.remove('word-highlight');
             }
@@ -329,7 +326,7 @@
         }
 
         /**
-         * Beginnt das Vorlesen von vorne.
+         * Startet das Vorlesen von vorne.
          */
         function startReading() {
             currentWordIndex = 0;
@@ -350,6 +347,7 @@
             if (words && words.length > currentWordIndex) {
                 const remainingText = words.slice(currentWordIndex).join(' ');
                 currentSpeech = new SpeechSynthesisUtterance(remainingText);
+                // Setze für beide Sprachen dieselbe Vorlesegeschwindigkeit wie im englischen Original (1.0)
                 currentSpeech.rate = 1.0;
                 currentSpeech.lang = currentLanguage === 'de' ? 'de-DE' : 'en-US';
                 let localIndex = currentWordIndex;
@@ -361,14 +359,14 @@
                     }
                 };
                 currentSpeech.onend = function() {
-                    // am Ende nichts tun
+                    // am Ende nichts Besonderes
                 };
                 speechSynthesis.speak(currentSpeech);
             }
         }
 
         /**
-         * Beginnt das Vorlesen an einer bestimmten Position.
+         * Beginnt das Vorlesen an einer bestimmten Wortposition.
          */
         function startFromWord(index) {
             currentWordIndex = index;
@@ -379,8 +377,7 @@
         }
 
         /**
-         * Stoppt die Sprachausgabe. Die zuletzt hervorgehobene Position bleibt
-         * erhalten, sodass der Leser weiß, wo er aufgehört hat.
+         * Stoppt die Sprachausgabe. Die Markierung bleibt erhalten.
          */
         function stopReading() {
             if (currentSpeech) {
@@ -389,7 +386,7 @@
             }
         }
 
-        // Initialisierung, sobald die Seite geladen wurde
+        // Initialisierung nach dem Laden der Seite
         document.addEventListener('DOMContentLoaded', function() {
             initializeWords();
             switchLanguage('de');
