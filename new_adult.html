@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- New Adult final page generated from new_adult_updated.html -->
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -10,37 +11,33 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #FFE5E5 0%, #FFD4B8 50%, #FFCFCF 100%);
+            background: linear-gradient(135deg, #FEE9E1 0%, #E6F1F5 50%, #F1E6F9 100%);
             min-height: 100vh;
-            color: #2c1810;
+            color: #2F4F4F;
             line-height: 1.6;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-
         .header {
             text-align: center;
             margin-bottom: 40px;
             padding: 40px 20px;
-            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%);
+            background: linear-gradient(135deg, #FEE4E1 0%, #F5F5F5 100%);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 3px solid #FF69B4;
+            border: 3px solid #FFD700;
             position: relative;
         }
-
         .back-button {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            background: linear-gradient(135deg, #C06C84, #6C5B7B);
             color: white;
             padding: 10px 20px;
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -50,79 +47,68 @@
             transition: all 0.3s ease;
             font-size: 0.9em;
         }
-
         .back-button:hover {
-            background: linear-gradient(135deg, #FF1493, #C71585);
+            background: linear-gradient(135deg, #6C5B7B, #355C7D);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+            box-shadow: 0 5px 15px rgba(96,89,124,0.4);
         }
-
         .header h1 {
             font-size: 3em;
             margin-bottom: 20px;
-            color: #FF1493;
-            text-shadow: 2px 2px 4px rgba(255, 20, 147, 0.3);
+            color: #E94E77;
+            text-shadow: 2px 2px 4px rgba(233,78,119,0.3);
         }
-
         .header p {
             font-size: 1.3em;
-            color: #C71585;
+            color: #6C5B7B;
             font-style: italic;
         }
-
         .content-sections {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             margin-top: 40px;
         }
-
         .section {
-            background: linear-gradient(135deg, #FFF8DC 0%, #FFF0F5 100%);
+            background: linear-gradient(135deg, #FFF5FA 0%, #F0F8FF 100%);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border: 2px solid #FF69B4;
+            border: 2px solid #DDA0DD;
             transition: all 0.3s ease;
         }
-
         .section:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            border-color: #FF1493;
+            border-color: #FFD700;
         }
-
         .section h2 {
             font-size: 2.2em;
-            color: #FF1493;
+            color: #E94E77;
             margin-bottom: 20px;
             text-align: center;
-            text-shadow: 1px 1px 2px rgba(255, 20, 147, 0.3);
+            text-shadow: 1px 1px 2px rgba(233,78,119,0.3);
         }
-
         .section-description {
             font-size: 1.1em;
             margin-bottom: 30px;
             text-align: center;
-            color: #2c1810;
+            color: #2F4F4F;
             line-height: 1.6;
         }
-
         .series-item {
-            background: rgba(255, 182, 193, 0.3);
+            background: rgba(255, 192, 203, 0.3);
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 20px;
-            border: 1px solid rgba(255, 105, 180, 0.4);
+            border: 1px solid rgba(221, 160, 221, 0.4);
             transition: all 0.3s ease;
             text-align: center;
         }
-
         .series-item:hover {
-            background: rgba(255, 182, 193, 0.5);
+            background: rgba(255, 192, 203, 0.5);
             transform: translateY(-2px);
         }
-
         .series-cover {
             width: 120px;
             height: 160px;
@@ -133,27 +119,23 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
         }
-
         .series-cover:hover {
             transform: scale(1.05);
         }
-
         .series-title {
             font-size: 1.6em;
-            color: #FF1493;
+            color: #E94E77;
             margin-bottom: 10px;
             text-align: center;
             font-weight: bold;
         }
-
         .series-description {
             font-size: 1em;
-            color: #2c1810;
+            color: #2F4F4F;
             margin-bottom: 20px;
             text-align: center;
             line-height: 1.5;
         }
-
         .series-stats {
             font-size: 0.9em;
             color: #696969;
@@ -161,64 +143,38 @@
             margin-bottom: 20px;
             font-style: italic;
         }
-
         .discover-button {
-            display: block;
-            background: linear-gradient(135deg, #FF1493, #C71585);
+            display: inline-block;
+            background: linear-gradient(135deg, #E94E77, #C06C84);
             color: white;
-            padding: 15px 30px;
+            padding: 12px 24px;
             border: none;
             border-radius: 25px;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
             text-decoration: none;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 0 auto;
-            min-width: 200px;
+            margin: 5px;
+            min-width: 120px;
         }
-
         .discover-button:hover {
-            background: linear-gradient(135deg, #C71585, #8B008B);
+            background: linear-gradient(135deg, #C06C84, #6C5B7B);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+            box-shadow: 0 5px 15px rgba(192,108,132,0.4);
         }
-
-        .placeholder-content {
-            text-align: center;
-            padding: 40px 20px;
-            color: #696969;
-            font-style: italic;
-        }
-
-        .placeholder-content h3 {
-            color: #FF1493;
-            margin-bottom: 15px;
-        }
-
         @media (max-width: 768px) {
             .content-sections {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
             .header h1 {
-                font-size: 2.2em;
+                font-size: 2.4em;
             }
-            
             .section h2 {
                 font-size: 1.8em;
             }
-            
-            .back-button {
-                position: relative;
-                top: 0;
-                left: 0;
-                margin-bottom: 20px;
-                display: inline-block;
-            }
-
             .series-cover {
                 width: 100px;
                 height: 130px;
@@ -230,43 +186,56 @@
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-            <h1>💫 New Adult</h1>
-            <p>Emotionale Geschichten über das Erwachsenwerden - Liebe, Leidenschaft und Selbstfindung</p>
+            <h1>New Adult</h1>
+            <p>Emotionale Geschichten über das Erwachsenwerden – Liebe, Berufung und Selbstfindung</p>
         </div>
-
         <div class="content-sections">
-            <!-- New Adult Serien Bereich -->
+            <!-- Serienbereich -->
             <div class="section">
                 <h2>Serien entdecken</h2>
                 <p class="section-description">
-                    Mehrteilige Geschichten mit durchgehenden Charakteren und zusammenhängenden emotionalen Entwicklungen.
+                    Langformatige Erzählungen über junge Erwachsene, die ihren Weg im Leben suchen und dabei große Gefühle erleben.
                 </p>
-                
+                <!-- Serie: Gemeinsam in die Zukunft -->
                 <div class="series-item">
-                    <img src="zwischen-herz-verstand.jpg" alt="Zwischen Herz und Verstand Serie Cover" class="series-cover">
-                    <div class="series-title">💭 Zwischen Herz und Verstand</div>
+                    <img src="gemeinsam-in-die-zukunft.jpg" alt="Gemeinsam in die Zukunft Serie Cover" class="series-cover">
+                    <div class="series-title">Gemeinsam in die Zukunft</div>
                     <div class="series-description">
-                        Eine gefühlvolle Reise durch die erste große Liebe! Eine emotionale Trilogie über Lena und Julian - von der ersten Begegnung in der Bibliothek bis zur reifen Liebe.
+                        Eine bewegende Reihe über Zusammenhalt, Mut und die erste große Liebe. Drei Bände begleiten die Protagonisten von ihren ersten Träumen bis zur Verwirklichung ihrer Zukunft.
                     </div>
-                    <div class="series-stats">
-                        3 Bände • Deutsch & Englisch • Lesen & Vorlesen-System
+                    <div class="series-stats">3 Bände • Deutsch & Englisch • Lesen & Vorlesen-System</div>
+                    <div>
+                        <a href="vorlese-gemeinsam-in-die-zukunft.html" class="discover-button">Band 1</a>
+                        <a href="vorlese-wo-liebe-wachsen-darf.html" class="discover-button">Band 2</a>
+                        <a href="vorlese-im-netz-der-liebe.html" class="discover-button">Band 3</a>
                     </div>
-                    <a href="zwischen-herz-und-verstand.html" class="discover-button">Serie entdecken</a>
                 </div>
             </div>
-
-            <!-- Einzelne New Adult Bücher Bereich -->
+            <!-- Einzelne New‑Adult‑Bücher Bereich -->
             <div class="section">
                 <h2>Bücher entdecken</h2>
                 <p class="section-description">
-                    Standalone New Adult Romane mit abgeschlossenen Handlungen und eigenständigen Charakteren voller Emotionen.
+                    Standalone New‑Adult‑Romane mit abgeschlossenen Handlungen und eigenständigen Charakteren voller Emotionen.
                 </p>
-                
-                <div class="placeholder-content">
-                    <h3>🌟 Bald verfügbar</h3>
-                    <p>Spannende Einzelromane befinden sich in der Entwicklung...</p>
-                    <br>
-                    <p>Freuen Sie sich auf eigenständige Geschichten voller Emotionen, erste Liebe und Selbstfindung!</p>
+                <!-- Die Kunst der Hingabe als Einzelband -->
+                <div class="series-item">
+                    <img src="die kunst der hingabe.jpg" alt="Die Kunst der Hingabe Cover" class="series-cover">
+                    <div class="series-title">Die Kunst der Hingabe</div>
+                    <div class="series-description">
+                        Eine junge Frau kämpft zwischen Pflicht und Leidenschaft, zwischen Vernunft und ihren tiefsten Sehnsüchten. Ein intensiver Roman über Hingabe und Selbstfindung.
+                    </div>
+                    <div class="series-stats">Einzelband • Deutsch & Englisch • Lesen & Vorlesen-System</div>
+                    <a href="vorlese-die-kunst-der-hingabe.html" class="discover-button">Vorlesen</a>
+                </div>
+                <!-- Weitere Einzelbände Placeholder -->
+                <div class="series-item">
+                    <img src="placeholder_light_gray_block.png" alt="Weitere Bücher" class="series-cover">
+                    <div class="series-title">Weitere Romane folgen</div>
+                    <div class="series-description">
+                        Neue Geschichten über die große Liebe und den Weg ins Erwachsensein sind in Vorbereitung.
+                    </div>
+                    <div class="series-stats">Bald verfügbar</div>
+                    <a href="#" class="discover-button" style="background: gray; cursor: not-allowed;">Noch nicht verfügbar</a>
                 </div>
             </div>
         </div>
