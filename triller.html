@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Thriller final page generated from triller_updated.html -->
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -10,36 +11,33 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #4d0000 50%, #800000 100%);
+            background: linear-gradient(135deg, #FDEDEC 0%, #EAF6F6 50%, #FDF3F4 100%);
             min-height: 100vh;
-            color: #f5f5f5;
+            color: #2F4F4F;
             line-height: 1.6;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-
         .header {
             text-align: center;
             margin-bottom: 40px;
             padding: 40px 20px;
-            background: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(135deg, #F8E6E6 0%, #F5F5F5 100%);
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid #FFD700;
             position: relative;
         }
-
         .back-button {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(128, 0, 0, 0.8);
+            background: linear-gradient(135deg, #C06C84, #6C5B7B);
             color: white;
             padding: 10px 20px;
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -49,79 +47,68 @@
             transition: all 0.3s ease;
             font-size: 0.9em;
         }
-
         .back-button:hover {
-            background: rgba(128, 0, 0, 1);
+            background: linear-gradient(135deg, #6C5B7B, #355C7D);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(96,89,124,0.4);
         }
-
         .header h1 {
             font-size: 3em;
             margin-bottom: 20px;
-            color: #FF4500;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            color: #E94E77;
+            text-shadow: 2px 2px 4px rgba(233,78,119,0.3);
         }
-
         .header p {
             font-size: 1.3em;
-            color: #f0f0f0;
+            color: #6C5B7B;
             font-style: italic;
         }
-
         .content-sections {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             margin-top: 40px;
         }
-
         .section {
-            background: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(135deg, #FFF5FA 0%, #F0F8FF 100%);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            border: 2px solid rgba(128, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 2px solid #DDA0DD;
             transition: all 0.3s ease;
         }
-
         .section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
-            border-color: rgba(255, 69, 0, 0.6);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: #FFD700;
         }
-
         .section h2 {
             font-size: 2.2em;
-            color: #FF4500;
+            color: #E94E77;
             margin-bottom: 20px;
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-shadow: 1px 1px 2px rgba(233,78,119,0.3);
         }
-
         .section-description {
             font-size: 1.1em;
             margin-bottom: 30px;
             text-align: center;
-            color: #d0d0d0;
+            color: #2F4F4F;
             line-height: 1.6;
         }
-
         .series-item {
-            background: rgba(77, 0, 0, 0.3);
+            background: rgba(255, 192, 203, 0.3);
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 20px;
-            border: 1px solid rgba(128, 0, 0, 0.4);
+            border: 1px solid rgba(221, 160, 221, 0.4);
             transition: all 0.3s ease;
             text-align: center;
         }
-
         .series-item:hover {
-            background: rgba(77, 0, 0, 0.5);
+            background: rgba(255, 192, 203, 0.5);
             transform: translateY(-2px);
         }
-
         .series-cover {
             width: 120px;
             height: 160px;
@@ -132,92 +119,62 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
         }
-
         .series-cover:hover {
             transform: scale(1.05);
         }
-
         .series-title {
             font-size: 1.6em;
-            color: #FF4500;
+            color: #E94E77;
             margin-bottom: 10px;
             text-align: center;
             font-weight: bold;
         }
-
         .series-description {
             font-size: 1em;
-            color: #d0d0d0;
+            color: #2F4F4F;
             margin-bottom: 20px;
             text-align: center;
             line-height: 1.5;
         }
-
         .series-stats {
             font-size: 0.9em;
-            color: #b0b0b0;
+            color: #696969;
             text-align: center;
             margin-bottom: 20px;
             font-style: italic;
         }
-
         .discover-button {
-            display: block;
-            background: linear-gradient(135deg, #FF4500, #800000);
+            display: inline-block;
+            background: linear-gradient(135deg, #E94E77, #C06C84);
             color: white;
-            padding: 15px 30px;
+            padding: 12px 24px;
             border: none;
             border-radius: 25px;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
             text-decoration: none;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 0 auto;
-            min-width: 200px;
+            margin: 5px;
+            min-width: 120px;
         }
-
         .discover-button:hover {
-            background: linear-gradient(135deg, #FF6347, #FF4500);
+            background: linear-gradient(135deg, #C06C84, #6C5B7B);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(192,108,132,0.4);
         }
-
-        .placeholder-content {
-            text-align: center;
-            padding: 40px 20px;
-            color: #888;
-            font-style: italic;
-        }
-
-        .placeholder-content h3 {
-            color: #aaa;
-            margin-bottom: 15px;
-        }
-
         @media (max-width: 768px) {
             .content-sections {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
             .header h1 {
-                font-size: 2.2em;
+                font-size: 2.4em;
             }
-            
             .section h2 {
                 font-size: 1.8em;
             }
-            
-            .back-button {
-                position: relative;
-                top: 0;
-                left: 0;
-                margin-bottom: 20px;
-                display: inline-block;
-            }
-
             .series-cover {
                 width: 100px;
                 height: 130px;
@@ -229,43 +186,45 @@
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-            <h1>🔥 Thriller</h1>
-            <p>Nervenaufreibende Spannung und explosive Action</p>
+            <h1>Thriller</h1>
+            <p>Nervenaufreibende Geschichten und explosive Spannung</p>
         </div>
-
         <div class="content-sections">
             <!-- Thriller Serien Bereich -->
             <div class="section">
                 <h2>Serien entdecken</h2>
                 <p class="section-description">
-                    Mehrteilige Thriller-Geschichten mit durchgehenden Charakteren und zusammenhängenden Handlungssträngen.
+                    Mehrteilige Thriller‑Geschichten mit durchgehenden Charakteren und
+                    zusammenhängenden Handlungssträngen.
                 </p>
-                
-                <div class="placeholder-content">
-                    <h3>🔥 Bald verfügbar</h3>
-                    <p>Spannende Thriller-Serien befinden sich in der Entwicklung...</p>
-                    <br>
-                    <p>Freuen Sie sich auf nervenaufreibende Fortsetzungsgeschichten mit explosiver Action!</p>
+                <div class="series-item">
+                    <h3>Bald verfügbar</h3>
+                    <p>Spannende Thriller‑Serien befinden sich in der Entwicklung. Freuen
+                        Sie sich auf nervenaufreibende Fortsetzungsgeschichten mit explosiver
+                        Action!</p>
                 </div>
             </div>
-
             <!-- Einzelne Thriller Bereich -->
             <div class="section">
                 <h2>Bücher entdecken</h2>
                 <p class="section-description">
-                    Standalone Thriller mit abgeschlossenen Handlungen und eigenständigen Charakteren voller Action.
+                    Standalone Thriller mit abgeschlossenen Handlungen und
+                    eigenständigen Charakteren voller Action.
                 </p>
-                
                 <div class="series-item">
-                    <img src="flammen-des-verrats.jpg" alt="Flammen des Verrats Cover" class="series-cover">
-                    <div class="series-title">🔥 Flammen des Verrats</div>
+                    <img src="flammendesverrats.jpg" alt="Flammen des Verrats Cover" class="series-cover">
+                    <div class="series-title">Flammen des Verrats</div>
                     <div class="series-description">
-                        Ein explosiver Thriller voller Intrigen, Verrat und tödlicher Geheimnisse. Wenn die Vergangenheit zur Gegenwart wird und Loyalitäten auf eine harte Probe gestellt werden.
+                        Ein explosiver Thriller voller Intrigen, Verrat und tödlicher
+                        Geheimnisse. Wenn die Vergangenheit zur Gegenwart wird und
+                        Loyalitäten auf eine harte Probe gestellt werden.
                     </div>
                     <div class="series-stats">
-                        Einzelband • Deutsch & Englisch • Lesen & Vorlesen-System
+                        Einzelband • Deutsch & Englisch • Lesen & Vorlesen‑System
                     </div>
-                    <a href="flammen-des-verrats.html" class="discover-button">Buch entdecken</a>
+                    <div class="series-buttons">
+                        <a href="vorlese-flammen-des-verrats.html" class="discover-button">Vorlesen</a>
+                    </div>
                 </div>
             </div>
         </div>
