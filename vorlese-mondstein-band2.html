@@ -1,1 +1,608 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Band 2 – Die Reise durch den geheimnisvollen Wald – Kapitel 1 Vorlesen</title>
+    <style>
+        /*
+         * Überarbeitetes Layout für das Vorleseabenteuer im Wald.
+         * Angelehnt an die Struktur des Band‑1‑Vorlesehtml werden hier
+         * Wörter beim Vorlesen automatisch markiert. Das Farbkonzept
+         * verwendet Grüntöne, um die geheimnisvolle Waldstimmung
+         * zu unterstreichen. Sticky‑Steuerungen bleiben beim Scrollen im
+         * Sichtfeld. Auf kleineren Bildschirmen werden Schriften und Abstände
+         * entsprechend skaliert.
+         */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #fdfdfd;
+            background: linear-gradient(135deg, #0b3d1c 0%, #022c0f 50%, #0a1f14 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #0f2413;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            overflow: visible;
+        }
+        .header {
+            background: linear-gradient(135deg, #163e27, #0d2b17);
+            color: #c7e9c0;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.4em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(161,217,155,0.4);
+        }
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .book-cover img {
+            max-width: 220px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            border: 3px solid #a1d99b;
+        }
+        .controls {
+            background: #09250f;
+            padding: 20px;
+            border-bottom: 3px solid #a1d99b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .language-navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .btn-lang {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #356c3f, #27492e);
+            color: #fdfdfd;
+        }
+        .btn-lang.active {
+            border: 2px solid #a1d99b;
+            box-shadow: 0 0 10px rgba(161,217,155,0.5);
+        }
+        .btn-lang:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .control-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+            color: #ffffff;
+        }
+        .btn-play {
+            background: linear-gradient(135deg, #5a8c6a, #3f5e4c);
+        }
+        .btn-continue {
+            background: linear-gradient(135deg, #4f8f56, #356c3f);
+        }
+        .btn-stop {
+            background: linear-gradient(135deg, #8a5c5c, #703d3d);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+        }
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        .book-title {
+            color: #a1d99b;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #a1d99b;
+            padding-bottom: 10px;
+        }
+        .chapter-title {
+            color: #7ebc89;
+            font-size: 1.5em;
+            margin: 25px 0 15px;
+            text-align: center;
+            font-style: italic;
+        }
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+        .word {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+        .word:hover {
+            background-color: rgba(161,217,155,0.2);
+        }
+        .word-highlight {
+            background-color: #4169e1;
+            color: #ffffff;
+            padding: 2px 4px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(65,105,225,0.3);
+        }
+        .language-content.hidden {
+            display: none;
+        }
+        @media (max-width: 600px) {
+            .control-buttons {
+                gap: 10px;
+            }
+            .btn {
+                min-width: 100px;
+                font-size: 0.9em;
+                padding: 10px 16px;
+            }
+            .content {
+                padding: 20px;
+                font-size: 1em;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Kopfbereich: Cover, Titel und Untertitel -->
+        <div class="header">
+            <div class="book-cover">
+                <img src="die reise durch den geheimnissvollen wald.jpg" alt="Die Reise durch den geheimnisvollen Wald - Cover" />
+            </div>
+            <h1>Band 2 – Die Reise durch den geheimnisvollen Wald</h1>
+            <p>Vorlesen und Mitlesen leicht gemacht – begib dich auf ein neues Abenteuer</p>
+        </div>
+        <div class="controls">
+            <div class="language-navigation">
+                <button class="btn-lang active" onclick="switchLanguage('de', event)">🇩🇪 Deutsch</button>
+                <button class="btn-lang" onclick="switchLanguage('en', event)">🇬🇧 English</button>
+            </div>
+            <div class="control-buttons">
+                <button class="btn btn-play" id="btn-play" onclick="startReading()">🔴 Vorlesen</button>
+                <button class="btn btn-continue" id="btn-continue" onclick="continueReading()">▶️ Weiterlesen</button>
+                <button class="btn btn-stop" id="btn-stop" onclick="stopReading()">⏹️ Stop</button>
+            </div>
+        </div>
+        <!-- Hauptinhalt: Buchtitel, Kapitel und Texte -->
+        <div class="content">
+            <div class="book-title">Band 2: Die Reise durch den geheimnisvollen Wald</div>
+            <div class="chapter-title">Kapitel 1: Die Vorbereitung</div>
+        <!-- Deutsche Version -->
+        <div id="de-content" class="language-content">
+            <div class="text-content" id="de-textContent">
+                <p>Kapitel 1: Die Vorbereitung – Die Sonne ging langsam über dem kleinen Dorf auf und tauchte alles in ein warmes, goldenes Licht. Leni, Finn und Arvid waren früh aufgestanden, denn heute war der Tag, an dem sie ihre Reise in den geheimnisvollen Wald fortsetzen würden. Sie hatten bereits einige Abenteuer hinter sich und wussten, dass noch viele Herausforderungen vor ihnen lagen. Doch sie waren entschlossen, die Fragmente der Lichtsteine zu finden und das Geheimnis zu lüften, das die Welt vor einer dunklen Macht schützen würde.</p>
+                <p>In Lenis Zimmer saßen die drei Freunde zusammen und betrachteten die Karte, die ihnen den Weg durch den geheimnisvollen Wald zeigen würde. Die Karte war alt und vergilbt, aber die Symbole und Zeichen darauf leuchteten in einem sanften, goldenen Licht. Es war, als würden sie die Kinder rufen und ihnen den Weg weisen. „Wir müssen uns gut vorbereiten“, sagte Leni entschlossen.</p>
+                <p>„Der Wald ist voller Gefahren, und wir wissen nicht, was uns erwartet.“ Finn und Arvid nickten zustimmend. Sie hatten bereits einige gefährliche Situationen gemeistert, aber sie wussten, dass diese Reise noch gefährlicher sein würde. Sie begannen, ihre Rucksäcke zu packen. Sie nahmen Proviant, warme Kleidung und andere nützliche Dinge mit.</p>
+                <p>Leni steckte die Karte sorgfältig in eine kleine Tasche, um sie sicher aufzubewahren. Finn überprüfte ihre Ausrüstung und stellte sicher, dass sie alles hatten, was sie brauchten. Arvid packte die Fragmente der Lichtsteine, die sie bereits gefunden hatten, sorgfältig in einen kleinen Beutel. Die Steine leuchteten sanft und schimmerten in allen Farben des Regenbogens.</p>
+                <p>Es war ein magischer Anblick, der ihnen Mut und Entschlossenheit gab. Während sie packten, erzählten sie sich gegenseitig von ihren Ängsten und Sorgen. Sie wussten, dass sie sich aufeinander verlassen konnten und dass sie nur gemeinsam erfolgreich sein würden. „Wir müssen zusammenhalten“, sagte Leni.</p>
+                <p>„Egal, was passiert, wir müssen zusammenhalten und uns gegenseitig helfen. Nur so können wir das Geheimnis der Lichtsteine lüften.“ Finn und Arvid nickten. Sie wussten, dass Leni recht hatte. Sie mussten zusammenhalten und sich gegenseitig helfen, um ihre Aufgabe zu erfüllen.</p>
+                <p>„Wir sind ein Team“, sagte Arvid. „Und wir werden alles geben, um unser Ziel zu erreichen.“ Als sie fertig waren, verabschiedeten sie sich von ihren Familien. Es war ein emotionaler Moment, denn sie wussten nicht, wann sie wieder zurückkehren würden. Aber sie waren entschlossen, ihre Aufgabe zu erfüllen und das Geheimnis der Lichtsteine zu lüften.</p>
+                <p>Lenis Mutter umarmte sie fest und flüsterte: „Passt auf euch auf und denkt daran, dass ihr ein großartiges Team seid. Gemeinsam könnt ihr alles schaffen.“ Diese Worte gaben ihnen zusätzlichen Mut und Entschlossenheit. Mit schweren Herzen, aber auch mit großer Entschlossenheit machten sie sich auf den Weg. Der erste Teil ihrer Reise führte sie durch ein weites Tal, das von hohen Bergen umgeben war.</p>
+                <p>Die Landschaft war atemberaubend schön, mit grünen Wiesen, klaren Bächen und wilden Blumen, die in allen Farben des Regenbogens blühten. Die drei Freunde folgten der Karte und genossen die Schönheit der Natur. Doch sie wussten, dass sie vorsichtig sein mussten, denn das Tal war auch die Heimat vieler wilder Tiere. Plötzlich hörten sie ein lautes Knurren hinter sich.</p>
+                <p>Sie drehten sich um und sahen einen großen, braunen Bären, der sie mit einem drohenden Blick ansah. Die drei Freunde erstarrten vor Angst, aber Leni fasste sich schnell und stellte sich mutig vor ihre Freunde. „Wir haben keine Angst vor dir“, sagte sie mit fester Stimme. „Wir sind auf einer wichtigen Mission, und wir werden uns nicht von dir aufhalten lassen.“ Der Bär blieb stehen und beobachtete sie mit seinen dunklen Augen.</p>
+                <p>Plötzlich begann er zu sprechen, mit einer tiefen, rauen Stimme. „Ihr seid mutig, junge Abenteurer“, sagte er. „Aber wisst ihr auch, welche Gefahren auf euch warten? Das Tal ist voller wilder Tiere, die euch angreifen könnten.“ Finn trat vor und stellte sich neben Leni.</p>
+                <p>„Wir wissen, welche Gefahren auf uns warten“, sagte er. „Aber wir sind entschlossen, das Geheimnis der Lichtsteine zu lüften und die Welt zu retten. Und wir werden uns nicht von dir aufhalten lassen.“ Der Bär knurrte leise, aber dann trat er einen Schritt zurück. „Ihr habt Mut, junge Abenteurer“, sagte er.</p>
+                <p>„Und vielleicht seid ihr wirklich diejenigen, die das Geheimnis der Lichtsteine lüften können. Ich werde euch nicht aufhalten. Aber seid vorsichtig, denn der Weg wird nicht einfach sein.“ Mit diesen Worten drehte sich der Bär um und verschwand zwischen den Bäumen. Die drei Freunde atmeten erleichtert auf und setzten ihren Weg fort.</p>
+                <p>Sie folgten der Karte und drangen tiefer in das Tal ein. Die Landschaft wurde immer wilder und unwegsamer, aber sie ließen sich nicht entmutigen. Sie wussten, dass sie auf dem richtigen Weg waren. Plötzlich erreichten sie einen klaren Bergsee, der von hohen Felsen umgeben war.</p>
+                <p>Das Wasser war kristallklar und spiegelte den blauen Himmel wider. In der Mitte des Sees befand sich eine kleine Insel, auf der ein alter, moosbewachsener Stein lag. Die drei Freunde wussten sofort, dass dies ein besonderer Ort war. Sie folgten dem Ufer des Sees, bis sie eine kleine Brücke fanden, die zur Insel führte.</p>
+                <p>Vorsichtig betraten sie die Brücke und überquerten den See. Auf der Insel angekommen, untersuchten sie den Stein genau. Er war mit seltsamen Symbolen und Mustern bedeckt, die an die Karte erinnerten. „Das ist ein weiteres Fragment der Lichtsteine“, flüsterte Arvid aufgeregt.</p>
+                <p>Leni und Finn nickten. Sie wussten, dass sie einen wichtigen Fund gemacht hatten. Vorsichtig hoben sie den Stein auf und betrachteten ihn genau. Er war schwerer, als er aussah, und fühlte sich warm an.</p>
+                <p>Die Symbole auf dem Stein begannen zu leuchten, und ein sanftes, goldenes Licht erfüllte die Insel. Die drei Freunde waren fasziniert von der Schönheit und der Macht des Steins. Sie wussten, dass sie ihrem Ziel nähergekommen waren. Mit dem neuen Fragment in ihrem Rucksack machten sie sich auf den Weg zurück zum Ufer.</p>
+                <p>Sie wussten, dass sie noch viele Abenteuer vor sich hatten, aber sie waren entschlossen, das Geheimnis der Lichtsteine zu lüften und die Welt zu retten. Und sie wussten, dass sie nur gemeinsam erfolgreich sein konnten. Mit diesem Gedanken im Herzen setzten sie ihre Reise fort, bereit für das nächste Abenteuer. Die drei Freunde setzten ihre Reise fort, bereit für das nächste Abenteuer, das sie erwarten würde.</p>
+                <p>Der Pfad führte sie tiefer in den geheimnisvollen Wald hinein, wo die Bäume immer dichter standen und das Licht der Sonne kaum noch durch das dichte Blätterdach drang. Die Luft war kühl und feucht, und das leise Rascheln der Blätter schien ihnen zuzuraunen, als würden die Bäume selbst ihre Geheimnisse flüstern. Die Stimmung war magisch und ein wenig beängstigend, aber Leni, Finn und Arvid ließen sich nicht entmutigen. Sie wussten, dass sie auf dem richtigen Weg waren und dass sie nur gemeinsam die Herausforderungen meistern konnten, die vor ihnen lagen.</p>
+                <p>Während sie tiefer in den Wald vordrangen, bemerkten sie, dass die Natur um sie herum lebendiger wurde. Vögel zwitscherten in den Baumkronen, und ab und zu huschte ein kleines Tier durch das Unterholz. Die Blumen am Wegesrand schienen in allen Farben des Regenbogens zu leuchten, und der Duft von frischem Moos und Erde erfüllte die Luft.</p>
+                <p>Es war, als würden sie in eine andere Welt eintauchen, eine Welt voller Magie und Wunder. Doch sie wussten auch, dass diese Welt voller Gefahren war, und sie mussten wachsam bleiben. Plötzlich hörten sie ein leises Plätschern in der Nähe. Neugierig folgten sie dem Geräusch und entdeckten einen kleinen, klaren Bach, der sich durch den Wald schlängelte. Das Wasser glitzerte in der Sonne und lud sie ein, eine Pause einzulegen.</p>
+                <p>Sie setzten sich an das Ufer und tauchten ihre müden Füße in das kühle Nass. Es war eine willkommene Erfrischung nach dem langen Marsch. Finn holte ein paar Brote aus seinem Rucksack, und sie aßen gemeinsam, während sie das sanfte Plätschern des Wassers genossen.</p>
+                <p>„Wisst ihr, was ich mich frage?“, sagte Arvid nachdenklich. „Wie viele Fragmente der Lichtsteine gibt es eigentlich? Und woher kommen sie?“ Leni und Finn sahen sich an. Sie hatten sich diese Fragen auch schon gestellt, aber sie hatten keine Antworten.</p>
+                <p>„Ich weiß es nicht“, sagte Leni. „Aber ich glaube, wir werden es herausfinden, wenn wir alle Fragmente gefunden haben. Vielleicht gibt es jemanden, der uns mehr über die Lichtsteine erzählen kann.“ Finn nickte. „Ja, und bis dahin müssen wir einfach weiter nach Hinweisen suchen. Die Karte wird uns den Weg weisen.“</p>
+                <p>Nach ihrer Pause setzten sie ihre Reise fort. Der Bach führte sie tiefer in den Wald hinein, und sie folgten seinem Lauf, bis sie an eine kleine Lichtung kamen. In der Mitte der Lichtung stand ein alter, knorriger Baum, dessen Äste sich wie Arme in den Himmel streckten. Der Baum schien lebendig zu sein, und als sie näher kamen, bemerkten sie, dass in seinen Ästen kleine Lichter funkelten. Es waren Glühwürmchen, die in der Dämmerung leuchteten und dem Baum eine magische Aura verliehen.</p>
+                <p>„Schaut nur“, flüsterte Leni ehrfürchtig. „Das ist der schönste Baum, den ich je gesehen habe.“ Die drei Freunde blieben stehen und betrachteten den Baum in stillem Staunen. Plötzlich hörten sie eine sanfte Stimme, die aus dem Baum zu kommen schien. „Willkommen, junge Abenteurer“, sagte die Stimme. „Ich habe schon lange auf euch gewartet.“ Die Freunde waren überrascht und ein wenig verunsichert. Wer sprach da mit ihnen? „Wer bist du?“, fragte Finn vorsichtig.</p>
+                <p>„Ich bin der Hüter des Waldes“, antwortete die Stimme. „Mein Name ist Eldrin, und ich bin der Wächter der alten Magie, die in diesem Wald lebt. Ich habe euch beobachtet, seit ihr den Wald betreten habt, und ich weiß, dass ihr auf der Suche nach den Fragmenten der Lichtsteine seid.“</p>
+                <p>Die drei Freunde waren erstaunt. Sie hatten nicht erwartet, auf einen Hüter des Waldes zu treffen. „Ja, das stimmt“, sagte Leni. „Wir suchen die Fragmente, um das Geheimnis der Lichtsteine zu lüften und die Welt vor einer dunklen Macht zu schützen.“</p>
+                <p>Eldrin schien zu nicken, und die Lichter in den Ästen des Baumes funkelten heller. „Ihr habt eine edle Aufgabe vor euch“, sagte er. „Und ich werde euch helfen, so gut ich kann. Die Lichtsteine sind mächtige Artefakte, die vor langer Zeit erschaffen wurden, um die Welt vor dem Bösen zu bewahren. Sie wurden in mehrere Fragmente zerbrochen und an verschiedenen Orten versteckt, damit sie nicht in die falschen Hände gerieten. Eure Aufgabe ist es, alle Fragmente zu finden und das Geheimnis zu lüften.“</p>
+                <p>„Kannst du uns mehr über die Lichtsteine erzählen?“, fragte Arvid neugierig. Eldrin seufzte leise, und die Blätter des Baumes raschelten sanft. „Die Lichtsteine wurden von den alten Zauberern erschaffen, die vor langer Zeit in dieser Welt lebten“, begann er. „Sie waren mächtige Magier, die das Gleichgewicht zwischen Licht und Dunkelheit bewahrten. Doch eines Tages wurde die Dunkelheit zu stark, und die Zauberer mussten einen Weg finden, sie zu besiegen. Sie schufen die Lichtsteine, die die Macht des Lichts in sich trugen und die Dunkelheit vertreiben konnten. Doch die Dunkelheit war listig und versuchte, die Lichtsteine zu stehlen. Um sie zu schützen, zerbrachen die Zauberer die Lichtsteine in mehrere Fragmente und versteckten sie an verschiedenen Orten der Welt. Seitdem warten die Fragmente darauf, wieder vereint zu werden, um die Dunkelheit für immer zu besiegen.“</p>
+                <p>Die drei Freunde hörten gespannt zu. Es war eine faszinierende Geschichte, und sie verstanden jetzt besser, warum ihre Aufgabe so wichtig war. „Aber warum haben die Zauberer die Lichtsteine nicht einfach selbst wieder vereint?“, fragte Finn. Eldrin seufzte erneut. „Die Zauberer opferten ihre eigene Macht, um die Lichtsteine zu erschaffen und die Dunkelheit zu besiegen“, erklärte er. „Sie wussten, dass sie nicht stark genug waren, um die Dunkelheit für immer zu vertreiben. Deshalb schufen sie die Lichtsteine und versteckten die Fragmente, in der Hoffnung, dass eines Tages jemand kommen würde, der stark genug war, um sie wieder zu vereinen. Dieser Jemand seid ihr.“</p>
+                <p>Die drei Freunde waren tief bewegt von Eldrins Worten. Sie verstanden jetzt, dass sie eine große Verantwortung trugen, aber sie waren auch stolz darauf, dass sie auserwählt worden waren, diese Aufgabe zu erfüllen. „Wir werden unser Bestes geben“, sagte Leni entschlossen. „Wir werden alle Fragmente finden und das Geheimnis der Lichtsteine lüften.“</p>
+                <p>Eldrin lächelte, und die Lichter in den Ästen des Baumes funkelten heller. „Ich weiß, dass ihr das schaffen werdet“, sagte er. „Und ich werde euch helfen, so gut ich kann. Folgt dem Bach weiter, und er wird euch zu einem sicheren Ort führen, wo ihr die Nacht verbringen könnt. Morgen werde ich euch mehr über den Wald und seine Geheimnisse erzählen.“ Die drei Freunde bedankten sich bei Eldrin und setzten ihre Reise fort.</p>
+                <p>Sie folgten dem Bach, bis sie an eine kleine Lichtung kamen, die von hohen Bäumen umgeben war. In der Mitte der Lichtung stand ein kleines, gemütliches Haus, das wie aus einem Märchenbuch zu stammen schien. Das Haus war aus Holz gebaut und hatte ein strohgedecktes Dach. Vor der Tür brannte ein kleines Feuer, und der Duft von frischem Brot erfüllte die Luft.</p>
+                <p>Eine freundliche ältere Frau stand vor dem Haus und lächelte sie herzlich an. „Willkommen, junge Abenteurer“, sagte sie. „Ich habe schon auf euch gewartet. Mein Name ist Elara, und ich bin die Hüterin dieses Hauses. Kommt herein und ruht euch aus. Ihr habt eine lange Reise hinter euch.“</p>
+                <p>Die drei Freunde betraten das Haus und wurden von einer warmen, einladenden Atmosphäre empfangen. Das Haus war einfach, aber gemütlich eingerichtet, mit einem großen Kamin, in dem ein Feuer brannte, und einem langen Holztisch, auf dem frisches Brot, Käse und Obst bereitstanden. Elara zeigte ihnen ihre Schlafplätze und sagte: „Ruht euch aus und esst etwas. Morgen werde ich euch mehr über den Wald und seine Geheimnisse erzählen.“ Die drei Freunde waren müde von ihrer langen Reise, und sie freuten sich über die Gelegenheit, sich auszuruhen und neue Kraft zu sammeln.</p>
+                <p>Sie aßen gemeinsam am Tisch und erzählten Elara von ihren Abenteuern und von Eldrin, dem Hüter des Waldes. Elara hörte gespannt zu und lächelte. „Ihr habt schon viel erreicht“, sagte sie. „Und ich bin sicher, dass ihr eure Aufgabe erfüllen werdet. Aber denkt daran, dass der Wald voller Gefahren ist, und ihr müsst wachsam bleiben.“</p>
+                <p>Nach dem Essen gingen die drei Freunde zu Bett. Sie waren müde, aber auch voller Vorfreude auf das, was der nächste Tag bringen würde. Sie wussten, dass sie noch viele Abenteuer vor sich hatten, aber sie waren entschlossen, ihre Aufgabe zu erfüllen und das Geheimnis der Lichtsteine zu lüften. Mit diesem Gedanken im Herzen schliefen sie schließlich ein, bereit für das nächste Abenteuer ihrer Reise.</p>
+                <p>Am nächsten Morgen erwachten sie früh und fühlten sich erfrischt und voller Energie. Elara hatte bereits ein Frühstück für sie vorbereitet, und sie aßen gemeinsam am Tisch. Während sie aßen, erzählte Elara ihnen mehr über den Wald und seine Geheimnisse. „Der Wald, in dem ihr euch befindet, ist ein magischer Ort“, begann sie. „Er ist voller alter Magie und Geheimnisse, die seit Jahrhunderten bewahrt werden. Die Bäume, die Tiere und sogar die Steine haben eine Stimme und können mit denen sprechen, die bereit sind, zuzuhören. Aber der Wald ist auch voller Gefahren, und ihr müsst vorsichtig sein.“</p>
+                <p>Die drei Freunde hörten gespannt zu. Sie wussten, dass Elara ihnen wertvolle Informationen geben konnte, die ihnen auf ihrer Reise helfen würden. „Welche Gefahren gibt es im Wald?“, fragte Arvid neugierig. Elara seufzte leise. „Es gibt viele Gefahren im Wald“, erklärte sie. „Es gibt wilde Tiere, die euch angreifen könnten, und es gibt auch magische Wesen, die nicht immer freundlich sind. Aber die größte Gefahr geht von der Dunkelheit aus, die versucht, die Lichtsteine zu stehlen. Die Dunkelheit hat viele Diener, die im Wald leben und darauf warten, euch aufzuhalten.“</p>
+                <p>Die drei Freunde waren ein wenig beunruhigt von Elaras Worten, aber sie wussten, dass sie sich den Gefahren stellen mussten, um ihre Aufgabe zu erfüllen. „Wie können wir uns vor den Gefahren schützen?“, fragte Leni. Elara lächelte. „Ihr habt bereits eine mächtige Waffe“, sagte sie. „Eure Freundschaft und euer Mut. Solange ihr zusammenhaltet und euch gegenseitig helft, könnt ihr jede Gefahr überwinden. Und denkt daran, dass ihr nicht allein seid. Die Natur und ihre Bewohner werden euch helfen, wenn ihr es braucht.“</p>
+                <p>Nach dem Frühstück verabschiedeten sich die drei Freunde von Elara und setzten ihre Reise fort. Sie folgten dem Bach weiter, bis sie an eine kleine Brücke kamen, die über einen reißenden Fluss führte. Die Brücke war alt und morsch, und sie zögerten einen Moment, bevor sie sie betraten. Doch sie wussten, dass sie keine Wahl hatten. Vorsichtig betraten sie die Brücke und überquerten den Fluss. Auf der anderen Seite angekommen, atmeten sie erleichtert auf. Sie hatten eine weitere Herausforderung gemeistert und waren ihrem Ziel nähergekommen.</p>
+                <p>Der Pfad führte sie weiter in den Wald hinein, und sie folgten der Karte, die ihnen den Weg wies. Plötzlich hörten sie ein leises Kichern in der Nähe. Neugierig folgten sie dem Geräusch und entdeckten eine kleine Fee, die auf einem Pilz saß und sie mit neugierigen Augen betrachtete. Die Fee war winzig klein und hatte schimmernde Flügel, die in allen Farben des Regenbogens glänzten.</p>
+                <p>„Hallo, kleine Abenteurer“, sagte die Fee mit einer sanften Stimme. „Ich habe euch beobachtet, seit ihr den Wald betreten habt. Ihr seid mutig und entschlossen, und ich bewundere euren Mut.“ Die drei Freunde waren überrascht und erfreut, eine Fee zu treffen. „Hallo“, sagte Leni freundlich. „Wir sind auf der Suche nach den Fragmenten der Lichtsteine. Kannst du uns helfen?“</p>
+                <p>Die Fee lächelte. „Ich kenne die Lichtsteine“, sagte sie. „Und ich werde euch helfen, so gut ich kann. Folgt mir, und ich werde euch zu einem sicheren Ort führen, wo ihr mehr über die Lichtsteine erfahren könnt.“ Die drei Freunde folgten der Fee, die sie durch den Wald führte. Sie flog vor ihnen her und zeigte ihnen den Weg. Schließlich erreichten sie eine kleine Lichtung, auf der ein alter, moosbewachsener Stein stand. Der Stein war mit seltsamen Symbolen und Mustern bedeckt, die an die Karte erinnerten.</p>
+                <p>„Das ist ein weiterer Hinweis auf die Lichtsteine“, sagte die Fee. „Berührt den Stein, und er wird euch den Weg weisen.“ Die drei Freunde traten näher und berührten den Stein vorsichtig. Plötzlich begannen die Symbole auf dem Stein zu leuchten, und ein sanftes, goldenes Licht erfüllte die Lichtung.</p>
+                <p>Die Fee lächelte. „Ihr seid auf dem richtigen Weg“, sagte sie. „Folgt dem Licht, und es wird euch zu den Fragmenten der Lichtsteine führen.“ Die drei Freunde bedankten sich bei der Fee und setzten ihre Reise fort. Sie folgten dem goldenen Licht, das ihnen den Weg wies, und waren voller Hoffnung und Entschlossenheit. Sie wussten, dass sie ihrem Ziel näherkamen und dass sie nur gemeinsam die Herausforderungen meistern konnten, die vor ihnen lagen.</p>
+            </div>
+        </div>
+        <!-- Englische Version -->
+        <div id="en-content" class="language-content hidden">
+            <div class="text-content" id="en-textContent">
+                <p>Chapter 1: The Preparation – The sun slowly rose over the small village, bathing everything in a warm,
+                golden light. Leni, Finn and Arvid had risen early, for today was the day they would continue their
+                journey into the mysterious forest. They had already been through some adventures and knew many
+                challenges awaited them. Yet they were determined to find the fragments of the light stones and
+                uncover the secret that would protect the world from a dark power.</p>
+                <p>In Leni’s room the three friends sat together and looked at the map that would show them the way
+                through the mysterious forest. The map was old and yellowed, but the symbols and markings on it
+                glowed with a gentle, golden light. It was as if they were calling the children and showing them
+                the way. “We have to prepare well,” Leni said decisively.</p>
+                <p>“The forest is full of dangers and we do not know what awaits us.” Finn and Arvid nodded in
+                agreement. They had already overcome several dangerous situations, but they knew this journey
+                would be even more dangerous. They began to pack their backpacks. They took provisions, warm
+                clothing and other useful things with them.</p>
+                <p>Leni carefully placed the map into a small pouch to keep it safe. Finn checked their equipment and
+                made sure they had everything they needed. Arvid carefully packed the fragments of the light
+                stones they had already found into a small bag. The stones glowed softly and shimmered in all the
+                colors of the rainbow.</p>
+                <p>It was a magical sight that gave them courage and determination. While they packed they told each
+                other of their fears and worries. They knew they could rely on each other and would only succeed
+                together. “We must stick together,” Leni said.</p>
+                <p>“No matter what happens, we have to stick together and help one another. Only then can we
+                unravel the secret of the light stones.” Finn and Arvid nodded. They knew Leni was right. They
+                had to stand together and support each other to fulfil their task.</p>
+                <p>“We are a team,” said Arvid. “And we will give everything to reach our goal.” When they were
+                finished they said goodbye to their families. It was an emotional moment because they did not
+                know when they would return. But they were determined to fulfil their task and reveal the secret
+                of the light stones.</p>
+                <p>Leni’s mother hugged them tightly and whispered, “Take care of yourselves and remember that you are a
+                great team. Together you can accomplish anything.” These words gave them extra courage and
+                determination. With heavy hearts but great resolve they set off. The first part of their journey
+                led them through a wide valley surrounded by high mountains.</p>
+                <p>The landscape was breathtakingly beautiful, with green meadows, clear streams and wildflowers
+                blooming in all the colours of the rainbow. The three friends followed the map and enjoyed the
+                beauty of nature. Yet they knew they had to be cautious, because the valley was also home to
+                many wild animals. Suddenly they heard a loud growl behind them.</p>
+                <p>They turned and saw a large brown bear looking at them with a threatening gaze. The three
+                friends froze with fear, but Leni quickly pulled herself together and bravely stood in front of
+                her friends. “We are not afraid of you,” she said firmly. “We are on an important mission and
+                we will not let you stop us.” The bear remained still, watching them with his dark eyes.</p>
+                <p>Suddenly he began to speak with a deep, rough voice. “You are brave, young adventurers,” he
+                said. “But do you know what dangers await you? The valley is full of wild animals that could
+                attack you.” Finn stepped forward and stood beside Leni.</p>
+                <p>“We know the dangers that await us,” he said. “But we are determined to uncover the secret of the
+                light stones and save the world. And we will not let you stop us.” The bear growled softly but
+                then stepped back. “You have courage, young adventurers,” he said.</p>
+                <p>“And maybe you are truly the ones who can lift the secret of the light stones. I will not stop
+                you. But be careful, for the way will not be easy.” With these words the bear turned and
+                disappeared between the trees. The three friends breathed a sigh of relief and continued on
+                their way.</p>
+                <p>They followed the map and penetrated deeper into the valley. The landscape became wilder and more
+                impassable, but they did not lose heart. They knew they were on the right path. Suddenly they
+                reached a clear mountain lake surrounded by high cliffs.</p>
+                <p>The water was crystal clear and reflected the blue sky. In the middle of the lake was a small
+                island on which lay an old moss-covered stone. The three friends immediately knew this was a
+                special place. They followed the lake’s shore until they found a small bridge leading to the
+                island.</p>
+                <p>Cautiously they stepped onto the bridge and crossed the lake. Upon reaching the island they
+                examined the stone closely. It was covered with strange symbols and patterns reminiscent of
+                the map. “This is another fragment of the light stones,” Arvid whispered excitedly.</p>
+                <p>Leni and Finn nodded. They knew they had made an important find. Carefully they lifted the stone
+                and examined it closely. It was heavier than it looked and felt warm.</p>
+                <p>The symbols on the stone began to glow and a gentle golden light filled the island. The three
+                friends were fascinated by the beauty and power of the stone. They knew they had come closer
+                to their goal. With the new fragment in their backpack they made their way back to the shore.</p>
+                <p>They knew many adventures still lay ahead, but they were determined to unveil the secret of the
+                light stones and save the world. And they knew they could only succeed together. With this
+                thought in their hearts they continued their journey, ready for the next adventure. The three
+                friends continued their journey, ready for the next adventure that awaited them.</p>
+                <p>The path led them deeper into the mysterious forest, where the trees grew ever denser and the
+                light of the sun hardly penetrated the thick canopy. The air was cool and moist, and the soft
+                rustling of the leaves seemed to whisper secrets to them, as if the trees themselves were
+                sharing their mysteries. The mood was magical and a little frightening, but Leni, Finn and
+                Arvid were undaunted. They knew they were on the right path and that only together could they
+                master the challenges ahead.</p>
+                <p>As they ventured deeper into the forest, they noticed that nature around them was becoming more
+                lively. Birds chirped in the treetops, and from time to time a small animal darted through the
+                undergrowth. The flowers along the path seemed to glow in every colour of the rainbow, and the
+                scent of fresh moss and earth filled the air.</p>
+                <p>It was as if they were entering another world, a world full of magic and wonder. Yet they also
+                knew this world was full of dangers, and they had to remain alert. Suddenly they heard a soft
+                splashing nearby. Curious, they followed the sound and discovered a small, clear brook winding
+                through the forest. The water glittered in the sun and invited them to take a break.</p>
+                <p>They sat down by the bank and dipped their tired feet into the cool water. It was a welcome
+                refreshment after the long march. Finn pulled a few sandwiches from his backpack, and they ate
+                together while enjoying the gentle gurgling of the water.</p>
+                <p>“Do you know what I wonder?” Arvid said thoughtfully. “How many fragments of the light stones
+                exist? And where do they come from?” Leni and Finn looked at each other. They had asked
+                themselves the same questions, but they had no answers.</p>
+                <p>“I don't know,” Leni said. “But I believe we’ll find out once we’ve found all the fragments.
+                Perhaps there’s someone who can tell us more about the light stones.” Finn nodded. “Yes, and
+                until then we simply have to keep looking for clues. The map will show us the way.”</p>
+                <p>After their break they continued their journey. The brook led them deeper into the forest, and
+                they followed its course until they reached a small clearing. In the middle of the clearing
+                stood an old, gnarled tree whose branches stretched like arms toward the sky. The tree seemed
+                to be alive, and as they drew closer they noticed tiny lights glittering in its branches. They
+                were fireflies, glowing in the dusk and lending the tree a magical aura.</p>
+                <p>“Look at that,” Leni whispered reverently. “That’s the most beautiful tree I’ve ever seen.”
+                The three friends stopped and gazed at the tree in silent awe. Suddenly they heard a gentle
+                voice that seemed to come from the tree. “Welcome, young adventurers,” said the voice. “I have
+                been waiting for you for a long time.” The friends were surprised and a little uneasy. Who
+                was speaking to them? “Who are you?” Finn asked cautiously.</p>
+                <p>“I am the guardian of the forest,” replied the voice. “My name is Eldrin, and I am the keeper of
+                the ancient magic that lives in this forest. I have watched you since you entered the forest,
+                and I know that you are looking for the fragments of the light stones.”</p>
+                <p>The three friends were astonished. They had not expected to meet a guardian of the forest. “Yes,
+                that’s right,” Leni said. “We’re looking for the fragments to unveil the secret of the light
+                stones and protect the world from a dark power.”</p>
+                <p>Eldrin seemed to nod, and the lights in the tree’s branches sparkled brighter. “You have a
+                noble task ahead of you,” he said. “And I will help you as best I can. The light stones are
+                powerful artefacts created long ago to protect the world from evil. They were broken into
+                several fragments and hidden in different places so they would not fall into the wrong hands.
+                Your task is to find all the fragments and reveal the secret.”</p>
+                <p>“Can you tell us more about the light stones?” Arvid asked, curious. Eldrin sighed softly and the
+                leaves of the tree rustled gently. “The light stones were created by the old wizards who lived
+                in this world long ago,” he began. “They were mighty magicians who kept the balance between
+                light and darkness. But one day the darkness became too strong, and the wizards had to find a
+                way to defeat it. They created the light stones, which contained the power of light and could
+                drive away the darkness. But the darkness was cunning and tried to steal the light stones.
+                To protect them, the wizards broke the light stones into several fragments and hid them in
+                different places of the world. Since then the fragments have been waiting to be reunited to
+                banish the darkness forever.”</p>
+                <p>The three friends listened intently. It was a fascinating story and they now understood better
+                why their task was so important. “But why didn’t the wizards simply reunite the light stones
+                themselves?” Finn asked. Eldrin sighed again. “The wizards sacrificed their own power to
+                create the light stones and defeat the darkness,” he explained. “They knew they were not
+                strong enough to drive away the darkness forever. That is why they created the light stones
+                and hid the fragments, hoping that someday someone strong enough would come to reunite them.
+                That someone is you.”</p>
+                <p>The three friends were deeply moved by Eldrin’s words. They now understood that they bore a great
+                responsibility, but they were also proud to have been chosen to fulfil this task. “We will do
+                our best,” Leni said determinedly. “We will find all the fragments and unveil the secret of
+                the light stones.”</p>
+                <p>Eldrin smiled, and the lights in the branches of the tree sparkled brighter. “I know you will
+                succeed,” he said. “And I will help you as best I can. Follow the stream and it will lead you
+                to a safe place where you can spend the night. Tomorrow I will tell you more about the forest
+                and its secrets.” The three friends thanked Eldrin and continued their journey.</p>
+                <p>They followed the stream until they reached a small clearing surrounded by tall trees. In the
+                middle of the clearing stood a small, cozy house that looked as if it had come straight out
+                of a fairy tale. The house was built of wood and had a thatched roof. A small fire burned in
+                front of the door, and the smell of fresh bread filled the air.</p>
+                <p>A friendly older woman stood in front of the house and smiled warmly at them. “Welcome, young
+                adventurers,” she said. “I have been waiting for you. My name is Elara and I am the keeper of
+                this house. Come in and rest. You have travelled a long way.”</p>
+                <p>The three friends entered the house and were greeted by a warm, inviting atmosphere. The house
+                was simple but cozy, with a large fireplace where a fire burned and a long wooden table laden
+                with fresh bread, cheese and fruit. Elara showed them their sleeping places and said,
+                “Rest and eat something. Tomorrow I will tell you more about the forest and its secrets.” The
+                three friends were tired from their long journey and were grateful for the chance to rest
+                and regain strength.</p>
+                <p>They ate together at the table and told Elara about their adventures and about Eldrin, the
+                guardian of the forest. Elara listened intently and smiled. “You have already achieved a
+                lot,” she said. “And I am sure you will fulfil your task. But remember that the forest is
+                full of dangers, and you must remain vigilant.”</p>
+                <p>After dinner the three friends went to bed. They were tired but also full of anticipation for
+                what the next day would bring. They knew there were many adventures ahead, but they were
+                determined to accomplish their mission and reveal the secret of the light stones. With this
+                thought in their hearts they finally fell asleep, ready for the next adventure of their
+                journey.</p>
+                <p>The next morning they woke up early, feeling refreshed and full of energy. Elara had already
+                prepared breakfast for them, and they ate together at the table. While they ate, Elara told
+                them more about the forest and its secrets. “The forest you are in is a magical place,” she
+                began. “It is full of ancient magic and secrets that have been preserved for centuries. The
+                trees, the animals and even the stones have a voice and can speak to those who are willing to
+                listen. But the forest is also full of dangers, and you must be careful.”</p>
+                <p>The three friends listened attentively. They knew Elara could give them valuable information
+                that would help them on their journey. “What dangers are there in the forest?” Arvid asked
+                curiously. Elara sighed softly. “There are many dangers in the forest,” she explained. “There
+                are wild animals that might attack you, and there are magical beings that are not always
+                friendly. But the greatest danger comes from the darkness that tries to steal the light
+                stones. The darkness has many servants who live in the forest and are waiting to stop you.”</p>
+                <p>The three friends were a little unsettled by Elara’s words, but they knew they had to face the
+                dangers to fulfil their task. “How can we protect ourselves from the dangers?” Leni asked.
+                Elara smiled. “You already possess a powerful weapon,” she said. “Your friendship and your
+                courage. As long as you stick together and help one another, you can overcome any danger.
+                And remember that you are not alone. Nature and its inhabitants will help you when you need
+                them.”</p>
+                <p>After breakfast the three friends said goodbye to Elara and continued their journey. They
+                followed the stream further until they came to a small bridge that crossed a raging river.
+                The bridge was old and rotten, and they hesitated for a moment before stepping onto it. But
+                they knew they had no choice. Cautiously they stepped onto the bridge and crossed the
+                river. Once on the other side, they breathed a sigh of relief. They had overcome another
+                challenge and had come closer to their goal.</p>
+                <p>The path led them further into the forest, and they followed the map that showed them the way.
+                Suddenly they heard a soft giggling nearby. Curious, they followed the sound and discovered a
+                small fairy sitting on a mushroom and looking at them with curious eyes. The fairy was tiny
+                and had shimmering wings that shone in all the colours of the rainbow.</p>
+                <p>“Hello, little adventurers,” said the fairy in a gentle voice. “I have been watching you since
+                you entered the forest. You are brave and determined, and I admire your courage.” The three
+                friends were surprised and delighted to meet a fairy. “Hello,” said Leni kindly. “We are
+                looking for the fragments of the light stones. Can you help us?”</p>
+                <p>The fairy smiled. “I know the light stones,” she said. “And I will help you as best I can.
+                Follow me and I will lead you to a safe place where you can learn more about the light
+                stones.”</p>
+                <p>The three friends followed the fairy, who led them through the forest. She flew ahead of them
+                and showed them the way. Eventually they reached a small clearing where an old moss-covered
+                stone stood. The stone was covered with strange symbols and patterns reminiscent of the
+                map.</p>
+                <p>“This is another clue to the light stones,” said the fairy. “Touch the stone and it will show
+                you the way.” The three friends stepped closer and carefully touched the stone.</p>
+                <p>Suddenly the symbols on the stone began to glow and a gentle golden light filled the clearing.
+                The fairy smiled. “You are on the right track,” she said. “Follow the light and it will
+                lead you to the fragments of the light stones.”</p>
+                <p>The three friends thanked the fairy and continued their journey. They followed the golden light
+                that showed them the way and were full of hope and determination. They knew they were getting
+                closer to their goal and that only together could they master the challenges that lay ahead.</p>
+            </div>
+        </div><!-- Ende der Inhalte -->
+    </div>
+    <script>
+        // Anpassung an die Vorleselogik aus Band 1
+        let currentSpeech = null;
+        let currentLanguage = 'de';
+        let currentWordIndex = 0;
+        const allWords = { de: [], en: [] };
+        let lastHighlightedWord = null;
 
+        // Zerlegt den Text in Worte und erstellt klickbare Spans
+        function initializeWords() {
+            ['de', 'en'].forEach(lang => {
+                allWords[lang] = [];
+                const paragraphs = document.querySelectorAll(`#${lang}-textContent p`);
+                let wordCounter = 0;
+                paragraphs.forEach(paragraph => {
+                    const text = paragraph.textContent.trim();
+                    const splitWords = text.split(/\s+/).filter(w => w.length > 0);
+                    let html = '';
+                    splitWords.forEach(word => {
+                        html += `<span class="word" data-index="${wordCounter}" onclick="startFromWord(${wordCounter})">${word}</span> `;
+                        allWords[lang].push(word);
+                        wordCounter++;
+                    });
+                    paragraph.innerHTML = html.trim();
+                });
+            });
+        }
+
+        // Sprache wechseln, Buttons aktualisieren und zum Anfang scrollen
+        function switchLanguage(lang, event) {
+            stopReading();
+            currentLanguage = lang;
+            currentWordIndex = 0;
+            document.querySelectorAll('.language-content').forEach(elem => elem.classList.add('hidden'));
+            document.getElementById(`${lang}-content`).classList.remove('hidden');
+            const labels = {
+                de: { play: 'Vorlesen', cont: 'Weiterlesen', stop: 'Stop' },
+                en: { play: 'Read', cont: 'Continue', stop: 'Stop' }
+            };
+            document.getElementById('btn-play').innerHTML = `🔴 ${labels[lang].play}`;
+            document.getElementById('btn-continue').innerHTML = `▶️ ${labels[lang].cont}`;
+            document.getElementById('btn-stop').innerHTML = `⏹️ ${labels[lang].stop}`;
+            document.querySelectorAll('.btn-lang').forEach(btn => btn.classList.remove('active'));
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+            const topElem = document.querySelector(`#${lang}-content`);
+            if (topElem) {
+                topElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Hebt das aktuelle Wort hervor
+        function highlightWord(index) {
+            if (lastHighlightedWord) {
+                lastHighlightedWord.classList.remove('word-highlight');
+            }
+            const element = document.querySelector(`#${currentLanguage}-content .word[data-index="${index}"]`);
+            if (element) {
+                element.classList.add('word-highlight');
+                lastHighlightedWord = element;
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Startet das Vorlesen von vorne
+        function startReading() {
+            currentWordIndex = 0;
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+            }
+            continueReading();
+        }
+
+        // Liest den Text ab der aktuellen Position vor und markiert Worte
+        function continueReading() {
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+            }
+            const words = allWords[currentLanguage];
+            if (words && words.length > currentWordIndex) {
+                const remainingText = words.slice(currentWordIndex).join(' ');
+                currentSpeech = new SpeechSynthesisUtterance(remainingText);
+                // Verwende für beide Sprachen die gleiche Vorlesegeschwindigkeit wie im englischen Original (rate = 1.0).
+                // Dadurch wird das Deutsch nicht langsamer als die englische Vorlesefunktion.
+                currentSpeech.rate = 1.0;
+                currentSpeech.lang = currentLanguage === 'de' ? 'de-DE' : 'en-US';
+                let localIndex = currentWordIndex;
+                currentSpeech.onboundary = function(event) {
+                    if (event.name === 'word') {
+                        highlightWord(localIndex);
+                        localIndex++;
+                        currentWordIndex = localIndex;
+                    }
+                };
+                currentSpeech.onend = function() {
+                    // Am Ende des Textes muss nichts Besonderes passieren
+                };
+                speechSynthesis.speak(currentSpeech);
+            }
+        }
+
+        // Beginnt das Vorlesen an einem bestimmten Wort
+        function startFromWord(index) {
+            currentWordIndex = index;
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+            }
+            continueReading();
+        }
+
+        // Stoppt die Sprachausgabe. Die Markierung bleibt erhalten.
+        function stopReading() {
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+                currentSpeech = null;
+            }
+        }
+
+        // Initialisierung nach dem Laden der Seite
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeWords();
+            switchLanguage('de');
+        });
+    </script>
+</body>
+</html>
