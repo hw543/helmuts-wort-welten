@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krimis - Helmut Wegners Wortwelten</title>
+    <title>Krimis – Helmut Wegners Wortwelten</title>
+    <!--
+        Überarbeitete Version der Krimis‑Seite. Die ursprüngliche Seite verwies
+        auf eine nicht vorhandene Datei (mysterien‑der‑heide.html). Diese Version
+        listet alle vorhandenen Bände der Krimi‑Reihe «Mysterien der Heide» mit
+        direkten Links zu den entsprechenden Vorlese‑Dateien. Außerdem wird
+        ein einzelner Roman «Hinter verschlossenen Türen» als Stand‑alone
+        vorgestellt.
+    -->
     <style>
         * {
             margin: 0;
@@ -161,39 +169,27 @@
             font-style: italic;
         }
 
-        .discover-button {
-            display: block;
+        .series-buttons a {
+            display: inline-block;
             background: linear-gradient(135deg, #DC143C, #8B0000);
             color: white;
-            padding: 15px 30px;
+            padding: 12px 20px;
             border: none;
             border-radius: 25px;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
             text-decoration: none;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 0 auto;
-            min-width: 200px;
+            margin: 5px;
+            min-width: 120px;
         }
 
-        .discover-button:hover {
+        .series-buttons a:hover {
             background: linear-gradient(135deg, #FF1493, #DC143C);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
-        }
-
-        .placeholder-content {
-            text-align: center;
-            padding: 40px 20px;
-            color: #888;
-            font-style: italic;
-        }
-
-        .placeholder-content h3 {
-            color: #aaa;
-            margin-bottom: 15px;
         }
 
         @media (max-width: 768px) {
@@ -201,21 +197,13 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
+
             .header h1 {
-                font-size: 2.2em;
+                font-size: 2.4em;
             }
-            
+
             .section h2 {
                 font-size: 1.8em;
-            }
-            
-            .back-button {
-                position: relative;
-                top: 0;
-                left: 0;
-                margin-bottom: 20px;
-                display: inline-block;
             }
 
             .series-cover {
@@ -229,43 +217,57 @@
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-            <h1>🔍 Krimis</h1>
-            <p>Düstere Geheimnisse der Lüneburger Heide</p>
+            <h1>Krimis</h1>
+            <p>Spannende Fälle und nervenaufreibende Ermittlungen</p>
         </div>
-
         <div class="content-sections">
             <!-- Krimi Serien Bereich -->
             <div class="section">
                 <h2>Serien entdecken</h2>
                 <p class="section-description">
-                    Mehrteilige Kriminalgeschichten mit durchgehenden Charakteren und zusammenhängenden Handlungssträngen.
+                    Mehrteilige Kriminalgeschichten mit durchgehenden Charakteren und
+                    zusammenhängenden Handlungssträngen.
                 </p>
-                
                 <div class="series-item">
                     <img src="geistderheide.jpg" alt="Mysterien der Heide Serie Cover" class="series-cover">
-                    <div class="series-title">🔍 Mysterien der Heide</div>
+                    <div class="series-title">Mysterien der Heide</div>
                     <div class="series-description">
-                        Eine fesselnde Krimi-Trilogie, die die dunklen Geheimnisse der Lüneburger Heide aufdeckt. Von mysteriösen Geistern bis hin zu verschwundenen Dörfern - eine atmosphärische Reise in die Abgründe der menschlichen Seele.
+                        Eine fesselnde Krimi‑Reihe, die die dunklen Geheimnisse der
+                        Lüneburger Heide aufdeckt. Von mysteriösen Geistern bis hin zu
+                        verschwundenen Dörfern – eine atmosphärische Reise in die Abgründe
+                        der menschlichen Seele.
                     </div>
                     <div class="series-stats">
-                        3 Bände • Deutsch & Englisch • Lesen & Vorlesen-System
+                        3 Bände • Deutsch & Englisch • Lesen & Vorlesen‑System
                     </div>
-                    <a href="mysterien-der-heide.html" class="discover-button">Serie entdecken</a>
+                    <div class="series-buttons">
+                        <a href="vorlese-der-geist-der-heide.html">Band 1</a>
+                        <a href="vorlese-der-beginn-des-friedens.html">Band 2</a>
+                        <a href="vorlese-die-schatten-des-vergessenen.html">Band 3</a>
+                    </div>
                 </div>
             </div>
-
             <!-- Einzelne Krimis Bereich -->
             <div class="section">
                 <h2>Bücher entdecken</h2>
                 <p class="section-description">
-                    Standalone Kriminalromane mit abgeschlossenen Handlungen und eigenständigen Charakteren.
+                    Standalone Kriminalromane mit abgeschlossenen Handlungen und
+                    eigenständigen Charakteren.
                 </p>
-                
-                <div class="placeholder-content">
-                    <h3>🔍 Bald verfügbar</h3>
-                    <p>Spannende Einzelkrimis befinden sich in der Entwicklung...</p>
-                    <br>
-                    <p>Freuen Sie sich auf eigenständige Geschichten mit neuen Ermittlern, frischen Fällen und überraschenden Wendungen!</p>
+                <!-- Hinter verschlossenen Türen -->
+                <div class="series-item">
+                    <img src="hinter-verschlossenen-tueren.jpg" alt="Hinter verschlossenen Türen Cover" class="series-cover">
+                    <div class="series-title">Hinter verschlossenen Türen</div>
+                    <div class="series-description">
+                        Ein spannender Krimi über dunkle Geheimnisse hinter verschlossenen
+                        Türen und die Frage, wie gut man seine Nachbarn wirklich kennt.
+                    </div>
+                    <div class="series-stats">
+                        Einzelband • Deutsch & Englisch • Lesen & Vorlesen‑System
+                    </div>
+                    <div class="series-buttons">
+                        <a href="vorlese-hinter-verschlossenen-türen.html">Vorlesen</a>
+                    </div>
                 </div>
             </div>
         </div>
