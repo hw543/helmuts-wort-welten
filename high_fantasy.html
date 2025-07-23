@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High Fantasy - Helmut Wegners Wortwelten</title>
+    <title>High Fantasy – Helmut Wegners Wortwelten</title>
+    <!--
+        Überarbeitete Version der High‑Fantasy‑Seite. Die ursprüngliche Seite
+        verlinkte auf eine nicht existierende Datei (das‑vermaechtnis‑von‑eldoria.html).
+        Diese Version listet alle vorhandenen Vorlese‑Bände der Eldoria‑Saga mit
+        passenden Links auf. Ein Band‑Button führt direkt zur entsprechenden
+        Vorlese‑Datei. Die optische Gestaltung orientiert sich an der
+        Ausgangsversion.
+    -->
     <style>
         * {
             margin: 0;
@@ -163,39 +171,27 @@
             font-style: italic;
         }
 
-        .discover-button {
-            display: block;
+        .series-buttons a {
+            display: inline-block;
             background: linear-gradient(135deg, #ffd700, #ffb300);
             color: #1a0033;
-            padding: 15px 30px;
+            padding: 12px 20px;
             border: none;
             border-radius: 25px;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
             text-decoration: none;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 0 auto;
-            min-width: 200px;
+            margin: 5px;
+            min-width: 120px;
         }
 
-        .discover-button:hover {
+        .series-buttons a:hover {
             background: linear-gradient(135deg, #ffb300, #ff6b35);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
-        }
-
-        .placeholder-content {
-            text-align: center;
-            padding: 40px 20px;
-            color: #d0d0d0;
-            font-style: italic;
-        }
-
-        .placeholder-content h3 {
-            color: #ffd700;
-            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(255, 186, 35, 0.4);
         }
 
         @media (max-width: 768px) {
@@ -203,21 +199,13 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
+
             .header h1 {
-                font-size: 2.2em;
+                font-size: 2.4em;
             }
-            
+
             .section h2 {
                 font-size: 1.8em;
-            }
-            
-            .back-button {
-                position: relative;
-                top: 0;
-                left: 0;
-                margin-bottom: 20px;
-                display: inline-block;
             }
 
             .series-cover {
@@ -231,43 +219,47 @@
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-            <h1>⚔️ High Fantasy</h1>
-            <p>Epische Abenteuer in magischen Welten - Wo Helden geboren werden und Legenden entstehen</p>
+            <h1>High Fantasy</h1>
+            <p>Epische Abenteuer in magischen Welten</p>
         </div>
-
         <div class="content-sections">
             <!-- High Fantasy Serien Bereich -->
             <div class="section">
                 <h2>Serien entdecken</h2>
                 <p class="section-description">
-                    Mehrteilige Fantasy-Epen mit durchgehenden Charakteren und zusammenhängenden magischen Welten.
+                    Mehrteilige Fantasy‑Epen mit durchgehenden Charakteren und
+                    zusammenhängenden magischen Welten.
                 </p>
-                
                 <div class="series-item">
-                    <img src="die prophezeiung.jpg" alt="Das Vermächtnis von Eldoria Serie Cover" class="series-cover">
-                    <div class="series-title">⚔️ Das Vermächtnis von Eldoria</div>
+                    <img src="die prophezeiung.jpg" alt="Das Vermächtnis von Eldoria – Serie Cover" class="series-cover">
+                    <div class="series-title">Das Vermächtnis von Eldoria</div>
                     <div class="series-description">
-                        Eine epische Saga über vier Bände, die das Schicksal des magischen Königreichs Eldoria erzählt. Von der ersten Prophezeiung bis zum finalen Kampf zwischen Licht und Dunkelheit.
+                        Eine epische Saga über vier Bände, die das Schicksal des magischen
+                        Königreichs Eldoria begleitet – von den ersten Prophezeiungen bis
+                        zum finalen Kampf zwischen Licht und Dunkelheit.
                     </div>
                     <div class="series-stats">
-                        4 Bände • Deutsch & Englisch • Lesen & Vorlesen-System
+                        4 Bände • Deutsch & Englisch • Lesen & Vorlesen‑System
                     </div>
-                    <a href="das-vermaechtnis-von-eldoria.html" class="discover-button">Serie entdecken</a>
+                    <div class="series-buttons">
+                        <a href="vorlese-das-vermaechtnis-der-waechter.html">Band 1</a>
+                        <a href="vorlese-die-prophezeiung-von-eldoria.html">Band 2</a>
+                        <a href="vorlese-die-schatten-der-doerfer.html">Band 3</a>
+                        <a href="vorlese-die-schatten-des-vergessenen.html">Band 4</a>
+                    </div>
                 </div>
             </div>
-
             <!-- Einzelne High Fantasy Bücher Bereich -->
             <div class="section">
                 <h2>Bücher entdecken</h2>
                 <p class="section-description">
-                    Standalone Fantasy-Romane mit abgeschlossenen Handlungen und eigenständigen magischen Welten.
+                    Standalone Fantasy‑Romane mit abgeschlossenen Handlungen und
+                    eigenständigen magischen Welten.
                 </p>
-                
-                <div class="placeholder-content">
-                    <h3>🗡️ Bald verfügbar</h3>
-                    <p>Spannende Einzelromane befinden sich in der Entwicklung...</p>
-                    <br>
-                    <p>Freuen Sie sich auf eigenständige Fantasy-Geschichten mit neuen Welten, epischen Schlachten und unvergesslichen Helden!</p>
+                <div class="series-item">
+                    <h3>Bald verfügbar</h3>
+                    <p>Spannende Einzelromane befinden sich in der Entwicklung. Freuen Sie sich
+                        auf neue Welten, epische Schlachten und unvergessliche Helden!</p>
                 </div>
             </div>
         </div>
