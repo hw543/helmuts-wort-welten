@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+<!-- Romantik Fiktion final page generated from romantik-fiktion_updated.html -->
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Romantik Fiktion - Helmut Wegners Wortwelten</title>
     <style>
+        /* styles copied from romantik-fiktion_updated.html */
         * {
             margin: 0;
             padding: 0;
@@ -13,9 +15,9 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #FFE5E5 0%, #FFB6C1 50%, #FF69B4 100%);
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFE6F7 50%, #FFF5E5 100%);
             min-height: 100vh;
-            color: #2c1810;
+            color: #2F4F4F;
             line-height: 1.6;
         }
 
@@ -29,10 +31,10 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 40px 20px;
-            background: linear-gradient(135deg, #FFE4E6 0%, #FFF0F5 100%);
+            background: linear-gradient(135deg, #FFE4E1 0%, #F5F5F5 100%);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 3px solid #FF69B4;
+            border: 3px solid #FFD700;
             position: relative;
         }
 
@@ -40,7 +42,7 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: linear-gradient(135deg, #C2185B, #E91E63);
+            background: linear-gradient(135deg, #C06C84, #6C5B7B);
             color: white;
             padding: 10px 20px;
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -52,21 +54,21 @@
         }
 
         .back-button:hover {
-            background: linear-gradient(135deg, #E91E63, #AD1457);
+            background: linear-gradient(135deg, #6C5B7B, #355C7D);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(194, 24, 91, 0.3);
+            box-shadow: 0 5px 15px rgba(96,89,124,0.4);
         }
 
         .header h1 {
             font-size: 3em;
             margin-bottom: 20px;
-            color: #C2185B;
-            text-shadow: 2px 2px 4px rgba(194, 24, 91, 0.3);
+            color: #E94E77;
+            text-shadow: 2px 2px 4px rgba(233,78,119,0.3);
         }
 
         .header p {
             font-size: 1.3em;
-            color: #8B008B;
+            color: #6C5B7B;
             font-style: italic;
         }
 
@@ -78,48 +80,48 @@
         }
 
         .section {
-            background: linear-gradient(135deg, #FFF8F0 0%, #FFF0F5 100%);
+            background: linear-gradient(135deg, #FFF5FA 0%, #F0F8FF 100%);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border: 2px solid #FFB6C1;
+            border: 2px solid #DDA0DD;
             transition: all 0.3s ease;
         }
 
         .section:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            border-color: #FF69B4;
+            border-color: #FFD700;
         }
 
         .section h2 {
             font-size: 2.2em;
-            color: #C2185B;
+            color: #E94E77;
             margin-bottom: 20px;
             text-align: center;
-            text-shadow: 1px 1px 2px rgba(194, 24, 91, 0.3);
+            text-shadow: 1px 1px 2px rgba(233,78,119,0.3);
         }
 
         .section-description {
             font-size: 1.1em;
             margin-bottom: 30px;
             text-align: center;
-            color: #2c1810;
+            color: #2F4F4F;
             line-height: 1.6;
         }
 
         .series-item {
-            background: rgba(255, 182, 193, 0.3);
+            background: rgba(255, 192, 203, 0.3);
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 20px;
-            border: 1px solid rgba(255, 105, 180, 0.4);
+            border: 1px solid rgba(221, 160, 221, 0.4);
             transition: all 0.3s ease;
             text-align: center;
         }
 
         .series-item:hover {
-            background: rgba(255, 182, 193, 0.5);
+            background: rgba(255, 192, 203, 0.5);
             transform: translateY(-2px);
         }
 
@@ -140,7 +142,7 @@
 
         .series-title {
             font-size: 1.6em;
-            color: #C2185B;
+            color: #E94E77;
             margin-bottom: 10px;
             text-align: center;
             font-weight: bold;
@@ -148,7 +150,7 @@
 
         .series-description {
             font-size: 1em;
-            color: #2c1810;
+            color: #2F4F4F;
             margin-bottom: 20px;
             text-align: center;
             line-height: 1.5;
@@ -163,38 +165,26 @@
         }
 
         .discover-button {
-            display: block;
-            background: linear-gradient(135deg, #C2185B, #E91E63);
+            display: inline-block;
+            background: linear-gradient(135deg, #E94E77, #C06C84);
             color: white;
-            padding: 15px 30px;
+            padding: 12px 24px;
             border: none;
             border-radius: 25px;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
             text-decoration: none;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 0 auto;
-            min-width: 200px;
+            margin: 5px;
+            min-width: 120px;
         }
 
         .discover-button:hover {
-            background: linear-gradient(135deg, #E91E63, #AD1457);
+            background: linear-gradient(135deg, #C06C84, #6C5B7B);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(194, 24, 91, 0.4);
-        }
-
-        .placeholder-content {
-            text-align: center;
-            padding: 40px 20px;
-            color: #696969;
-            font-style: italic;
-        }
-
-        .placeholder-content h3 {
-            color: #C2185B;
-            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(192,108,132,0.4);
         }
 
         @media (max-width: 768px) {
@@ -202,21 +192,13 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
+
             .header h1 {
-                font-size: 2.2em;
+                font-size: 2.4em;
             }
-            
+
             .section h2 {
                 font-size: 1.8em;
-            }
-            
-            .back-button {
-                position: relative;
-                top: 0;
-                left: 0;
-                margin-bottom: 20px;
-                display: inline-block;
             }
 
             .series-cover {
@@ -230,57 +212,62 @@
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-            <h1>💕 Romantik Fiktion</h1>
-            <p>Fesselnde Liebesgeschichten voller Leidenschaft und Geheimnisse</p>
+            <h1>Romantik Fiktion</h1>
+            <p>Fesselnde Liebesgeschichten voller Leidenschaft und Gefühl</p>
         </div>
-
         <div class="content-sections">
-            <!-- Romantik-Serien Bereich -->
+            <!-- Serienbereich -->
             <div class="section">
                 <h2>Serien entdecken</h2>
                 <p class="section-description">
-                    Mehrteilige Liebesgeschichten mit durchgehenden Charakteren und zusammenhängenden emotionalen Entwicklungen.
+                    Herzergreifende Reihen mit wiederkehrenden Figuren und
+                    vielschichtigen Liebesgeschichten.
                 </p>
-                
                 <!-- Serie 1: Verlangen der Herzen -->
                 <div class="series-item">
-                    <img src="unter-dem-sternenhimmel.jpg" alt="Verlangen der Herzen Serie Cover" class="series-cover">
-                    <div class="series-title">💖 Verlangen der Herzen</div>
+                    <img src="die kunst der hingabe.jpg" alt="Verlangen der Herzen Serie Cover" class="series-cover">
+                    <div class="series-title">Verlangen der Herzen</div>
                     <div class="series-description">
-                        Eine emotionale Reise durch die Adelaide Hills. Vier Bände voller Leidenschaft, Geheimnisse und der großen Liebe zwischen Clara und ihren beiden Verehrern.
+                        Eine emotionale Reise durch Höhen und Tiefen der Liebe. Vier Bände voller Leidenschaft, innerer Konflikte und der Suche nach dem richtigen Weg.
                     </div>
-                    <div class="series-stats">
-                        4 Bände • Deutsch & Englisch • Lesen & Vorlesen-System
+                    <div class="series-stats">4 Bände • Deutsch & Englisch • Lesen & Vorlesen-System</div>
+                    <div>
+                        <a href="vorlese-die-kunst-der-hingabe.html" class="discover-button">Band 1</a>
+                        <a href="vorlese-die-tiefe-der-begierde.html" class="discover-button">Band 2</a>
+                        <a href="vorlese-der-beginn-des-friedens.html" class="discover-button">Band 3</a>
+                        <a href="vorlese-der-geist-der-hingabe.html" class="discover-button">Band 4</a>
                     </div>
-                    <a href="verlangen-der-herzen.html" class="discover-button">Serie entdecken</a>
                 </div>
-
-                <!-- Serie 2: Die verborgenen Kammern -->
+                <!-- Serie 2: Verborgene Gefühle -->
                 <div class="series-item">
-                    <img src="hinter-verschlossenen-tueren.jpg" alt="Die verborgenen Kammern Serie Cover" class="series-cover">
-                    <div class="series-title">🌹 Die verborgenen Kammern</div>
+                    <img src="verborgene-gefuehle.jpg" alt="Verborgene Gefühle Serie Cover" class="series-cover">
+                    <div class="series-title">Verborgene Gefühle</div>
                     <div class="series-description">
-                        Geheimnisvolle Romanzen in alten Villen und verwunschenen Orten. Eine Trilogie voller Mysterien, verbotener Liebe und dunkler Familiengeheimnisse.
+                        Geheimnisvolle Romanzen in alten Villen und verwunschenen Orten. Drei Bände voller Mysterien, verbotener Liebe und dunkler Familiengeheimnisse.
                     </div>
-                    <div class="series-stats">
-                        3 Bände • Deutsch & Englisch & Spanisch • Lesen & Vorlesen-System
+                    <div class="series-stats">3 Bände • Deutsch & Englisch • Lesen & Vorlesen-System</div>
+                    <div>
+                        <a href="vorlese-verborgene-gefuehle.html" class="discover-button">Band 1</a>
+                        <a href="vorlese-im-netz-der-liebe.html" class="discover-button">Band 2</a>
+                        <a href="vorlese-wo-liebe-wachsen-darf.html" class="discover-button">Band 3</a>
                     </div>
-                    <a href="die-verborgenen-kammern.html" class="discover-button">Serie entdecken</a>
                 </div>
             </div>
-
-            <!-- Einzelne Romantik-Bücher Bereich -->
+            <!-- Einzelne Romantik‑Bücher Bereich -->
             <div class="section">
                 <h2>Bücher entdecken</h2>
                 <p class="section-description">
                     Standalone Liebesromane mit abgeschlossenen Handlungen und eigenständigen Charakteren voller Emotionen.
                 </p>
-                
-                <div class="placeholder-content">
-                    <h3>💕 Bald verfügbar</h3>
-                    <p>Spannende Einzelromane befinden sich in der Entwicklung...</p>
-                    <br>
-                    <p>Freuen Sie sich auf eigenständige Liebesgeschichten mit neuen Charakteren, frischen Gefühlen und überraschenden Wendungen!</p>
+                <!-- Platzhalter für zukünftige Einzelbände -->
+                <div class="series-item">
+                    <img src="placeholder_light_gray_block.png" alt="Bald verfügbar" class="series-cover">
+                    <div class="series-title">Bald verfügbar</div>
+                    <div class="series-description">
+                        Spannende Einzelromane befinden sich in der Entwicklung …
+                    </div>
+                    <div class="series-stats">Einzelband</div>
+                    <a href="#" class="discover-button" style="background: gray; cursor: not-allowed;">Noch nicht verfügbar</a>
                 </div>
             </div>
         </div>
