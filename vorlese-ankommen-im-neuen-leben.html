@@ -27,6 +27,26 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             overflow: visible;
         }
+        .back-navigation {
+            background: linear-gradient(135deg, #E94E77, #C06C84);
+            padding: 15px 30px;
+            border-radius: 15px 15px 0 0;
+        }
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
         .header {
             background: linear-gradient(135deg, #E94E77, #C06C84);
             color: #FFF8F0;
@@ -179,11 +199,17 @@
             .header h1 {
                 font-size: 2em;
             }
+            .back-navigation {
+                padding: 10px 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="back-navigation">
+            <a href="verlangen-der-herzen.html" class="back-button">← Zurück zur Serie</a>
+        </div>
         <div class="header">
             <div class="book-cover">
                 <img src="ankommen-im-neuen-leben.jpg" alt="Ankommen im neuen Leben – Cover" />
