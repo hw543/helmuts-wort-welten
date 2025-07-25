@@ -1,1 +1,523 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinderbücher Lesen - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            line-height: 1.8;
+            color: #2c1810;
+            background: linear-gradient(135deg, #FF69B4 0%, #87CEEB 30%, #98FB98 70%, #FFB6C1 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFFACD;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #FF69B4, #87CEEB);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .controls {
+            background: #F0E68C;
+            padding: 20px;
+            border-bottom: 3px solid #DDD;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-flags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .flag-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            border: 2px solid transparent;
+        }
+
+        .flag-btn.active {
+            border-color: #FF69B4;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+
+        .band-navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-band {
+            background: linear-gradient(135deg, #FF69B4, #87CEEB);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-band.active {
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-band:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .book-title {
+            color: #FF69B4;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #87CEEB;
+            padding-bottom: 15px;
+        }
+
+        .chapter-title {
+            color: #4169E1;
+            font-size: 1.5em;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+
+        .text-content p:first-child::first-letter {
+            font-size: 3em;
+            color: #FF69B4;
+            float: left;
+            line-height: 1;
+            margin: 0 8px 0 0;
+            font-weight: bold;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #87CEEB;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .band-navigation {
+                gap: 5px;
+            }
+            
+            .btn-band {
+                font-size: 0.8em;
+                padding: 8px 12px;
+            }
+            
+            .content {
+                padding: 20px;
+                font-size: 1em;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Kinderbücher zum Lesen</h1>
+            <p>Spannende Abenteuer für junge Entdecker - Deutsch und Englisch</p>
+        </div>
+
+        <div class="controls">
+            <div class="language-flags">
+                <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+            </div>
+            <div class="band-navigation">
+                <button class="btn-band active" onclick="showBook(1)">Zauberakademie</button>
+                <button class="btn-band" onclick="showBook(2)">Zeitnarr</button>
+                <button class="btn-band" onclick="showBook(3)">Rätseldetektivclub</button>
+                <button class="btn-band" onclick="showBook(4)">Verborgener Wald</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Buch 1: Die Zauberakademie von Morgenstern -->
+            <div id="book1" class="book-content">
+                <div class="book-cover">
+                    <img src="zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Die Zauberakademie von Morgenstern</div>
+                    <div class="chapter-title">Kapitel 1: Die geheimnisvolle Einladung</div>
+                    <div class="text-content">
+                        <p>Die Morgenluft war kühl und klar, als Leonas Grünfeld seinen Schulranzen über die Schulter schwang und den staubigen Weg zur Schule einschlug. Der Pfad schlängelte sich zwischen alten Eichen hindurch, deren Äste sich wie schützende Arme über ihm verwoben und Schatten auf den ausgetretenen Weg warfen.</p>
+                        
+                        <p>Sein Dorf, eingebettet in weite Felder und dichte Wälder, erwachte langsam zum Leben. Die Morgensonne malte goldene Streifen über die Wiesen, auf denen der Tau wie tausend kleine Diamanten funkelte. Kühe muhten leise in der Ferne, ihre Stimmen mischten sich mit dem Gezwitscher der Vögel, die ihre Morgenliedchen sangen.</p>
+                        
+                        <p>Für andere mochte es ein gewöhnlicher Tag sein, aber Leonas spürte eine ungewöhnliche Anspannung in der Luft, ein seltsames Kribbeln, das über seine Haut wanderte und ihn innerlich unruhig machte. Es war, als würde sich etwas Wichtiges anbahnen, etwas, das sein Leben für immer verändern würde.</p>
+                        
+                        <p>Leonas war ein schüchterner Junge von zwölf Jahren mit strohblonden Haaren, die ihm ständig in die Stirn fielen, und grünen Augen, die oft nachdenklich und ein wenig melancholisch in die Ferne blickten. Er mied die lauten Kinder in seiner Klasse und zog es vor, Zeit mit den Tieren des Waldes zu verbringen, die ihn nie verspotteten oder ausschlossen.</p>
+                        
+                        <p>Am Ende des langen Schultages eilte Leonas nach Hause und verbrachte den Nachmittag in seinem Lieblingsversteck, einer kleinen Lichtung im Wald, wo ein alter Baum mit knorrigen Wurzeln stand. Hier konnte er den wahren Stimmen der Natur lauschen und sich wie ein Teil der natürlichen Welt fühlen.</p>
+                        
+                        <p>Doch heute war etwas anders. Als er die Augen öffnete, bemerkte er eine seltsame Gestalt neben dem Stamm des alten Baumes. Es war ein Mann, hochgewachsen und von edler Haltung, in einen schimmernden, dunkelblauen Mantel gehüllt, der im gedämpften Licht des Waldes zu funkeln schien wie der Nachthimmel voller Sterne.</p>
+                        
+                        <p>"Leonas Grünfeld, nehme ich an?", fragte der Mann mit einer warmen und ruhigen Stimme. "Mein Name ist Elias Nachtflug. Ich bin ein Bote der Zauberakademie von Morgenstern. Und ich habe eine besondere Einladung für dich."</p>
+                        
+                        <p>Mit diesen Worten zog er eine Pergamentrolle aus seinem Mantel, die in einem sanften goldenen Licht schimmerte. Als Leonas das Pergament entrollte, bewegten sich die Buchstaben sanft, und er las die Worte, die sein Leben für immer verändern würden: Er war auserwählt worden, ein Schüler der Zauberakademie zu werden.</p>
+                        
+                        <p>Am nächsten Morgen stand eine prachtvolle Kutsche vor seinem Haus, gezogen von zwei schneeweißen, geflügelten Pferden. Als Leonas einstieg und die Kutsche sich in die Lüfte erhob, wusste er, dass das größte Abenteuer seines Lebens gerade erst begonnen hatte.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">The Academy of Magic at Morgenstern</div>
+                    <div class="chapter-title">Chapter 1: The Mysterious Invitation</div>
+                    <div class="text-content">
+                        <p>The morning air was cool and clear as Leonas Greenfield swung his school bag over his shoulder and set off down the dusty path to school. The path wound between old oak trees whose branches wove together like protective arms above him, casting shadows on the worn trail.</p>
+                        
+                        <p>His village, nestled among wide fields and dense forests, was slowly awakening to life. The morning sun painted golden stripes across the meadows where dew sparkled like thousands of tiny diamonds. Cows lowed softly in the distance, their voices mixing with the chirping of birds singing their morning songs.</p>
+                        
+                        <p>For others, it might have been an ordinary day, but Leonas felt an unusual tension in the air, a strange tingling that wandered across his skin and made him restless inside. It was as if something important was about to happen, something that would change his life forever.</p>
+                        
+                        <p>Leonas was a shy twelve-year-old boy with straw-blond hair that constantly fell into his forehead, and green eyes that often gazed thoughtfully and somewhat melancholically into the distance. He avoided the loud children in his class and preferred to spend time with the animals of the forest, who never mocked or excluded him.</p>
+                        
+                        <p>At the end of the long school day, Leonas hurried home and spent the afternoon in his favorite hiding place, a small clearing in the forest where an old tree with gnarled roots stood. Here he could listen to the true voices of nature and feel like part of the natural world.</p>
+                        
+                        <p>But today was different. When he opened his eyes, he noticed a strange figure beside the trunk of the old tree. It was a man, tall and of noble bearing, wrapped in a shimmering dark blue cloak that seemed to sparkle in the dim light of the forest like a starry night sky.</p>
+                        
+                        <p>"Leonas Greenfield, I presume?" asked the man with a warm and calm voice. "My name is Elias Nightflight. I am a messenger from the Academy of Magic at Morgenstern. And I have a special invitation for you."</p>
+                        
+                        <p>With these words, he drew a parchment scroll from his cloak that shimmered in a soft golden light. When Leonas unrolled the parchment, the letters moved gently, and he read the words that would change his life forever: he had been chosen to become a student at the Academy of Magic.</p>
+                        
+                        <p>The next morning, a magnificent carriage stood before his house, drawn by two snow-white, winged horses. As Leonas climbed in and the carriage rose into the skies, he knew that the greatest adventure of his life had just begun.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buch 2: Der Zeitnarr -->
+            <div id="book2" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="zeitnarr.jpg" alt="Der Zeitnarr">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Der Zeitnarr</div>
+                    <div class="chapter-title">Kapitel 1: Der Flohmarktfund</div>
+                    <div class="text-content">
+                        <p>Der Flohmarkt war eine Welt für sich. Reihen von Ständen zogen sich über den kleinen Marktplatz, jeder beladen mit einer kunterbunten Mischung aus Altem, Kuriosem und Wertvollem. Max schob sich durch die Menschenmenge, die Hände tief in den Taschen seiner abgetragenen Jeans vergraben.</p>
+                        
+                        <p>Seine Mutter hatte ihn mitgeschleppt, obwohl er eigentlich lieber zu Hause geblieben wäre. Er streifte ziellos durch die Gassen, bis sein Blick an einem kleinen Stand hängen blieb. Ein alter Mann mit einem zerknitterten Gesicht saß auf einem wackeligen Stuhl hinter einem Tisch voller scheinbar wertlosem Kram.</p>
+                        
+                        <p>Doch etwas auf diesem Tisch zog Max magisch an. Eine Taschenuhr. Die Uhr war aus Messing, verziert mit filigranen Gravuren, die sich wie ein Labyrinth über die Oberfläche zogen. Ihr Glas war leicht zerkratzt, und der Deckel lag halb offen.</p>
+                        
+                        <p>"Interessierst du dich für alte Dinge?" fragte der Mann mit heiserer Stimme. Seine Augen funkelten auf eine Art, die Max nicht einordnen konnte. "Für dich? Zehn Euro. Aber sei vorsichtig mit ihr. Diese Uhr hat mehr Geschichte, als du dir vorstellen kannst."</p>
+                        
+                        <p>Zuhause setzte sich Max an seinen Schreibtisch und betrachtete das Zifferblatt genauer. Es schien fast zu leben. Ohne lange nachzudenken, zog er die kleine Krone an der Seite auf. Plötzlich schien die Luft im Raum zu vibrieren. Ein tiefes Summen erfüllte seine Ohren, und die Wände um ihn herum verschwammen.</p>
+                        
+                        <p>Ein grelles Licht flammte auf, und für einen Moment schien die Welt stillzustehen. Als Max blinzelte, fand er sich nicht mehr in seinem Zimmer wieder. Er stand in einer engen, kopfsteingepflasterten Gasse. Die Gebäude zu beiden Seiten waren alt und schief, aus grobem Holz und Stein gebaut.</p>
+                        
+                        <p>Menschen in seltsamen Kleidern eilten an ihm vorbei. "Wo bin ich?" murmelte er, doch seine Stimme klang fremd. Dann hörte er eine Stimme hinter sich: "Na, Zeitnarr? Du hast keine Ahnung, was du da angerichtet hast."</p>
+                        
+                        <p>Max drehte sich ruckartig um, doch die Gasse war leer. Eine Frau in einem Umhang zog ihn in einen Hauseingang. "Die Jäger kommen", flüsterte sie. "Wenn du nicht schnell lernst, die Uhr zu kontrollieren, wirst du nicht überleben."</p>
+                        
+                        <p>Max begriff, dass er mit der mysteriösen Uhr nicht nur durch die Zeit gereist war, sondern auch in große Gefahr geraten war. Das Abenteuer hatte gerade erst begonnen, und er musste lernen, seine neue Macht zu verstehen, bevor es zu spät war.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">The Time Fool</div>
+                    <div class="chapter-title">Chapter 1: The Flea Market Find</div>
+                    <div class="text-content">
+                        <p>The flea market was a world of its own. Rows of stalls stretched across the small marketplace, each loaded with a colorful mixture of old, curious, and valuable items. Max pushed through the crowd, his hands buried deep in the pockets of his worn jeans.</p>
+                        
+                        <p>His mother had dragged him along, although he would have preferred to stay home. He wandered aimlessly through the alleys until his gaze fell upon a small stall. An old man with a wrinkled face sat on a wobbly chair behind a table full of seemingly worthless junk.</p>
+                        
+                        <p>But something on this table magically attracted Max. A pocket watch. The watch was made of brass, decorated with delicate engravings that spread like a labyrinth across the surface. Its glass was slightly scratched, and the lid lay half open.</p>
+                        
+                        <p>"Are you interested in old things?" asked the man with a hoarse voice. His eyes sparkled in a way that Max couldn't place. "For you? Ten euros. But be careful with it. This watch has more history than you can imagine."</p>
+                        
+                        <p>At home, Max sat at his desk and examined the dial more closely. It almost seemed to be alive. Without thinking long, he pulled the small crown on the side. Suddenly the air in the room seemed to vibrate. A deep humming filled his ears, and the walls around him blurred.</p>
+                        
+                        <p>A bright light flared up, and for a moment the world seemed to stand still. When Max blinked, he was no longer in his room. He stood in a narrow, cobblestone alley. The buildings on both sides were old and crooked, built of rough wood and stone.</p>
+                        
+                        <p>People in strange clothes hurried past him. "Where am I?" he murmured, but his voice sounded foreign. Then he heard a voice behind him: "Well, Time Fool? You have no idea what you've done."</p>
+                        
+                        <p>Max turned around abruptly, but the alley was empty. A woman in a cloak pulled him into a doorway. "The hunters are coming," she whispered. "If you don't quickly learn to control the watch, you won't survive."</p>
+                        
+                        <p>Max realized that with the mysterious watch, he had not only traveled through time but had also gotten into great danger. The adventure had just begun, and he had to learn to understand his new power before it was too late.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buch 3: Der Rätseldetektivclub -->
+            <div id="book3" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="raetseldetektivclub.jpg" alt="Der Rätseldetektivclub">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Der Rätseldetektivclub</div>
+                    <div class="chapter-title">Kapitel 1: Ein neuer Fall beginnt</div>
+                    <div class="text-content">
+                        <p>Die Nachmittagssonne schien durch die hohen Fenster der Schulbibliothek, und Max blätterte gelangweilt in einem alten Buch. Sein Blick wanderte über die staubigen Regale, als er plötzlich einen alten, vergilbten Umschlag bemerkte, der aus einem zerlesenen Band hervorstand.</p>
+                        
+                        <p>Neugierig zog er den Umschlag heraus und öffnete ihn vorsichtig. Innen befand sich eine Notiz in geschwungener Handschrift: "Suche dort, wo die Schatten Geschichten erzählen, und finde den ersten Schlüssel." Max' Herz schlug schneller. Das klang nach einem Rätsel, das nur darauf wartete, gelöst zu werden.</p>
+                        
+                        <p>Der Club versammelte sich in ihrem geheimen Hauptquartier: dem alten Baumhaus im Garten von Jonas. Die Wände waren mit Landkarten, Zeitungsausschnitten und Fotos dekoriert, die sie von ihren bisherigen Abenteuern gesammelt hatten. "Was hast du da, Max?", fragte Emma neugierig.</p>
+                        
+                        <p>Die Gruppe diskutierte lebhaft, bis sie sich darauf einigte, zuerst das alte Theater zu untersuchen. "Wo die Schatten Geschichten erzählen" - das klang wie das perfekte Versteck für einen Hinweis.</p>
+                        
+                        <p>Am Abend schlichen sich die vier Freunde in das alte, längst geschlossene Theater. Der große Saal war dunkel, und Staub tanzte in den Lichtstrahlen ihrer Taschenlampen. Emma entdeckte schließlich eine unscheinbare Holztruhe, die halb unter der Bühne verborgen war.</p>
+                        
+                        <p>Mit klopfendem Herzen öffneten sie die Truhe und fanden darin eine kleine Karte und eine weitere Nachricht: "Der Weg beginnt mit einem Schritt ins Ungewisse. Folge den Sternen, und du wirst den zweiten Hinweis finden."</p>
+                        
+                        <p>Als die Kinder das Theater verließen, bemerkten sie, dass sie nicht allein waren. Ein dunkler Schatten bewegte sich hinter einem der Fenster. "Jemand beobachtet uns", flüsterte Emma. Sie rannten in eine schmale Gasse und versteckten sich hinter alten Kisten.</p>
+                        
+                        <p>"Das war knapp", sagte Lena atemlos. "Aber jetzt wissen wir, dass wir nicht die Einzigen sind, die hinter diesem Rätsel her sind." Max nickte. "Das macht es nur noch spannender. Morgen gehen wir zum Uhrenturm."</p>
+                        
+                        <p>Max wusste, dass dies kein gewöhnliches Abenteuer werden würde - und der wahre Schlüssel im Verborgenen lag. Das Rätsel hatte sie in seinen Bann gezogen, und es gab kein Zurück mehr.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">The Puzzle Detective Club</div>
+                    <div class="chapter-title">Chapter 1: A New Case Begins</div>
+                    <div class="text-content">
+                        <p>The afternoon sun shone through the tall windows of the school library, and Max was leafing boredly through an old book. His gaze wandered over the dusty shelves when he suddenly noticed an old, yellowed envelope protruding from a well-worn volume.</p>
+                        
+                        <p>Curious, he pulled out the envelope and opened it carefully. Inside was a note in flowing handwriting: "Search where shadows tell stories, and find the first key." Max's heart beat faster. This sounded like a puzzle just waiting to be solved.</p>
+                        
+                        <p>The club gathered in their secret headquarters: the old tree house in Jonas's garden. The walls were decorated with maps, newspaper clippings, and photos they had collected from their previous adventures. "What do you have there, Max?" Emma asked curiously.</p>
+                        
+                        <p>The group discussed animatedly until they agreed to investigate the old theater first. "Where shadows tell stories" - that sounded like the perfect hiding place for a clue.</p>
+                        
+                        <p>In the evening, the four friends snuck into the old, long-closed theater. The great hall was dark, and dust danced in the light beams of their flashlights. Emma finally discovered an inconspicuous wooden chest that was half hidden under the stage.</p>
+                        
+                        <p>With pounding hearts, they opened the chest and found a small map and another message: "The path begins with a step into the unknown. Follow the stars, and you will find the second clue."</p>
+                        
+                        <p>As the children left the theater, they noticed they were not alone. A dark shadow moved behind one of the windows. "Someone is watching us," Emma whispered. They ran into a narrow alley and hid behind old boxes.</p>
+                        
+                        <p>"That was close," Lena said breathlessly. "But now we know we're not the only ones after this puzzle." Max nodded. "That just makes it more exciting. Tomorrow we go to the clock tower."</p>
+                        
+                        <p>Max knew this wouldn't be an ordinary adventure - and the true key lay hidden. The puzzle had drawn them under its spell, and there was no turning back.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buch 4: Der verborgene Wald -->
+            <div id="book4" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="verborgenerwald.jpg" alt="Der verborgene Wald">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Der verborgene Wald</div>
+                    <div class="chapter-title">Kapitel 1: Die geheimnisvolle Karte</div>
+                    <div class="text-content">
+                        <p>Die Sonne neigte sich dem Horizont entgegen und tauchte den Himmel in ein sanftes Orange. Max und Lisa standen auf dem alten Marktplatz ihrer Stadt und schauten sich neugierig um. Der Platz war leer, die meisten Geschäfte hatten bereits geschlossen, und nur das entfernte Kichern der Kinder, die auf dem Heimweg waren, war zu hören.</p>
+                        
+                        <p>"Glaubst du, es ist wirklich der Verborgene Wald?", fragte Max aufgeregt. Er sprang von einem Bein auf das andere und klopfte sich mit der Hand auf die Tasche, in der er eine kleine Notiz versteckt hatte, die sie den ganzen Nachmittag über verfolgt hatte.</p>
+                        
+                        <p>Sie hatten die Nachricht in einem alten Buch gefunden, das sie im Antiquariat der Stadt entdeckt hatten. Die Nachricht sprach von einem alten Mann, der sie zur geheimen Karte führen würde - eine Karte, die zu einem versteckten Ort voller Magie und Abenteuer führte.</p>
+                        
+                        <p>"Schau mal da!", rief Max plötzlich und zeigte auf einen schmalen, fast verborgenen Weg zwischen den Häusern. Am Ende des Weges stand ein alter Mann in einem langen, grauen Umhang. Seine Augen leuchteten wie zwei funkelnde Sterne.</p>
+                        
+                        <p>"Ah, ihr seid gekommen", sagte er mit einer Stimme, die sich wie das Flüstern des Windes anhörte. "Ich habe gewusst, dass ihr es seid." Er zog eine alte, zusammengerollte Karte aus seinem Mantel und überreichte sie Max. Die Karte war mit seltsamen Symbolen und bunten, geheimen Markierungen verziert.</p>
+                        
+                        <p>"Der Verborgene Wald", erklärte der Mann. "Er wartet auf euch. Wenn ihr ihm begegnet, werdet ihr ein Geheimnis erfahren, das schon viele Jahre verborgen ist. Doch nur die, die das Herz eines Abenteurers haben, können es finden."</p>
+                        
+                        <p>Max' Augen glänzten vor Aufregung, während Lisa die Karte misstrauisch betrachtete. Als der alte Mann plötzlich verschwand, als hätte er sich im Schatten aufgelöst, standen sie einen Moment verblüfft da.</p>
+                        
+                        <p>Die Karte in Max' Händen begann zu schimmern, und ein warmes, goldenes Licht erstrahlte. Es war, als ob die Karte von einer eigenen, geheimen Energie erweckt wurde. "Sie lebt...", flüsterte Lisa fasziniert.</p>
+                        
+                        <p>Mit einem letzten Blick zurück auf die Stadt traten Max, Lisa und Bruno, ihr Hund, in den geheimen Wald ein. Der Wald schien in dieser Nacht lebendig zu sein, und sie spürten, dass sie nicht alleine auf diesem Weg waren.</p>
+                        
+                        <p>"Bist du bereit?", fragte Max mit einem schelmischen Grinsen. "Ich weiß nicht", sagte Lisa nachdenklich. "Aber ich glaube, die Reise hat gerade erst begonnen." Und so begann ihr Abenteuer - eine Reise, die sie nie vergessen würden.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">The Hidden Forest</div>
+                    <div class="chapter-title">Chapter 1: The Mysterious Map</div>
+                    <div class="text-content">
+                        <p>The sun was setting toward the horizon, painting the sky in a soft orange. Max and Lisa stood on the old marketplace of their town, looking around curiously. The square was empty, most shops had already closed, and only the distant giggling of children on their way home could be heard.</p>
+                        
+                        <p>"Do you think it's really the Hidden Forest?" Max asked excitedly. He jumped from one leg to the other and tapped his pocket with his hand, where he had hidden a small note that had occupied them all afternoon.</p>
+                        
+                        <p>They had found the message in an old book they had discovered in the town's antique shop. The message spoke of an old man who would lead them to the secret map - a map that led to a hidden place full of magic and adventure.</p>
+                        
+                        <p>"Look there!" Max suddenly shouted, pointing to a narrow, almost hidden path between the houses. At the end of the path stood an old man in a long, gray cloak. His eyes shone like two twinkling stars.</p>
+                        
+                        <p>"Ah, you have come," he said with a voice that sounded like the whisper of the wind. "I knew it was you." He pulled an old, rolled-up map from his cloak and handed it to Max. The map was decorated with strange symbols and colorful, secret markings.</p>
+                        
+                        <p>"The Hidden Forest," the man explained. "It awaits you. When you encounter it, you will learn a secret that has been hidden for many years. But only those who have the heart of an adventurer can find it."</p>
+                        
+                        <p>Max's eyes gleamed with excitement, while Lisa looked at the map suspiciously. When the old man suddenly disappeared, as if he had dissolved in the shadows, they stood stunned for a moment.</p>
+                        
+                        <p>The map in Max's hands began to shimmer, and a warm, golden light shone forth. It was as if the map was awakened by its own secret energy. "It's alive..." Lisa whispered, fascinated.</p>
+                        
+                        <p>With one last look back at the town, Max, Lisa, and Bruno, their dog, entered the secret forest. The forest seemed alive that night, and they felt they were not alone on this path.</p>
+                        
+                        <p>"Are you ready?" Max asked with a mischievous grin. "I don't know," Lisa said thoughtfully. "But I think the journey has just begun." And so their adventure began - a journey they would never forget.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="kinderbuecher.html" class="btn-back">← Zurück zu Kinderbücher</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentBook = 1;
+        let currentLanguage = 'de';
+
+        function showBook(bookNumber) {
+            // Verstecke alle Bücher
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`book${i}`).classList.add('hidden');
+                document.querySelectorAll('.btn-band')[i-1].classList.remove('active');
+            }
+            
+            // Zeige ausgewähltes Buch
+            document.getElementById(`book${bookNumber}`).classList.remove('hidden');
+            document.querySelectorAll('.btn-band')[bookNumber-1].classList.add('active');
+            
+            currentBook = bookNumber;
+            
+            // Stelle sicher, dass die richtige Sprache angezeigt wird
+            showLanguage(currentLanguage);
+        }
+
+        function showLanguage(lang) {
+            // Verstecke alle Sprachversionen
+            document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Zeige gewählte Sprache
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update Flag-Buttons
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
+            
+            currentLanguage = lang;
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            showBook(1); // Zeige erstes Buch
+            showLanguage('de'); // Zeige deutsche Version
+        });
+    </script>
+</body>
+</html>
