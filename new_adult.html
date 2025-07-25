@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- New Adult final page generated from new_adult_updated.html -->
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -144,25 +143,34 @@
             font-style: italic;
         }
         .discover-button {
-            display: inline-block;
+            display: block;
             background: linear-gradient(135deg, #E94E77, #C06C84);
             color: white;
-            padding: 12px 24px;
+            padding: 15px 30px;
             border: none;
             border-radius: 25px;
-            font-size: 1em;
+            font-size: 1.1em;
             font-weight: bold;
             text-decoration: none;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 5px;
-            min-width: 120px;
+            margin: 0 auto;
+            min-width: 200px;
         }
         .discover-button:hover {
             background: linear-gradient(135deg, #C06C84, #6C5B7B);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(192,108,132,0.4);
+        }
+        .unavailable {
+            background: linear-gradient(135deg, #999, #666);
+            cursor: not-allowed;
+        }
+        .unavailable:hover {
+            background: linear-gradient(135deg, #999, #666);
+            transform: none;
+            box-shadow: none;
         }
         @media (max-width: 768px) {
             .content-sections {
@@ -186,7 +194,7 @@
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-            <h1>New Adult</h1>
+            <h1>New Adult</h1>
             <p>Emotionale Geschichten über das Erwachsenwerden – Liebe, Berufung und Selbstfindung</p>
         </div>
         <div class="content-sections">
@@ -196,6 +204,7 @@
                 <p class="section-description">
                     Langformatige Erzählungen über junge Erwachsene, die ihren Weg im Leben suchen und dabei große Gefühle erleben.
                 </p>
+                
                 <!-- Serie: Gemeinsam in die Zukunft -->
                 <div class="series-item">
                     <img src="gemeinsam-in-die-zukunft.jpg" alt="Gemeinsam in die Zukunft Serie Cover" class="series-cover">
@@ -204,38 +213,36 @@
                         Eine bewegende Reihe über Zusammenhalt, Mut und die erste große Liebe. Drei Bände begleiten die Protagonisten von ihren ersten Träumen bis zur Verwirklichung ihrer Zukunft.
                     </div>
                     <div class="series-stats">3 Bände • Deutsch & Englisch • Lesen & Vorlesen-System</div>
-                    <div>
-                        <a href="vorlese-gemeinsam-in-die-zukunft.html" class="discover-button">Band 1</a>
-                        <a href="vorlese-wo-liebe-wachsen-darf.html" class="discover-button">Band 2</a>
-                        <a href="vorlese-im-netz-der-liebe.html" class="discover-button">Band 3</a>
-                    </div>
+                    <a href="gemeinsam-in-die-zukunft.html" class="discover-button">Serie entdecken</a>
                 </div>
             </div>
-            <!-- Einzelne New‑Adult‑Bücher Bereich -->
+            
+            <!-- Einzelne New-Adult-Bücher Bereich -->
             <div class="section">
                 <h2>Bücher entdecken</h2>
                 <p class="section-description">
-                    Standalone New‑Adult‑Romane mit abgeschlossenen Handlungen und eigenständigen Charakteren voller Emotionen.
+                    Standalone New-Adult-Romane mit abgeschlossenen Handlungen und eigenständigen Charakteren voller Emotionen.
                 </p>
+                
                 <!-- Die Kunst der Hingabe als Einzelband -->
                 <div class="series-item">
-                    <img src="die kunst der hingabe.jpg" alt="Die Kunst der Hingabe Cover" class="series-cover">
+                    <img src="die-kunst-der-hingabe.jpg" alt="Die Kunst der Hingabe Cover" class="series-cover">
                     <div class="series-title">Die Kunst der Hingabe</div>
                     <div class="series-description">
                         Eine junge Frau kämpft zwischen Pflicht und Leidenschaft, zwischen Vernunft und ihren tiefsten Sehnsüchten. Ein intensiver Roman über Hingabe und Selbstfindung.
                     </div>
                     <div class="series-stats">Einzelband • Deutsch & Englisch • Lesen & Vorlesen-System</div>
-                    <a href="vorlese-die-kunst-der-hingabe.html" class="discover-button">Vorlesen</a>
+                    <a href="die-kunst-der-hingabe-lesen.html" class="discover-button">Lesen</a>
                 </div>
+                
                 <!-- Weitere Einzelbände Placeholder -->
                 <div class="series-item">
-                    <img src="placeholder_light_gray_block.png" alt="Weitere Bücher" class="series-cover">
                     <div class="series-title">Weitere Romane folgen</div>
                     <div class="series-description">
                         Neue Geschichten über die große Liebe und den Weg ins Erwachsensein sind in Vorbereitung.
                     </div>
                     <div class="series-stats">Bald verfügbar</div>
-                    <a href="#" class="discover-button" style="background: gray; cursor: not-allowed;">Noch nicht verfügbar</a>
+                    <a href="#" class="discover-button unavailable">Noch nicht verfügbar</a>
                 </div>
             </div>
         </div>
