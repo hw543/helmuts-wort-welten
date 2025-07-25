@@ -1,1 +1,441 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Das Vermächtnis von Eldoria - Lesen - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #2c1810;
+            background: linear-gradient(135deg, #1a0033 0%, #330066 30%, #4d0099 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFF8DC;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+            border: 3px solid #ffd700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a0033, #4d0099);
+            color: #ffd700;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .controls {
+            background: #F5DEB3;
+            padding: 20px;
+            border-bottom: 3px solid #ffd700;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-flags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .flag-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            border: 2px solid transparent;
+        }
+
+        .flag-btn.active {
+            border-color: #4d0099;
+            box-shadow: 0 0 10px rgba(77, 0, 153, 0.5);
+        }
+
+        .band-navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-band {
+            background: linear-gradient(135deg, #1a0033, #4d0099);
+            color: #ffd700;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-band.active {
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-band:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 3px solid #ffd700;
+        }
+
+        .book-title {
+            color: #4d0099;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 15px;
+        }
+
+        .chapter-title {
+            color: #1a0033;
+            font-size: 1.5em;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+
+        .text-content p:first-child::first-letter {
+            font-size: 3em;
+            color: #4d0099;
+            float: left;
+            line-height: 1;
+            margin: 0 8px 0 0;
+            font-weight: bold;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #ffd700;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .band-navigation {
+                gap: 5px;
+            }
+            
+            .btn-band {
+                font-size: 0.8em;
+                padding: 8px 12px;
+            }
+            
+            .content {
+                padding: 20px;
+                font-size: 1em;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Das Vermächtnis von Eldoria</h1>
+            <p>Epische Fantasy-Saga aus dem magischen Königreich - Deutsch und Englisch</p>
+        </div>
+
+        <div class="controls">
+            <div class="language-flags">
+                <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+            </div>
+            <div class="band-navigation">
+                <button class="btn-band active" onclick="showBook(1)">Band 1: Prophezeiung</button>
+                <button class="btn-band" onclick="showBook(2)">Band 2: Beginn</button>
+                <button class="btn-band" onclick="showBook(3)">Band 3: Schatten</button>
+                <button class="btn-band" onclick="showBook(4)">Band 4: Vermächtnis</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Band 1: Die Prophezeiung von Eldoria -->
+            <div id="book1" class="book-content">
+                <div class="book-cover">
+                    <img src="die-prophezeiung-von-eldoria.jpg" alt="Die Prophezeiung von Eldoria">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Band 1: Die Prophezeiung von Eldoria</div>
+                    <div class="chapter-title">Kapitel 1: Einführung in Eldoria und die Prophezeiung</div>
+                    <div class="text-content">
+                        <p>Das Königreich Eldoria erstreckte sich über weite Ebenen, dichte Wälder und schroffe Bergketten, eingerahmt von einem schimmernden Ozean im Westen. Im Herzen des Landes thronte das Königshaus: ein gewaltiges Bauwerk aus weißem Stein, dass die Jahrhunderte überdauert hatte. Die Mauern trugen Narben von Belagerungen und Kriegen, ein stiller Zeuge der turbulenten Geschichte Eldorias. Große Türme ragten gen Himmel, gekrönt von Flaggen, die das Wappen des Königreichs trugen -- ein goldener Phönix, umgeben von einer Flamme, Symbol für Wiedergeburt und Unsterblichkeit.</p>
+                        
+                        <p>König Aldemar saß auf seinem steinernen Thron in der großen Halle, die von hohen Fenstern durchflutet wurde. Doch das Licht der Sonne konnte die Schatten auf seinem Gesicht nicht vertreiben. Seine Augen waren von Sorgen umwölkt, und seine Schultern trugen die Last nicht nur des Königreichs, sondern auch der Prophezeiung, die über seine Familie hing. Sein treuer Berater Orin stand neben ihm, ein Mann mit grauem Haar und wachem Blick, der stets die Ruhe bewahrte, auch wenn die Welt, um ihn zu zerbrechen drohte.</p>
+                        
+                        <p>„Mein König", begann Orin, als er bemerkte, wie Aldemar gedankenverloren auf das Wandgemälde starrte, das die Entstehung Eldorias darstellte. „Ihr dürft Euch von diesen Zeichen nicht überwältigen lassen. Das Volk benötigt Eure Stärke." „Und was, wenn meine Stärke nicht ausreicht?" Aldemar erhob sich langsam. Seine Stimme war tief und schwer, wie ein donnerndes Echo in der Halle. „Die Vorzeichen sind eindeutig, Orin. Der Nebel, die Berichte über die Kreaturen in den Wäldern, die Unruhen im Volk -- all das deutet darauf hin, dass die Prophezeiung wahr wird."</p>
+                        
+                        <p>In den Straßen der Hauptstadt Eldorias, den gepflasterten Gassen, die vom Königshaus hinabführten, herrschte ein geschäftiges Treiben. Händler priesen lautstark ihre Waren an, während Kinder lachend zwischen den Marktständen umherliefen. Doch hinter der Fassade des Alltags schlummerte eine wachsende Unruhe. Die alten Weisen flüsterten von den Geschichten der Prophezeiung, einer Weissagung, die das Ende oder die Rettung Eldorias voraussagte. Viele glaubten, dass die seltsamen Ereignisse -- der unnatürliche Nebel, das Verschwinden von Dorfbewohnern -- die Anfänge der düsteren Vorhersage waren.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Volume 1: The Prophecy of Eldoria</div>
+                    <div class="chapter-title">Chapter 1: Introduction to Eldoria and the Prophecy</div>
+                    <div class="text-content">
+                        <p>The Kingdom of Eldoria stretched across vast plains, dense forests and rugged mountain ranges, framed by a shimmering ocean to the west. At the heart of the land stood the royal house: a massive structure of white stone that had endured the centuries. The walls bore scars from sieges and wars, a silent witness to Eldoria's turbulent history. Great towers reached toward the sky, crowned with flags bearing the kingdom's coat of arms -- a golden phoenix surrounded by flame, symbol of rebirth and immortality.</p>
+                        
+                        <p>King Aldemar sat on his stone throne in the great hall, which was flooded with light from tall windows. But the sunlight could not dispel the shadows on his face. His eyes were clouded with worry, and his shoulders bore the burden not only of the kingdom, but also of the prophecy that hung over his family. His faithful advisor Orin stood beside him, a man with gray hair and alert gaze, who always maintained calm even when the world around him threatened to break.</p>
+                        
+                        <p>"My King," Orin began, noticing how Aldemar stared thoughtfully at the wall painting depicting the creation of Eldoria. "You must not let these signs overwhelm you. The people need your strength." "And what if my strength is not enough?" Aldemar rose slowly. His voice was deep and heavy, like a thunderous echo in the hall. "The omens are clear, Orin. The fog, the reports of creatures in the forests, the unrest among the people -- all of this suggests that the prophecy is coming true."</p>
+                        
+                        <p>In the streets of Eldoria's capital, the cobbled alleys leading down from the royal house, there was bustling activity. Merchants loudly praised their wares while children ran laughing between the market stalls. But behind the facade of everyday life slumbered a growing unrest. The old sages whispered of the stories of the prophecy, a prediction that foretold either the end or the salvation of Eldoria. Many believed that the strange events -- the unnatural fog, the disappearance of villagers -- were the beginnings of the ominous prediction.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 2: Der Beginn des Friedens -->
+            <div id="book2" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="der-beginn-des-friedens.jpg" alt="Der Beginn des Friedens">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Band 2: Der Beginn des Friedens</div>
+                    <div class="chapter-title">Kapitel 1: Die Rückkehr nach Eldoria</div>
+                    <div class="text-content">
+                        <p>Die Dämmerung tauchte die Türme von Eldoria in warmes Gold, als Eryon und Aris auf den gepflasterten Straßen der Stadt einritten. Die Menschen drängten sich dicht an den Straßenrändern, jubelnd und lachend. Fahnen flatterten im Wind, und der süße Duft von Blumen, die in Hülle und Fülle auf die Helden herabregneten, vermischte sich mit dem erdigen Aroma des Pflasters, das die Hitze des Tages gespeichert hatte.</p>
+                        
+                        <p>Eryon saß auf einem majestätischen Rappen, seine goldene Rüstung funkelte im Licht. Ein Lächeln spielte auf seinen Lippen, doch in seinen Augen lag ein Schatten, den die Menge nicht wahrnahm. Neben ihm ritt Aris, ihre Hand fest um den Griff ihres Schwertes geschlossen. Ihre prüfenden Blicke glitten durch die Menge, immer auf der Hut. „Der König ist zurück!", schallte ein Ruf durch die Straßen, und die Menge antwortete mit einem Chor aus Jubel und Liedern.</p>
+                        
+                        <p>Im Großen Saal, wo die Ratsführer der Völker Eldorias versammelt waren, empfing eine kühle, fast greifbare Spannung die Ankömmlinge. Der Elfenfürst, hochgewachsen und mit funkelnden Augen, begrüßte Eryon mit knapper Höflichkeit. Die Zwerge hingegen, gedrungen und schwer gerüstet, grummelten leise vor sich hin, als die Elfen ihre Meinungen äußerten. „Unsere Schmiede haben das Beste gegeben, um diese Schlacht zu gewinnen", erklärte ein Zwergenältester, doch seine Stimme klang trotzig.</p>
+                        
+                        <p>Während der Feierlichkeiten im Palast wandelten Aris' Gedanken in dunkleren Gefilden. Ihr scharfer Blick glitt über die Menge, bis sie an einer verhüllten Gestalt hängen blieb, die abseits stand. Der Fremde schien sich kaum zu bewegen, doch als Aris näher trat, löste er sich in der Menge auf. „Hast du etwas bemerkt?" Eryons Stimme ließ sie zusammenzucken. „Vielleicht", antwortete sie knapp, doch der Anflug von Besorgnis in ihrem Tonfall blieb nicht unbemerkt.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Volume 2: The Beginning of Peace</div>
+                    <div class="chapter-title">Chapter 1: The Return to Eldoria</div>
+                    <div class="text-content">
+                        <p>Dusk bathed the towers of Eldoria in warm gold as Eryon and Aris rode into the city on cobbled streets. People crowded close to the roadsides, cheering and laughing. Flags fluttered in the wind, and the sweet scent of flowers that rained down on the heroes in abundance mixed with the earthy aroma of pavement that had stored the heat of the day.</p>
+                        
+                        <p>Eryon sat on a majestic black stallion, his golden armor sparkling in the light. A smile played on his lips, but in his eyes lay a shadow that the crowd did not perceive. Beside him rode Aris, her hand firmly gripping the hilt of her sword. Her examining glances swept through the crowd, always on guard. "The King has returned!" a cry rang through the streets, and the crowd responded with a chorus of cheers and songs.</p>
+                        
+                        <p>In the Great Hall, where the council leaders of Eldoria's peoples were assembled, a cool, almost tangible tension met the arrivals. The Elf Prince, tall and with sparkling eyes, greeted Eryon with brief courtesy. The Dwarves, however, stocky and heavily armored, grumbled quietly to themselves as the Elves expressed their opinions. "Our smiths gave their best to win this battle," declared a Dwarf elder, but his voice sounded defiant.</p>
+                        
+                        <p>During the celebrations in the palace, Aris's thoughts wandered in darker realms. Her sharp gaze swept over the crowd until it caught on a veiled figure standing apart. The stranger seemed barely to move, but as Aris stepped closer, he dissolved into the crowd. "Did you notice something?" Eryon's voice made her start. "Perhaps," she answered curtly, but the hint of concern in her tone did not go unnoticed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 3: Die Schatten des Vergessenen -->
+            <div id="book3" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="die-schatten-des-vergessenen.jpg" alt="Die Schatten des Vergessenen">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Band 3: Die Schatten des Vergessenen</div>
+                    <div class="chapter-title">Kapitel 1: Der Funke des Abenteuers</div>
+                    <div class="text-content">
+                        <p>Die Morgensonne tauchte die weiten Ebenen von Eldoria in ein goldenes Licht, das von den sanften Hügeln zurückstrahlte. Kael saß am Rand der Klippe, die über das Tal von Arien ragte, und ließ den Blick über die friedliche Landschaft schweifen. Die Narben der vergangenen Kriege schienen endlich zu verblassen -- die Felder trugen wieder reiche Ernten, und die Städte erblühten in neuem Glanz. Doch in Kaels Herzen regte sich Unruhe, ein flüchtiges Verlangen nach etwas Größerem, das er selbst nicht benennen konnte.</p>
+                        
+                        <p>„Du denkst wieder zu viel nach", rief Tessa hinter ihm, ihre Stimme wie ein fröhlicher Glockenklang. Sie balancierte einen Korb voller Karten und Schriftrollen in den Händen und ließ sich neben ihm nieder. „Du weißt, was das bedeutet." Kael lachte leise und schüttelte den Kopf. „Was bedeutet es denn, allwissende Tessa?" „Es bedeutet, dass du dich nach einem Abenteuer sehnst. Und rate mal -- ich habe genau das Richtige für uns!"</p>
+                        
+                        <p>Sie legte die Karten vor sich aus, die Ecken sorgfältig mit Steinen beschwert, damit der Wind sie nicht davontrug. Eine Karte stach sofort ins Auge: Ihre Linien waren grob gezeichnet, die Details verschwommen, doch eine rote Markierung in einer abgelegenen Ecke fiel auf. „Das hier habe ich im Archiv von Eldarion gefunden", erklärte Tessa, ihre Augen vor Aufregung funkelnd. „Es zeigt die westlichen Grenzen von Eldoria. Oder besser gesagt, das, was wir darüber wissen -- nämlich fast nichts."</p>
+                        
+                        <p>Plötzlich zerriss ein dumpfes Dröhnen die Stille. Die Erde vibrierte unter ihren Füßen, und Kael zog instinktiv sein Schwert. „Was war das?" Tessa hielt den Atem an. Vor ihnen öffnete sich die dichte Nebelwand und gab den Blick auf ein leuchtendes, pulsierendes Licht frei. Es schien direkt aus dem Boden zu kommen und warf tanzende Schatten an die Felsen. „Das Licht", flüsterte sie ehrfürchtig. „Es existiert wirklich."</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Volume 3: The Shadows of the Forgotten</div>
+                    <div class="chapter-title">Chapter 1: The Spark of Adventure</div>
+                    <div class="text-content">
+                        <p>The morning sun bathed the vast plains of Eldoria in golden light that reflected from the gentle hills. Kael sat on the edge of the cliff overlooking the valley of Arien, letting his gaze sweep over the peaceful landscape. The scars of past wars finally seemed to be fading -- the fields bore rich harvests again, and the cities bloomed in new splendor. But in Kael's heart stirred unrest, a fleeting desire for something greater that he could not name himself.</p>
+                        
+                        <p>"You're thinking too much again," called Tessa behind him, her voice like a cheerful bell. She balanced a basket full of maps and scrolls in her hands and settled down beside him. "You know what that means." Kael laughed softly and shook his head. "What does it mean, all-knowing Tessa?" "It means you're longing for an adventure. And guess what -- I have just the right thing for us!"</p>
+                        
+                        <p>She spread the maps before her, the corners carefully weighted with stones so the wind wouldn't carry them away. One map immediately caught the eye: its lines were roughly drawn, the details blurred, but a red marking in a remote corner stood out. "I found this in the archive of Eldarion," Tessa explained, her eyes sparkling with excitement. "It shows the western borders of Eldoria. Or rather, what we know about them -- which is almost nothing."</p>
+                        
+                        <p>Suddenly a dull roar tore through the silence. The earth vibrated under their feet, and Kael instinctively drew his sword. "What was that?" Tessa held her breath. Before them the dense wall of fog opened and revealed a glowing, pulsating light. It seemed to come directly from the ground and cast dancing shadows on the rocks. "The light," she whispered reverently. "It really exists."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 4: Das Vermächtnis der Wächter -->
+            <div id="book4" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="das-vermaechtnis-der-waechter.jpg" alt="Das Vermächtnis der Wächter">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Band 4: Das Vermächtnis der Wächter</div>
+                    <div class="chapter-title">Kapitel 1: Der Funke des Abenteuers</div>
+                    <div class="text-content">
+                        <p>Die Morgensonne tauchte die weiten Ebenen von Eldoria in ein goldenes Licht, das von den sanften Hügeln zurückstrahlte. Kael saß am Rand der Klippe, die über das Tal von Arien ragte, und ließ den Blick über die friedliche Landschaft schweifen. Die Narben der vergangenen Kriege schienen endlich zu verblassen -- die Felder trugen wieder reiche Ernten, und die Städte erblühten in neuem Glanz. Doch in Kaels Herzen regte sich Unruhe, ein flüchtiges Verlangen nach etwas Größerem, das er selbst nicht benennen konnte.</p>
+                        
+                        <p>„Du denkst wieder zu viel nach", rief Tessa hinter ihm, ihre Stimme wie ein fröhlicher Glockenklang. Sie balancierte einen Korb voller Karten und Schriftrollen in den Händen und ließ sich neben ihm nieder. „Du weißt, was das bedeutet." Kael lachte leise und schüttelte den Kopf. „Was bedeutet es denn, allwissende Tessa?" „Es bedeutet, dass du dich nach einem Abenteuer sehnst. Und rate mal -- ich habe genau das Richtige für uns!"</p>
+                        
+                        <p>Die Vorbereitungen für die Reise begannen am nächsten Morgen. Kael und Tessa sammelten Proviant, überprüften ihre Waffen und befestigten die alten Karten sorgfältig in einer ledernen Tasche. Die Dorfbewohner beobachteten sie mit gemischten Gefühlen. Manche schüttelten den Kopf, andere flüsterten ängstlich über die düsteren Mythen der Randlande. „Wenn wir zurückkommen", sagte Tessa mit einem Augenzwinkern, „werde ich uns ewigen Ruhm sichern."</p>
+                        
+                        <p>Mit einem gewaltigen Schlag ließ er das Schwert auf die dunkle Gestalt niederfahren. Das Licht explodierte in alle Richtungen, und ein markerschütternder Schrei erfüllte die Luft. Als das Licht erlosch, war die Dunkelheit verschwunden -- und mit ihr das Wesen. Kael fiel auf die Knie, das Schwert entglitt seiner Hand. Tessa, die sich langsam erholte, kroch zu ihm und legte ihm eine Hand auf die Schulter. „Du hast es geschafft", flüsterte sie, ihre Stimme voller Erleichterung. Er sah sie an, erschöpft, aber zufrieden. „Nein", sagte er leise. „Wir haben es geschafft."</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Volume 4: The Legacy of the Guardians</div>
+                    <div class="chapter-title">Chapter 1: The Spark of Adventure</div>
+                    <div class="text-content">
+                        <p>The morning sun bathed the vast plains of Eldoria in golden light that reflected from the gentle hills. Kael sat on the edge of the cliff overlooking the valley of Arien, letting his gaze sweep over the peaceful landscape. The scars of past wars finally seemed to be fading -- the fields bore rich harvests again, and the cities bloomed in new splendor. But in Kael's heart stirred unrest, a fleeting desire for something greater that he could not name himself.</p>
+                        
+                        <p>"You're thinking too much again," called Tessa behind him, her voice like a cheerful bell. She balanced a basket full of maps and scrolls in her hands and settled down beside him. "You know what that means." Kael laughed softly and shook his head. "What does it mean, all-knowing Tessa?" "It means you're longing for an adventure. And guess what -- I have just the right thing for us!"</p>
+                        
+                        <p>Preparations for the journey began the next morning. Kael and Tessa gathered provisions, checked their weapons, and carefully secured the old maps in a leather bag. The villagers watched them with mixed feelings. Some shook their heads, others whispered anxiously about the dark myths of the borderlands. "When we return," Tessa said with a wink, "I'll secure eternal glory for us."</p>
+                        
+                        <p>With a tremendous blow he brought the sword down on the dark figure. The light exploded in all directions, and a bone-chilling scream filled the air. When the light faded, the darkness was gone -- and with it the being. Kael fell to his knees, the sword slipped from his hand. Tessa, slowly recovering, crawled to him and placed a hand on his shoulder. "You did it," she whispered, her voice full of relief. He looked at her, exhausted but satisfied. "No," he said quietly. "We did it."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="high_fantasy.html" class="btn-back">← Zurück zur Serie</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentBook = 1;
+        let currentLanguage = 'de';
+
+        function showBook(bookNumber) {
+            // Verstecke alle Bücher
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`book${i}`).classList.add('hidden');
+                document.querySelectorAll('.btn-band')[i-1].classList.remove('active');
+            }
+            
+            // Zeige ausgewähltes Buch
+            document.getElementById(`book${bookNumber}`).classList.remove('hidden');
+            document.querySelectorAll('.btn-band')[bookNumber-1].classList.add('active');
+            
+            currentBook = bookNumber;
+            
+            // Stelle sicher, dass die richtige Sprache angezeigt wird
+            showLanguage(currentLanguage);
+        }
+
+        function showLanguage(lang) {
+            // Verstecke alle Sprachversionen
+            document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Zeige gewählte Sprache
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update Flag-Buttons
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
+            
+            currentLanguage = lang;
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            showBook(1); // Zeige erstes Buch
+            showLanguage('de'); // Zeige deutsche Version
+        });
+    </script>
+</body>
+</html>
