@@ -1,1 +1,401 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mysterien der Heide - Lesen - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #2c1810;
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 30%, #D2B48C 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFF8DC;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: #FFF8DC;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .controls {
+            background: #F5DEB3;
+            padding: 20px;
+            border-bottom: 3px solid #D2B48C;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-flags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .flag-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            border: 2px solid transparent;
+        }
+
+        .flag-btn.active {
+            border-color: #8B4513;
+            box-shadow: 0 0 10px rgba(139, 69, 19, 0.5);
+        }
+
+        .band-navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-band {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: #FFF8DC;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-band.active {
+            border-color: #D2691E;
+            box-shadow: 0 0 10px rgba(210, 105, 30, 0.5);
+        }
+
+        .btn-band:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .book-title {
+            color: #8B4513;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #D2B48C;
+            padding-bottom: 15px;
+        }
+
+        .chapter-title {
+            color: #A0522D;
+            font-size: 1.5em;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+
+        .text-content p:first-child::first-letter {
+            font-size: 3em;
+            color: #8B4513;
+            float: left;
+            line-height: 1;
+            margin: 0 8px 0 0;
+            font-weight: bold;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #D2B48C;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .band-navigation {
+                gap: 5px;
+            }
+            
+            .btn-band {
+                font-size: 0.8em;
+                padding: 8px 12px;
+            }
+            
+            .content {
+                padding: 20px;
+                font-size: 1em;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Mysterien der Heide</h1>
+            <p>Düstere Geheimnisse aus der Lüneburger Heide - Deutsch und Englisch</p>
+        </div>
+
+        <div class="controls">
+            <div class="language-flags">
+                <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+            </div>
+            <div class="band-navigation">
+                <button class="btn-band active" onclick="showBook(1)">Band 1: Geist</button>
+                <button class="btn-band" onclick="showBook(2)">Band 2: Moor</button>
+                <button class="btn-band" onclick="showBook(3)">Band 3: Schatten</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Band 1: Der Geist der Heide -->
+            <div id="book1" class="book-content">
+                <div class="book-cover">
+                    <img src="geistderheide.jpg" alt="Der Geist der Heide">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Band 1: Der Geist der Heide</div>
+                    <div class="chapter-title">Kapitel 1: Der Beginn</div>
+                    <div class="text-content">
+                        <p>Die Morgensonne tauchte die Lüneburger Heide in ein goldenes Licht, als Elias Hoffmann seinen täglichen Spaziergang antrat. Die Luft war klar und kühl, erfüllt vom Duft des Heidekrauts und dem fernen Zwitschern der Vögel. Nichts deutete darauf hin, dass dieser Tag sein Leben für immer verändern würde. Der pensionierte Geschichtslehrer liebte diese Stunden der Stille, wenn die Heide noch nicht von Touristen bevölkert war.</p>
+                        
+                        <p>Seine Schritte führten ihn wie jeden Morgen zum alten Wacholderbaum, der einsam auf einer kleinen Anhöhe stand. Doch heute war etwas anders. Am Fuße des Baumes lag ein Brief. Das Pergament wirkte alt, vergilbt und war mit einem roten Wachssiegel versehen. Elias bückte sich und hob ihn vorsichtig auf. Sein Name stand in geschwungener Schrift darauf, geschrieben mit einer Tinte, die im Morgenlicht schimmerte.</p>
+                        
+                        <p>Mit zitternden Händen brach er das Siegel und entfaltete das Pergament. Die Zeichen darauf waren ihm fremd und doch seltsam vertraut. Es war eine Sprache, die er nie gesehen hatte, und dennoch verstand er die Botschaft, als würde sie direkt in sein Bewusstsein fließen: "Der Geist der Heide erwacht. Die Zeit der Prüfung ist gekommen. Folge den Zeichen, wenn du die Wahrheit suchst."</p>
+                        
+                        <p>Ein kalter Schauer lief Elias über den Rücken. Als Historiker hatte er sich jahrelang mit den Legenden der Region beschäftigt, aber dies hier war anders. Das war real. Plötzlich hörte er ein seltsames Flüstern im Wind, das seinen Namen zu rufen schien. Die Heide um ihn herum schien plötzlich lebendig zu werden, als würden unsichtbare Augen ihn beobachten. Er wusste instinktiv, dass sein ruhiges Leben als Pensionär vorbei war.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Volume 1: The Ghost of the Heath</div>
+                    <div class="chapter-title">Chapter 1: The Beginning</div>
+                    <div class="text-content">
+                        <p>The morning sun bathed the Lüneburg Heath in golden light as Elias Hoffmann set out on his daily walk. The air was clear and cool, filled with the scent of heather and the distant chirping of birds. Nothing suggested that this day would change his life forever. The retired history teacher loved these quiet hours when the heath was not yet populated by tourists.</p>
+                        
+                        <p>His steps led him, as every morning, to the old juniper tree that stood alone on a small hill. But today something was different. At the foot of the tree lay a letter. The parchment looked old, yellowed, and was sealed with red wax. Elias bent down and carefully picked it up. His name was written on it in flowing script, written with an ink that shimmered in the morning light.</p>
+                        
+                        <p>With trembling hands he broke the seal and unfolded the parchment. The signs on it were foreign to him yet strangely familiar. It was a language he had never seen, and yet he understood the message as if it flowed directly into his consciousness: "The ghost of the heath awakens. The time of trial has come. Follow the signs if you seek the truth."</p>
+                        
+                        <p>A cold shiver ran down Elias's back. As a historian, he had studied the legends of the region for years, but this was different. This was real. Suddenly he heard a strange whisper in the wind that seemed to call his name. The heath around him suddenly seemed to come alive, as if invisible eyes were watching him. He knew instinctively that his quiet life as a retiree was over.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 2: Das Moor des Vergessens -->
+            <div id="book2" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="moordesvergessens.jpg" alt="Das Moor des Vergessens">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Band 2: Das Moor des Vergessens</div>
+                    <div class="chapter-title">Kapitel 1: Der Fund im Moor</div>
+                    <div class="text-content">
+                        <p>Kommissarin Anna Hartmann starrte auf den grauenhaften Fund vor ihr. Das Moor hatte seine Geheimnisse preisgegeben - einen perfekt konservierten Körper, der aussah, als wäre er erst gestern gestorben. Doch die Kleidung und die ersten Untersuchungen deuteten auf ein Alter von mindestens dreißig Jahren hin. Der Anruf war um fünf Uhr morgens gekommen, als ein Torfstecher die Leiche entdeckt hatte.</p>
+                        
+                        <p>Das Opfer war ein junger Mann, vielleicht Ende zwanzig. Seine Haut hatte die charakteristische braune Färbung einer Moorleiche, aber seine Gesichtszüge waren so gut erhalten, dass man den Ausdruck purer Angst in seinen Augen erkennen konnte. Was Anna jedoch am meisten verstörte, waren die seltsamen Symbole, die in seine Stirn geritzt worden waren. Sie hatte so etwas noch nie gesehen.</p>
+                        
+                        <p>"Kommissarin," rief Kriminalassistent Weber von der anderen Seite des Fundorts. "Sie müssen sich das hier ansehen." Anna watete vorsichtig durch das weiche Moorland zu ihm hinüber. Weber deutete auf eine Stelle etwa zehn Meter vom Körper entfernt, wo sich im weichen Boden die Umrisse weiterer Gräber abzeichneten. Der Bodenradar zeigte Anomalien in einem Umkreis von hundert Metern.</p>
+                        
+                        <p>"Es könnten noch mehr sein," flüsterte Weber mit aschfahlem Gesicht. Anna nickte grimmig und blickte hinüber zum Dorf Eldermoor, dessen Häuser in der Morgensonne friedlich wirkten. Doch sie hatte das Gefühl, dass dieser Frieden trügerisch war. Das Moor hütete seine Geheimnisse gut, aber heute würde sie beginnen, sie zu entschlüsseln. Was sie nicht ahnte: Dies war erst der Anfang einer Kette von Ereignissen, die das ganze Dorf erschüttern würde.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Volume 2: The Moor of Forgetting</div>
+                    <div class="chapter-title">Chapter 1: The Find in the Moor</div>
+                    <div class="text-content">
+                        <p>Detective Anna Hartmann stared at the horrific find before her. The moor had revealed its secrets - a perfectly preserved body that looked as if it had died only yesterday. But the clothing and initial examinations suggested it was at least thirty years old. The call had come at five in the morning when a peat cutter had discovered the corpse.</p>
+                        
+                        <p>The victim was a young man, perhaps in his late twenties. His skin had the characteristic brown coloration of a bog body, but his facial features were so well preserved that one could recognize the expression of pure fear in his eyes. What disturbed Anna most, however, were the strange symbols that had been carved into his forehead. She had never seen anything like it.</p>
+                        
+                        <p>"Detective," called Criminal Assistant Weber from the other side of the site. "You need to see this." Anna carefully waded through the soft moorland to him. Weber pointed to a spot about ten meters from the body where the outlines of more graves were visible in the soft ground. Ground radar showed anomalies within a radius of one hundred meters.</p>
+                        
+                        <p>"There could be more," Weber whispered with an ashen face. Anna nodded grimly and looked over to the village of Eldermoor, whose houses looked peaceful in the morning sun. But she had the feeling that this peace was deceptive. The moor guarded its secrets well, but today she would begin to decipher them. What she didn't know: this was just the beginning of a chain of events that would shake the entire village.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 3: Die Schatten der Dörfer -->
+            <div id="book3" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="schattenderdoerfer.jpg" alt="Die Schatten der Dörfer">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Band 3: Die Schatten der Dörfer</div>
+                    <div class="chapter-title">Kapitel 1: Die ersten Schatten</div>
+                    <div class="text-content">
+                        <p>Erik Müller betrachtete das beschmierte Denkmal mit einer Mischung aus Ärger und Sorge. Die roten Graffiti-Zeichen auf dem historischen Kriegerdenkmal mitten im Dorfzentrum wirkten wie eine Wunde in der idyllischen Landschaft. Als Bürgermeister von Nordheide hatte er schon viele Probleme lösen müssen, aber dieses hier fühlte sich anders an. Es war ein grauer Oktobertag, und der kalte Wind trieb die ersten Herbstblätter über den Dorfplatz.</p>
+                        
+                        <p>"Das waren die Fremden," hörte er eine bekannte Stimme hinter sich. Heinrich Krause, der örtliche Gastwirt und selbsternannte Sprecher der alteingesessenen Familien, trat näher. Seine Augen blitzten vor Zorn. "Die Flüchtlingsfamilie aus der Bergstraße. Seit die hier sind, ist nichts mehr, wie es war." Erik kannte jeden Einwohner des 850-Seelen-Dorfes beim Namen, und er konnte sich nicht vorstellen, wer so etwas getan haben könnte.</p>
+                        
+                        <p>Die Familie Al-Rahman war vor sechs Monaten nach Nordheide gekommen - Vater Khalil, Mutter Amira und ihre drei Kinder. Sie waren freundlich, höflich und bemühten sich redlich, sich zu integrieren. Khalil arbeitete in der nahen Molkerei, die Kinder gingen zur örtlichen Schule. Aber für einen Teil der Dorfbevölkerung blieben sie die "Fremden". Erik spürte, wie sich eine gefährliche Stimmung ausbreitete.</p>
+                        
+                        <p>"Heinrich," sagte Erik ruhig, "wir wissen noch gar nicht, wer das war. Es könnten genauso gut Jugendliche aus dem Nachbardorf gewesen sein." Aber schon während er sprach, sah er die Zweifel in Heinrichs Augen. Das Gift des Misstrauens hatte bereits begonnen, sich in seinem friedlichen Dorf auszubreiten. Erik befürchtete, dass dies erst der Anfang war. Die Schatten der Vorurteile warfen ihre dunklen Finger über Nordheide, und er wusste nicht, wie er sie aufhalten sollte.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Volume 3: The Shadows of the Villages</div>
+                    <div class="chapter-title">Chapter 1: The First Shadows</div>
+                    <div class="text-content">
+                        <p>Erik Müller looked at the defaced monument with a mixture of anger and concern. The red graffiti marks on the historic war memorial in the middle of the village center looked like a wound in the idyllic landscape. As mayor of Nordheide, he had already had to solve many problems, but this one felt different. It was a gray October day, and the cold wind drove the first autumn leaves across the village square.</p>
+                        
+                        <p>"It was the foreigners," he heard a familiar voice behind him. Heinrich Krause, the local innkeeper and self-appointed spokesman for the established families, stepped closer. His eyes flashed with anger. "The refugee family from Bergstraße. Since they've been here, nothing is as it was." Erik knew every inhabitant of the 850-soul village by name, and he couldn't imagine who could have done such a thing.</p>
+                        
+                        <p>The Al-Rahman family had come to Nordheide six months ago - father Khalil, mother Amira and their three children. They were friendly, polite and made an honest effort to integrate. Khalil worked at the nearby dairy, the children went to the local school. But for part of the village population, they remained the "foreigners." Erik felt a dangerous mood spreading.</p>
+                        
+                        <p>"Heinrich," Erik said calmly, "we don't even know who did this yet. It could just as well have been young people from the neighboring village." But even as he spoke, he saw the doubt in Heinrich's eyes. The poison of mistrust had already begun to spread in his peaceful village. Erik feared this was just the beginning. The shadows of prejudice cast their dark fingers over Nordheide, and he didn't know how to stop them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="krimis.html" class="btn-back">← Zurück zu Krimis & Thriller</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentBook = 1;
+        let currentLanguage = 'de';
+
+        function showBook(bookNumber) {
+            // Verstecke alle Bücher
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`book${i}`).classList.add('hidden');
+                document.querySelectorAll('.btn-band')[i-1].classList.remove('active');
+            }
+            
+            // Zeige ausgewähltes Buch
+            document.getElementById(`book${bookNumber}`).classList.remove('hidden');
+            document.querySelectorAll('.btn-band')[bookNumber-1].classList.add('active');
+            
+            currentBook = bookNumber;
+            
+            // Stelle sicher, dass die richtige Sprache angezeigt wird
+            showLanguage(currentLanguage);
+        }
+
+        function showLanguage(lang) {
+            // Verstecke alle Sprachversionen
+            document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Zeige gewählte Sprache
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update Flag-Buttons
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
+            
+            currentLanguage = lang;
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            showBook(1); // Zeige erstes Buch
+            showLanguage('de'); // Zeige deutsche Version
+        });
+    </script>
+</body>
+</html>
