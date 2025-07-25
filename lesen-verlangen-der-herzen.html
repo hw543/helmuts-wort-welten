@@ -1,1 +1,484 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verlangen der Herzen Lesen - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #2c1810;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 30%, #FFE4E1 70%, #F0E68C 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFF8DC;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #FF69B4, #DC143C);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .controls {
+            background: #FFE4E1;
+            padding: 20px;
+            border-bottom: 3px solid #DDD;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-flags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .flag-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            border: 2px solid transparent;
+        }
+
+        .flag-btn.active {
+            border-color: #FF69B4;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+
+        .band-navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-band {
+            background: linear-gradient(135deg, #FF69B4, #DC143C);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-band.active {
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-band:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .book-title {
+            color: #DC143C;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #FF69B4;
+            padding-bottom: 15px;
+        }
+
+        .chapter-title {
+            color: #B22222;
+            font-size: 1.5em;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+
+        .text-content p:first-child::first-letter {
+            font-size: 3em;
+            color: #DC143C;
+            float: left;
+            line-height: 1;
+            margin: 0 8px 0 0;
+            font-weight: bold;
+        }
+
+        .buy-button {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .btn-buy {
+            background: linear-gradient(135deg, #FF6347, #DC143C);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #FF69B4;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .band-navigation {
+                gap: 5px;
+            }
+            
+            .btn-band {
+                font-size: 0.8em;
+                padding: 8px 12px;
+            }
+            
+            .content {
+                padding: 20px;
+                font-size: 1em;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Verlangen der Herzen</h1>
+            <p>Romantische Geschichten voller Leidenschaft und Liebe - Deutsch und Englisch</p>
+        </div>
+
+        <div class="controls">
+            <div class="language-flags">
+                <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+            </div>
+            <div class="band-navigation">
+                <button class="btn-band active" onclick="showBook(1)">Band 1</button>
+                <button class="btn-band" onclick="showBook(2)">Band 2</button>
+                <button class="btn-band" onclick="showBook(3)">Band 3</button>
+                <button class="btn-band" onclick="showBook(4)">Band 4</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Band 1: Unter dem Sternenhimmel -->
+            <div id="book1" class="book-content">
+                <div class="book-cover">
+                    <img src="unter-dem-sternenhimmel.jpg" alt="Unter dem Sternenhimmel">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Unter dem Sternenhimmel</div>
+                    <div class="chapter-title">Kapitel 1: Begegnung</div>
+                    <div class="text-content">
+                        <p>Die sanfte Brise des späten Nachmittags trug den salzigen Duft des Meeres in die kleinen Gassen der Küstenstadt Adelaide. Clara versank in Gedanken, während sie über die blühende Bougainvillea entlang der Straßen schlenderte. Die warmen Farben der Sommerblumen spiegelten ihre Leidenschaft für die Kunst wider, die sie täglich in ihrem Job als Kunsthistorikerin im örtlichen Museum lebte. Diese Stadt war nicht nur ihr Zuhause, sie war ihre Muse.</p>
+                        
+                        <p>Heute war ein besonders schöner Tag. Die Sonne strahlte hell am Himmel, und die Wellen schimmerten im goldenen Licht. Clara stellte sich vor, wie sie mit Pinsel und Leinwand am Strand saß, ihre Umgebung in lebendigen Farben festhaltend. Diese Vorstellung erfüllte sie mit einem tiefen Glücksgefühl. Doch trotz der Schönheit um sie herum spürte sie eine leise Melancholie in ihrem Herzen, ein Verlangen nach etwas, das sie nicht benennen konnte.</p>
+                        
+                        <p>Gerade als sie an einem kleinen Café vorbeikam, hörte sie das Lachen von Menschen. Es zog sie magisch an, und sie beschloss, einen Moment innezuhalten und die lebhafte Atmosphäre aufzusaugen. Die Stimmen der Gäste, die Klänge von klirrenden Tassen und das Aroma von frisch gebrühtem Kaffee schienen sie in eine andere Welt zu entführen. Sie beobachtete, wie ein älteres Paar zusammensaß und die kleinen Freuden des Lebens genoss.</p>
+                        
+                        <p>Doch während sie schaute, lenkte plötzlich eine neue Person ihre Aufmerksamkeit ab. Ein Mann trat aus dem Café, und Clara konnte nicht anders, als ihn zu mustern. Er hatte eine ergreifende Ausstrahlung: groß und athletisch, mit markanten Gesichtszügen und einem selbstbewussten Lächeln. Seine dunklen Haare fielen leger über seine Stirn, und während er sich mit einem freundlichen Gruß zu einem anderen Gast drehte, bemerkte Clara, wie seine Augen in der Sonne funkelten.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="https://www.amazon.de/dp/B0F9Y4L5LK" class="btn-buy" target="_blank">📚 Bei Amazon kaufen</a>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Under the Starry Sky</div>
+                    <div class="chapter-title">Chapter 1: Encounter</div>
+                    <div class="text-content">
+                        <p>The gentle breeze of the late afternoon carried the salty scent of the sea into the small alleys of the coastal town Adelaide. Clara was lost in thought as she strolled along the blooming bougainvillea along the streets. The warm colors of the summer flowers reflected her passion for art, which she lived daily in her job as an art historian at the local museum. This town was not just her home, it was her muse.</p>
+                        
+                        <p>Today was a particularly beautiful day. The sun shone brightly in the sky, and the waves shimmered in the golden light. Clara imagined herself sitting on the beach with brush and canvas, capturing her surroundings in vibrant colors. This vision filled her with a deep sense of happiness. Yet despite the beauty around her, she felt a quiet melancholy in her heart, a longing for something she couldn't name.</p>
+                        
+                        <p>Just as she passed a small café, she heard the laughter of people. It attracted her magically, and she decided to pause for a moment and absorb the lively atmosphere. The voices of the guests, the sounds of clinking cups and the aroma of freshly brewed coffee seemed to transport her to another world. She watched an elderly couple sitting together, enjoying the small pleasures of life.</p>
+                        
+                        <p>But while she watched, suddenly a new person caught her attention. A man stepped out of the café, and Clara couldn't help but study him. He had a captivating presence: tall and athletic, with striking facial features and a confident smile. His dark hair fell casually over his forehead, and as he turned to another guest with a friendly greeting, Clara noticed how his eyes sparkled in the sun.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="https://www.amazon.de/dp/B0F9Y4L5LK" class="btn-buy" target="_blank">📚 Buy on Amazon</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 2: Im Netz der Liebe -->
+            <div id="book2" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="im-netz-der-liebe.jpg" alt="Im Netz der Liebe">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Im Netz der Liebe</div>
+                    <div class="chapter-title">Kapitel 1: Die unerwartete Rückkehr</div>
+                    <div class="text-content">
+                        <p>Die Sonne schien warm auf das kleine Küstenstädtchen Adelaide, und ein leichter Wind trug den Duft von blühenden Blumen und dem salzigen Meer durch die Straßen. Clara saß in ihrem Atelier und arbeitete an einem neuen Gemälde, das die Schönheit ihrer Umgebung einfangen sollte. Der letzte Monat war voller positiver Veränderungen für sie gewesen, und die Vorfreude auf die bevorstehenden Ereignisse in ihrem Leben pulsierte in ihrem Herzen.</p>
+                        
+                        <p>Gerade als sie in ihren arbeitsamen Gedanken versunken war, klingelte ihr Handy. Die Nachricht war von Alex. „Schatz, ich werde später im Atelier sein. Ich muss kurz etwas erledigen. Freue mich auf dich!" Claras Herz hüpfte bei dem Gedanken, ihn zu sehen, und sie fühlte, wie die Aufregung sie ergriff. Alex war nicht nur ein Partner; er war eine Quelle der Inspiration, ein Licht in ihrem Leben, das die Schatten ihrer Ängste vertreiben konnte.</p>
+                        
+                        <p>Doch ohne Vorwarnung kam eine Welle der Nervosität über sie. Was, wenn die Vergangenheit ihn wieder einholte? Die offenen Wunden, die sie jeweils mit sich trugen, schienen immer noch in der Luft zu hängen und bereit, sich wieder zu öffnen. Ein tiefes Durchatmen half Clara, ihre Gedanken zu sammeln. Sie versuchte, sich auf das bevorstehende Treffen zu konzentrieren, als plötzlich die Tür zum Atelier aufging und das vertraute Gesicht ihres besten Freundes Max erschien.</p>
+                        
+                        <p>„Hey Clara, bist du bereit für die große Eröffnung der Galerie? Ich habe das Gefühl, dass etwas Aufregendes in der Luft liegt!" „Hallo Max! Ja, ich kann es kaum erwarten", antwortete Clara mit einem Lächeln und versuchte, ihre Nervosität zu verbergen. „Ich hoffe, dass alles gut geht." „Mach dir keine Sorgen", sagte Max und winkte ab. „Die Leute werden deine Kunst lieben. Du und Alex habt so viele persönliche Geschichten in eure Werke einfließen lassen. Das wird großartig!"</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="https://www.amazon.de/dp/B0FBL167H5" class="btn-buy" target="_blank">📚 Bei Amazon kaufen</a>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">In the Web of Love</div>
+                    <div class="chapter-title">Chapter 1: The Unexpected Return</div>
+                    <div class="text-content">
+                        <p>The sun shone warmly on the small coastal town of Adelaide, and a gentle wind carried the scent of blooming flowers and the salty sea through the streets. Clara sat in her studio working on a new painting that was meant to capture the beauty of her surroundings. The past month had been full of positive changes for her, and the anticipation of upcoming events in her life pulsed in her heart.</p>
+                        
+                        <p>Just as she was absorbed in her industrious thoughts, her phone rang. The message was from Alex. "Darling, I'll be at the studio later. I have to take care of something quickly. Looking forward to seeing you!" Clara's heart leaped at the thought of seeing him, and she felt excitement take hold of her. Alex was not just a partner; he was a source of inspiration, a light in her life that could chase away the shadows of her fears.</p>
+                        
+                        <p>But without warning, a wave of nervousness came over her. What if the past caught up with him again? The open wounds that each of them carried seemed to still hang in the air, ready to reopen. A deep breath helped Clara gather her thoughts. She tried to focus on the upcoming meeting when suddenly the door to the studio opened and the familiar face of her best friend Max appeared.</p>
+                        
+                        <p>"Hey Clara, are you ready for the big gallery opening? I have the feeling that something exciting is in the air!" "Hello Max! Yes, I can hardly wait," Clara replied with a smile, trying to hide her nervousness. "I hope everything goes well." "Don't worry," Max said, waving dismissively. "People will love your art. You and Alex have let so many personal stories flow into your works. This will be great!"</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="https://www.amazon.de/dp/B0FBL167H5" class="btn-buy" target="_blank">📚 Buy on Amazon</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 3: Ankommen im neuen Leben -->
+            <div id="book3" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="ankommen-im-neuen-leben.jpg" alt="Ankommen im neuen Leben">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Ankommen im neuen Leben</div>
+                    <div class="chapter-title">Kapitel 1: Berufliche Konflikte</div>
+                    <div class="text-content">
+                        <p>Der Wecker klingelte früh an diesem Morgen, doch Clara war bereits wach. Sie lag im Bett und starrte an die Decke, während die ersten Sonnenstrahlen durch die Vorhänge krochen. Der heutige Tag markierte einen Wendepunkt in ihrer Karriere: die Beförderung zur Leiterin der Kunstabteilung. Eine Position, um die sie hart gekämpft hatte. Stolz und Vorfreude mischten sich mit einer unterschwelligen Nervosität. Doch inmitten all dieser Gefühle gab es einen Gedanken, der sie nicht losließ -- wie würde sich diese Veränderung auf ihre Beziehung zu Alex auswirken?</p>
+                        
+                        <p>Alex war noch tief in den Kissen vergraben, sein Atem gleichmäßig und ruhig. Sie beobachtete ihn einen Moment lang. Sein Gesicht wirkte entspannt, fast friedlich, doch Clara wusste, dass auch er mit Herausforderungen zu kämpfen hatte. Seit Wochen war er von einem prestigeträchtigen Projekt für eine renommierte Galerie in der Stadt absorbiert. Seine Leidenschaft für Kunst und seine unnachgiebige Arbeitsmoral hatten ihn stets ausgezeichnet, aber Clara konnte nicht ignorieren, wie sehr ihn diese Verantwortung belastete.</p>
+                        
+                        <p>Langsam erhob sie sich aus dem Bett, zog den Morgenmantel über und machte sich auf den Weg in die Küche. Während der Duft von frisch gebrühtem Kaffee die Luft erfüllte, gingen ihre Gedanken in verschiedene Richtungen. Sie wusste, dass diese Beförderung mit einem höheren Arbeitspensum und längeren Abenden im Büro verbunden war. Ihre Freizeit würde schrumpfen -- Zeit, die sie sonst mit Alex geteilt hatte. Würden sie es schaffen, trotz all dieser Verpflichtungen ihre Beziehung lebendig zu halten?</p>
+                        
+                        <p>Später am Vormittag saßen Clara und Alex gemeinsam am Frühstückstisch. Die Gespräche waren oberflächlich -- kleine Notizen über den Tagesablauf, ein Austausch über die Schlagzeilen in der Zeitung. Clara bemerkte, wie Alex mehr in Gedanken als bei ihr zu sein schien. Seine Stirn war in Sorgenfalten gelegt, und seine Blicke glitten immer wieder zu seinem Handy, das auf dem Tisch lag.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="https://www.amazon.de/dp/B0FBKKW3HF" class="btn-buy" target="_blank">📚 Bei Amazon kaufen (Kindle)</a>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Arriving in the New Life</div>
+                    <div class="chapter-title">Chapter 1: Professional Conflicts</div>
+                    <div class="text-content">
+                        <p>The alarm clock rang early that morning, but Clara was already awake. She lay in bed staring at the ceiling while the first rays of sunlight crept through the curtains. Today marked a turning point in her career: the promotion to head of the art department. A position she had fought hard for. Pride and anticipation mixed with underlying nervousness. But amidst all these feelings, there was one thought that wouldn't let her go -- how would this change affect her relationship with Alex?</p>
+                        
+                        <p>Alex was still buried deep in the pillows, his breathing steady and calm. She watched him for a moment. His face looked relaxed, almost peaceful, but Clara knew that he too was struggling with challenges. For weeks he had been absorbed in a prestigious project for a renowned gallery in the city. His passion for art and his relentless work ethic had always distinguished him, but Clara couldn't ignore how much this responsibility burdened him.</p>
+                        
+                        <p>Slowly she rose from bed, put on her robe and made her way to the kitchen. As the scent of freshly brewed coffee filled the air, her thoughts went in different directions. She knew that this promotion came with a higher workload and longer evenings at the office. Her free time would shrink -- time she had otherwise shared with Alex. Would they manage to keep their relationship alive despite all these obligations?</p>
+                        
+                        <p>Later in the morning, Clara and Alex sat together at the breakfast table. The conversations were superficial -- small notes about the day's schedule, an exchange about the headlines in the newspaper. Clara noticed how Alex seemed more lost in thought than present with her. His forehead was creased with worry lines, and his gaze kept sliding to his phone lying on the table.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="https://www.amazon.de/dp/B0FBKKW3HF" class="btn-buy" target="_blank">📚 Buy on Amazon (Kindle)</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 4: Gemeinsam in die Zukunft -->
+            <div id="book4" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="gemeinsam-in-die-zukunft.jpg" alt="Gemeinsam in die Zukunft">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Gemeinsam in die Zukunft</div>
+                    <div class="chapter-title">Kapitel 1: Ein Neuanfang</div>
+                    <div class="text-content">
+                        <p>Die ersten Strahlen der Morgensonne fielen durch die hohen Fenster des alten Farmhauses und ließen den Staub in der Luft glitzern wie winzige Diamanten. Clara stand barfuß auf den knarrenden Holzdielen, ihre Hände fest um eine dampfende Tasse Kaffee geschlungen. Vor ihr erstreckten sich die weitläufigen Felder, noch von einem feinen Nebelschleier umhüllt. Es war ihr erster Morgen auf der Farm -- ihr neues Zuhause, ihr Neuanfang.</p>
+                        
+                        <p>Hinter ihr hörte sie Alex' Schritte, leise und bedächtig, wie immer, wenn er nachdachte. Er legte sanft eine Hand auf ihre Schulter, und sie lehnte sich kurz an ihn. Kein Wort war nötig, die stille Einigkeit zwischen ihnen füllte den Raum wie ein vertrauter Atemzug. „Bereit für unsere Bestandsaufnahme?" fragte er schließlich, ein Lächeln in seiner Stimme. Clara nickte und drehte sich zu ihm um. „Bereit, unser Leben hier zu beginnen."</p>
+                        
+                        <p>Gemeinsam gingen sie durch das alte Gebäude, das so viel Potenzial versprach. Die Küche war das Herzstück des Hauses, mit einer massiven Arbeitsplatte aus Holz, die von Generationen von Händen poliert worden war. Die Wände erzählten Geschichten von Jahren der Nutzung und der Liebe. Hier würde Clara neue Gerichte ausprobieren, während ihre Kinder später um sie herumtollen würden -- ein Gedanke, der sie kurz innehalten ließ.</p>
+                        
+                        <p>„Die Fenster müssen dringend erneuert werden", bemerkte Alex, der mit kritischem Blick durch den Raum ging. „Und die Elektrik... wir sollten uns jemanden holen, der das überprüft." Clara lächelte. „Es hat Charakter. Das Haus erzählt eine Geschichte. Wir sollten nur aufpassen, dass wir es nicht seiner Seele berauben." Alex lachte leise. „Keine Sorge, ich lasse dich den kreativen Teil übernehmen."</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="#" class="btn-buy" style="background: #999; cursor: not-allowed;">📚 Bald verfügbar</a>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Together into the Future</div>
+                    <div class="chapter-title">Chapter 1: A New Beginning</div>
+                    <div class="text-content">
+                        <p>The first rays of the morning sun fell through the tall windows of the old farmhouse and made the dust in the air glitter like tiny diamonds. Clara stood barefoot on the creaking wooden floorboards, her hands wrapped tightly around a steaming cup of coffee. Before her stretched the vast fields, still shrouded in a fine veil of mist. It was her first morning on the farm -- her new home, her new beginning.</p>
+                        
+                        <p>Behind her she heard Alex's footsteps, quiet and thoughtful, as always when he was thinking. He gently placed a hand on her shoulder, and she leaned briefly against him. No words were needed, the quiet unity between them filled the room like a familiar breath. "Ready for our inventory?" he finally asked, a smile in his voice. Clara nodded and turned to him. "Ready to begin our life here."</p>
+                        
+                        <p>Together they walked through the old building that promised so much potential. The kitchen was the heart of the house, with a massive wooden worktop that had been polished by generations of hands. The walls told stories of years of use and love. Here Clara would try new dishes while their children would later romp around her -- a thought that made her pause briefly.</p>
+                        
+                        <p>"The windows urgently need to be replaced," Alex noted, looking critically around the room. "And the electricity... we should get someone to check that." Clara smiled. "It has character. The house tells a story. We should just be careful not to rob it of its soul." Alex laughed softly. "Don't worry, I'll let you handle the creative part."</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="#" class="btn-buy" style="background: #999; cursor: not-allowed;">📚 Coming Soon</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="verlangen-der-herzen.html" class="btn-back">← Zurück zur Serie</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentBook = 1;
+        let currentLanguage = 'de';
+
+        function showBook(bookNumber) {
+            // Verstecke alle Bücher
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`book${i}`).classList.add('hidden');
+                document.querySelectorAll('.btn-band')[i-1].classList.remove('active');
+            }
+            
+            // Zeige ausgewähltes Buch
+            document.getElementById(`book${bookNumber}`).classList.remove('hidden');
+            document.querySelectorAll('.btn-band')[bookNumber-1].classList.add('active');
+            
+            currentBook = bookNumber;
+            
+            // Stelle sicher, dass die richtige Sprache angezeigt wird
+            showLanguage(currentLanguage);
+        }
+
+        function showLanguage(lang) {
+            // Verstecke alle Sprachversionen
+            document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Zeige gewählte Sprache
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update Flag-Buttons
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
+            
+            currentLanguage = lang;
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            showBook(1); // Zeige erstes Buch
+            showLanguage('de'); // Zeige deutsche Version
+        });
+    </script>
+</body>
+</html>
