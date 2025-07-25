@@ -124,11 +124,16 @@
         }
 
         .book-cover img {
-            max-width: 200px;
+            max-width: 250px;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 3px solid #ffd700;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 4px solid #ffd700;
+            transition: transform 0.3s ease;
+        }
+
+        .book-cover img:hover {
+            transform: scale(1.05);
         }
 
         .book-title {
