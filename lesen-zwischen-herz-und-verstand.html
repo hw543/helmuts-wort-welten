@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zwischen Herz und Verstand - Serie - Helmut Wegners Wortwelten</title>
+    <title>Wo Liebe wachsen darf - Zwischen Herz und Verstand - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -13,26 +13,26 @@
 
         body {
             font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
+            line-height: 1.8;
+            color: #2c1810;
             background: linear-gradient(135deg, #9b59b6 0%, #e91e63 30%, #ff9a9e 70%, #fecfef 100%);
             min-height: 100vh;
             padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(233,30,99,0.3);
+            background: #FFF8DC;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             overflow: hidden;
         }
 
         .header {
             background: linear-gradient(135deg, #9b59b6, #e91e63);
             color: white;
-            padding: 40px 20px;
+            padding: 30px;
             text-align: center;
         }
 
@@ -48,124 +48,118 @@
             font-style: italic;
         }
 
-        .content {
-            padding: 40px 20px;
-        }
-
-        .series-intro {
-            text-align: center;
-            margin-bottom: 50px;
+        .controls {
+            background: #F0E68C;
             padding: 20px;
-            background: linear-gradient(135deg, #fce4ec, #f3e5f5);
-            border-radius: 10px;
+            border-bottom: 3px solid #DDD;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .series-intro h2 {
-            color: #9b59b6;
-            font-size: 2em;
+        .language-flags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
             margin-bottom: 15px;
         }
 
-        .series-intro p {
-            font-size: 1.1em;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .book-card {
+        .flag-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(233,30,99,0.1);
-            border: 2px solid #fce4ec;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
         }
 
-        .book-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(233,30,99,0.2);
+        .flag-btn.active {
+            border-color: #9b59b6;
+            box-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
         }
 
         .book-cover {
+            text-align: center;
             margin-bottom: 20px;
         }
 
         .book-cover img {
-            max-width: 180px;
+            max-width: 200px;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(233,30,99,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .book-title {
+            color: #9b59b6;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #e91e63;
+            padding-bottom: 15px;
+        }
+
+        .chapter-title {
             color: #e91e63;
             font-size: 1.5em;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+
+        .text-content p:first-child::first-letter {
+            font-size: 3em;
+            color: #9b59b6;
+            float: left;
+            line-height: 1;
+            margin: 0 8px 0 0;
             font-weight: bold;
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            border: 2px dashed #6c757d;
+        }
+
+        .coming-soon h3 {
+            color: #6c757d;
+            font-size: 1.8em;
             margin-bottom: 15px;
         }
 
-        .book-description {
-            color: #666;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            text-align: left;
-        }
-
-        .book-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-read {
-            background: linear-gradient(135deg, #4285f4, #1976d2);
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-read:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(66,133,244,0.3);
-        }
-
-        .btn-amazon {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-amazon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,107,53,0.3);
+        .coming-soon p {
+            color: #6c757d;
+            font-size: 1.1em;
+            font-style: italic;
         }
 
         .back-link {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 2px solid #fce4ec;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e91e63;
         }
 
         .btn-back {
@@ -173,7 +167,7 @@
             color: white;
             text-decoration: none;
             display: inline-block;
-            padding: 15px 30px;
+            padding: 12px 24px;
             border-radius: 25px;
             font-weight: bold;
             transition: all 0.3s ease;
@@ -184,23 +178,18 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        @media (max-width: 768px) {
-            .books-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .book-buttons {
-                flex-direction: column;
-                align-items: center;
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+                font-size: 1em;
             }
             
             .header h1 {
                 font-size: 2em;
-            }
-            
-            .content {
-                padding: 30px 15px;
             }
         }
     </style>
@@ -208,67 +197,105 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Zwischen Herz und Verstand</h1>
-            <p>New Adult Romance Serie - Liebe, Träume und neue Wege</p>
+            <h1>Wo Liebe wachsen darf</h1>
+            <p>Band 3 - Zwischen Herz und Verstand - Deutsch und Englisch</p>
+        </div>
+
+        <div class="controls">
+            <div class="language-flags">
+                <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+            </div>
         </div>
 
         <div class="content">
-            <div class="series-intro">
-                <h2>Eine Serie über Liebe und Selbstfindung</h2>
-                <p>Begleite junge Menschen auf ihrem Weg zwischen Herz und Verstand, zwischen Träumen und Realität. Eine emotionale New Adult Serie über Liebe, Freundschaft und die Suche nach dem eigenen Platz im Leben.</p>
+            <div class="book-cover">
+                <img src="wo-liebe-wachsen-darf.jpg" alt="Wo Liebe wachsen darf">
             </div>
-
-            <div class="books-grid">
-                <!-- Band 1: Verborgene Gefühle -->
-                <div class="book-card">
-                    <div class="book-cover">
-                        <img src="verborgene-gefuehle.jpg" alt="Verborgene Gefühle">
-                    </div>
-                    <div class="book-title">Band 1: Verborgene Gefühle</div>
-                    <div class="book-description">
-                        Lena Winter ist eine schüchterne Literaturstudentin, die sich in der Welt der Bücher wohler fühlt als unter Menschen. Als sie in einem Bibliotheksbuch geheimnisvolle Notizen entdeckt, beginnt ein anonymer Briefwechsel, der ihr Leben für immer verändern wird. Wer ist der mysteriöse "J."? Und wird Lena den Mut finden, ihre verborgenen Gefühle zu zeigen?
-                    </div>
-                    <div class="book-buttons">
-                        <a href="verborgene-gefuehle-lesen.html" class="btn-read">Lesen</a>
-                        <a href="https://www.amazon.de/dp/ASIN1" class="btn-amazon" target="_blank">Bei Amazon kaufen</a>
-                    </div>
+            
+            <!-- Deutsche Version -->
+            <div class="lang-de">
+                <div class="book-title">Wo Liebe wachsen darf</div>
+                <div class="chapter-title">Kapitel 1: Und jetzt?</div>
+                <div class="text-content">
+                    <p>Lena erinnerte sich an die Momente, in denen sie sich so verbunden gefühlt hatte, als ob die Worte zwischen ihnen eine Brücke gebaut hätten, die alle Unsicherheiten überwinden konnte. Aber jetzt war diese Brücke verschwunden, und sie stand wieder am Ufer, unsicher, wie sie den Fluss überqueren sollte.</p>
+                    
+                    <p>Sie öffnete die Schublade ihres Schreibtisches und nahm den Stapel Briefe heraus, die sie und Julian einander geschrieben hatten. Jeder Brief war ein Stück ihrer gemeinsamen Geschichte, ein Beweis dafür, dass sie einmal eine tiefe Verbindung gehabt hatten. Sie blätterte durch die Seiten, las hier und da einen Satz, der ihr ins Auge sprang.</p>
+                    
+                    <p>"Ich habe das Gefühl, als ob wir uns in einer Sprache verstehen, die niemand sonst spricht." "Deine Worte sind wie ein Zuhause für mich." "Manchmal frage ich mich, ob wir uns jemals wirklich verstehen werden." Diese Sätze hallten in ihr nach, und sie spürte einen Stich in der Brust. Warum war es so schwer, diese Verbindung in die reale Welt zu übertragen? Warum fühlte es sich an, als ob sie auf Papier so viel leichter atmen konnten als im echten Leben?</p>
+                    
+                    <p>Sie legte die Briefe zurück in die Schublade und schloss sie. Vielleicht war es an der Zeit, etwas Neues zu beginnen, etwas, das nicht von der Vergangenheit belastet war. Sie ging in die Küche und setzte Wasser für Tee auf. Während sie darauf wartete, dass das Wasser kochte, dachte sie über ihre Zukunft nach.</p>
+                    
+                    <p>Sie hatte immer davon geträumt, Schriftstellerin zu werden, aber jetzt, wo sie die Chance hatte, fühlte es sich an, als ob etwas fehlte. Vielleicht war es die Gewissheit, dass jemand da war, der an sie glaubte, der sie unterstützte. Julian hatte das getan, in seinen Briefen, aber im echten Leben war alles komplizierter.</p>
+                    
+                    <p>Der Wasserkessel pfiff, und sie goss das heiße Wasser über den Teebeutel in ihrer Tasse. Der Duft von Kamille stieg ihr in die Nase und beruhigte sie ein wenig. Sie nahm die Tasse und ging zurück ins Wohnzimmer, setzte sich auf das Sofa und blickte aus dem Fenster.</p>
+                    
+                    <p>Die Stadt lag nun in Dunkelheit, nur vereinzelt brannten noch Lichter in den Fenstern der Häuser. Es war ein beruhigender Anblick, der ihr das Gefühl gab, nicht ganz allein zu sein. Sie nippte an ihrem Tee und spürte, wie die Wärme sich in ihr ausbreitete.</p>
+                    
+                    <p>Vielleicht war das der Schlüssel, dachte sie. Vielleicht musste sie lernen, sich selbst zu genügen, sich selbst zu vertrauen, bevor sie wieder versuchen konnte, eine Brücke zu jemand anderem zu bauen. Sie schloss die Augen und lehnte sich zurück, ließ die Stille des Abends auf sich wirken.</p>
+                    
+                    <p>Es war ein neuer Anfang, ein leeres Blatt, und vielleicht war das genau das, was sie brauchte. Die Möglichkeit, etwas Neues zu schreiben, ohne die Last der Vergangenheit. Sie atmete tief durch und spürte, wie ein Funke Hoffnung in ihr aufkeimte.</p>
+                    
+                    <p>Vielleicht war dies der Moment, in dem sie lernen konnte, wieder zu atmen, wieder zu leben, ohne sich an jemand anderen zu klammern. Sie öffnete die Augen und blickte auf die leeren Blätter Papier auf ihrem Schreibtisch. Vielleicht war es an der Zeit, ihre eigene Geschichte zu schreiben, eine Geschichte, die nicht von Julian oder Emil handelte, sondern von ihr selbst.</p>
+                    
+                    <p>Von Lena, die allein stand, aber nicht verloren war. Von Lena, die bereit war, ihr eigenes Leben zu leben, mit all seinen Unsicherheiten und Möglichkeiten. Sie nahm einen tiefen Schluck von ihrem Tee und spürte, wie eine neue Entschlossenheit in ihr wuchs.</p>
+                    
+                    <p>Sie würde schreiben, nicht für jemanden anderen, sondern für sich selbst. Sie würde ihre eigene Stimme finden, ihre eigene Geschichte erzählen. Und vielleicht, nur vielleicht, würde sie dabei lernen, wieder zu atmen, wieder zu leben, ganz für sich allein.</p>
+                    
+                    <p>Sie stand auf, ging zu ihrem Schreibtisch und setzte sich hin. Die leeren Blätter lagen vor ihr, bereit, mit Worten gefüllt zu werden. Sie nahm den Stift zur Hand und spürte, wie etwas in ihr zum Leben erwachte. Es war Zeit, ihre eigene Geschichte zu schreiben.</p>
+                    
+                    <p>Sie spürte, wie die Feder ihres Stiftes das Papier berührte, und begann zu schreiben, ohne zu zögern, ohne nachzudenken. Die Worte flossen aus ihr heraus, als ob sie schon lange darauf gewartet hätten, endlich frei zu sein. Es war, als ob eine Tür in ihrem Inneren aufging, eine Tür, die sie lange verschlossen gehalten hatte.</p>
+                    
+                    <p>Sie schrieb über die Stille, die sie umgab, über das Gefühl, allein zu sein, aber nicht einsam. Sie schrieb über die Stadt, die draußen lag, über die Lichter, die in der Dunkelheit leuchteten, über die Geräusche, die zu ihr heraufdrangen. Sie schrieb über die Briefe, die sie und Julian ausgetauscht hatten, über die Verbindung, die sie auf Papier gefunden hatten, und über die Schwierigkeit, diese Verbindung in die reale Welt zu übertragen.</p>
+                    
+                    <p>Sie schrieb über Emil, über die Momente, die sie miteinander geteilt hatten, über das Lachen, die Tränen, die Hoffnung und die Enttäuschung. Sie schrieb über das Gefühl, das sie hatte, als er gegangen war, über die Leere, die er hinterlassen hatte, und über die Erkenntnis, dass diese Leere nicht für immer bleiben würde.</p>
+                    
+                    <p>Sie schrieb über ihre Träume, ihre Ängste, ihre Hoffnungen und ihre Unsicherheiten. Sie schrieb über die Menschen, die sie kannte, über die Freundschaften, die sie geschlossen hatte, und über die Beziehungen, die sie verloren hatte. Sie schrieb über ihre Familie, über die Erwartungen, die sie an sie gestellt hatten, und über die Erwartungen, die sie an sich selbst stellte.</p>
                 </div>
-
-                <!-- Band 2: Enthüllte Wahrheiten -->
-                <div class="book-card">
-                    <div class="book-cover">
-                        <img src="enthüllte-wahrheiten.jpg" alt="Enthüllte Wahrheiten">
-                    </div>
-                    <div class="book-title">Band 2: Enthüllte Wahrheiten</div>
-                    <div class="book-description">
-                        Lena und Julian haben zueinander gefunden, doch die Realität einer Beziehung ist komplizierter als ihre romantischen Träume. Zwischen Nähe und Distanz, zwischen gemeinsamen Momenten und eigenen Räumen müssen sie lernen, was Liebe wirklich bedeutet. Ein berührender Roman über die Herausforderungen junger Liebe.
-                    </div>
-                    <div class="book-buttons">
-                        <a href="enthullte-wahrheiten-lesen.html" class="btn-read">Lesen</a>
-                        <a href="https://www.amazon.de/dp/ASIN2" class="btn-amazon" target="_blank">Bei Amazon kaufen</a>
-                    </div>
-                </div>
-
-                <!-- Band 3: Wo Liebe wachsen darf -->
-                <div class="book-card">
-                    <div class="book-cover">
-                        <img src="wo-liebe-wachsen-darf.jpg" alt="Wo Liebe wachsen darf">
-                    </div>
-                    <div class="book-title">Band 3: Wo Liebe wachsen darf</div>
-                    <div class="book-description">
-                        Nach einer schmerzhaften Trennung muss Lena lernen, wieder zu sich selbst zu finden. Allein mit ihren Träumen und Ängsten entdeckt sie, was es bedeutet, sich selbst zu lieben, bevor man einen anderen lieben kann. Ein bewegender Abschluss der Serie über Selbstfindung, Heilung und die Kraft der Worte.
-                    </div>
-                    <div class="book-buttons">
-                        <a href="wo-liebe-wachsen-darf-lesen.html" class="btn-read">Lesen</a>
-                        <a href="https://www.amazon.de/dp/ASIN3" class="btn-amazon" target="_blank">Bei Amazon kaufen</a>
-                    </div>
+            </div>
+            
+            <!-- Englische Version -->
+            <div class="lang-en hidden">
+                <div class="book-title">Where Love May Grow</div>
+                <div class="coming-soon">
+                    <h3>English Version Coming Soon</h3>
+                    <p>Die englische Übersetzung wird in Kürze verfügbar sein.</p>
                 </div>
             </div>
 
             <div class="back-link">
-                <a href="new-adult.html" class="btn-back">← Zurück zu New Adult</a>
+                <a href="lesen-zwischen-herz-und-verstand.html" class="btn-back">← Zurück zur Serie</a>
             </div>
         </div>
     </div>
+
+    <script>
+        let currentLanguage = 'de';
+
+        function showLanguage(lang) {
+            // Verstecke alle Sprachversionen
+            document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Zeige gewählte Sprache
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update Flag-Buttons
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
+            
+            currentLanguage = lang;
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            showLanguage('de'); // Zeige deutsche Version
+        });
+    </script>
 </body>
 </html>
