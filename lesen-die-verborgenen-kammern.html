@@ -1,1 +1,491 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die Verborgenen Kammern Lesen - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #2c1810;
+            background: linear-gradient(135deg, #4B0082 0%, #8A2BE2 30%, #DDA0DD 70%, #F0E68C 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFF8DC;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4B0082, #8A2BE2);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .controls {
+            background: #E6E6FA;
+            padding: 20px;
+            border-bottom: 3px solid #DDD;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-flags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .flag-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            border: 2px solid transparent;
+        }
+
+        .flag-btn.active {
+            border-color: #8A2BE2;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+
+        .band-navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-band {
+            background: linear-gradient(135deg, #4B0082, #8A2BE2);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-band.active {
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-band:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .book-title {
+            color: #4B0082;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #8A2BE2;
+            padding-bottom: 15px;
+        }
+
+        .chapter-title {
+            color: #663399;
+            font-size: 1.5em;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+
+        .text-content p:first-child::first-letter {
+            font-size: 3em;
+            color: #4B0082;
+            float: left;
+            line-height: 1;
+            margin: 0 8px 0 0;
+            font-weight: bold;
+        }
+
+        .buy-button {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .btn-buy {
+            background: linear-gradient(135deg, #8A2BE2, #4B0082);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-buy.unavailable {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #8A2BE2;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .band-navigation {
+                gap: 5px;
+            }
+            
+            .btn-band {
+                font-size: 0.8em;
+                padding: 8px 12px;
+            }
+            
+            .content {
+                padding: 20px;
+                font-size: 1em;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Die Verborgenen Kammern</h1>
+            <p>Geheimnisvolle Liebesgeschichten voller Leidenschaft und Mysterium</p>
+        </div>
+
+        <div class="controls">
+            <div class="language-flags">
+                <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+                <button class="flag-btn" onclick="showLanguage('es')">🇪🇸 Español</button>
+            </div>
+            <div class="band-navigation">
+                <button class="btn-band active" onclick="showBook(1)">Band 1</button>
+                <button class="btn-band" onclick="showBook(2)">Band 2</button>
+                <button class="btn-band" onclick="showBook(3)">Band 3</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Band 1: Hinter verschlossenen Türen -->
+            <div id="book1" class="book-content">
+                <div class="book-cover">
+                    <img src="hinter-verschlossenen-tueren.jpg" alt="Hinter verschlossenen Türen">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Hinter verschlossenen Türen</div>
+                    <div class="chapter-title">Kapitel 1: Das Angebot</div>
+                    <div class="text-content">
+                        <p>Das Pigment bröckelte unter Elenas behutsamen Bewegungen. Winzige Farbpartikel, einst leuchtend rot, nun zu einem matten Braun verblasst, rieselten auf das weiße Tuch, das sie unter dem Gemälde ausgebreitet hatte. Vor über zweihundert Jahren hatte ein Künstler diesen Farbton mit Quecksilbersulfid und organischen Bindemitteln angerührt, ohne zu ahnen, dass seine Schöpfung eines Tages unter Elenas Mikroskop und Skalpell liegen würde.</p>
+                        
+                        <p>„Jahrhunderte", murmelte sie, während sie mit geübten Fingern die nächste Schicht freilegte. „Und trotzdem verrätst du mir deine Geheimnisse." Elena Winters arbeitete im großzügigen Restaurierungsatelier des Friedrich-Museums in Berlin, umgeben von Spezialinstrumenten, Chemikalien und Referenzwerken. Die hohen Fenster ließen gleichmäßiges Nordlicht herein -- das ideale Licht für ihre präzise Arbeit.</p>
+                        
+                        <p>Das spätbarocke Gemälde, eine Darstellung der Göttin Diana bei der Jagd, war seit drei Wochen ihr Projekt. Es war eine Herausforderung, doch genau das machte die Arbeit für sie so befriedigend. Elenas Handy vibrierte auf dem Arbeitstisch. Sie ignorierte es. Der Bereich um Dianas rechtes Auge bedurfte ihrer vollen Konzentration -- zu viele übermalte Schichten, zu viel Firnis, aufgetragen von wohlmeinenden, aber unkundigen Restauratoren vergangener Jahrhunderte.</p>
+                        
+                        <p>Ihre Aufgabe war es, durch all diese Schichten zum Original vorzudringen, ohne es zu beschädigen. Das Telefon vibrierte erneut. Elena seufzte, legte ihr Skalpell beiseite und streifte die Latexhandschuhe ab. Es war Direktor Schumann, wie die Anzeige verriet. Der Museumsdirektor rief sie selten direkt an; normalerweise kommunizierte er über seine Assistentin oder E-Mail.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="https://www.amazon.de/dp/B0F1YC3J79" class="btn-buy" target="_blank">📚 Bei Amazon kaufen</a>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Behind Closed Doors</div>
+                    <div class="chapter-title">Chapter 1: The Offer</div>
+                    <div class="text-content">
+                        <p>The pigment crumbled under Elena's careful movements. Tiny particles of color, once bright red, now faded to a dull brown, trickled onto the white cloth she had spread beneath the painting. Over two hundred years ago, an artist had mixed this hue with mercuric sulfide and organic binders, unaware that his creation would one day lie beneath Elena's microscope and scalpel.</p>
+                        
+                        <p>"Centuries," she murmured, as she uncovered the next layer with practiced fingers. "And yet you tell me your secrets." Elena Winters worked in the spacious restoration studio of the Friedrich Museum in Berlin, surrounded by specialized instruments, chemicals, and reference works. The high windows let in steady northern light---the ideal light for her precise work.</p>
+                        
+                        <p>The late Baroque painting, a depiction of the goddess Diana hunting, had been her project for three weeks. It was a challenge, but that was precisely what made the work so satisfying. Lena's cell phone vibrated on the worktable. She ignored it. The area around Diana's right eye needed her full concentration -- too many layers of overpainted material, too much varnish, applied by well-meaning but ignorant restorers of past centuries.</p>
+                        
+                        <p>Her task was to penetrate through all these layers to the original without damaging it. The phone vibrated again. Elena sighed, put down her scalpel, and removed her latex gloves. It was Director Schumann, as the ad revealed. The museum director rarely called her directly; he usually communicated through his assistant or email.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="https://www.amazon.de/dp/B0F311L2ZQ" class="btn-buy" target="_blank">📚 Buy on Amazon</a>
+                    </div>
+                </div>
+
+                <!-- Spanische Version -->
+                <div class="lang-es hidden">
+                    <div class="book-title">Tras puertas cerradas</div>
+                    <div class="chapter-title">Capítulo 1: La Oferta</div>
+                    <div class="text-content">
+                        <p>El pigmento se desmoronó bajo los cuidadosos movimientos de Elena. Diminutas partículas de color, antes rojo brillante, ahora desvanecidas en un marrón apagado, se deslizaron sobre la tela blanca que había extendido debajo de la pintura. Hacía más de doscientos años, un artista había mezclado este tono con sulfuro de mercurio y aglutinantes orgánicos, sin saber que su creación algún día yacería bajo el microscopio y el bisturí de Elena.</p>
+                        
+                        <p>«Siglos», murmuró, mientras descubría la siguiente capa con dedos expertos. «Y aun así me revelas tus secretos». Elena Winters trabajaba en el espacioso estudio de restauración del Museo Friedrich de Berlín, rodeada de instrumentos especializados, productos químicos y obras de referencia. Los altos ventanales dejaban entrar una luz constante del norte, la luz ideal para su preciso trabajo.</p>
+                        
+                        <p>La pintura del Barroco tardío, una representación de la diosa Diana cazando, había sido su proyecto durante tres semanas. Era un desafío, pero eso era precisamente lo que hacía que el trabajo fuera tan satisfactorio. El móvil de Lena vibró sobre la mesa de trabajo. Lo ignoró. La zona alrededor del ojo derecho de Diana requería toda su concentración: demasiadas capas de pintura, demasiado barniz, aplicado por restauradores bienintencionados pero ignorantes de siglos pasados.</p>
+                        
+                        <p>Su tarea consistía en penetrar a través de todas esas capas hasta llegar al original sin dañarlo. El teléfono volvió a vibrar. Elena suspiró, dejó el bisturí y se quitó los guantes de látex. Era el director Schumann, como revelaba el anuncio. El director del museo rara vez la llamaba directamente; solía comunicarse a través de su asistente o por correo electrónico.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="https://www.amazon.de/dp/B0F37NJD39" class="btn-buy" target="_blank">📚 Comprar en Amazon</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 2: Die Kunst der Hingabe -->
+            <div id="book2" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="die-kunst-der-hingabe.jpg" alt="Die Kunst der Hingabe">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Die Kunst der Hingabe</div>
+                    <div class="chapter-title">Kapitel 1: Das Vermächtnis</div>
+                    <div class="text-content">
+                        <p>Die Nachricht vom Tod seiner Tante Marie erreichte Marcus an einem kühlen Herbstmorgen. Die Sonne stand tief am Horizont und tauchte die toskanische Landschaft in ein goldenes Licht, das die Schatten der Vergangenheit kaum zu durchdringen vermochte. Elena, die an seiner Seite stand, spürte die Last der Nachricht, die schwer auf Marcus' Schultern ruhte. Marie, die Matriarchin der Familie Castellano, war nicht nur eine Verwandte gewesen, sondern auch die Hüterin eines Erbes, das weit über Kunst und Geschichte hinausging.</p>
+                        
+                        <p>Die Reise zum Familienanwesen in der Toskana war von einer seltsamen Stille geprägt. Elena beobachtete, wie Marcus' Gesichtszüge mit jedem Kilometer härter wurden, als ob er sich hinter einer Maske aus Kontrolle und Pflichtbewusstsein versteckte. Sie wusste, dass die Beerdigung mehr war als nur ein Abschied -- es war eine Konfrontation mit der Vergangenheit, die Marcus so lange zu verdrängen versucht hatte.</p>
+                        
+                        <p>Das Anwesen, ein imposantes Gebäude aus Stein und Geschichte, ragte vor ihnen auf wie ein stummer Zeuge der Zeit. In der großen Halle, wo das Licht durch die hohen Fenster fiel, versammelte sich die Familie. Die Luft war schwer von unausgesprochenen Worten und alten Geheimnissen. Als das Testament verlesen wurde, spürte Elena, wie sich die Atmosphäre veränderte.</p>
+                        
+                        <p>Ein unbekannter Teil der Sammlung wurde erwähnt, ein "verlorener Schatz", der die Familie seit Generationen begleitete. Marie hatte Marcus eine verschlüsselte Botschaft hinterlassen, die von einem Erbe sprach, das weit mehr war als nur materieller Besitz. Elena sah, wie Marcus' Hände leicht zitterten, als er das Dokument entgegennahm. Die Trauer und die Familiendynamik schienen ihn in alte Verhaltensmuster zurückzuführen, und Elena fragte sich, ob die Last der Vergangenheit jemals von ihm abfallen würde.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="#" class="btn-buy unavailable">📚 Bald verfügbar</a>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">The Art of Devotion</div>
+                    <div class="chapter-title">Chapter 1: The Legacy</div>
+                    <div class="text-content">
+                        <p>The news of his aunt Marie's death reached Marcus on a cool autumn morning. The sun stood low on the horizon, bathing the Tuscan landscape in a golden light that could barely penetrate the shadows of the past. Elena, standing at his side, felt the weight of the news that rested heavily on Marcus' shoulders. Marie, the matriarch of the Castellano family, had been not only a relative but also the keeper of a legacy that extended far beyond art and history.</p>
+                        
+                        <p>The journey to the family estate in Tuscany was marked by a strange silence. Elena watched as Marcus' features hardened with each kilometer, as if he were hiding behind a mask of control and duty. She knew that the funeral was more than just a farewell -- it was a confrontation with the past that Marcus had tried so long to suppress.</p>
+                        
+                        <p>The estate, an imposing building of stone and history, loomed before them like a silent witness to time. In the great hall, where light fell through the tall windows, the family gathered. The air was heavy with unspoken words and old secrets. When the will was read, Elena felt the atmosphere change.</p>
+                        
+                        <p>An unknown part of the collection was mentioned, a "lost treasure" that had accompanied the family for generations. Marie had left Marcus an encrypted message that spoke of a legacy that was far more than just material possessions. Elena saw how Marcus' hands trembled slightly as he received the document. The grief and family dynamics seemed to pull him back into old behavioral patterns, and Elena wondered if the burden of the past would ever lift from him.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="#" class="btn-buy unavailable">📚 Coming Soon</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 3: Die Tiefe der Begierde -->
+            <div id="book3" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="die-tiefe-der-begierde.jpg" alt="Die Tiefe der Begierde">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Die Tiefe der Begierde</div>
+                    <div class="chapter-title">Kapitel 1: Der Schatz von Venedig</div>
+                    <div class="text-content">
+                        <p>Das Licht der untergehenden Sonne brach sich auf der Lagune Venedigs und tauchte die Stadt in ein goldenes Glühen, das sich in den unzähligen Fenstern des Palazzo Grassi spiegelte. Elena Winters ließ ihren Blick über den Canale Grande schweifen, während sie dem Gemurmel der Auktionsbesucher lauschte, die sich um sie herum im opulenten Saal versammelten. Vor weniger als einem Jahr hätte sie es für unmöglich gehalten, an diesem Ort zu stehen -- als Begleiterin eines der bedeutendsten privaten Kunstsammler Europas und mit der Aussicht, ein Stück zur Vervollständigung einer der exklusivsten Kollektionen erotischer Renaissancekunst zu erwerben.</p>
+                        
+                        <p>Marcus Castellano stand neben ihr, seine Präsenz so ruhig und kontrolliert wie immer, doch sie spürte die feine Spannung, die seinen Körper durchlief. Es war die subtile Intensität eines Jägers, der seine Beute bereits im Visier hatte. Seit drei Monaten bereiteten sie sich auf diese Auktion vor -- seit sie in den Archiven des Museums auf Hinweise zu einer verschollenen Serie erotischer Skulpturen aus dem 16. Jahrhundert gestoßen waren, von denen heute eines der Hauptstücke versteigert werden sollte.</p>
+                        
+                        <p>"Lot 27 wird in etwa zwanzig Minuten aufgerufen", flüsterte Marcus, während er diskret auf sein Programmheft blickte. Seine Stimme, tief und kontrolliert, löste noch immer dieses vertraute Kribbeln in ihrer Wirbelsäule aus. "Bist du bereit?" Elena nickte, ihr Blick fest. "Absolut. Die Skulptur ist es wert, um sie zu kämpfen."</p>
+                        
+                        <p>Ein flüchtiges Lächeln huschte über Marcus' Gesicht -- eine dieser kleinen Gesten der Zuneigung, die in der Öffentlichkeit so selten waren, aber seit ihrer Versöhnung nach der schwierigen Zeit vor einigen Monaten immer häufiger wurden. "Dann lass uns einen besseren Platz suchen", sagte er und führte sie mit einer sanften Berührung am Rücken durch die Menge.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="#" class="btn-buy unavailable">📚 Bald verfügbar</a>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">The Depths of Desire</div>
+                    <div class="chapter-title">Chapter 1: The Treasure of Venice</div>
+                    <div class="text-content">
+                        <p>The light of the setting sun broke on the lagoon of Venice and bathed the city in a golden glow that reflected in the countless windows of the Palazzo Grassi. Elena Winters let her gaze sweep over the Canale Grande while listening to the murmur of auction visitors gathering around them in the opulent hall. Less than a year ago, she would have considered it impossible to stand in this place -- as the companion of one of Europe's most important private art collectors and with the prospect of acquiring a piece to complete one of the most exclusive collections of erotic Renaissance art.</p>
+                        
+                        <p>Marcus Castellano stood beside her, his presence as calm and controlled as always, yet she felt the fine tension that ran through his body. It was the subtle intensity of a hunter who already had his prey in sight. For three months they had been preparing for this auction -- since they had come across clues in the museum archives to a lost series of erotic sculptures from the 16th century, one of the main pieces of which was to be auctioned today.</p>
+                        
+                        <p>"Lot 27 will be called in about twenty minutes," Marcus whispered, discretely glancing at his program. His voice, deep and controlled, still triggered that familiar tingling in her spine. "Are you ready?" Elena nodded, her gaze firm. "Absolutely. The sculpture is worth fighting for."</p>
+                        
+                        <p>A fleeting smile flitted across Marcus' face -- one of those small gestures of affection that were so rare in public but had become increasingly frequent since their reconciliation after the difficult time a few months ago. "Then let's find a better seat," he said, guiding her through the crowd with a gentle touch on her back.</p>
+                    </div>
+                    <div class="buy-button">
+                        <a href="#" class="btn-buy unavailable">📚 Coming Soon</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="die-verborgenen-kammern.html" class="btn-back">← Zurück zur Serie</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentBook = 1;
+        let currentLanguage = 'de';
+
+        function showBook(bookNumber) {
+            // Verstecke alle Bücher
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`book${i}`).classList.add('hidden');
+                document.querySelectorAll('.btn-band')[i-1].classList.remove('active');
+            }
+            
+            // Zeige ausgewähltes Buch
+            document.getElementById(`book${bookNumber}`).classList.remove('hidden');
+            document.querySelectorAll('.btn-band')[bookNumber-1].classList.add('active');
+            
+            currentBook = bookNumber;
+            
+            // Stelle sicher, dass die richtige Sprache angezeigt wird
+            showLanguage(currentLanguage);
+            
+            // Update Flaggen basierend auf verfügbaren Sprachen
+            updateLanguageFlags(bookNumber);
+        }
+
+        function updateLanguageFlags(bookNumber) {
+            const flags = document.querySelectorAll('.flag-btn');
+            
+            if (bookNumber === 1) {
+                // Band 1: Alle 3 Sprachen verfügbar
+                flags.forEach(flag => flag.style.display = 'inline-block');
+            } else {
+                // Band 2+3: Nur Deutsch und Englisch
+                flags[0].style.display = 'inline-block'; // Deutsch
+                flags[1].style.display = 'inline-block'; // Englisch
+                flags[2].style.display = 'none'; // Spanisch ausblenden
+                
+                // Falls aktuell Spanisch aktiv ist, wechsle zu Deutsch
+                if (currentLanguage === 'es') {
+                    showLanguage('de');
+                }
+            }
+        }
+
+        function showLanguage(lang) {
+            // Prüfe ob die Sprache für das aktuelle Buch verfügbar ist
+            if (currentBook > 1 && lang === 'es') {
+                return; // Spanisch nicht verfügbar für Band 2+3
+            }
+            
+            // Verstecke alle Sprachversionen
+            document.querySelectorAll('.lang-de, .lang-en, .lang-es').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Zeige gewählte Sprache
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update Flag-Buttons
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
+            
+            currentLanguage = lang;
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            showBook(1); // Zeige erstes Buch
+            showLanguage('de'); // Zeige deutsche Version
+        });
+    </script>
+</body>
+</html>
