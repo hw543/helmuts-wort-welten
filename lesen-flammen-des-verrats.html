@@ -1,1 +1,263 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flammen des Verrats - Lesen - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #2c1810;
+            background: linear-gradient(135deg, #8B0000 0%, #FF4500 30%, #FF6347 70%, #000000 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255,69,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8B0000, #FF4500);
+            color: #FFE4E1;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .controls {
+            background: #2c2c2c;
+            padding: 20px;
+            border-bottom: 3px solid #FF4500;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .language-flags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .flag-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #FFE4E1;
+            color: #8B0000;
+            border: 2px solid transparent;
+        }
+
+        .flag-btn.active {
+            border-color: #FF4500;
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #FFE4E1;
+        }
+
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(255,69,0,0.3);
+        }
+
+        .book-title {
+            color: #FF4500;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #8B0000;
+            padding-bottom: 15px;
+        }
+
+        .chapter-title {
+            color: #FF6347;
+            font-size: 1.5em;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+
+        .text-content p:first-child::first-letter {
+            font-size: 3em;
+            color: #FF4500;
+            float: left;
+            line-height: 1;
+            margin: 0 8px 0 0;
+            font-weight: bold;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #8B0000;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+                font-size: 1em;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Flammen des Verrats</h1>
+            <p>Psychothriller - Ein Feuerwehrmann zwischen Berufung und dunkler Obsession</p>
+        </div>
+
+        <div class="controls">
+            <div class="language-flags">
+                <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="book-cover">
+                <img src="flammendesverrats.jpg" alt="Flammen des Verrats">
+            </div>
+            
+            <!-- Deutsche Version -->
+            <div class="lang-de">
+                <div class="book-title">Flammen des Verrats</div>
+                <div class="chapter-title">Kapitel 1: Ein neues Leben bei der Feuerwehr</div>
+                <div class="text-content">
+                    <p>Lukas stand da, unsicher, mit einem Anflug von Nervosität, während die Flammen vor seinem inneren Auge in scharfer Erinnerung aufflackerten. Seit seiner Kindheit hatte das Feuer eine seltsame Faszination auf ihn ausgeübt -- eine mächtige, alles verzehrende Kraft, die ihn zugleich anzog und einschüchterte. Hier, in der Feuerwehr, glaubte Lukas, endlich eine Möglichkeit gefunden zu haben, diese gewaltige Energie zu zähmen und in eine kontrollierte, sinnvolle Richtung zu lenken.</p>
+                    
+                    <p>Als er zum ersten Mal die Wache betrat, verspürte er den kühlen Betonboden unter seinen neuen Stiefeln und atmete den charakteristischen Geruch von Rauch, Metall und Motoröl ein. Die Geräuschkulisse war geschäftig und doch beruhigend; Männer und Frauen, die sich konzentriert auf ihren nächsten Einsatz vorbereiteten. Seine Kollegen musterten ihn kurz, nickten ihm zu und gingen wieder ihrer Arbeit nach. Niemand kannte seine Geschichte, die Leere, die ihn umgab, und das Leben, aus dem er kam.</p>
+                    
+                    <p>Die ersten Tage vergingen schnell. Lukas lernte, wie man die schwere Ausrüstung bedient, und absolvierte schweißtreibende Übungen. Schon bald entdeckte er eine neue Art von Erfüllung, die ihm die Arbeit gab. Doch in stillen Momenten spürte Lukas, wie die Flamme seiner inneren Leidenschaft wieder aufflammte. Das Feuer ließ ihn nicht los; es zog ihn wie einen stillen Ruf in seinen Bann. Mit jedem Einsatz wurde das unerklärliche, brennende Verlangen stärker, dem Feuer ganz nah zu sein -- nicht nur als Helfer, sondern als jemand, der es tatsächlich beherrschen konnte.</p>
+                    
+                    <p>Eines Nachts entdeckte er an einer kleinen, verlassenen Hütte am Stadtrand einen schwelenden Glut-Rest. Lukas blieb stehen, den Blick fest auf den glimmenden Ort gerichtet, und spürte, wie sein Herz unruhig zu pochen begann. Er hatte das unwiderstehliche Bedürfnis, die letzten Glut-Reste zu berühren, zu fühlen, wie nah er dem Feuer sein konnte. Ein Gedanke keimte in ihm auf, so scheu und verstohlen wie eine Flamme, die sich unter einem Aschenhaufen verbarg: Was wäre, wenn er selbst einen Brand entfachen könnte?</p>
+                </div>
+            </div>
+            
+            <!-- Englische Version -->
+            <div class="lang-en hidden">
+                <div class="book-title">Flames of Betrayal</div>
+                <div class="chapter-title">Chapter 1: A New Life at the Fire Department</div>
+                <div class="text-content">
+                    <p>Lukas stood there, uncertain, with a touch of nervousness, while flames flickered sharply in his inner eye as vivid memories. Since childhood, fire had exerted a strange fascination on him -- a powerful, all-consuming force that both attracted and intimidated him. Here, at the fire department, Lukas believed he had finally found a way to tame this tremendous energy and direct it in a controlled, meaningful direction.</p>
+                    
+                    <p>When he first entered the station, he felt the cool concrete floor under his new boots and breathed in the characteristic smell of smoke, metal, and motor oil. The soundscape was busy yet calming; men and women concentrating on preparing for their next mission. His colleagues briefly looked him over, nodded to him, and went back to their work. No one knew his story, the emptiness that surrounded him, and the life he came from.</p>
+                    
+                    <p>The first days passed quickly. Lukas learned how to operate the heavy equipment and completed exhausting exercises. Soon he discovered a new kind of fulfillment that the work gave him. But in quiet moments, Lukas felt the flame of his inner passion flare up again. The fire would not let him go; it drew him like a silent call under its spell. With each mission, the inexplicable, burning desire grew stronger to be very close to fire -- not just as a helper, but as someone who could actually control it.</p>
+                    
+                    <p>One night he discovered smoldering embers at a small, abandoned hut on the outskirts of town. Lukas stopped, his gaze fixed on the glowing spot, and felt his heart begin to beat restlessly. He had an irresistible need to touch the last embers, to feel how close he could be to fire. A thought germinated in him, as shy and furtive as a flame hiding under a pile of ashes: What if he could ignite a fire himself?</p>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="thriller.html" class="btn-back">← Zurück zu Thriller</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLanguage = 'de';
+
+        function showLanguage(lang) {
+            // Verstecke alle Sprachversionen
+            document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Zeige gewählte Sprache
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update Flag-Buttons
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
+            
+            currentLanguage = lang;
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            showLanguage('de'); // Zeige deutsche Version
+        });
+    </script>
+</body>
+</html>
