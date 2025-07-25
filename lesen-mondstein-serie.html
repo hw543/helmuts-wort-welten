@@ -1,1 +1,401 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Das Geheimnis vom Mondstein - Lesen - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            line-height: 1.8;
+            color: #2c1810;
+            background: linear-gradient(135deg, #9370DB 0%, #87CEEB 30%, #FFD700 70%, #FF69B4 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFFACD;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #9370DB, #FFD700);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .controls {
+            background: #F0E68C;
+            padding: 20px;
+            border-bottom: 3px solid #DDD;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-flags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .flag-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            border: 2px solid transparent;
+        }
+
+        .flag-btn.active {
+            border-color: #9370DB;
+            box-shadow: 0 0 10px rgba(147, 112, 219, 0.5);
+        }
+
+        .band-navigation {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-band {
+            background: linear-gradient(135deg, #9370DB, #FFD700);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-band.active {
+            border-color: #FF69B4;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+
+        .btn-band:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .book-title {
+            color: #9370DB;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 15px;
+        }
+
+        .chapter-title {
+            color: #4169E1;
+            font-size: 1.5em;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .text-content {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .text-content p {
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+
+        .text-content p:first-child::first-letter {
+            font-size: 3em;
+            color: #9370DB;
+            float: left;
+            line-height: 1;
+            margin: 0 8px 0 0;
+            font-weight: bold;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #FFD700;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .band-navigation {
+                gap: 5px;
+            }
+            
+            .btn-band {
+                font-size: 0.8em;
+                padding: 8px 12px;
+            }
+            
+            .content {
+                padding: 20px;
+                font-size: 1em;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Das Geheimnis vom Mondstein</h1>
+            <p>Leni, Finn und Arvid auf der Suche nach den Lichtsteinen - Deutsch und Englisch</p>
+        </div>
+
+        <div class="controls">
+            <div class="language-flags">
+                <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+            </div>
+            <div class="band-navigation">
+                <button class="btn-band active" onclick="showBook(1)">Band 1: Fragment</button>
+                <button class="btn-band" onclick="showBook(2)">Band 2: Wald</button>
+                <button class="btn-band" onclick="showBook(3)">Band 3: Letzter Stein</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Band 1: Das Geheimnis des leuchtenden Fragments -->
+            <div id="book1" class="book-content">
+                <div class="book-cover">
+                    <img src="mondstein1.jpg" alt="Das Geheimnis des leuchtenden Fragments">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Band 1: Das Geheimnis des leuchtenden Fragments</div>
+                    <div class="chapter-title">Kapitel 1: Die Vorbereitung</div>
+                    <div class="text-content">
+                        <p>Die Sonne ging langsam über dem kleinen Dorf auf und tauchte alles in ein warmes, goldenes Licht. Leni, Finn und Arvid waren früh aufgestanden, denn heute war der Tag, an dem sie ihre Reise in den geheimnisvollen Wald fortsetzen würden. Sie hatten bereits einige Abenteuer hinter sich und wussten, dass noch viele Herausforderungen vor ihnen lagen.</p>
+                        
+                        <p>In Lenis Zimmer saßen die drei Freunde zusammen und betrachteten die Karte, die ihnen den Weg durch den geheimnisvollen Wald zeigen würde. Die Karte war alt und vergilbt, aber die Symbole und Zeichen darauf leuchteten in einem sanften, goldenen Licht. "Wir müssen uns gut vorbereiten", sagte Leni entschlossen. "Der Wald ist voller Gefahren, und wir wissen nicht, was uns erwartet."</p>
+                        
+                        <p>Sie begannen, ihre Rucksäcke zu packen. Leni steckte die Karte sorgfältig in eine kleine Tasche, Finn überprüfte ihre Ausrüstung, und Arvid packte die Fragmente der Lichtsteine, die sie bereits gefunden hatten, sorgfältig in einen kleinen Beutel. Die Steine leuchteten sanft und schimmerten in allen Farben des Regenbogens - ein magischer Anblick, der ihnen Mut und Entschlossenheit gab.</p>
+                        
+                        <p>Mit schweren Herzen, aber auch mit großer Entschlossenheit machten sie sich auf den Weg. Sie folgten der Karte durch ein weites Tal, das von hohen Bergen umgeben war. Die Landschaft war atemberaubend schön, mit grünen Wiesen, klaren Bächen und wilden Blumen. Doch sie wussten, dass sie vorsichtig sein mussten, denn das Tal war auch die Heimat vieler wilder Tiere, und sie waren entschlossen, die Fragmente der Lichtsteine zu finden und das Geheimnis zu lüften.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Volume 1: The Secret of the Glowing Fragment</div>
+                    <div class="chapter-title">Chapter 1: The Preparation</div>
+                    <div class="text-content">
+                        <p>The sun slowly rose over the small village, bathing everything in warm, golden light. Leni, Finn, and Arvid had gotten up early, for today was the day they would continue their journey into the mysterious forest. They had already experienced some adventures and knew that many challenges still lay ahead of them.</p>
+                        
+                        <p>In Leni's room, the three friends sat together and looked at the map that would show them the way through the mysterious forest. The map was old and yellowed, but the symbols and signs on it glowed in a soft, golden light. "We must prepare well," said Leni determinedly. "The forest is full of dangers, and we don't know what awaits us."</p>
+                        
+                        <p>They began to pack their backpacks. Leni carefully put the map in a small bag, Finn checked their equipment, and Arvid carefully packed the light stone fragments they had already found in a small pouch. The stones glowed softly and shimmered in all the colors of the rainbow - a magical sight that gave them courage and determination.</p>
+                        
+                        <p>With heavy hearts, but also with great determination, they set off on their way. They followed the map through a wide valley surrounded by high mountains. The landscape was breathtakingly beautiful, with green meadows, clear streams, and wild flowers. But they knew they had to be careful, for the valley was also home to many wild animals, and they were determined to find the light stone fragments and solve the mystery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 2: Die Reise durch den geheimnisvollen Wald -->
+            <div id="book2" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="mondstein2.jpg" alt="Die Reise durch den geheimnisvollen Wald">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Band 2: Die Reise durch den geheimnisvollen Wald</div>
+                    <div class="chapter-title">Kapitel 1: Der Waldweg</div>
+                    <div class="text-content">
+                        <p>Die drei Freunde setzten ihre Reise fort, bereit für das nächste Abenteuer, das sie erwarten würde. Der Pfad führte sie tiefer in den geheimnisvollen Wald hinein, wo die Bäume immer dichter standen und das Licht der Sonne kaum noch durch das dichte Blätterdach drang. Die Luft war kühl und feucht, und das leise Rascheln der Blätter schien ihnen zuzuraunen, als würden die Bäume selbst ihre Geheimnisse flüstern.</p>
+                        
+                        <p>Während sie tiefer in den Wald vordrangen, bemerkten sie, dass die Natur um sie herum lebendiger wurde. Vögel zwitscherten in den Baumkronen, und ab und zu huschte ein kleines Tier durch das Unterholz. Die Blumen am Wegesrand schienen in allen Farben des Regenbogens zu leuchten, und der Duft von frischem Moos und Erde erfüllte die Luft. Es war, als würden sie in eine andere Welt eintauchen, eine Welt voller Magie und Wunder.</p>
+                        
+                        <p>Plötzlich hörten sie ein leises Plätschern in der Nähe. Neugierig folgten sie dem Geräusch und entdeckten einen kleinen, klaren Bach, der sich durch den Wald schlängelte. Sie setzten sich an das Ufer und tauchten ihre müden Füße in das kühle Nass. "Wisst ihr, was ich mich frage?", sagte Arvid nachdenklich. "Wie viele Fragmente der Lichtsteine gibt es eigentlich? Und woher kommen sie?"</p>
+                        
+                        <p>Nach ihrer Pause setzten sie ihre Reise fort. Der Bach führte sie tiefer in den Wald hinein, bis sie an eine kleine Lichtung kamen. In der Mitte der Lichtung stand ein alter, knorriger Baum, dessen Äste sich wie Arme in den Himmel streckten. In seinen Ästen funkelten kleine Lichter - Glühwürmchen, die in der Dämmerung leuchteten und dem Baum eine magische Aura verliehen. Plötzlich hörten sie eine sanfte Stimme: "Willkommen, junge Abenteurer. Ich habe schon lange auf euch gewartet."</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Volume 2: The Journey Through the Mysterious Forest</div>
+                    <div class="chapter-title">Chapter 1: The Forest Path</div>
+                    <div class="text-content">
+                        <p>The three friends continued their journey, ready for the next adventure that awaited them. The path led them deeper into the mysterious forest, where the trees grew ever denser and the sunlight barely penetrated the thick canopy. The air was cool and moist, and the soft rustling of leaves seemed to whisper to them, as if the trees themselves were sharing their secrets.</p>
+                        
+                        <p>As they ventured deeper into the forest, they noticed that the nature around them became more vibrant. Birds chirped in the treetops, and occasionally a small animal scurried through the underbrush. The flowers along the path seemed to glow in all the colors of the rainbow, and the scent of fresh moss and earth filled the air. It was as if they were entering another world, a world full of magic and wonder.</p>
+                        
+                        <p>Suddenly they heard a soft splashing nearby. Curious, they followed the sound and discovered a small, clear stream winding through the forest. They sat by the shore and dipped their tired feet in the cool water. "Do you know what I wonder?" said Arvid thoughtfully. "How many light stone fragments are there actually? And where do they come from?"</p>
+                        
+                        <p>After their break, they continued their journey. The stream led them deeper into the forest until they came to a small clearing. In the middle of the clearing stood an old, gnarled tree whose branches stretched like arms into the sky. In its branches, small lights sparkled - fireflies that glowed in the twilight and gave the tree a magical aura. Suddenly they heard a gentle voice: "Welcome, young adventurers. I have been waiting for you for a long time."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 3: Das Geheimnis des letzten Lichtsteins -->
+            <div id="book3" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="mondstein3.jpg" alt="Das Geheimnis des letzten Lichtsteins">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Band 3: Das Geheimnis des letzten Lichtsteins</div>
+                    <div class="chapter-title">Kapitel 1: Die letzte Reise</div>
+                    <div class="text-content">
+                        <p>Die drei Freunde erwachten früh am Morgen in ihrem gemütlichen Zuhause, bereit für das letzte große Abenteuer ihrer Reise. Die Sonne stand bereits hoch am Himmel und tauchte das Dorf in ein warmes, goldenes Licht. Leni, Finn und Arvid fühlten sich erfrischt und voller Energie nach einer erholsamen Nacht. Sie wussten, dass dies der Tag war, an dem sie ihre letzte und wichtigste Reise antreten würden, um den letzten Lichtstein zu finden.</p>
+                        
+                        <p>"Wir müssen uns gut vorbereiten", sagte Leni entschlossen, während sie ihre Rucksäcke packten. "Dies ist unsere letzte Chance, das Geheimnis der Lichtsteine zu lüften und die Welt vor der dunklen Macht zu schützen." Sie packten ihre Rucksäcke mit Proviant, warmer Kleidung und anderen nützlichen Dingen. Arvid packte die Fragmente der Lichtsteine, die sie bereits gefunden hatten, sorgfältig in einen kleinen Beutel.</p>
+                        
+                        <p>Mit schweren Herzen, aber auch mit großer Entschlossenheit machten sie sich auf den Weg. Die Karte führte sie durch ein weites Tal, das von hohen Bergen umgeben war. Die Landschaft war atemberaubend schön, mit grünen Wiesen, klaren Bächen und wilden Blumen, die in allen Farben des Regenbogens blühten. Plötzlich hörten sie ein lautes Knurren hinter sich und sahen einen großen, braunen Bären, der sie mit einem drohenden Blick ansah.</p>
+                        
+                        <p>Leni fasste sich schnell und stellte sich mutig vor ihre Freunde. "Wir haben keine Angst vor dir", sagte sie mit fester Stimme. Der Bär begann zu sprechen: "Ihr seid mutig, junge Abenteurer. Aber wisst ihr auch, welche Gefahren auf euch warten?" Nach einem kurzen Gespräch ließ der Bär sie weiterziehen. Sie erreichten einen klaren Bergsee mit einer kleinen Insel, auf der ein alter, moosbewachsener Stein lag - ein weiteres Fragment der Lichtsteine, das ihrem Ziel näherbrachte.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Volume 3: The Secret of the Last Light Stone</div>
+                    <div class="chapter-title">Chapter 1: The Final Journey</div>
+                    <div class="text-content">
+                        <p>The three friends woke up early in the morning in their cozy home, ready for the last great adventure of their journey. The sun was already high in the sky, bathing the village in warm, golden light. Leni, Finn, and Arvid felt refreshed and full of energy after a restful night. They knew this was the day they would embark on their final and most important journey to find the last light stone.</p>
+                        
+                        <p>"We must prepare well," said Leni determinedly as they packed their backpacks. "This is our last chance to solve the mystery of the light stones and protect the world from the dark power." They packed their backpacks with provisions, warm clothing, and other useful things. Arvid carefully packed the light stone fragments they had already found in a small pouch.</p>
+                        
+                        <p>With heavy hearts, but also with great determination, they set off on their way. The map led them through a wide valley surrounded by high mountains. The landscape was breathtakingly beautiful, with green meadows, clear streams, and wild flowers blooming in all the colors of the rainbow. Suddenly they heard a loud growling behind them and saw a large, brown bear looking at them with a threatening gaze.</p>
+                        
+                        <p>Leni quickly composed herself and bravely stood in front of her friends. "We are not afraid of you," she said with a firm voice. The bear began to speak: "You are brave, young adventurers. But do you also know what dangers await you?" After a brief conversation, the bear let them continue. They reached a clear mountain lake with a small island on which lay an old, moss-covered stone - another fragment of the light stones that brought them closer to their goal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="kinderbuecher.html" class="btn-back">← Zurück zu Kinderbücher</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentBook = 1;
+        let currentLanguage = 'de';
+
+        function showBook(bookNumber) {
+            // Verstecke alle Bücher
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`book${i}`).classList.add('hidden');
+                document.querySelectorAll('.btn-band')[i-1].classList.remove('active');
+            }
+            
+            // Zeige ausgewähltes Buch
+            document.getElementById(`book${bookNumber}`).classList.remove('hidden');
+            document.querySelectorAll('.btn-band')[bookNumber-1].classList.add('active');
+            
+            currentBook = bookNumber;
+            
+            // Stelle sicher, dass die richtige Sprache angezeigt wird
+            showLanguage(currentLanguage);
+        }
+
+        function showLanguage(lang) {
+            // Verstecke alle Sprachversionen
+            document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Zeige gewählte Sprache
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update Flag-Buttons
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
+            
+            currentLanguage = lang;
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            showBook(1); // Zeige erstes Buch
+            showLanguage('de'); // Zeige deutsche Version
+        });
+    </script>
+</body>
+</html>
