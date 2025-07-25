@@ -1,1 +1,274 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwischen Herz und Verstand - Serie - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #9b59b6 0%, #e91e63 30%, #ff9a9e 70%, #fecfef 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(233,30,99,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #9b59b6, #e91e63);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 40px 20px;
+        }
+
+        .series-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fce4ec, #f3e5f5);
+            border-radius: 10px;
+        }
+
+        .series-intro h2 {
+            color: #9b59b6;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .series-intro p {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(233,30,99,0.1);
+            border: 2px solid #fce4ec;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(233,30,99,0.2);
+        }
+
+        .book-cover {
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            max-width: 180px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(233,30,99,0.3);
+        }
+
+        .book-title {
+            color: #e91e63;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .book-description {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .book-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-read {
+            background: linear-gradient(135deg, #4285f4, #1976d2);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-read:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66,133,244,0.3);
+        }
+
+        .btn-amazon {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-amazon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.3);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #fce4ec;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .book-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Zwischen Herz und Verstand</h1>
+            <p>New Adult Romance Serie - Liebe, Träume und neue Wege</p>
+        </div>
+
+        <div class="content">
+            <div class="series-intro">
+                <h2>Eine Serie über Liebe und Selbstfindung</h2>
+                <p>Begleite junge Menschen auf ihrem Weg zwischen Herz und Verstand, zwischen Träumen und Realität. Eine emotionale New Adult Serie über Liebe, Freundschaft und die Suche nach dem eigenen Platz im Leben.</p>
+            </div>
+
+            <div class="books-grid">
+                <!-- Band 1: Verborgene Gefühle -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="verborgenegefuehle.jpg" alt="Verborgene Gefühle">
+                    </div>
+                    <div class="book-title">Band 1: Verborgene Gefühle</div>
+                    <div class="book-description">
+                        Lena Winter ist eine schüchterne Literaturstudentin, die sich in der Welt der Bücher wohler fühlt als unter Menschen. Als sie in einem Bibliotheksbuch geheimnisvolle Notizen entdeckt, beginnt ein anonymer Briefwechsel, der ihr Leben für immer verändern wird. Wer ist der mysteriöse "J."? Und wird Lena den Mut finden, ihre verborgenen Gefühle zu zeigen?
+                    </div>
+                    <div class="book-buttons">
+                        <a href="verborgene-gefuehle-lesen.html" class="btn-read">Lesen</a>
+                        <a href="https://www.amazon.de/dp/ASIN1" class="btn-amazon" target="_blank">Bei Amazon kaufen</a>
+                    </div>
+                </div>
+
+                <!-- Band 2: Enthüllte Wahrheiten -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="enthulltewahrheiten.jpg" alt="Enthüllte Wahrheiten">
+                    </div>
+                    <div class="book-title">Band 2: Enthüllte Wahrheiten</div>
+                    <div class="book-description">
+                        Lena und Julian haben zueinander gefunden, doch die Realität einer Beziehung ist komplizierter als ihre romantischen Träume. Zwischen Nähe und Distanz, zwischen gemeinsamen Momenten und eigenen Räumen müssen sie lernen, was Liebe wirklich bedeutet. Ein berührender Roman über die Herausforderungen junger Liebe.
+                    </div>
+                    <div class="book-buttons">
+                        <a href="enthullte-wahrheiten-lesen.html" class="btn-read">Lesen</a>
+                        <a href="https://www.amazon.de/dp/ASIN2" class="btn-amazon" target="_blank">Bei Amazon kaufen</a>
+                    </div>
+                </div>
+
+                <!-- Band 3: Wo Liebe wachsen darf -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="woliebewachsendarf.jpg" alt="Wo Liebe wachsen darf">
+                    </div>
+                    <div class="book-title">Band 3: Wo Liebe wachsen darf</div>
+                    <div class="book-description">
+                        Nach einer schmerzhaften Trennung muss Lena lernen, wieder zu sich selbst zu finden. Allein mit ihren Träumen und Ängsten entdeckt sie, was es bedeutet, sich selbst zu lieben, bevor man einen anderen lieben kann. Ein bewegender Abschluss der Serie über Selbstfindung, Heilung und die Kraft der Worte.
+                    </div>
+                    <div class="book-buttons">
+                        <a href="wo-liebe-wachsen-darf-lesen.html" class="btn-read">Lesen</a>
+                        <a href="https://www.amazon.de/dp/ASIN3" class="btn-amazon" target="_blank">Bei Amazon kaufen</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="new-adult.html" class="btn-back">← Zurück zu New Adult</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
