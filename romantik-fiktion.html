@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<!-- Romantik Fiktion final page generated from romantik-fiktion_updated.html -->
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Romantik Fiktion - Helmut Wegners Wortwelten</title>
     <style>
-        /* styles copied from romantik-fiktion_updated.html */
         * {
             margin: 0;
             padding: 0;
@@ -165,26 +163,37 @@
         }
 
         .discover-button {
-            display: inline-block;
+            display: block;
             background: linear-gradient(135deg, #E94E77, #C06C84);
             color: white;
-            padding: 12px 24px;
+            padding: 15px 30px;
             border: none;
             border-radius: 25px;
-            font-size: 1em;
+            font-size: 1.1em;
             font-weight: bold;
             text-decoration: none;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 5px;
-            min-width: 120px;
+            margin: 0 auto;
+            min-width: 200px;
         }
 
         .discover-button:hover {
             background: linear-gradient(135deg, #C06C84, #6C5B7B);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(192,108,132,0.4);
+        }
+
+        .unavailable {
+            background: linear-gradient(135deg, #999, #666);
+            cursor: not-allowed;
+        }
+
+        .unavailable:hover {
+            background: linear-gradient(135deg, #999, #666);
+            transform: none;
+            box-shadow: none;
         }
 
         @media (max-width: 768px) {
@@ -223,51 +232,45 @@
                     Herzergreifende Reihen mit wiederkehrenden Figuren und
                     vielschichtigen Liebesgeschichten.
                 </p>
+                
                 <!-- Serie 1: Verlangen der Herzen -->
                 <div class="series-item">
-                    <img src="die kunst der hingabe.jpg" alt="Verlangen der Herzen Serie Cover" class="series-cover">
+                    <img src="die-kunst-der-hingabe.jpg" alt="Verlangen der Herzen Serie Cover" class="series-cover">
                     <div class="series-title">Verlangen der Herzen</div>
                     <div class="series-description">
                         Eine emotionale Reise durch Höhen und Tiefen der Liebe. Vier Bände voller Leidenschaft, innerer Konflikte und der Suche nach dem richtigen Weg.
                     </div>
                     <div class="series-stats">4 Bände • Deutsch & Englisch • Lesen & Vorlesen-System</div>
-                    <div>
-                        <a href="vorlese-die-kunst-der-hingabe.html" class="discover-button">Band 1</a>
-                        <a href="vorlese-die-tiefe-der-begierde.html" class="discover-button">Band 2</a>
-                        <a href="vorlese-der-beginn-des-friedens.html" class="discover-button">Band 3</a>
-                        <a href="vorlese-der-geist-der-hingabe.html" class="discover-button">Band 4</a>
-                    </div>
+                    <a href="verlangen-der-herzen.html" class="discover-button">Serie entdecken</a>
                 </div>
-                <!-- Serie 2: Verborgene Gefühle -->
+                
+                <!-- Serie 2: Die Verborgenen Kammern -->
                 <div class="series-item">
-                    <img src="verborgene-gefuehle.jpg" alt="Verborgene Gefühle Serie Cover" class="series-cover">
-                    <div class="series-title">Verborgene Gefühle</div>
+                    <img src="hinter-verschlossenen-tueren.jpg" alt="Die Verborgenen Kammern Serie Cover" class="series-cover">
+                    <div class="series-title">Die Verborgenen Kammern</div>
                     <div class="series-description">
-                        Geheimnisvolle Romanzen in alten Villen und verwunschenen Orten. Drei Bände voller Mysterien, verbotener Liebe und dunkler Familiengeheimnisse.
+                        Geheimnisvolle Liebesgeschichten voller Leidenschaft und Mysterium. Drei Bände entführen in eine Welt der Kunst, Restaurierung und verbotenen Leidenschaften.
                     </div>
-                    <div class="series-stats">3 Bände • Deutsch & Englisch • Lesen & Vorlesen-System</div>
-                    <div>
-                        <a href="vorlese-verborgene-gefuehle.html" class="discover-button">Band 1</a>
-                        <a href="vorlese-im-netz-der-liebe.html" class="discover-button">Band 2</a>
-                        <a href="vorlese-wo-liebe-wachsen-darf.html" class="discover-button">Band 3</a>
-                    </div>
+                    <div class="series-stats">3 Bände • Deutsch & Englisch & Spanisch • Lesen & Vorlesen-System</div>
+                    <a href="die-verborgenen-kammern.html" class="discover-button">Serie entdecken</a>
                 </div>
             </div>
-            <!-- Einzelne Romantik‑Bücher Bereich -->
+            
+            <!-- Einzelne Romantik-Bücher Bereich -->
             <div class="section">
                 <h2>Bücher entdecken</h2>
                 <p class="section-description">
                     Standalone Liebesromane mit abgeschlossenen Handlungen und eigenständigen Charakteren voller Emotionen.
                 </p>
+                
                 <!-- Platzhalter für zukünftige Einzelbände -->
                 <div class="series-item">
-                    <img src="placeholder_light_gray_block.png" alt="Bald verfügbar" class="series-cover">
                     <div class="series-title">Bald verfügbar</div>
                     <div class="series-description">
-                        Spannende Einzelromane befinden sich in der Entwicklung …
+                        Spannende Einzelromane befinden sich in der Entwicklung. Freuen Sie sich auf neue Welten, epische Schlachten und unvergessliche Helden!
                     </div>
                     <div class="series-stats">Einzelband</div>
-                    <a href="#" class="discover-button" style="background: gray; cursor: not-allowed;">Noch nicht verfügbar</a>
+                    <a href="#" class="discover-button unavailable">Noch nicht verfügbar</a>
                 </div>
             </div>
         </div>
