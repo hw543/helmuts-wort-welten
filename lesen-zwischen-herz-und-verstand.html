@@ -3,193 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wo Liebe wachsen darf - Zwischen Herz und Verstand - Helmut Wegners Wortwelten</title>
+    <title>Enthüllte Wahrheiten - Kapitel 1 | New Adult</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Georgia', serif;
-            line-height: 1.8;
-            color: #2c1810;
-            background: linear-gradient(135deg, #9b59b6 0%, #e91e63 30%, #ff9a9e 70%, #fecfef 100%);
+            background: linear-gradient(135deg, #FEE9E1 0%, #E6F1F5 50%, #F1E6F9 100%);
             min-height: 100vh;
-            padding: 20px;
+            color: #2F4F4F;
+            line-height: 1.8;
         }
-
         .container {
             max-width: 900px;
             margin: 0 auto;
-            background: #FFF8DC;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            overflow: hidden;
+            padding: 20px;
         }
-
         .header {
-            background: linear-gradient(135deg, #9b59b6, #e91e63);
-            color: white;
-            padding: 30px;
             text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #FEE4E1 0%, #F5F5F5 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid #FFD700;
+            position: relative;
         }
-
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #C06C84, #6C5B7B);
+            color: white;
+            padding: 10px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+        .back-button:hover {
+            background: linear-gradient(135deg, #6C5B7B, #355C7D);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(96,89,124,0.4);
+        }
+        .language-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .language-toggle a {
+            text-decoration: none;
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+        .language-toggle a:hover {
+            transform: scale(1.2);
+        }
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: #E94E77;
+            text-shadow: 2px 2px 4px rgba(233,78,119,0.3);
         }
-
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-            font-style: italic;
-        }
-
-        .controls {
-            background: #F0E68C;
-            padding: 20px;
-            border-bottom: 3px solid #DDD;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .language-flags {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
+        .header h2 {
+            font-size: 1.8em;
+            color: #6C5B7B;
             margin-bottom: 15px;
         }
-
-        .flag-btn {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: white;
-            border: 2px solid transparent;
-        }
-
-        .flag-btn.active {
-            border-color: #9b59b6;
-            box-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
-        }
-
-        .content {
-            padding: 30px;
+        .header p {
             font-size: 1.1em;
-            line-height: 1.8;
-        }
-
-        .book-cover {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .book-cover img {
-            max-width: 200px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .book-title {
-            color: #9b59b6;
-            font-size: 2em;
-            margin-bottom: 10px;
-            text-align: center;
-            border-bottom: 2px solid #e91e63;
-            padding-bottom: 15px;
-        }
-
-        .chapter-title {
-            color: #e91e63;
-            font-size: 1.5em;
-            margin: 30px 0 20px 0;
-            text-align: center;
+            color: #2F4F4F;
             font-style: italic;
         }
-
-        .text-content {
-            text-align: justify;
+        .chapter-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
         }
-
-        .text-content p {
-            margin-bottom: 15px;
-            text-indent: 20px;
-        }
-
-        .text-content p:first-child::first-letter {
-            font-size: 3em;
-            color: #9b59b6;
-            float: left;
-            line-height: 1;
-            margin: 0 8px 0 0;
-            font-weight: bold;
-        }
-
-        .coming-soon {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 15px;
-            border: 2px dashed #6c757d;
-        }
-
-        .coming-soon h3 {
-            color: #6c757d;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
-
-        .coming-soon p {
-            color: #6c757d;
+        .chapter-content p {
+            margin-bottom: 20px;
             font-size: 1.1em;
-            font-style: italic;
+            text-align: justify;
         }
-
-        .back-link {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #e91e63;
-        }
-
-        .btn-back {
-            background: linear-gradient(135deg, #6c757d, #495057);
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 25px;
+        .chapter-content p:first-child::first-letter {
+            font-size: 4em;
+            float: left;
+            line-height: 0.8;
+            margin: 0.1em 0.1em 0 0;
+            color: #E94E77;
             font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(233,78,119,0.3);
+        }
+        .amazon-button {
+            display: block;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
             transition: all 0.3s ease;
+            margin: 30px auto;
+            max-width: 300px;
         }
-
-        .btn-back:hover {
+        .amazon-button:hover {
+            background: linear-gradient(135deg, #e55a2b, #d67e0c);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
         }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (max-width: 600px) {
-            .content {
-                padding: 20px;
-                font-size: 1em;
-            }
-            
+        @media (max-width: 768px) {
             .header h1 {
                 font-size: 2em;
+            }
+            .header h2 {
+                font-size: 1.4em;
+            }
+            .chapter-content {
+                padding: 25px;
+            }
+            .chapter-content p:first-child::first-letter {
+                font-size: 3em;
             }
         }
     </style>
@@ -197,105 +143,33 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Wo Liebe wachsen darf</h1>
-            <p>Band 3 - Zwischen Herz und Verstand - Deutsch und Englisch</p>
+            <a href="zwischen-herz-und-verstand.html" class="back-button">← Zurück zur Serie</a>
+            <div class="language-toggle">
+                <a href="enthüllte-wahrheiten-lesen.html" title="Deutsch">🇩🇪</a>
+                <a href="enthüllte-wahrheiten-english.html" title="English">🇬🇧</a>
+            </div>
+            <h1>Enthüllte Wahrheiten</h1>
+            <h2>Kapitel 1: Nähe, die flieht</h2>
+            <p>Band 2 der Serie "Zwischen Herz und Verstand"</p>
         </div>
+        
+        <div class="chapter-content">
+            <p>Lena erwachte mit dem Gefühl, dass etwas fehlte. Die Wärme neben ihr war spürbar, körperlich präsent, atmend, real. Julians Arm lag schwer über ihrer Mitte, sein Atem gleichmäßig und tief an ihrem Nacken. Und doch existierte eine seltsame Leere, die sie nicht greifen konnte. Sie blinzelte in das frühe Morgenlicht, das durch die nicht ganz geschlossenen Vorhänge fiel, und versuchte, die Empfindung zu lokalisieren. Es war wie ein Wort, das ihr auf der Zunge lag -- präsent, aber unerreichbar. Drei Monate waren seit dem ersten Kuss am Fluss vergangen. Drei Monate, in denen aus zögernden Berührungen Vertrautheit geworden war, aus geteilten Büchern ein geteiltes Bett, aus zwei separaten Leben ein gemeinsamer Alltag. Alles hatte sich so natürlich entwickelt, so mühelos, als wäre es eine Geschichte, die nur darauf gewartet hatte, erzählt zu werden. Julian murmelte etwas im Schlaf, zog sie näher an sich. Sie spürte seinen Herzschlag durch den dünnen Stoff ihres T-Shirts, beständig und beruhigend. Sie sollte glücklich sein. Sie war glücklich. Warum also dieses nagende Gefühl der Unvollständigkeit?</p>
 
-        <div class="controls">
-            <div class="language-flags">
-                <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
-                <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
-            </div>
+            <p>Vorsichtig löste sie sich aus seiner Umarmung, darauf bedacht, ihn nicht zu wecken. Auf Zehenspitzen schlich sie aus dem Schlafzimmer, durchquerte den schmalen Flur seiner Wohnung und betrat die Küche. Seine Küche. Nicht ihre. Sie verbrachte mittlerweile mehr Zeit hier als in ihrer eigenen Wohnung, aber sie hatte ihre nicht aufgegeben. Noch nicht. Eine kleine, eigenartige Resistenz, die sie selbst nicht ganz verstand. Sie setzte Kaffee auf und beobachtete, wie das Wasser tropfenweise und geduldig durch das Kaffeepulver sickerte. Es gab einen Trost in diesen morgendlichen Ritualen, etwas Verlässliches. Der Geruch von frischem Kaffee erfüllte den Raum, verdrängte für einen Moment die unbestimmte Unruhe in ihr. Sie öffnete das Küchenfenster. Draußen lag die Stadt noch im Halbschlaf, obwohl die ersten Autos bereits durch die Straßen fuhren, frühe Pendler, die dem Berufsverkehr voraus sein wollten. Der November hatte die Bäume fast kahl gefegt, nur einzelne hartnäckige Blätter klammerten sich noch an die Zweige. Ein wenig wie sie an ihre eigene Wohnung, dachte Lena und lächelte über den seltsamen Vergleich.</p>
+
+            <p>"Guten Morgen." Julians Stimme ließ sie zusammenzucken. Er stand in der Tür, in Boxershorts und T-Shirt, seine Haare zerzaust vom Schlaf, sein Gesicht noch weich von Träumen. "Entschuldige, ich wollte dich nicht erschrecken." Er kam zu ihr, schlang seine Arme von hinten um ihre Taille und drückte einen Kuss auf ihre Schulter. "Du warst weg." "Ich wollte Kaffee machen", erklärte sie und deutete auf die Kaffeemaschine, die gerade ihre letzten Tropfen in die Kanne entließ. "Hm." Er vergrub sein Gesicht in ihrem Haar und atmete tief ein. "Du riechst gut." "Ich rieche nach Schlaf", korrigierte sie mit einem leichten Lachen. "Genau." Seine Hände wanderten unter ihr T-Shirt, streiften sanft über ihren Bauch. Seine Berührung war warm, vertraut, sendete kleine Wellen der Erregung durch ihren Körper. Sie lehnte sich instinktiv gegen ihn, ließ ihren Kopf auf seine Schulter sinken. Das war einfach. Das funktionierte. Der körperliche Teil ihrer Beziehung hatte nie die Probleme bereitet, die sie anfangs befürchtet hatte. Keine Unsicherheit, keine Scham, keine Enttäuschung. Ihre Körper hatten von Anfang an eine Sprache gefunden, die keine Übersetzung brauchte.</p>
+
+            <p>Julian drehte sie zu sich, küsste ihren Mundwinkel, ihre Wange, schließlich ihren Mund. Sie erwiderte den Kuss, ließ ihre Finger durch seine Haare gleiten, genoss die Wärme, die sich zwischen ihnen aufbaute. Als sie sich voneinander lösten, lächelte er. "Guten Morgen", wiederholte er, diesmal mit einer tieferen Bedeutung in seiner Stimme. "Guten Morgen", antwortete sie und versuchte, das Echo seines Lächelns auf ihrem eigenen Gesicht zu spüren. "Kaffee?" "Bitte." Er löste sich von ihr, griff nach zwei Tassen aus dem Schrank. Routinierte Bewegungen, eingeübter Tanz. Er wusste, wie sie ihren Kaffee mochte -- schwarz, kein Zucker -- wie sie morgens die Stille brauchte, bevor sie sprechen konnte, wie ihr Körper berührt werden wollte. Er kannte sie. Und doch hatte sie manchmal das Gefühl, dass etwas Wesentliches fehlte, dass sie aneinander vorbeischauten, obwohl sie sich direkt in die Augen sahen.</p>
+
+            <p>"Woran denkst du?" Julians Frage unterbrach ihre Gedanken. Er reichte ihr eine Tasse, die Wärme drang durch das Porzellan in ihre Hände. "Nichts Besonderes", log sie und hasste sich ein wenig dafür. Es war eine kleine Lüge, harmlos. Und doch spürte sie, wie sich eine Mauer zwischen ihnen aufbaute, Stein für Stein, Tag für Tag. Worte, die ungesagt blieben, Gedanken, die sie für sich behielt -- nicht aus Bosheit oder Berechnung, sondern aus einer seltsamen Scheu, einer Angst vor Enttäuschung. Seiner oder ihrer eigenen, sie war sich nicht sicher. Julian akzeptierte ihre Antwort mit einem Nicken, keine Nachfrage, keine Insistenz. War das Respekt für ihre Grenzen oder Gleichgültigkeit? Sie fragte sich, ob er spürte, dass sie log, ob es ihn verletzte. Oder ob er einfach nicht wissen wollte, was wirklich in ihr vorging. Sie tranken ihren Kaffee schweigend, jeder in Gedanken versunken. Die Uhr an der Wand tickte, markierte die Sekunden, die ungenutzt zwischen ihnen verstrichen.</p>
+
+            <p>"Ich muss los", sagte Julian schließlich und stellte seine leere Tasse in die Spüle. Er hatte heute früh einen Workshop zu leiten, erinnerte sich Lena. Etwas über kreatives Schreiben für Oberstufenschüler. "Natürlich." Sie trat beiseite, um ihn vorbeizulassen, obwohl die Küche groß genug war, dass es keine Notwendigkeit dafür gab. "Sehen wir uns heute Abend?" Er blieb kurz stehen, seine Hand auf ihrer Schulter, wie ein Anker. "Sophie hat gefragt, ob wir ins Kino wollen." Lena hatte es vergessen, oder verdrängt. Sie mochte Sophie, wirklich. Die lebhafte, direkte Art ihrer Freundin war ein willkommenes Gegengewicht zu ihrer eigenen Introvertiertheit. Aber in letzter Zeit fiel es ihr schwer, die Energie für soziale Interaktionen aufzubringen, selbst mit Menschen, die sie mochte. "Klingt gut", sagte sie dennoch, wieder eine kleine Lüge, wieder ein Stein in der Mauer. Julian küsste sie flüchtig auf die Stirn, eine Geste, die gleichzeitig zärtlich und distanziert wirkte. "Ich freue mich. Bis später dann." Sie hörte, wie er ins Bad ging, die Dusche anstellte. Der vertraute Rhythmus des Morgens setzte sich fort, als wäre nichts anders als sonst. Sie trank ihren Kaffee aus, nahm einen Schreibblock vom Küchentisch -- Julian hatte die Angewohnheit, überall in der Wohnung Notizblöcke zu verteilen, immer bereit, einen Gedanken festzuhalten -- und kritzelte abwesend auf das Papier. Nicht wirklich Worte, eher Formen, Spiralen, Linien, die ineinander übergingen. Ihre Hand bewegte sich, als hätte sie einen eigenen Willen. Wie viel einfacher wäre es, wenn sie einfach aufschreiben könnte, was in ihr vorging. Aber dafür müsste sie es erst selbst verstehen.</p>
         </div>
-
-        <div class="content">
-            <div class="book-cover">
-                <img src="wo-liebe-wachsen-darf.jpg" alt="Wo Liebe wachsen darf">
-            </div>
-            
-            <!-- Deutsche Version -->
-            <div class="lang-de">
-                <div class="book-title">Wo Liebe wachsen darf</div>
-                <div class="chapter-title">Kapitel 1: Und jetzt?</div>
-                <div class="text-content">
-                    <p>Lena erinnerte sich an die Momente, in denen sie sich so verbunden gefühlt hatte, als ob die Worte zwischen ihnen eine Brücke gebaut hätten, die alle Unsicherheiten überwinden konnte. Aber jetzt war diese Brücke verschwunden, und sie stand wieder am Ufer, unsicher, wie sie den Fluss überqueren sollte.</p>
-                    
-                    <p>Sie öffnete die Schublade ihres Schreibtisches und nahm den Stapel Briefe heraus, die sie und Julian einander geschrieben hatten. Jeder Brief war ein Stück ihrer gemeinsamen Geschichte, ein Beweis dafür, dass sie einmal eine tiefe Verbindung gehabt hatten. Sie blätterte durch die Seiten, las hier und da einen Satz, der ihr ins Auge sprang.</p>
-                    
-                    <p>"Ich habe das Gefühl, als ob wir uns in einer Sprache verstehen, die niemand sonst spricht." "Deine Worte sind wie ein Zuhause für mich." "Manchmal frage ich mich, ob wir uns jemals wirklich verstehen werden." Diese Sätze hallten in ihr nach, und sie spürte einen Stich in der Brust. Warum war es so schwer, diese Verbindung in die reale Welt zu übertragen? Warum fühlte es sich an, als ob sie auf Papier so viel leichter atmen konnten als im echten Leben?</p>
-                    
-                    <p>Sie legte die Briefe zurück in die Schublade und schloss sie. Vielleicht war es an der Zeit, etwas Neues zu beginnen, etwas, das nicht von der Vergangenheit belastet war. Sie ging in die Küche und setzte Wasser für Tee auf. Während sie darauf wartete, dass das Wasser kochte, dachte sie über ihre Zukunft nach.</p>
-                    
-                    <p>Sie hatte immer davon geträumt, Schriftstellerin zu werden, aber jetzt, wo sie die Chance hatte, fühlte es sich an, als ob etwas fehlte. Vielleicht war es die Gewissheit, dass jemand da war, der an sie glaubte, der sie unterstützte. Julian hatte das getan, in seinen Briefen, aber im echten Leben war alles komplizierter.</p>
-                    
-                    <p>Der Wasserkessel pfiff, und sie goss das heiße Wasser über den Teebeutel in ihrer Tasse. Der Duft von Kamille stieg ihr in die Nase und beruhigte sie ein wenig. Sie nahm die Tasse und ging zurück ins Wohnzimmer, setzte sich auf das Sofa und blickte aus dem Fenster.</p>
-                    
-                    <p>Die Stadt lag nun in Dunkelheit, nur vereinzelt brannten noch Lichter in den Fenstern der Häuser. Es war ein beruhigender Anblick, der ihr das Gefühl gab, nicht ganz allein zu sein. Sie nippte an ihrem Tee und spürte, wie die Wärme sich in ihr ausbreitete.</p>
-                    
-                    <p>Vielleicht war das der Schlüssel, dachte sie. Vielleicht musste sie lernen, sich selbst zu genügen, sich selbst zu vertrauen, bevor sie wieder versuchen konnte, eine Brücke zu jemand anderem zu bauen. Sie schloss die Augen und lehnte sich zurück, ließ die Stille des Abends auf sich wirken.</p>
-                    
-                    <p>Es war ein neuer Anfang, ein leeres Blatt, und vielleicht war das genau das, was sie brauchte. Die Möglichkeit, etwas Neues zu schreiben, ohne die Last der Vergangenheit. Sie atmete tief durch und spürte, wie ein Funke Hoffnung in ihr aufkeimte.</p>
-                    
-                    <p>Vielleicht war dies der Moment, in dem sie lernen konnte, wieder zu atmen, wieder zu leben, ohne sich an jemand anderen zu klammern. Sie öffnete die Augen und blickte auf die leeren Blätter Papier auf ihrem Schreibtisch. Vielleicht war es an der Zeit, ihre eigene Geschichte zu schreiben, eine Geschichte, die nicht von Julian oder Emil handelte, sondern von ihr selbst.</p>
-                    
-                    <p>Von Lena, die allein stand, aber nicht verloren war. Von Lena, die bereit war, ihr eigenes Leben zu leben, mit all seinen Unsicherheiten und Möglichkeiten. Sie nahm einen tiefen Schluck von ihrem Tee und spürte, wie eine neue Entschlossenheit in ihr wuchs.</p>
-                    
-                    <p>Sie würde schreiben, nicht für jemanden anderen, sondern für sich selbst. Sie würde ihre eigene Stimme finden, ihre eigene Geschichte erzählen. Und vielleicht, nur vielleicht, würde sie dabei lernen, wieder zu atmen, wieder zu leben, ganz für sich allein.</p>
-                    
-                    <p>Sie stand auf, ging zu ihrem Schreibtisch und setzte sich hin. Die leeren Blätter lagen vor ihr, bereit, mit Worten gefüllt zu werden. Sie nahm den Stift zur Hand und spürte, wie etwas in ihr zum Leben erwachte. Es war Zeit, ihre eigene Geschichte zu schreiben.</p>
-                    
-                    <p>Sie spürte, wie die Feder ihres Stiftes das Papier berührte, und begann zu schreiben, ohne zu zögern, ohne nachzudenken. Die Worte flossen aus ihr heraus, als ob sie schon lange darauf gewartet hätten, endlich frei zu sein. Es war, als ob eine Tür in ihrem Inneren aufging, eine Tür, die sie lange verschlossen gehalten hatte.</p>
-                    
-                    <p>Sie schrieb über die Stille, die sie umgab, über das Gefühl, allein zu sein, aber nicht einsam. Sie schrieb über die Stadt, die draußen lag, über die Lichter, die in der Dunkelheit leuchteten, über die Geräusche, die zu ihr heraufdrangen. Sie schrieb über die Briefe, die sie und Julian ausgetauscht hatten, über die Verbindung, die sie auf Papier gefunden hatten, und über die Schwierigkeit, diese Verbindung in die reale Welt zu übertragen.</p>
-                    
-                    <p>Sie schrieb über Emil, über die Momente, die sie miteinander geteilt hatten, über das Lachen, die Tränen, die Hoffnung und die Enttäuschung. Sie schrieb über das Gefühl, das sie hatte, als er gegangen war, über die Leere, die er hinterlassen hatte, und über die Erkenntnis, dass diese Leere nicht für immer bleiben würde.</p>
-                    
-                    <p>Sie schrieb über ihre Träume, ihre Ängste, ihre Hoffnungen und ihre Unsicherheiten. Sie schrieb über die Menschen, die sie kannte, über die Freundschaften, die sie geschlossen hatte, und über die Beziehungen, die sie verloren hatte. Sie schrieb über ihre Familie, über die Erwartungen, die sie an sie gestellt hatten, und über die Erwartungen, die sie an sich selbst stellte.</p>
-                </div>
-            </div>
-            
-            <!-- Englische Version -->
-            <div class="lang-en hidden">
-                <div class="book-title">Where Love May Grow</div>
-                <div class="coming-soon">
-                    <h3>English Version Coming Soon</h3>
-                    <p>Die englische Übersetzung wird in Kürze verfügbar sein.</p>
-                </div>
-            </div>
-
-            <div class="back-link">
-                <a href="lesen-zwischen-herz-und-verstand.html" class="btn-back">← Zurück zur Serie</a>
-            </div>
-        </div>
+        
+        <a href="https://www.amazon.de/dp/B0CXAMPLE2" target="_blank" class="amazon-button">
+            📚 Vollständiges Buch bei Amazon kaufen
+        </a>
     </div>
-
-    <script>
-        let currentLanguage = 'de';
-
-        function showLanguage(lang) {
-            // Verstecke alle Sprachversionen
-            document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
-                el.classList.add('hidden');
-            });
-            
-            // Zeige gewählte Sprache
-            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
-                el.classList.remove('hidden');
-            });
-            
-            // Update Flag-Buttons
-            document.querySelectorAll('.flag-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
-            
-            currentLanguage = lang;
-        }
-
-        // Initialisierung beim Seitenstart
-        document.addEventListener('DOMContentLoaded', function() {
-            showLanguage('de'); // Zeige deutsche Version
-        });
-    </script>
 </body>
 </html>
