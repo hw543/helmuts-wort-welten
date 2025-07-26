@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High Fantasy – Helmut Wegners Wortwelten</title>
-    <!--
-        Überarbeitete Version der High‑Fantasy‑Seite. Die ursprüngliche Seite
-        verlinkte auf eine nicht existierende Datei (das‑vermaechtnis‑von‑eldoria.html).
-        Diese Version listet alle vorhandenen Vorlese‑Bände der Eldoria‑Saga mit
-        passenden Links auf. Ein Band‑Button führt direkt zur entsprechenden
-        Vorlese‑Datei. Die optische Gestaltung orientiert sich an der
-        Ausgangsversion.
-    -->
+    <title>High Fantasy – Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -21,9 +13,9 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #1a0033 0%, #330066 50%, #4d0099 100%);
+            background: linear-gradient(135deg, #2E1065 0%, #4A148C 50%, #6A1B9A 100%);
             min-height: 100vh;
-            color: #f0f0f0;
+            color: #f5f5f5;
             line-height: 1.6;
         }
 
@@ -37,10 +29,9 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 40px 20px;
-            background: linear-gradient(135deg, rgba(26,0,51,0.9) 0%, rgba(77,0,153,0.7) 100%);
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 3px solid #ffd700;
             position: relative;
         }
 
@@ -48,10 +39,10 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(255, 215, 0, 0.2);
-            color: #ffd700;
+            background: rgba(106, 27, 154, 0.8);
+            color: white;
             padding: 10px 20px;
-            border: 2px solid rgba(255, 215, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
@@ -60,22 +51,21 @@
         }
 
         .back-button:hover {
-            background: rgba(255, 215, 0, 0.3);
+            background: rgba(106, 27, 154, 1);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .header h1 {
             font-size: 3em;
             margin-bottom: 20px;
-            color: #ffd700;
-            text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
-            letter-spacing: 3px;
+            color: #9C27B0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
         }
 
         .header p {
             font-size: 1.3em;
-            color: rgba(255,215,0,0.9);
+            color: #f0f0f0;
             font-style: italic;
         }
 
@@ -87,48 +77,48 @@
         }
 
         .section {
-            background: linear-gradient(135deg, rgba(26,0,51,0.9) 0%, rgba(77,0,153,0.7) 100%);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(156, 39, 176, 0.3);
             transition: all 0.3s ease;
         }
 
         .section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+            border-color: rgba(156, 39, 176, 0.6);
         }
 
         .section h2 {
             font-size: 2.2em;
-            color: #ffd700;
+            color: #9C27B0;
             margin-bottom: 20px;
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         .section-description {
             font-size: 1.1em;
             margin-bottom: 30px;
             text-align: center;
-            color: #f0f0f0;
+            color: #d0d0d0;
             line-height: 1.6;
         }
 
         .series-item {
-            background: rgba(77, 0, 153, 0.3);
+            background: rgba(74, 20, 140, 0.3);
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.4);
+            border: 1px solid rgba(156, 39, 176, 0.4);
             transition: all 0.3s ease;
             text-align: center;
         }
 
         .series-item:hover {
-            background: rgba(77, 0, 153, 0.5);
+            background: rgba(74, 20, 140, 0.5);
             transform: translateY(-2px);
         }
 
@@ -149,7 +139,7 @@
 
         .series-title {
             font-size: 1.6em;
-            color: #ffd700;
+            color: #9C27B0;
             margin-bottom: 10px;
             text-align: center;
             font-weight: bold;
@@ -157,7 +147,7 @@
 
         .series-description {
             font-size: 1em;
-            color: #f0f0f0;
+            color: #d0d0d0;
             margin-bottom: 20px;
             text-align: center;
             line-height: 1.5;
@@ -165,7 +155,7 @@
 
         .series-stats {
             font-size: 0.9em;
-            color: #d0d0d0;
+            color: #b0b0b0;
             text-align: center;
             margin-bottom: 20px;
             font-style: italic;
@@ -173,8 +163,8 @@
 
         .series-buttons a {
             display: inline-block;
-            background: linear-gradient(135deg, #ffd700, #ffb300);
-            color: #1a0033;
+            background: linear-gradient(135deg, #9C27B0, #6A1B9A);
+            color: white;
             padding: 12px 20px;
             border: none;
             border-radius: 25px;
@@ -189,9 +179,20 @@
         }
 
         .series-buttons a:hover {
-            background: linear-gradient(135deg, #ffb300, #ff6b35);
+            background: linear-gradient(135deg, #E91E63, #9C27B0);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 186, 35, 0.4);
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+        }
+
+        .in-preparation {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            cursor: not-allowed;
+        }
+
+        .in-preparation:hover {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            transform: none;
+            box-shadow: none;
         }
 
         @media (max-width: 768px) {
@@ -219,33 +220,30 @@
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">← Zurück zur Startseite</a>
-            <h1>High Fantasy</h1>
-            <p>Epische Abenteuer in magischen Welten</p>
+            <h1>High Fantasy</h1>
+            <p>Epische Welten voller Magie und Abenteuer</p>
         </div>
         <div class="content-sections">
             <!-- High Fantasy Serien Bereich -->
             <div class="section">
                 <h2>Serien entdecken</h2>
                 <p class="section-description">
-                    Mehrteilige Fantasy‑Epen mit durchgehenden Charakteren und
-                    zusammenhängenden magischen Welten.
+                    Epische Fantasy-Sagas mit magischen Welten, Helden und
+                    unvergesslichen Abenteuern.
                 </p>
                 <div class="series-item">
-                    <img src="die prophezeiung.jpg" alt="Das Vermächtnis von Eldoria – Serie Cover" class="series-cover">
-                    <div class="series-title">Das Vermächtnis von Eldoria</div>
+                    <img src="die-prophezeiung-von-eldoria.jpg" alt="Eldorias Vermächtnis Serie Cover" class="series-cover">
+                    <div class="series-title">Eldorias Vermächtnis</div>
                     <div class="series-description">
-                        Eine epische Saga über vier Bände, die das Schicksal des magischen
-                        Königreichs Eldoria begleitet – von den ersten Prophezeiungen bis
-                        zum finalen Kampf zwischen Licht und Dunkelheit.
+                        Eine epische Fantasy-Saga über die magische Welt Eldoria, 
+                        wo Helden gegen die Mächte der Finsternis kämpfen und 
+                        das Gleichgewicht zwischen Licht und Schatten entscheidet.
                     </div>
                     <div class="series-stats">
-                        4 Bände • Deutsch & Englisch • Lesen & Vorlesen‑System
+                        4 Bände • Deutsch & Englisch • Lesen-System
                     </div>
                     <div class="series-buttons">
-                        <a href="vorlese-das-vermaechtnis-der-waechter.html">Band 1</a>
-                        <a href="vorlese-die-prophezeiung-von-eldoria.html">Band 2</a>
-                        <a href="vorlese-die-schatten-der-doerfer.html">Band 3</a>
-                        <a href="vorlese-die-schatten-des-vergessenen.html">Band 4</a>
+                        <a href="lesen-eldorias-vermeachtnis.html">Serie entdecken</a>
                     </div>
                 </div>
             </div>
@@ -253,13 +251,23 @@
             <div class="section">
                 <h2>Bücher entdecken</h2>
                 <p class="section-description">
-                    Standalone Fantasy‑Romane mit abgeschlossenen Handlungen und
+                    Standalone Fantasy-Romane mit abgeschlossenen Handlungen und
                     eigenständigen magischen Welten.
                 </p>
                 <div class="series-item">
-                    <h3>Bald verfügbar</h3>
-                    <p>Spannende Einzelromane befinden sich in der Entwicklung. Freuen Sie sich
-                        auf neue Welten, epische Schlachten und unvergessliche Helden!</p>
+                    <img src="fantasy-placeholder.jpg" alt="Fantasy Bücher Cover" class="series-cover">
+                    <div class="series-title">Fantasy-Einzelromane</div>
+                    <div class="series-description">
+                        Eigenständige Fantasy-Abenteuer mit magischen Welten,
+                        epischen Kämpfen und unvergesslichen Charakteren, die
+                        unabhängig voneinander gelesen werden können.
+                    </div>
+                    <div class="series-stats">
+                        In Vorbereitung • Deutsch & Englisch • Lesen-System
+                    </div>
+                    <div class="series-buttons">
+                        <a href="#" onclick="return false;" class="in-preparation">In Vorbereitung</a>
+                    </div>
                 </div>
             </div>
         </div>
