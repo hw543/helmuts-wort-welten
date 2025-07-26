@@ -13,9 +13,9 @@
         }
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #FDEDEC 0%, #EAF6F6 50%, #FDF3F4 100%);
+            background: linear-gradient(135deg, #1A1A1A 0%, #333333 50%, #4A4A4A 100%);
             min-height: 100vh;
-            color: #2F4F4F;
+            color: #f5f5f5;
             line-height: 1.6;
         }
         .container {
@@ -27,17 +27,16 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 40px 20px;
-            background: linear-gradient(135deg, #F8E6E6 0%, #F5F5F5 100%);
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 3px solid #FFD700;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
         }
         .back-button {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: linear-gradient(135deg, #C06C84, #6C5B7B);
+            background: rgba(255, 69, 0, 0.8);
             color: white;
             padding: 10px 20px;
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -48,19 +47,19 @@
             font-size: 0.9em;
         }
         .back-button:hover {
-            background: linear-gradient(135deg, #6C5B7B, #355C7D);
+            background: rgba(255, 69, 0, 1);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(96,89,124,0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         .header h1 {
             font-size: 3em;
             margin-bottom: 20px;
-            color: #E94E77;
-            text-shadow: 2px 2px 4px rgba(233,78,119,0.3);
+            color: #FF4500;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
         }
         .header p {
             font-size: 1.3em;
-            color: #6C5B7B;
+            color: #f0f0f0;
             font-style: italic;
         }
         .content-sections {
@@ -70,43 +69,43 @@
             margin-top: 40px;
         }
         .section {
-            background: linear-gradient(135deg, #FFF5FA 0%, #F0F8FF 100%);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border: 2px solid #DDA0DD;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 69, 0, 0.3);
             transition: all 0.3s ease;
         }
         .section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            border-color: #FFD700;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+            border-color: rgba(255, 69, 0, 0.6);
         }
         .section h2 {
             font-size: 2.2em;
-            color: #E94E77;
+            color: #FF4500;
             margin-bottom: 20px;
             text-align: center;
-            text-shadow: 1px 1px 2px rgba(233,78,119,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
         .section-description {
             font-size: 1.1em;
             margin-bottom: 30px;
             text-align: center;
-            color: #2F4F4F;
+            color: #d0d0d0;
             line-height: 1.6;
         }
         .series-item {
-            background: rgba(255, 192, 203, 0.3);
+            background: rgba(51, 51, 51, 0.3);
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 20px;
-            border: 1px solid rgba(221, 160, 221, 0.4);
+            border: 1px solid rgba(255, 69, 0, 0.4);
             transition: all 0.3s ease;
             text-align: center;
         }
         .series-item:hover {
-            background: rgba(255, 192, 203, 0.5);
+            background: rgba(51, 51, 51, 0.5);
             transform: translateY(-2px);
         }
         .series-cover {
@@ -124,30 +123,30 @@
         }
         .series-title {
             font-size: 1.6em;
-            color: #E94E77;
+            color: #FF4500;
             margin-bottom: 10px;
             text-align: center;
             font-weight: bold;
         }
         .series-description {
             font-size: 1em;
-            color: #2F4F4F;
+            color: #d0d0d0;
             margin-bottom: 20px;
             text-align: center;
             line-height: 1.5;
         }
         .series-stats {
             font-size: 0.9em;
-            color: #696969;
+            color: #b0b0b0;
             text-align: center;
             margin-bottom: 20px;
             font-style: italic;
         }
-        .discover-button {
+        .series-buttons a {
             display: inline-block;
-            background: linear-gradient(135deg, #E94E77, #C06C84);
+            background: linear-gradient(135deg, #FF4500, #FF6347);
             color: white;
-            padding: 12px 24px;
+            padding: 12px 20px;
             border: none;
             border-radius: 25px;
             font-size: 1em;
@@ -159,10 +158,19 @@
             margin: 5px;
             min-width: 120px;
         }
-        .discover-button:hover {
-            background: linear-gradient(135deg, #C06C84, #6C5B7B);
+        .series-buttons a:hover {
+            background: linear-gradient(135deg, #FF6347, #8B0000);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(192,108,132,0.4);
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+        }
+        .in-preparation {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            cursor: not-allowed;
+        }
+        .in-preparation:hover {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            transform: none;
+            box-shadow: none;
         }
         @media (max-width: 768px) {
             .content-sections {
@@ -187,21 +195,30 @@
         <div class="header">
             <a href="index.html" class="back-button">← Zurück zur Startseite</a>
             <h1>Thriller</h1>
-            <p>Nervenaufreibende Geschichten und explosive Spannung</p>
+            <p>Spannungsgeladene Geschichten voller Wendungen</p>
         </div>
         <div class="content-sections">
             <!-- Thriller Serien Bereich -->
             <div class="section">
                 <h2>Serien entdecken</h2>
                 <p class="section-description">
-                    Mehrteilige Thriller‑Geschichten mit durchgehenden Charakteren und
-                    zusammenhängenden Handlungssträngen.
+                    Nervenaufreibende Thriller-Serien mit unvorhersehbaren 
+                    Wendungen und fesselnden Charakteren.
                 </p>
                 <div class="series-item">
-                    <h3>Bald verfügbar</h3>
-                    <p>Spannende Thriller‑Serien befinden sich in der Entwicklung. Freuen
-                        Sie sich auf nervenaufreibende Fortsetzungsgeschichten mit explosiver
-                        Action!</p>
+                    <img src="thriller-placeholder.jpg" alt="Thriller Serie Cover" class="series-cover">
+                    <div class="series-title">Thriller-Serien</div>
+                    <div class="series-description">
+                        Spannungsgeladene Geschichten voller unerwarteter Wendungen,
+                        psychologischer Tiefe und nervenaufreibender Spannung bis 
+                        zur letzten Seite.
+                    </div>
+                    <div class="series-stats">
+                        In Vorbereitung • Deutsch & Englisch • Lesen-System
+                    </div>
+                    <div class="series-buttons">
+                        <a href="#" onclick="return false;" class="in-preparation">In Vorbereitung</a>
+                    </div>
                 </div>
             </div>
             <!-- Einzelne Thriller Bereich -->
@@ -213,17 +230,17 @@
                 </p>
                 <div class="series-item">
                     <img src="flammendesverrats.jpg" alt="Flammen des Verrats Cover" class="series-cover">
-                    <div class="series-title">Flammen des Verrats</div>
+                    <div class="series-title">Flammen des Verrats</div>
                     <div class="series-description">
                         Ein explosiver Thriller voller Intrigen, Verrat und tödlicher
                         Geheimnisse. Wenn die Vergangenheit zur Gegenwart wird und
                         Loyalitäten auf eine harte Probe gestellt werden.
                     </div>
                     <div class="series-stats">
-                        Einzelband • Deutsch & Englisch • Lesen & Vorlesen‑System
+                        Einzelband • Deutsch & Englisch • Lesen-System
                     </div>
                     <div class="series-buttons">
-                        <a href="vorlese-flammen-des-verrats.html" class="discover-button">Vorlesen</a>
+                        <a href="lesen-flammen-des-verrats.html">Lesen</a>
                     </div>
                 </div>
             </div>
