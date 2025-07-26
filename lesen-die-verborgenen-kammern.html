@@ -63,6 +63,8 @@
             gap: 15px;
             justify-content: center;
             margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .flag-btn {
@@ -79,6 +81,44 @@
         .flag-btn.active {
             border-color: #8A2BE2;
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+
+        .amazon-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .btn-amazon {
+            background: #FFD700;
+            color: #000;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-amazon:hover {
+            background: #FFC107;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-amazon.unavailable {
+            background: #999;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .btn-amazon.unavailable:hover {
+            background: #999;
+            transform: none;
+            box-shadow: none;
         }
 
         .band-navigation {
@@ -165,32 +205,6 @@
             font-weight: bold;
         }
 
-        .buy-button {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .btn-buy {
-            background: linear-gradient(135deg, #8A2BE2, #4B0082);
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-buy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-buy.unavailable {
-            background: #999;
-            cursor: not-allowed;
-        }
-
         .back-link {
             text-align: center;
             margin-top: 30px;
@@ -251,6 +265,11 @@
                 <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
                 <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
                 <button class="flag-btn" onclick="showLanguage('es')">🇪🇸 Español</button>
+                
+                <div class="amazon-buttons" id="amazonButtons">
+                    <a href="#" class="btn-amazon" id="bookButton" target="_blank">📚 Buch kaufen</a>
+                    <a href="#" class="btn-amazon" id="ebookButton" target="_blank">📱 eBook kaufen</a>
+                </div>
             </div>
             <div class="band-navigation">
                 <button class="btn-band active" onclick="showBook(1)">Band 1</button>
@@ -279,9 +298,6 @@
                         
                         <p>Ihre Aufgabe war es, durch all diese Schichten zum Original vorzudringen, ohne es zu beschädigen. Das Telefon vibrierte erneut. Elena seufzte, legte ihr Skalpell beiseite und streifte die Latexhandschuhe ab. Es war Direktor Schumann, wie die Anzeige verriet. Der Museumsdirektor rief sie selten direkt an; normalerweise kommunizierte er über seine Assistentin oder E-Mail.</p>
                     </div>
-                    <div class="buy-button">
-                        <a href="https://www.amazon.de/dp/B0F1YC3J79" class="btn-buy" target="_blank">📚 Bei Amazon kaufen</a>
-                    </div>
                 </div>
                 
                 <!-- Englische Version -->
@@ -297,9 +313,6 @@
                         
                         <p>Her task was to penetrate through all these layers to the original without damaging it. The phone vibrated again. Elena sighed, put down her scalpel, and removed her latex gloves. It was Director Schumann, as the ad revealed. The museum director rarely called her directly; he usually communicated through his assistant or email.</p>
                     </div>
-                    <div class="buy-button">
-                        <a href="https://www.amazon.de/dp/B0F311L2ZQ" class="btn-buy" target="_blank">📚 Buy on Amazon</a>
-                    </div>
                 </div>
 
                 <!-- Spanische Version -->
@@ -314,9 +327,6 @@
                         <p>La pintura del Barroco tardío, una representación de la diosa Diana cazando, había sido su proyecto durante tres semanas. Era un desafío, pero eso era precisamente lo que hacía que el trabajo fuera tan satisfactorio. El móvil de Lena vibró sobre la mesa de trabajo. Lo ignoró. La zona alrededor del ojo derecho de Diana requería toda su concentración: demasiadas capas de pintura, demasiado barniz, aplicado por restauradores bienintencionados pero ignorantes de siglos pasados.</p>
                         
                         <p>Su tarea consistía en penetrar a través de todas esas capas hasta llegar al original sin dañarlo. El teléfono volvió a vibrar. Elena suspiró, dejó el bisturí y se quitó los guantes de látex. Era el director Schumann, como revelaba el anuncio. El director del museo rara vez la llamaba directamente; solía comunicarse a través de su asistente o por correo electrónico.</p>
-                    </div>
-                    <div class="buy-button">
-                        <a href="https://www.amazon.de/dp/B0F37NJD39" class="btn-buy" target="_blank">📚 Comprar en Amazon</a>
                     </div>
                 </div>
             </div>
@@ -340,9 +350,6 @@
                         
                         <p>Ein unbekannter Teil der Sammlung wurde erwähnt, ein "verlorener Schatz", der die Familie seit Generationen begleitete. Marie hatte Marcus eine verschlüsselte Botschaft hinterlassen, die von einem Erbe sprach, das weit mehr war als nur materieller Besitz. Elena sah, wie Marcus' Hände leicht zitterten, als er das Dokument entgegennahm. Die Trauer und die Familiendynamik schienen ihn in alte Verhaltensmuster zurückzuführen, und Elena fragte sich, ob die Last der Vergangenheit jemals von ihm abfallen würde.</p>
                     </div>
-                    <div class="buy-button">
-                        <a href="#" class="btn-buy unavailable">📚 Bald verfügbar</a>
-                    </div>
                 </div>
                 
                 <!-- Englische Version -->
@@ -357,9 +364,6 @@
                         <p>The estate, an imposing building of stone and history, loomed before them like a silent witness to time. In the great hall, where light fell through the tall windows, the family gathered. The air was heavy with unspoken words and old secrets. When the will was read, Elena felt the atmosphere change.</p>
                         
                         <p>An unknown part of the collection was mentioned, a "lost treasure" that had accompanied the family for generations. Marie had left Marcus an encrypted message that spoke of a legacy that was far more than just material possessions. Elena saw how Marcus' hands trembled slightly as he received the document. The grief and family dynamics seemed to pull him back into old behavioral patterns, and Elena wondered if the burden of the past would ever lift from him.</p>
-                    </div>
-                    <div class="buy-button">
-                        <a href="#" class="btn-buy unavailable">📚 Coming Soon</a>
                     </div>
                 </div>
             </div>
@@ -383,9 +387,6 @@
                         
                         <p>Ein flüchtiges Lächeln huschte über Marcus' Gesicht -- eine dieser kleinen Gesten der Zuneigung, die in der Öffentlichkeit so selten waren, aber seit ihrer Versöhnung nach der schwierigen Zeit vor einigen Monaten immer häufiger wurden. "Dann lass uns einen besseren Platz suchen", sagte er und führte sie mit einer sanften Berührung am Rücken durch die Menge.</p>
                     </div>
-                    <div class="buy-button">
-                        <a href="#" class="btn-buy unavailable">📚 Bald verfügbar</a>
-                    </div>
                 </div>
                 
                 <!-- Englische Version -->
@@ -401,9 +402,6 @@
                         
                         <p>A fleeting smile flitted across Marcus' face -- one of those small gestures of affection that were so rare in public but had become increasingly frequent since their reconciliation after the difficult time a few months ago. "Then let's find a better seat," he said, guiding her through the crowd with a gentle touch on her back.</p>
                     </div>
-                    <div class="buy-button">
-                        <a href="#" class="btn-buy unavailable">📚 Coming Soon</a>
-                    </div>
                 </div>
             </div>
 
@@ -416,6 +414,97 @@
     <script>
         let currentBook = 1;
         let currentLanguage = 'de';
+
+        // Amazon ASINs pro Band und Sprache
+        const amazonLinks = {
+            1: { // Band 1
+                de: {
+                    book: 'https://www.amazon.de/dp/B0F1YC3J79',
+                    ebook: 'https://www.amazon.de/dp/B0F8F1CVCL'
+                },
+                en: {
+                    book: 'https://www.amazon.de/dp/B0F311L2ZQ',
+                    ebook: 'https://www.amazon.de/dp/B0F8NJQ56P'
+                },
+                es: {
+                    book: 'https://www.amazon.de/dp/B0F37NJD39',
+                    ebook: null // Nur Taschenbuch für Spanisch
+                }
+            },
+            2: { // Band 2 - noch nicht verfügbar
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            },
+            3: { // Band 3 - noch nicht verfügbar
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            }
+        };
+
+        function updateAmazonButtons() {
+            const bookButton = document.getElementById('bookButton');
+            const ebookButton = document.getElementById('ebookButton');
+            const links = amazonLinks[currentBook] && amazonLinks[currentBook][currentLanguage];
+
+            if (links) {
+                // Buch Button
+                if (links.book) {
+                    bookButton.href = links.book;
+                    bookButton.classList.remove('unavailable');
+                    bookButton.textContent = '📚 Buch kaufen';
+                } else {
+                    bookButton.href = '#';
+                    bookButton.classList.add('unavailable');
+                    bookButton.textContent = '📚 Bald verfügbar';
+                }
+
+                // eBook Button
+                if (links.ebook) {
+                    ebookButton.href = links.ebook;
+                    ebookButton.classList.remove('unavailable');
+                    ebookButton.textContent = '📱 eBook kaufen';
+                    ebookButton.style.display = 'inline-block';
+                } else if (currentBook === 1 && currentLanguage === 'es') {
+                    // Spanisch hat nur Taschenbuch
+                    ebookButton.style.display = 'none';
+                } else {
+                    ebookButton.href = '#';
+                    ebookButton.classList.add('unavailable');
+                    ebookButton.textContent = '📱 Bald verfügbar';
+                    ebookButton.style.display = 'inline-block';
+                }
+
+                // Englische Texte
+                if (currentLanguage === 'en') {
+                    if (links.book) {
+                        bookButton.textContent = '📚 Buy Book';
+                    } else {
+                        bookButton.textContent = '📚 Coming Soon';
+                    }
+                    if (links.ebook) {
+                        ebookButton.textContent = '📱 Buy eBook';
+                    } else if (ebookButton.style.display !== 'none') {
+                        ebookButton.textContent = '📱 Coming Soon';
+                    }
+                }
+
+                // Spanische Texte
+                if (currentLanguage === 'es') {
+                    if (links.book) {
+                        bookButton.textContent = '📚 Comprar Libro';
+                    } else {
+                        bookButton.textContent = '📚 Próximamente';
+                    }
+                }
+            } else {
+                // Fallback für unbekannte Kombinationen
+                bookButton.href = '#';
+                bookButton.classList.add('unavailable');
+                ebookButton.href = '#';
+                ebookButton.classList.add('unavailable');
+                ebookButton.style.display = 'inline-block';
+            }
+        }
 
         function showBook(bookNumber) {
             // Verstecke alle Bücher
@@ -435,6 +524,9 @@
             
             // Update Flaggen basierend auf verfügbaren Sprachen
             updateLanguageFlags(bookNumber);
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         function updateLanguageFlags(bookNumber) {
@@ -479,12 +571,16 @@
             document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
             
             currentLanguage = lang;
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         // Initialisierung beim Seitenstart
         document.addEventListener('DOMContentLoaded', function() {
             showBook(1); // Zeige erstes Buch
             showLanguage('de'); // Zeige deutsche Version
+            updateAmazonButtons(); // Update Amazon Buttons
         });
     </script>
 </body>
