@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krimis – Helmut Wegners Wortwelten</title>
-    <!--
-        Überarbeitete Version der Krimis‑Seite. Die ursprüngliche Seite verwies
-        auf eine nicht vorhandene Datei (mysterien‑der‑heide.html). Diese Version
-        listet alle vorhandenen Bände der Krimi‑Reihe «Mysterien der Heide» mit
-        direkten Links zu den entsprechenden Vorlese‑Dateien. Außerdem wird
-        ein einzelner Roman «Hinter verschlossenen Türen» als Stand‑alone
-        vorgestellt.
-    -->
+    <title>Krimis – Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -192,6 +184,17 @@
             box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
         }
 
+        .in-preparation {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            cursor: not-allowed;
+        }
+
+        .in-preparation:hover {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            transform: none;
+            box-shadow: none;
+        }
+
         @media (max-width: 768px) {
             .content-sections {
                 grid-template-columns: 1fr;
@@ -230,20 +233,18 @@
                 </p>
                 <div class="series-item">
                     <img src="geistderheide.jpg" alt="Mysterien der Heide Serie Cover" class="series-cover">
-                    <div class="series-title">Mysterien der Heide</div>
+                    <div class="series-title">Mysterien der Heide</div>
                     <div class="series-description">
-                        Eine fesselnde Krimi‑Reihe, die die dunklen Geheimnisse der
+                        Eine fesselnde Krimi-Reihe, die die dunklen Geheimnisse der
                         Lüneburger Heide aufdeckt. Von mysteriösen Geistern bis hin zu
                         verschwundenen Dörfern – eine atmosphärische Reise in die Abgründe
                         der menschlichen Seele.
                     </div>
                     <div class="series-stats">
-                        3 Bände • Deutsch & Englisch • Lesen & Vorlesen‑System
+                        3 Bände • Deutsch & Englisch • Lesen-System
                     </div>
                     <div class="series-buttons">
-                        <a href="vorlese-der-geist-der-heide.html">Band 1</a>
-                        <a href="vorlese-der-beginn-des-friedens.html">Band 2</a>
-                        <a href="vorlese-die-schatten-des-vergessenen.html">Band 3</a>
+                        <a href="lesen-mysterien-der-heide.html">Serie entdecken</a>
                     </div>
                 </div>
             </div>
@@ -254,19 +255,19 @@
                     Standalone Kriminalromane mit abgeschlossenen Handlungen und
                     eigenständigen Charakteren.
                 </p>
-                <!-- Hinter verschlossenen Türen -->
                 <div class="series-item">
-                    <img src="hinter-verschlossenen-tueren.jpg" alt="Hinter verschlossenen Türen Cover" class="series-cover">
-                    <div class="series-title">Hinter verschlossenen Türen</div>
+                    <img src="krimi-placeholder.jpg" alt="Standalone Krimis Cover" class="series-cover">
+                    <div class="series-title">Standalone Krimis</div>
                     <div class="series-description">
-                        Ein spannender Krimi über dunkle Geheimnisse hinter verschlossenen
-                        Türen und die Frage, wie gut man seine Nachbarn wirklich kennt.
+                        Eigenständige Kriminalromane mit abgeschlossenen Geschichten
+                        und fesselnden Ermittlungen, die unabhängig voneinander
+                        gelesen werden können.
                     </div>
                     <div class="series-stats">
-                        Einzelband • Deutsch & Englisch • Lesen & Vorlesen‑System
+                        In Vorbereitung • Deutsch & Englisch • Lesen-System
                     </div>
                     <div class="series-buttons">
-                        <a href="vorlese-hinter-verschlossenen-türen.html">Vorlesen</a>
+                        <a href="#" onclick="return false;" class="in-preparation">In Vorbereitung</a>
                     </div>
                 </div>
             </div>
