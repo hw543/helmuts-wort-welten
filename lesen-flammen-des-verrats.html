@@ -63,6 +63,8 @@
             gap: 15px;
             justify-content: center;
             margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .flag-btn {
@@ -80,6 +82,44 @@
         .flag-btn.active {
             border-color: #FF4500;
             box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+
+        .amazon-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .btn-amazon {
+            background: #FFD700;
+            color: #000;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-amazon:hover {
+            background: #FFC107;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-amazon.unavailable {
+            background: #999;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .btn-amazon.unavailable:hover {
+            background: #999;
+            transform: none;
+            box-shadow: none;
         }
 
         .content {
@@ -197,12 +237,17 @@
             <div class="language-flags">
                 <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
                 <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+                
+                <div class="amazon-buttons" id="amazonButtons">
+                    <a href="#" class="btn-amazon unavailable" id="bookButton" target="_blank">📚 Bald verfügbar</a>
+                    <a href="#" class="btn-amazon unavailable" id="ebookButton" target="_blank">📱 Bald verfügbar</a>
+                </div>
             </div>
         </div>
 
         <div class="content">
             <div class="book-cover">
-                <img src="flammendesverrats.jpg" alt="Flammen des Verrats">
+                <img src="https://hw543.github.io/helmuts-wortwelten/flammendesverrats.jpg" alt="Flammen des Verrats">
             </div>
             
             <!-- Deutsche Version -->
@@ -244,6 +289,35 @@
     <script>
         let currentLanguage = 'de';
 
+        // Amazon ASINs - Thriller hat keine ASINs
+        const amazonLinks = {
+            de: { book: null, ebook: null },
+            en: { book: null, ebook: null }
+        };
+
+        function updateAmazonButtons() {
+            const bookButton = document.getElementById('bookButton');
+            const ebookButton = document.getElementById('ebookButton');
+            
+            // Thriller hat keine ASINs - alle Buttons "Bald verfügbar"
+            bookButton.href = '#';
+            bookButton.classList.add('unavailable');
+            ebookButton.href = '#';
+            ebookButton.classList.add('unavailable');
+
+            // Deutsche Texte
+            if (currentLanguage === 'de') {
+                bookButton.textContent = '📚 Bald verfügbar';
+                ebookButton.textContent = '📱 Bald verfügbar';
+            }
+
+            // Englische Texte
+            if (currentLanguage === 'en') {
+                bookButton.textContent = '📚 Coming Soon';
+                ebookButton.textContent = '📱 Coming Soon';
+            }
+        }
+
         function showLanguage(lang) {
             // Verstecke alle Sprachversionen
             document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
@@ -262,11 +336,15 @@
             document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
             
             currentLanguage = lang;
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         // Initialisierung beim Seitenstart
         document.addEventListener('DOMContentLoaded', function() {
             showLanguage('de'); // Zeige deutsche Version
+            updateAmazonButtons(); // Update Amazon Buttons
         });
     </script>
 </body>
