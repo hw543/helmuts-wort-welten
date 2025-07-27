@@ -63,6 +63,8 @@
             gap: 15px;
             justify-content: center;
             margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .flag-btn {
@@ -79,6 +81,44 @@
         .flag-btn.active {
             border-color: #8B4513;
             box-shadow: 0 0 10px rgba(139, 69, 19, 0.5);
+        }
+
+        .amazon-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .btn-amazon {
+            background: #FFD700;
+            color: #000;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-amazon:hover {
+            background: #FFC107;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-amazon.unavailable {
+            background: #999;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .btn-amazon.unavailable:hover {
+            background: #999;
+            transform: none;
+            box-shadow: none;
         }
 
         .band-navigation {
@@ -224,6 +264,11 @@
             <div class="language-flags">
                 <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
                 <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+                
+                <div class="amazon-buttons" id="amazonButtons">
+                    <a href="#" class="btn-amazon unavailable" id="bookButton" target="_blank">📚 Bald verfügbar</a>
+                    <a href="#" class="btn-amazon unavailable" id="ebookButton" target="_blank">📱 Bald verfügbar</a>
+                </div>
             </div>
             <div class="band-navigation">
                 <button class="btn-band active" onclick="showBook(1)">Band 1: Geist</button>
@@ -236,7 +281,7 @@
             <!-- Band 1: Der Geist der Heide -->
             <div id="book1" class="book-content">
                 <div class="book-cover">
-                    <img src="geistderheide.jpg" alt="Der Geist der Heide">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/geistderheide.jpg" alt="Der Geist der Heide">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -273,7 +318,7 @@
             <!-- Band 2: Das Moor des Vergessens -->
             <div id="book2" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="moordesvergessens.jpg" alt="Das Moor des Vergessens">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/moordesvergessens.jpg" alt="Das Moor des Vergessens">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -310,7 +355,7 @@
             <!-- Band 3: Die Schatten der Dörfer -->
             <div id="book3" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="schattenderdoerfer.jpg" alt="Die Schatten der Dörfer">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/schattenderdoerfer.jpg" alt="Die Schatten der Dörfer">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -345,7 +390,7 @@
             </div>
 
             <div class="back-link">
-                <a href="krimis.html" class="btn-back">← Zurück zu Krimis & Thriller</a>
+                <a href="mysterien-der-heide.html" class="btn-back">← Zurück zur Serie</a>
             </div>
         </div>
     </div>
@@ -353,6 +398,45 @@
     <script>
         let currentBook = 1;
         let currentLanguage = 'de';
+
+        // Amazon ASINs - Mysterien der Heide hat keine ASINs
+        const amazonLinks = {
+            1: { 
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            },
+            2: { 
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            },
+            3: { 
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            }
+        };
+
+        function updateAmazonButtons() {
+            const bookButton = document.getElementById('bookButton');
+            const ebookButton = document.getElementById('ebookButton');
+            
+            // Mysterien der Heide hat keine ASINs - alle Buttons "Bald verfügbar"
+            bookButton.href = '#';
+            bookButton.classList.add('unavailable');
+            ebookButton.href = '#';
+            ebookButton.classList.add('unavailable');
+
+            // Deutsche Texte
+            if (currentLanguage === 'de') {
+                bookButton.textContent = '📚 Bald verfügbar';
+                ebookButton.textContent = '📱 Bald verfügbar';
+            }
+
+            // Englische Texte
+            if (currentLanguage === 'en') {
+                bookButton.textContent = '📚 Coming Soon';
+                ebookButton.textContent = '📱 Coming Soon';
+            }
+        }
 
         function showBook(bookNumber) {
             // Verstecke alle Bücher
@@ -369,6 +453,9 @@
             
             // Stelle sicher, dass die richtige Sprache angezeigt wird
             showLanguage(currentLanguage);
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         function showLanguage(lang) {
@@ -389,12 +476,16 @@
             document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
             
             currentLanguage = lang;
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         // Initialisierung beim Seitenstart
         document.addEventListener('DOMContentLoaded', function() {
             showBook(1); // Zeige erstes Buch
             showLanguage('de'); // Zeige deutsche Version
+            updateAmazonButtons(); // Update Amazon Buttons
         });
     </script>
 </body>
