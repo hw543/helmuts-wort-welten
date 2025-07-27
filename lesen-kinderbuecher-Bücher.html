@@ -63,6 +63,8 @@
             gap: 15px;
             justify-content: center;
             margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .flag-btn {
@@ -79,6 +81,44 @@
         .flag-btn.active {
             border-color: #FF69B4;
             box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+
+        .amazon-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .btn-amazon {
+            background: #FFD700;
+            color: #000;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-amazon:hover {
+            background: #FFC107;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-amazon.unavailable {
+            background: #999;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .btn-amazon.unavailable:hover {
+            background: #999;
+            transform: none;
+            box-shadow: none;
         }
 
         .band-navigation {
@@ -224,6 +264,11 @@
             <div class="language-flags">
                 <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
                 <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+                
+                <div class="amazon-buttons" id="amazonButtons">
+                    <a href="#" class="btn-amazon" id="bookButton" target="_blank">📚 Buch kaufen</a>
+                    <a href="#" class="btn-amazon" id="ebookButton" target="_blank">📱 eBook kaufen</a>
+                </div>
             </div>
             <div class="band-navigation">
                 <button class="btn-band active" onclick="showBook(1)">Zauberakademie</button>
@@ -237,7 +282,7 @@
             <!-- Buch 1: Die Zauberakademie von Morgenstern -->
             <div id="book1" class="book-content">
                 <div class="book-cover">
-                    <img src="die zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/die-zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -294,7 +339,7 @@
             <!-- Buch 2: Der Zeitnarr -->
             <div id="book2" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="zeitnarr.jpg" alt="Der Zeitnarr">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/zeitnarr.jpg" alt="Der Zeitnarr">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -351,7 +396,7 @@
             <!-- Buch 3: Der Rätseldetektivclub -->
             <div id="book3" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="raetseldetektivclub.jpg" alt="Der Rätseldetektivclub">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/raetseldetektivclub.jpg" alt="Der Rätseldetektivclub">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -408,7 +453,7 @@
             <!-- Buch 4: Der verborgene Wald -->
             <div id="book4" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="verborgener-wald.jpg" alt="Der verborgene Wald">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/verborgener-wald.jpg" alt="Der verborgene Wald">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -476,6 +521,96 @@
         let currentBook = 1;
         let currentLanguage = 'de';
 
+        // Amazon ASINs pro Buch und Sprache
+        const amazonLinks = {
+            1: { // Zauberakademie
+                de: {
+                    book: 'https://www.amazon.de/dp/B0F8V7TLVT',
+                    ebook: 'https://www.amazon.de/dp/B0F8G9XDPC'
+                },
+                en: {
+                    book: 'https://www.amazon.de/dp/B0F8V7TLVT',
+                    ebook: 'https://www.amazon.de/dp/B0F8G9XDPC'
+                }
+            },
+            2: { // Zeitnarr
+                de: {
+                    book: 'https://www.amazon.de/dp/B0F8HY1P5G',
+                    ebook: 'https://www.amazon.de/dp/B0F8NKGHFZ'
+                },
+                en: {
+                    book: 'https://www.amazon.de/dp/B0F8HY1P5G',
+                    ebook: 'https://www.amazon.de/dp/B0F8NKGHFZ'
+                }
+            },
+            3: { // Rätseldetektivclub
+                de: {
+                    book: 'https://www.amazon.de/dp/B0F8Q3LQ6K',
+                    ebook: 'https://www.amazon.de/dp/B0F8NQHTWC'
+                },
+                en: {
+                    book: 'https://www.amazon.de/dp/B0F8Q3LQ6K',
+                    ebook: 'https://www.amazon.de/dp/B0F8NQHTWC'
+                }
+            },
+            4: { // Verborgener Wald - keine ASINs
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            }
+        };
+
+        function updateAmazonButtons() {
+            const bookButton = document.getElementById('bookButton');
+            const ebookButton = document.getElementById('ebookButton');
+            const links = amazonLinks[currentBook] && amazonLinks[currentBook][currentLanguage];
+
+            if (links) {
+                // Buch Button
+                if (links.book) {
+                    bookButton.href = links.book;
+                    bookButton.classList.remove('unavailable');
+                    bookButton.textContent = '📚 Buch kaufen';
+                } else {
+                    bookButton.href = '#';
+                    bookButton.classList.add('unavailable');
+                    bookButton.textContent = '📚 Bald verfügbar';
+                }
+
+                // eBook Button
+                if (links.ebook) {
+                    ebookButton.href = links.ebook;
+                    ebookButton.classList.remove('unavailable');
+                    ebookButton.textContent = '📱 eBook kaufen';
+                } else {
+                    ebookButton.href = '#';
+                    ebookButton.classList.add('unavailable');
+                    ebookButton.textContent = '📱 Bald verfügbar';
+                }
+
+                // Englische Texte
+                if (currentLanguage === 'en') {
+                    if (links.book) {
+                        bookButton.textContent = '📚 Buy Book';
+                    } else {
+                        bookButton.textContent = '📚 Coming Soon';
+                    }
+                    if (links.ebook) {
+                        ebookButton.textContent = '📱 Buy eBook';
+                    } else {
+                        ebookButton.textContent = '📱 Coming Soon';
+                    }
+                }
+            } else {
+                // Fallback für unbekannte Kombinationen
+                bookButton.href = '#';
+                bookButton.classList.add('unavailable');
+                ebookButton.href = '#';
+                ebookButton.classList.add('unavailable');
+                bookButton.textContent = '📚 Bald verfügbar';
+                ebookButton.textContent = '📱 Bald verfügbar';
+            }
+        }
+
         function showBook(bookNumber) {
             // Verstecke alle Bücher
             for (let i = 1; i <= 4; i++) {
@@ -491,6 +626,9 @@
             
             // Stelle sicher, dass die richtige Sprache angezeigt wird
             showLanguage(currentLanguage);
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         function showLanguage(lang) {
@@ -511,12 +649,16 @@
             document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
             
             currentLanguage = lang;
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         // Initialisierung beim Seitenstart
         document.addEventListener('DOMContentLoaded', function() {
             showBook(1); // Zeige erstes Buch
             showLanguage('de'); // Zeige deutsche Version
+            updateAmazonButtons(); // Update Amazon Buttons
         });
     </script>
 </body>
