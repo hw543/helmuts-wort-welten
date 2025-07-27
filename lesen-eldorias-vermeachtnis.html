@@ -64,6 +64,8 @@
             gap: 15px;
             justify-content: center;
             margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .flag-btn {
@@ -80,6 +82,44 @@
         .flag-btn.active {
             border-color: #4d0099;
             box-shadow: 0 0 10px rgba(77, 0, 153, 0.5);
+        }
+
+        .amazon-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .btn-amazon {
+            background: #FFD700;
+            color: #000;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-amazon:hover {
+            background: #FFC107;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-amazon.unavailable {
+            background: #999;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .btn-amazon.unavailable:hover {
+            background: #999;
+            transform: none;
+            box-shadow: none;
         }
 
         .band-navigation {
@@ -231,6 +271,11 @@
             <div class="language-flags">
                 <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
                 <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+                
+                <div class="amazon-buttons" id="amazonButtons">
+                    <a href="#" class="btn-amazon unavailable" id="bookButton" target="_blank">📚 Bald verfügbar</a>
+                    <a href="#" class="btn-amazon unavailable" id="ebookButton" target="_blank">📱 Bald verfügbar</a>
+                </div>
             </div>
             <div class="band-navigation">
                 <button class="btn-band active" onclick="showBook(1)">Band 1: Prophezeiung</button>
@@ -244,7 +289,7 @@
             <!-- Band 1: Die Prophezeiung von Eldoria -->
             <div id="book1" class="book-content">
                 <div class="book-cover">
-                    <img src="die prophezeiung.jpg" alt="Die Prophezeiung von Eldoria">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/die-prophezeiung.jpg" alt="Die Prophezeiung von Eldoria">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -281,7 +326,7 @@
             <!-- Band 2: Der Beginn des Friedens -->
             <div id="book2" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="beginn des friedens.jpg" alt="Der Beginn des Friedens">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/beginn-des-friedens.jpg" alt="Der Beginn des Friedens">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -318,7 +363,7 @@
             <!-- Band 3: Die Schatten des Vergessenen -->
             <div id="book3" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="die schatten des vergessens.jpg" alt="Die Schatten des Vergessenen">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/die-schatten-des-vergessens.jpg" alt="Die Schatten des Vergessenen">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -355,7 +400,7 @@
             <!-- Band 4: Das Vermächtnis der Wächter -->
             <div id="book4" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="das vermächtniss der wächter.jpg" alt="Das Vermächtnis der Wächter">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/das-vermaechtnis-der-waechter.jpg" alt="Das Vermächtnis der Wächter">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -384,7 +429,7 @@
                         
                         <p>Preparations for the journey began the next morning. Kael and Tessa gathered provisions, checked their weapons, and carefully secured the old maps in a leather bag. The villagers watched them with mixed feelings. Some shook their heads, others whispered anxiously about the dark myths of the borderlands. "When we return," Tessa said with a wink, "I'll secure eternal glory for us."</p>
                         
-                        <p>With a tremendous blow he brought the sword down on the dark figure. The light exploded in all directions, and a bone-chilling scream filled the air. When the light faded, the darkness was gone -- and with it the being. Kael fell to his knees, the sword slipped from his hand. Tessa, slowly recovering, crawled to him and placed a hand on his shoulder. "You did it," she whispered, her voice full of relief. He looked at her, exhausted but satisfied. "No," he said quietly. "We did it."</p>
+                        <p>With a tremendous blow he brought the sword down on the dark figure. The light exploded in all directions, and a bone-chilling scream filled the air. When the light faded, the darkness was gone -- and with it the being. Kael fell to his knees, the sword slipped from his hand. Tessa, slowly recovering, crawled to him and placed a hand on her shoulder. "You did it," she whispered, her voice full of relief. He looked at her, exhausted but satisfied. "No," he said quietly. "We did it."</p>
                     </div>
                 </div>
             </div>
@@ -398,6 +443,49 @@
     <script>
         let currentBook = 1;
         let currentLanguage = 'de';
+
+        // Amazon ASINs pro Band und Sprache - High Fantasy hat keine ASINs
+        const amazonLinks = {
+            1: { 
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            },
+            2: { 
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            },
+            3: { 
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            },
+            4: { 
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            }
+        };
+
+        function updateAmazonButtons() {
+            const bookButton = document.getElementById('bookButton');
+            const ebookButton = document.getElementById('ebookButton');
+            
+            // High Fantasy hat keine ASINs - alle Buttons "Bald verfügbar"
+            bookButton.href = '#';
+            bookButton.classList.add('unavailable');
+            ebookButton.href = '#';
+            ebookButton.classList.add('unavailable');
+
+            // Deutsche Texte
+            if (currentLanguage === 'de') {
+                bookButton.textContent = '📚 Bald verfügbar';
+                ebookButton.textContent = '📱 Bald verfügbar';
+            }
+
+            // Englische Texte
+            if (currentLanguage === 'en') {
+                bookButton.textContent = '📚 Coming Soon';
+                ebookButton.textContent = '📱 Coming Soon';
+            }
+        }
 
         function showBook(bookNumber) {
             // Verstecke alle Bücher
@@ -414,6 +502,9 @@
             
             // Stelle sicher, dass die richtige Sprache angezeigt wird
             showLanguage(currentLanguage);
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         function showLanguage(lang) {
@@ -434,12 +525,16 @@
             document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
             
             currentLanguage = lang;
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         // Initialisierung beim Seitenstart
         document.addEventListener('DOMContentLoaded', function() {
             showBook(1); // Zeige erstes Buch
             showLanguage('de'); // Zeige deutsche Version
+            updateAmazonButtons(); // Update Amazon Buttons
         });
     </script>
 </body>
