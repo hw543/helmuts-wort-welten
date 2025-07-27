@@ -63,6 +63,8 @@
             gap: 15px;
             justify-content: center;
             margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .flag-btn {
@@ -79,6 +81,44 @@
         .flag-btn.active {
             border-color: #FF69B4;
             box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+
+        .amazon-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .btn-amazon {
+            background: #FFD700;
+            color: #000;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-amazon:hover {
+            background: #FFC107;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-amazon.unavailable {
+            background: #999;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .btn-amazon.unavailable:hover {
+            background: #999;
+            transform: none;
+            box-shadow: none;
         }
 
         .band-navigation {
@@ -165,27 +205,6 @@
             font-weight: bold;
         }
 
-        .buy-button {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .btn-buy {
-            background: linear-gradient(135deg, #FF6347, #DC143C);
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-buy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
         .back-link {
             text-align: center;
             margin-top: 30px;
@@ -245,6 +264,11 @@
             <div class="language-flags">
                 <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
                 <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+                
+                <div class="amazon-buttons" id="amazonButtons">
+                    <a href="#" class="btn-amazon" id="bookButton" target="_blank">📚 Buch kaufen</a>
+                    <a href="#" class="btn-amazon" id="ebookButton" target="_blank">📱 eBook kaufen</a>
+                </div>
             </div>
             <div class="band-navigation">
                 <button class="btn-band active" onclick="showBook(1)">Band 1</button>
@@ -258,7 +282,7 @@
             <!-- Band 1: Unter dem Sternenhimmel -->
             <div id="book1" class="book-content">
                 <div class="book-cover">
-                    <img src="unter-dem-sternenhimmel.jpg" alt="Unter dem Sternenhimmel">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/unter-dem-sternenhimmel.jpg" alt="Unter dem Sternenhimmel">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -273,9 +297,6 @@
                         <p>Gerade als sie an einem kleinen Café vorbeikam, hörte sie das Lachen von Menschen. Es zog sie magisch an, und sie beschloss, einen Moment innezuhalten und die lebhafte Atmosphäre aufzusaugen. Die Stimmen der Gäste, die Klänge von klirrenden Tassen und das Aroma von frisch gebrühtem Kaffee schienen sie in eine andere Welt zu entführen. Sie beobachtete, wie ein älteres Paar zusammensaß und die kleinen Freuden des Lebens genoss.</p>
                         
                         <p>Doch während sie schaute, lenkte plötzlich eine neue Person ihre Aufmerksamkeit ab. Ein Mann trat aus dem Café, und Clara konnte nicht anders, als ihn zu mustern. Er hatte eine ergreifende Ausstrahlung: groß und athletisch, mit markanten Gesichtszügen und einem selbstbewussten Lächeln. Seine dunklen Haare fielen leger über seine Stirn, und während er sich mit einem freundlichen Gruß zu einem anderen Gast drehte, bemerkte Clara, wie seine Augen in der Sonne funkelten.</p>
-                    </div>
-                    <div class="buy-button">
-                        <a href="https://www.amazon.de/dp/B0F9Y4L5LK" class="btn-buy" target="_blank">📚 Bei Amazon kaufen</a>
                     </div>
                 </div>
                 
@@ -292,16 +313,13 @@
                         
                         <p>But while she watched, suddenly a new person caught her attention. A man stepped out of the café, and Clara couldn't help but study him. He had a captivating presence: tall and athletic, with striking facial features and a confident smile. His dark hair fell casually over his forehead, and as he turned to another guest with a friendly greeting, Clara noticed how his eyes sparkled in the sun.</p>
                     </div>
-                    <div class="buy-button">
-                        <a href="https://www.amazon.de/dp/B0F9Y4L5LK" class="btn-buy" target="_blank">📚 Buy on Amazon</a>
-                    </div>
                 </div>
             </div>
 
             <!-- Band 2: Im Netz der Liebe -->
             <div id="book2" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="im-netz-der-liebe.jpg" alt="Im Netz der Liebe">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/im-netz-der-liebe.jpg" alt="Im Netz der Liebe">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -316,9 +334,6 @@
                         <p>Doch ohne Vorwarnung kam eine Welle der Nervosität über sie. Was, wenn die Vergangenheit ihn wieder einholte? Die offenen Wunden, die sie jeweils mit sich trugen, schienen immer noch in der Luft zu hängen und bereit, sich wieder zu öffnen. Ein tiefes Durchatmen half Clara, ihre Gedanken zu sammeln. Sie versuchte, sich auf das bevorstehende Treffen zu konzentrieren, als plötzlich die Tür zum Atelier aufging und das vertraute Gesicht ihres besten Freundes Max erschien.</p>
                         
                         <p>„Hey Clara, bist du bereit für die große Eröffnung der Galerie? Ich habe das Gefühl, dass etwas Aufregendes in der Luft liegt!" „Hallo Max! Ja, ich kann es kaum erwarten", antwortete Clara mit einem Lächeln und versuchte, ihre Nervosität zu verbergen. „Ich hoffe, dass alles gut geht." „Mach dir keine Sorgen", sagte Max und winkte ab. „Die Leute werden deine Kunst lieben. Du und Alex habt so viele persönliche Geschichten in eure Werke einfließen lassen. Das wird großartig!"</p>
-                    </div>
-                    <div class="buy-button">
-                        <a href="https://www.amazon.de/dp/B0FBL167H5" class="btn-buy" target="_blank">📚 Bei Amazon kaufen</a>
                     </div>
                 </div>
                 
@@ -335,16 +350,13 @@
                         
                         <p>"Hey Clara, are you ready for the big gallery opening? I have the feeling that something exciting is in the air!" "Hello Max! Yes, I can hardly wait," Clara replied with a smile, trying to hide her nervousness. "I hope everything goes well." "Don't worry," Max said, waving dismissively. "People will love your art. You and Alex have let so many personal stories flow into your works. This will be great!"</p>
                     </div>
-                    <div class="buy-button">
-                        <a href="https://www.amazon.de/dp/B0FBL167H5" class="btn-buy" target="_blank">📚 Buy on Amazon</a>
-                    </div>
                 </div>
             </div>
 
             <!-- Band 3: Ankommen im neuen Leben -->
             <div id="book3" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="Band 3-wo-liebe-wachsen-darf.jpg" alt="Ankommen im neuen Leben">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/band-3-wo-liebe-wachsen-darf.jpg" alt="Ankommen im neuen Leben">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -359,9 +371,6 @@
                         <p>Langsam erhob sie sich aus dem Bett, zog den Morgenmantel über und machte sich auf den Weg in die Küche. Während der Duft von frisch gebrühtem Kaffee die Luft erfüllte, gingen ihre Gedanken in verschiedene Richtungen. Sie wusste, dass diese Beförderung mit einem höheren Arbeitspensum und längeren Abenden im Büro verbunden war. Ihre Freizeit würde schrumpfen -- Zeit, die sie sonst mit Alex geteilt hatte. Würden sie es schaffen, trotz all dieser Verpflichtungen ihre Beziehung lebendig zu halten?</p>
                         
                         <p>Später am Vormittag saßen Clara und Alex gemeinsam am Frühstückstisch. Die Gespräche waren oberflächlich -- kleine Notizen über den Tagesablauf, ein Austausch über die Schlagzeilen in der Zeitung. Clara bemerkte, wie Alex mehr in Gedanken als bei ihr zu sein schien. Seine Stirn war in Sorgenfalten gelegt, und seine Blicke glitten immer wieder zu seinem Handy, das auf dem Tisch lag.</p>
-                    </div>
-                    <div class="buy-button">
-                        <a href="https://www.amazon.de/dp/B0FBKKW3HF" class="btn-buy" target="_blank">📚 Bei Amazon kaufen (Kindle)</a>
                     </div>
                 </div>
                 
@@ -378,16 +387,13 @@
                         
                         <p>Later in the morning, Clara and Alex sat together at the breakfast table. The conversations were superficial -- small notes about the day's schedule, an exchange about the headlines in the newspaper. Clara noticed how Alex seemed more lost in thought than present with her. His forehead was creased with worry lines, and his gaze kept sliding to his phone lying on the table.</p>
                     </div>
-                    <div class="buy-button">
-                        <a href="https://www.amazon.de/dp/B0FBKKW3HF" class="btn-buy" target="_blank">📚 Buy on Amazon (Kindle)</a>
-                    </div>
                 </div>
             </div>
 
             <!-- Band 4: Gemeinsam in die Zukunft -->
             <div id="book4" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="Gemeinsam in die Zukunft.jpg" alt="Gemeinsam in die Zukunft">
+                    <img src="https://hw543.github.io/helmuts-wortwelten/gemeinsam-in-die-zukunft.jpg" alt="Gemeinsam in die Zukunft">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -402,9 +408,6 @@
                         <p>Gemeinsam gingen sie durch das alte Gebäude, das so viel Potenzial versprach. Die Küche war das Herzstück des Hauses, mit einer massiven Arbeitsplatte aus Holz, die von Generationen von Händen poliert worden war. Die Wände erzählten Geschichten von Jahren der Nutzung und der Liebe. Hier würde Clara neue Gerichte ausprobieren, während ihre Kinder später um sie herumtollen würden -- ein Gedanke, der sie kurz innehalten ließ.</p>
                         
                         <p>„Die Fenster müssen dringend erneuert werden", bemerkte Alex, der mit kritischem Blick durch den Raum ging. „Und die Elektrik... wir sollten uns jemanden holen, der das überprüft." Clara lächelte. „Es hat Charakter. Das Haus erzählt eine Geschichte. Wir sollten nur aufpassen, dass wir es nicht seiner Seele berauben." Alex lachte leise. „Keine Sorge, ich lasse dich den kreativen Teil übernehmen."</p>
-                    </div>
-                    <div class="buy-button">
-                        <a href="#" class="btn-buy" style="background: #999; cursor: not-allowed;">📚 Bald verfügbar</a>
                     </div>
                 </div>
                 
@@ -421,9 +424,6 @@
                         
                         <p>"The windows urgently need to be replaced," Alex noted, looking critically around the room. "And the electricity... we should get someone to check that." Clara smiled. "It has character. The house tells a story. We should just be careful not to rob it of its soul." Alex laughed softly. "Don't worry, I'll let you handle the creative part."</p>
                     </div>
-                    <div class="buy-button">
-                        <a href="#" class="btn-buy" style="background: #999; cursor: not-allowed;">📚 Coming Soon</a>
-                    </div>
                 </div>
             </div>
 
@@ -436,6 +436,96 @@
     <script>
         let currentBook = 1;
         let currentLanguage = 'de';
+
+        // Amazon ASINs pro Band und Sprache
+        const amazonLinks = {
+            1: { // Band 1: Unter dem Sternenhimmel
+                de: {
+                    book: 'https://www.amazon.de/dp/B0F9Y4L5LK',
+                    ebook: 'https://www.amazon.de/dp/B0F9XFG5BR'
+                },
+                en: {
+                    book: 'https://www.amazon.de/dp/B0F9Y4L5LK',
+                    ebook: 'https://www.amazon.de/dp/B0F9XFG5BR'
+                }
+            },
+            2: { // Band 2: Im Netz der Liebe
+                de: {
+                    book: 'https://www.amazon.de/dp/B0FBL167H5',
+                    ebook: 'https://www.amazon.de/dp/B0FBKGJNY7'
+                },
+                en: {
+                    book: 'https://www.amazon.de/dp/B0FBL167H5',
+                    ebook: 'https://www.amazon.de/dp/B0FBKGJNY7'
+                }
+            },
+            3: { // Band 3: Ankommen im neuen Leben (nur eBook)
+                de: {
+                    book: null,
+                    ebook: 'https://www.amazon.de/dp/B0FBKKW3HF'
+                },
+                en: {
+                    book: null,
+                    ebook: 'https://www.amazon.de/dp/B0FBKKW3HF'
+                }
+            },
+            4: { // Band 4: Gemeinsam in die Zukunft (noch nicht verfügbar)
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null }
+            }
+        };
+
+        function updateAmazonButtons() {
+            const bookButton = document.getElementById('bookButton');
+            const ebookButton = document.getElementById('ebookButton');
+            const links = amazonLinks[currentBook] && amazonLinks[currentBook][currentLanguage];
+
+            if (links) {
+                // Buch Button
+                if (links.book) {
+                    bookButton.href = links.book;
+                    bookButton.classList.remove('unavailable');
+                    bookButton.textContent = '📚 Buch kaufen';
+                } else {
+                    bookButton.href = '#';
+                    bookButton.classList.add('unavailable');
+                    bookButton.textContent = '📚 Bald verfügbar';
+                }
+
+                // eBook Button
+                if (links.ebook) {
+                    ebookButton.href = links.ebook;
+                    ebookButton.classList.remove('unavailable');
+                    ebookButton.textContent = '📱 eBook kaufen';
+                } else {
+                    ebookButton.href = '#';
+                    ebookButton.classList.add('unavailable');
+                    ebookButton.textContent = '📱 Bald verfügbar';
+                }
+
+                // Englische Texte
+                if (currentLanguage === 'en') {
+                    if (links.book) {
+                        bookButton.textContent = '📚 Buy Book';
+                    } else {
+                        bookButton.textContent = '📚 Coming Soon';
+                    }
+                    if (links.ebook) {
+                        ebookButton.textContent = '📱 Buy eBook';
+                    } else {
+                        ebookButton.textContent = '📱 Coming Soon';
+                    }
+                }
+            } else {
+                // Fallback für unbekannte Kombinationen
+                bookButton.href = '#';
+                bookButton.classList.add('unavailable');
+                ebookButton.href = '#';
+                ebookButton.classList.add('unavailable');
+                bookButton.textContent = '📚 Bald verfügbar';
+                ebookButton.textContent = '📱 Bald verfügbar';
+            }
+        }
 
         function showBook(bookNumber) {
             // Verstecke alle Bücher
@@ -452,6 +542,9 @@
             
             // Stelle sicher, dass die richtige Sprache angezeigt wird
             showLanguage(currentLanguage);
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         function showLanguage(lang) {
@@ -472,12 +565,16 @@
             document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
             
             currentLanguage = lang;
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
         }
 
         // Initialisierung beim Seitenstart
         document.addEventListener('DOMContentLoaded', function() {
             showBook(1); // Zeige erstes Buch
             showLanguage('de'); // Zeige deutsche Version
+            updateAmazonButtons(); // Update Amazon Buttons
         });
     </script>
 </body>
