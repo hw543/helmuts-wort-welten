@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Where Love May Grow - Chapter 1 | New Adult</title>
+    <title>Wo Liebe wachsen darf - Kapitel 1 | New Adult</title>
     <style>
         * {
             margin: 0;
@@ -51,12 +51,19 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(96,89,124,0.4);
         }
-        .language-toggle {
+        .top-controls {
             position: absolute;
             top: 15px;
             right: 15px;
             display: flex;
+            flex-direction: column;
             gap: 10px;
+            align-items: flex-end;
+        }
+        .language-toggle {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
         }
         .language-toggle a {
             text-decoration: none;
@@ -65,6 +72,39 @@
         }
         .language-toggle a:hover {
             transform: scale(1.2);
+        }
+        .amazon-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 5px;
+        }
+        .amazon-button {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 8px 16px;
+            border: 2px solid #FF8C00;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .amazon-button:hover {
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,215,0,0.4);
+        }
+        .amazon-button.unavailable {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+            border-color: #999;
+        }
+        .amazon-button.unavailable:hover {
+            transform: none;
+            box-shadow: none;
         }
         .header h1 {
             font-size: 2.5em;
@@ -81,6 +121,30 @@
             font-size: 1.1em;
             color: #2F4F4F;
             font-style: italic;
+        }
+        .book-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .book-nav-button {
+            background: linear-gradient(135deg, #6C5B7B, #C06C84);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .book-nav-button:hover {
+            background: linear-gradient(135deg, #8A6D9B, #D17FA3);
+            transform: translateY(-2px);
+        }
+        .book-nav-button.active {
+            background: linear-gradient(135deg, #E94E77, #FF6B9D);
         }
         .chapter-content {
             background: rgba(255, 255, 255, 0.9);
@@ -103,27 +167,6 @@
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(233,78,119,0.3);
         }
-        .amazon-button {
-            display: block;
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1em;
-            font-weight: bold;
-            text-decoration: none;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 30px auto;
-            max-width: 300px;
-        }
-        .amazon-button:hover {
-            background: linear-gradient(135deg, #e55a2b, #d67e0c);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
-        }
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2em;
@@ -137,40 +180,143 @@
             .chapter-content p:first-child::first-letter {
                 font-size: 3em;
             }
+            .top-controls {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            .book-navigation {
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <a href="zwischen-herz-und-verstand.html" class="back-button">← Back to Series</a>
-            <div class="language-toggle">
+            <a href="zwischen-herz-und-verstand.html" class="back-button">← Zurück zur Serie</a>
+            <div class="top-controls">
+                <div class="amazon-buttons">
+                    <a href="#" id="book-button" class="amazon-button unavailable">📚 Bald verfügbar</a>
+                    <a href="#" id="ebook-button" class="amazon-button unavailable">📱 Bald verfügbar</a>
+                </div>
+            </div>
+            <img src="https://hw543.github.io/helmuts-wortwelten/wo-liebe-wachsen-darf.jpg" alt="Wo Liebe wachsen darf Cover" style="width: 200px; height: 280px; margin: 0 auto 20px auto; border-radius: 10px; border: 3px solid #FFD700; object-fit: cover; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+            <h1>Wo Liebe wachsen darf</h1>
+            <h2>Kapitel 1: Und jetzt?</h2>
+            <p>Band 3 der Serie "Zwischen Herz und Verstand"</p>
+            
+            <div class="book-navigation">
+                <button class="book-nav-button" onclick="switchBook(1)">Band 1</button>
+                <button class="book-nav-button" onclick="switchBook(2)">Band 2</button>
+                <button class="book-nav-button active" onclick="switchBook(3)">Band 3</button>
+            </div>
+            
+            <div class="language-toggle" style="margin-top: 15px;">
                 <a href="wo-liebe-wachsen-darf-lesen.html" title="Deutsch">🇩🇪</a>
                 <a href="wo-liebe-wachsen-darf-english.html" title="English">🇬🇧</a>
             </div>
-            <img src="wo-liebe-wachsen-darf.jpg" alt="Where Love May Grow Cover" style="width: 200px; height: 280px; margin: 0 auto 20px auto; border-radius: 10px; border: 3px solid #FFD700; object-fit: cover; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
-            <h1>Where Love May Grow</h1>
-            <h2>Chapter 1: And Now?</h2>
-            <p>Volume 3 of the "Between Heart and Mind" Series</p>
         </div>
         
         <div class="chapter-content">
-            <p>Lena remembered the moments when she had felt so connected, as if the words between them had built a bridge that could overcome all uncertainties. But now this bridge had disappeared, and she stood again on the shore, unsure how to cross the river. She opened the drawer of her desk and took out the stack of letters that she and Julian had written to each other. Each letter was a piece of their shared history, proof that they had once had a deep connection. She leafed through the pages, reading here and there a sentence that caught her eye. "I feel like we understand each other in a language that no one else speaks." "Your words are like a home to me." "Sometimes I wonder if we will ever really understand each other." These sentences echoed within her, and she felt a stab in her chest. Why was it so hard to transfer this connection to the real world? Why did it feel like they could breathe so much easier on paper than in real life?</p>
+            <p>Lena erinnerte sich an die Momente, in denen sie sich so verbunden gefühlt hatte, als hätten die Worte zwischen ihnen eine Brücke gebaut, die alle Unsicherheiten überwinden konnte. Doch jetzt war diese Brücke verschwunden, und sie stand wieder am Ufer, unsicher, wie sie den Fluss überqueren sollte. Sie öffnete die Schublade ihres Schreibtischs und holte den Stapel Briefe heraus, die sie und Julian sich geschrieben hatten. Jeder Brief war ein Stück ihrer gemeinsamen Geschichte, ein Beweis dafür, dass sie einmal eine tiefe Verbindung gehabt hatten. Sie blätterte durch die Seiten, las hier und da einen Satz, der ihr ins Auge sprang. „Ich habe das Gefühl, wir verstehen uns in einer Sprache, die niemand sonst spricht." „Deine Worte sind wie ein Zuhause für mich." „Manchmal frage ich mich, ob wir uns jemals wirklich verstehen werden." Diese Sätze hallten in ihr nach, und sie spürte einen Stich in der Brust. Warum war es so schwer, diese Verbindung in die reale Welt zu übertragen? Warum hatte es sich angefühlt, als könnten sie auf dem Papier so viel leichter atmen als im echten Leben?</p>
 
-            <p>She put the letters back in the drawer and closed it. Maybe it was time to start something new, something that wasn't burdened by the past. She went to the kitchen and put water on for tea. While waiting for the water to boil, she thought about her future. She had always dreamed of becoming a writer, but now that she had the chance, it felt like something was missing. Maybe it was the certainty that someone was there who believed in her, who supported her. Julian had done that, in his letters, but in real life everything was more complicated. The kettle whistled, and she poured the hot water over the tea bag in her cup. The scent of chamomile rose to her nose and calmed her a little. She took the cup and went back to the living room, sat down on the sofa and looked out the window. The city now lay in darkness, only scattered lights still burned in the windows of the houses. It was a calming sight that gave her the feeling of not being completely alone.</p>
+            <p>Sie legte die Briefe zurück in die Schublade und schloss sie. Vielleicht war es Zeit, etwas Neues zu beginnen, etwas, das nicht von der Vergangenheit belastet war. Sie ging in die Küche und setzte Wasser für Tee auf. Während sie darauf wartete, dass das Wasser kochte, dachte sie über ihre Zukunft nach. Sie hatte immer davon geträumt, Schriftstellerin zu werden, aber jetzt, wo sie die Chance hatte, fühlte es sich an, als würde etwas fehlen. Vielleicht war es die Gewissheit, dass jemand da war, der an sie glaubte, der sie unterstützte. Julian hatte das getan, in seinen Briefen, aber im echten Leben war alles komplizierter. Der Wasserkocher pfiff, und sie goss das heiße Wasser über den Teebeutel in ihrer Tasse. Der Duft von Kamille stieg ihr in die Nase und beruhigte sie ein wenig. Sie nahm die Tasse und ging zurück ins Wohnzimmer, setzte sich auf das Sofa und blickte aus dem Fenster. Die Stadt lag jetzt in der Dunkelheit, nur vereinzelte Lichter brannten noch in den Fenstern der Häuser. Es war ein beruhigender Anblick, der ihr das Gefühl gab, nicht völlig allein zu sein.</p>
 
-            <p>She sipped her tea and felt the warmth spreading within her. Maybe that was the key, she thought. Maybe she had to learn to be sufficient for herself, to trust herself, before she could try again to build a bridge to someone else. She closed her eyes and leaned back, letting the silence of the evening wash over her. It was a new beginning, a blank page, and maybe that was exactly what she needed. The possibility of writing something new, without the burden of the past. She breathed deeply and felt a spark of hope kindling within her. Maybe this was the moment when she could learn to breathe again, to live again, without clinging to someone else. She opened her eyes and looked at the blank sheets of paper on her desk. Maybe it was time to write her own story, a story that wasn't about Julian or Emil, but about herself. About Lena, who stood alone but was not lost. About Lena, who was ready to live her own life, with all its uncertainties and possibilities.</p>
+            <p>Sie nippte an ihrem Tee und spürte, wie sich die Wärme in ihr ausbreitete. Vielleicht war das der Schlüssel, dachte sie. Vielleicht musste sie lernen, sich selbst zu genügen, sich selbst zu vertrauen, bevor sie wieder versuchen konnte, eine Brücke zu jemand anderem zu bauen. Sie schloss die Augen und lehnte sich zurück, ließ die Stille des Abends über sich hereinbrechen. Es war ein Neuanfang, ein leeres Blatt, und vielleicht war das genau das, was sie brauchte. Die Möglichkeit, etwas Neues zu schreiben, ohne die Last der Vergangenheit. Sie atmete tief ein und spürte, wie ein Funke Hoffnung in ihr aufkeimte. Vielleicht war das der Moment, in dem sie wieder lernen konnte zu atmen, zu leben, ohne sich an jemand anderen zu klammern. Sie öffnete die Augen und blickte auf die leeren Blätter Papier auf ihrem Schreibtisch. Vielleicht war es Zeit, ihre eigene Geschichte zu schreiben, eine Geschichte, die nicht von Julian oder Emil handelte, sondern von ihr selbst. Von Lena, die allein stand, aber nicht verloren war. Von Lena, die bereit war, ihr eigenes Leben zu leben, mit all seinen Unsicherheiten und Möglichkeiten.</p>
 
-            <p>She took a deep sip of her tea and felt a new determination growing within her. She would write, not for someone else, but for herself. She would find her own voice, tell her own story. And maybe, just maybe, she would learn to breathe again in the process, to live again, completely on her own. She stood up, went to her desk and sat down. The blank sheets lay before her, ready to be filled with words. She took the pen in her hand and felt something come alive within her. It was time to write her own story. She felt the tip of her pen touch the paper, and began to write, without hesitation, without thinking. The words flowed out of her as if they had been waiting for a long time to finally be free. It was as if a door inside her opened, a door that she had kept locked for a long time.</p>
+            <p>Sie nahm einen tiefen Schluck von ihrem Tee und spürte, wie eine neue Entschlossenheit in ihr wuchs. Sie würde schreiben, nicht für jemand anderen, sondern für sich selbst. Sie würde ihre eigene Stimme finden, ihre eigene Geschichte erzählen. Und vielleicht, nur vielleicht, würde sie dabei wieder lernen zu atmen, zu leben, ganz allein. Sie stand auf, ging zu ihrem Schreibtisch und setzte sich hin. Die leeren Blätter lagen vor ihr, bereit, mit Worten gefüllt zu werden. Sie nahm den Stift in die Hand und spürte, wie etwas in ihr lebendig wurde. Es war Zeit, ihre eigene Geschichte zu schreiben. Sie spürte, wie die Spitze ihres Stifts das Papier berührte, und begann zu schreiben, ohne zu zögern, ohne zu denken. Die Worte flossen aus ihr heraus, als hätten sie lange darauf gewartet, endlich frei zu sein. Es war, als öffnete sich eine Tür in ihr, eine Tür, die sie lange verschlossen gehalten hatte.</p>
 
-            <p>She wrote about the silence that surrounded her, about the feeling of being alone, but not lonely. She wrote about the city that lay outside, about the lights that shone in the darkness, about the sounds that drifted up to her. She wrote about the letters that she and Julian had exchanged, about the connection they had found on paper, and about the difficulty of transferring this connection to the real world. She wrote about Emil, about the moments they had shared together, about the laughter, the tears, the hope and the disappointment. She wrote about the feeling she had when he left, about the emptiness he had left behind, and about the realization that this emptiness would not remain forever. She wrote about her dreams, her fears, her hopes and her uncertainties. She wrote about the people she knew, about the friendships she had made, and about the relationships she had lost.</p>
+            <p>Sie schrieb über die Stille, die sie umgab, über das Gefühl, allein zu sein, aber nicht einsam. Sie schrieb über die Stadt, die draußen lag, über die Lichter, die in der Dunkelheit leuchteten, über die Geräusche, die zu ihr heraufdrängen. Sie schrieb über die Briefe, die sie und Julian sich geschrieben hatten, über die Verbindung, die sie auf dem Papier gefunden hatten, und über die Schwierigkeit, diese Verbindung in die reale Welt zu übertragen. Sie schrieb über Emil, über die Momente, die sie zusammen geteilt hatten, über das Lachen, die Tränen, die Hoffnung und die Enttäuschung. Sie schrieb über das Gefühl, das sie hatte, als er ging, über die Leere, die er hinterlassen hatte, und über die Erkenntnis, dass diese Leere nicht für immer bleiben würde. Sie schrieb über ihre Träume, ihre Ängste, ihre Hoffnungen und ihre Unsicherheiten. Sie schrieb über die Menschen, die sie kannte, über die Freundschaften, die sie geschlossen hatte, und über die Beziehungen, die sie verloren hatte.</p>
 
-            <p>She wrote about her family, about the expectations they had placed on her, and about the expectations she placed on herself. She wrote about the moments when she had felt strong, and about the moments when she had felt weak. She wrote about the love she had felt, and about the love she had lost. She wrote about the hope she had, and about the hope she had lost. She wrote about the dreams she had, and about the dreams she had given up. She wrote about the moments when she had believed she knew everything, and about the moments when she had realized she knew nothing. She wrote about the decisions she had made, and about the decisions she regretted. She wrote about the paths she had taken, and about the paths she had not taken. She wrote about the doors she had opened, and about the doors she had closed. She wrote about the chances she had taken, and about the chances she had missed. She wrote about the moments when she had felt free, and about the moments when she had felt trapped.</p>
+            <p>Sie schrieb über ihre Familie, über die Erwartungen, die sie an sie gestellt hatten, und über die Erwartungen, die sie an sich selbst stellte. Sie schrieb über die Momente, in denen sie sich stark gefühlt hatte, und über die Momente, in denen sie sich schwach gefühlt hatte. Sie schrieb über die Liebe, die sie gefühlt hatte, und über die Liebe, die sie verloren hatte. Sie schrieb über die Hoffnung, die sie hatte, und über die Hoffnung, die sie verloren hatte. Sie schrieb über die Träume, die sie hatte, und über die Träume, die sie aufgegeben hatte. Sie schrieb über die Momente, in denen sie geglaubt hatte, alles zu wissen, und über die Momente, in denen sie erkannt hatte, dass sie nichts wusste. Sie schrieb über die Entscheidungen, die sie getroffen hatte, und über die Entscheidungen, die sie bereute. Sie schrieb über die Wege, die sie eingeschlagen hatte, und über die Wege, die sie nicht eingeschlagen hatte. Sie schrieb über die Türen, die sie geöffnet hatte, und über die Türen, die sie geschlossen hatte. Sie schrieb über die Chancen, die sie ergriffen hatte, und über die Chancen, die sie verpasst hatte. Sie schrieb über die Momente, in denen sie sich frei gefühlt hatte, und über die Momente, in denen sie sich gefangen gefühlt hatte.</p>
         </div>
-        
-        <a href="https://www.amazon.com/dp/B0CXAMPLE3" target="_blank" class="amazon-button">
-            📚 Buy Complete Book on Amazon
-        </a>
     </div>
+
+    <script>
+        // Buch-Daten für die Serie "Zwischen Herz und Verstand"
+        const bookData = {
+            1: {
+                title: "Verborgene Gefühle",
+                englishTitle: "Hidden Feelings",
+                chapter: "Kapitel 1: Die Nachricht, die alles veränderte",
+                image: "verborgene-gefuehle.jpg",
+                bookASIN: "", // Keine ASIN vorhanden
+                ebookASIN: "", // Keine ASIN vorhanden
+                germanPage: "verborgene-gefuehle-lesen.html",
+                englishPage: "verborgene-gefuehle-english.html"
+            },
+            2: {
+                title: "Enthüllte Wahrheiten",
+                englishTitle: "Revealed Truths", 
+                chapter: "Kapitel 1: Nähe, die flieht",
+                image: "enthuellte-wahrheiten.jpg",
+                bookASIN: "", // Keine ASIN vorhanden
+                ebookASIN: "", // Keine ASIN vorhanden
+                germanPage: "enthuellte-wahrheiten-lesen.html",
+                englishPage: "enthuellte-wahrheiten-english.html"
+            },
+            3: {
+                title: "Wo Liebe wachsen darf",
+                englishTitle: "Where Love May Grow",
+                chapter: "Kapitel 1: Und jetzt?",
+                image: "wo-liebe-wachsen-darf.jpg", 
+                bookASIN: "", // Keine ASIN vorhanden
+                ebookASIN: "", // Keine ASIN vorhanden
+                germanPage: "wo-liebe-wachsen-darf-lesen.html",
+                englishPage: "wo-liebe-wachsen-darf-english.html"
+            }
+        };
+
+        function switchBook(bookNumber) {
+            const book = bookData[bookNumber];
+            if (!book) return;
+
+            // Titel und Kapitel aktualisieren
+            document.querySelector('.header h1').textContent = book.title;
+            document.querySelector('.header h2').textContent = book.chapter;
+            
+            // Cover-Bild aktualisieren
+            const coverImg = document.querySelector('.header img');
+            coverImg.src = `https://hw543.github.io/helmuts-wortwelten/${book.image}`;
+            coverImg.alt = `${book.title} Cover`;
+
+            // Amazon-Buttons aktualisieren
+            const bookButton = document.getElementById('book-button');
+            const ebookButton = document.getElementById('ebook-button');
+
+            if (book.bookASIN) {
+                bookButton.href = `https://www.amazon.com/dp/${book.bookASIN}`;
+                bookButton.textContent = "📚 Buch kaufen";
+                bookButton.classList.remove('unavailable');
+            } else {
+                bookButton.href = "#";
+                bookButton.textContent = "📚 Bald verfügbar";
+                bookButton.classList.add('unavailable');
+            }
+
+            if (book.ebookASIN) {
+                ebookButton.href = `https://www.amazon.com/dp/${book.ebookASIN}`;
+                ebookButton.textContent = "📱 eBook kaufen";
+                ebookButton.classList.remove('unavailable');
+            } else {
+                ebookButton.href = "#";
+                ebookButton.textContent = "📱 Bald verfügbar";
+                ebookButton.classList.add('unavailable');
+            }
+
+            // Sprach-Links aktualisieren
+            const germanLink = document.querySelector('a[title="Deutsch"]');
+            const englishLink = document.querySelector('a[title="English"]');
+            
+            germanLink.href = book.germanPage;
+            englishLink.href = book.englishPage;
+
+            // Aktiven Button hervorheben
+            document.querySelectorAll('.book-nav-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.book-nav-button')[bookNumber - 1].classList.add('active');
+        }
+    </script>
 </body>
 </html>
