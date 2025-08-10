@@ -34,6 +34,47 @@
             color: #FFF8DC;
             padding: 30px;
             text-align: center;
+            position: relative;
+        }
+
+        .back-link-top {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 248, 220, 0.2);
+            color: #FFF8DC;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 248, 220, 0.3);
+        }
+
+        .back-link-top:hover {
+            background: rgba(255, 248, 220, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 248, 220, 0.4);
+        }
+
+        .home-link-top {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 248, 220, 0.2);
+            color: #FFF8DC;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 248, 220, 0.3);
+        }
+
+        .home-link-top:hover {
+            background: rgba(255, 248, 220, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 248, 220, 0.4);
         }
 
         .header h1 {
@@ -205,29 +246,6 @@
             font-weight: bold;
         }
 
-        .back-link {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #D2B48C;
-        }
-
-        .btn-back {
-            background: linear-gradient(135deg, #6c757d, #495057);
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-back:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
         .hidden {
             display: none;
         }
@@ -250,12 +268,30 @@
             .header h1 {
                 font-size: 2em;
             }
+
+            .back-link-top, .home-link-top {
+                position: static;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+
+            .language-flags {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .amazon-buttons {
+                margin-left: 0;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <a href="krimis.html" class="back-link-top">← Zur Serie</a>
+            <a href="index.html" class="home-link-top">🏠 Startseite</a>
             <h1>Mysterien der Heide</h1>
             <p>Düstere Geheimnisse aus der Lüneburger Heide - Deutsch und Englisch</p>
         </div>
@@ -387,10 +423,6 @@
                         <p>"Heinrich," Erik said calmly, "we don't even know who did this yet. It could just as well have been young people from the neighboring village." But even as he spoke, he saw the doubt in Heinrich's eyes. The poison of mistrust had already begun to spread in his peaceful village. Erik feared this was just the beginning. The shadows of prejudice cast their dark fingers over Nordheide, and he didn't know how to stop them.</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="back-link">
-                <a href="mysterien-der-heide.html" class="btn-back">← Zurück zur Serie</a>
             </div>
         </div>
     </div>
