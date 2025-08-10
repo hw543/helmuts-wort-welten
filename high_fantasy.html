@@ -3,215 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High Fantasy – Helmut Wegners Wortwelten</title>
+    <title>High Fantasy - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #2E1065 0%, #4A148C 50%, #6A1B9A 100%);
+            background: linear-gradient(135deg, #1a0033 0%, #330066 50%, #4d0099 100%);
             min-height: 100vh;
-            color: #f5f5f5;
+            color: white;
             line-height: 1.6;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-
+        
         .header {
             text-align: center;
             margin-bottom: 40px;
             padding: 40px 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
         }
-
+        
         .back-button {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(106, 27, 154, 0.8);
+            top: 20px;
+            left: 20px;
+            background: rgba(77, 0, 153, 0.8);
             color: white;
             padding: 10px 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: none;
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
-            font-size: 0.9em;
         }
-
+        
         .back-button:hover {
-            background: rgba(106, 27, 154, 1);
+            background: rgba(77, 0, 153, 1);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-
+        
         .header h1 {
             font-size: 3em;
-            margin-bottom: 20px;
-            color: #9C27B0;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 15px;
+            color: #c771ff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-
+        
         .header p {
             font-size: 1.3em;
-            color: #f0f0f0;
+            color: #e6b3ff;
             font-style: italic;
         }
-
-        .content-sections {
+        
+        .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             margin-top: 40px;
         }
-
-        .section {
-            background: rgba(0, 0, 0, 0.8);
+        
+        .section-card {
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            border: 2px solid rgba(156, 39, 176, 0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid rgba(199, 113, 255, 0.3);
         }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
-            border-color: rgba(156, 39, 176, 0.6);
-        }
-
-        .section h2 {
-            font-size: 2.2em;
-            color: #9C27B0;
+        
+        .section-title {
+            font-size: 2em;
             margin-bottom: 20px;
+            color: #c771ff;
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
-
+        
         .section-description {
             font-size: 1.1em;
             margin-bottom: 30px;
             text-align: center;
-            color: #d0d0d0;
-            line-height: 1.6;
+            color: #e6b3ff;
         }
-
-        .series-item {
-            background: rgba(74, 20, 140, 0.3);
+        
+        .series-card {
+            background: rgba(77, 0, 153, 0.2);
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 20px;
-            border: 1px solid rgba(156, 39, 176, 0.4);
-            transition: all 0.3s ease;
-            text-align: center;
+            border: 1px solid rgba(199, 113, 255, 0.3);
         }
-
-        .series-item:hover {
-            background: rgba(74, 20, 140, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .series-cover {
-            width: 120px;
-            height: 160px;
-            margin: 0 auto 20px auto;
-            border-radius: 10px;
-            border: 3px solid #FFD700;
-            object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .series-cover:hover {
-            transform: scale(1.05);
-        }
-
+        
         .series-title {
-            font-size: 1.6em;
-            color: #9C27B0;
-            margin-bottom: 10px;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #c771ff;
             text-align: center;
-            font-weight: bold;
         }
-
+        
         .series-description {
-            font-size: 1em;
-            color: #d0d0d0;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
-            line-height: 1.5;
+            color: #e6b3ff;
         }
-
-        .series-stats {
+        
+        .series-info {
             font-size: 0.9em;
-            color: #b0b0b0;
+            color: #b300ff;
             text-align: center;
-            margin-bottom: 20px;
             font-style: italic;
+            margin-bottom: 20px;
         }
-
-        .series-buttons a {
-            display: inline-block;
-            background: linear-gradient(135deg, #9C27B0, #6A1B9A);
+        
+        .btn-explore {
+            background: linear-gradient(135deg, #7b2cbf, #c771ff);
             color: white;
-            padding: 12px 20px;
+            padding: 12px 30px;
             border: none;
             border-radius: 25px;
-            font-size: 1em;
+            font-size: 1.1em;
             font-weight: bold;
-            text-decoration: none;
-            text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 5px;
-            min-width: 120px;
+            text-decoration: none;
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
         }
-
-        .series-buttons a:hover {
-            background: linear-gradient(135deg, #E91E63, #9C27B0);
+        
+        .btn-explore:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+            box-shadow: 0 8px 25px rgba(123, 44, 191, 0.4);
         }
-
-        .in-preparation {
-            background: linear-gradient(135deg, #6c757d, #495057);
+        
+        .einzelromane-card {
+            background: rgba(77, 0, 153, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(199, 113, 255, 0.3);
+        }
+        
+        .einzelromane-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #c771ff;
+        }
+        
+        .einzelromane-description {
+            margin-bottom: 15px;
+            color: #e6b3ff;
+        }
+        
+        .einzelromane-info {
+            font-size: 0.9em;
+            color: #b300ff;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .btn-vorbereitung {
+            background: linear-gradient(135deg, #6a4c93, #c771ff);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1em;
+            font-weight: bold;
             cursor: not-allowed;
+            opacity: 0.7;
+            text-decoration: none;
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
         }
-
-        .in-preparation:hover {
-            background: linear-gradient(135deg, #6c757d, #495057);
-            transform: none;
-            box-shadow: none;
-        }
-
+        
         @media (max-width: 768px) {
-            .content-sections {
+            .content-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 20px;
             }
-
+            
             .header h1 {
-                font-size: 2.4em;
+                font-size: 2.5em;
             }
-
-            .section h2 {
-                font-size: 1.8em;
-            }
-
-            .series-cover {
-                width: 100px;
-                height: 130px;
+            
+            .back-button {
+                position: static;
+                display: inline-block;
+                margin-bottom: 20px;
             }
         }
     </style>
@@ -223,50 +212,31 @@
             <h1>High Fantasy</h1>
             <p>Epische Welten voller Magie und Abenteuer</p>
         </div>
-        <div class="content-sections">
-            <!-- High Fantasy Serien Bereich -->
-            <div class="section">
-                <h2>Serien entdecken</h2>
-                <p class="section-description">
-                    Epische Fantasy-Sagas mit magischen Welten, Helden und
-                    unvergesslichen Abenteuern.
-                </p>
-                <div class="series-item">
-                    <img src="https://hw543.github.io/helmuts-wortwelten/die-prophezeiung.jpg" alt="Eldorias Vermächtnis Serie Cover" class="series-cover">
-                    <div class="series-title">Eldorias Vermächtnis</div>
-                    <div class="series-description">
-                        Eine epische Fantasy-Saga über die magische Welt Eldoria, 
-                        wo Helden gegen die Mächte der Finsternis kämpfen und 
-                        das Gleichgewicht zwischen Licht und Schatten entscheidet.
-                    </div>
-                    <div class="series-stats">
-                        4 Bände • Deutsch & Englisch • Lesen-System
-                    </div>
-                    <div class="series-buttons">
-                        <a href="lesen-eldorias-vermeachtnis.html">Serie entdecken</a>
-                    </div>
+        
+        <div class="content-grid">
+            <!-- Serien Sektion -->
+            <div class="section-card">
+                <h2 class="section-title">Serien entdecken</h2>
+                <p class="section-description">Epische Fantasy-Sagas mit magischen Welten, Helden und unvergesslichen Abenteuern.</p>
+                
+                <div class="series-card">
+                    <h3 class="series-title">Eldorias Vermächtnis</h3>
+                    <p class="series-description">Eine epische Fantasy-Saga über die magische Welt Eldoria, wo Helden gegen die Mächte der Finsternis kämpfen und das Gleichgewicht zwischen Licht und Schatten entscheidet.</p>
+                    <p class="series-info">4 Bände • Deutsch & Englisch • Lesen-System</p>
+                    <a href="eldoria-vermaerchtnis-lesen.html" class="btn-explore">Serie entdecken</a>
                 </div>
             </div>
-            <!-- Einzelne High Fantasy Bücher Bereich -->
-            <div class="section">
-                <h2>Bücher entdecken</h2>
-                <p class="section-description">
-                    Standalone Fantasy-Romane mit abgeschlossenen Handlungen und
-                    eigenständigen magischen Welten.
-                </p>
-                <div class="series-item">
-                    <div class="series-title">Fantasy-Einzelromane</div>
-                    <div class="series-description">
-                        Eigenständige Fantasy-Abenteuer mit magischen Welten,
-                        epischen Kämpfen und unvergesslichen Charakteren, die
-                        unabhängig voneinander gelesen werden können.
-                    </div>
-                    <div class="series-stats">
-                        In Vorbereitung • Deutsch & Englisch • Lesen-System
-                    </div>
-                    <div class="series-buttons">
-                        <a href="#" onclick="return false;" class="in-preparation">In Vorbereitung</a>
-                    </div>
+            
+            <!-- Bücher Sektion -->
+            <div class="section-card">
+                <h2 class="section-title">Bücher entdecken</h2>
+                <p class="section-description">Standalone Fantasy-Romane mit abgeschlossenen Handlungen und eigenständigen magischen Welten.</p>
+                
+                <div class="einzelromane-card">
+                    <h3 class="einzelromane-title">Fantasy-Einzelromane</h3>
+                    <p class="einzelromane-description">Eigenständige Fantasy-Abenteuer mit magischen Welten, epischen Kämpfen und unvergesslichen Charakteren, die unabhängig voneinander gelesen werden können.</p>
+                    <p class="einzelromane-info">In Vorbereitung • Deutsch & Englisch • Lesen-System</p>
+                    <span class="btn-vorbereitung">In Vorbereitung</span>
                 </div>
             </div>
         </div>
