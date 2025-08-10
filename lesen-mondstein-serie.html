@@ -34,6 +34,27 @@
             color: white;
             padding: 30px;
             text-align: center;
+            position: relative;
+        }
+
+        .back-link-top {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .back-link-top:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .header h1 {
@@ -205,29 +226,6 @@
             font-weight: bold;
         }
 
-        .back-link {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #FFD700;
-        }
-
-        .btn-back {
-            background: linear-gradient(135deg, #6c757d, #495057);
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-back:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
         .hidden {
             display: none;
         }
@@ -250,12 +248,19 @@
             .header h1 {
                 font-size: 2em;
             }
+
+            .back-link-top {
+                position: static;
+                margin-bottom: 15px;
+                display: inline-block;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <a href="kinderbuecher.html" class="back-link-top">← Zurück zu Kinderbücher</a>
             <h1>Das Geheimnis vom Mondstein</h1>
             <p>Leni, Finn und Arvid auf der Suche nach den Lichtsteinen - Deutsch und Englisch</p>
         </div>
@@ -287,30 +292,26 @@
                 <!-- Deutsche Version -->
                 <div class="lang-de">
                     <div class="book-title">Band 1: Das Geheimnis des leuchtenden Fragments</div>
-                    <div class="chapter-title">Kapitel 1: Die Vorbereitung</div>
+                    <div class="chapter-title">Kapitel 1: Die Entdeckung im Park</div>
                     <div class="text-content">
-                        <p>Die Sonne ging langsam über dem kleinen Dorf auf und tauchte alles in ein warmes, goldenes Licht. Leni, Finn und Arvid waren früh aufgestanden, denn heute war der Tag, an dem sie ihre Reise in den geheimnisvollen Wald fortsetzen würden. Sie hatten bereits einige Abenteuer hinter sich und wussten, dass noch viele Herausforderungen vor ihnen lagen.</p>
+                        <p>An einem sonnigen Nachmittag spielten Leni, Finn und Arvid im Park ihres kleinen Dorfes. Es war ein ganz normaler Tag, an dem die Vögel sangen und eine leichte Brise durch die Bäume wehte. Die drei Freunde hatten sich am großen Eichenbaum getroffen, ihrem Lieblingsplatz, an dem sie oft ihre Abenteuer planten. Leni, die immer neugierig war, entdeckte etwas Seltsames im Gebüsch. "Schaut mal, was ist das?", rief sie und deutete auf ein schwaches, goldenes Licht, das zwischen den Blättern hindurchschimmerte.</p>
                         
-                        <p>In Lenis Zimmer saßen die drei Freunde zusammen und betrachteten die Karte, die ihnen den Weg durch den geheimnisvollen Wald zeigen würde. Die Karte war alt und vergilbt, aber die Symbole und Zeichen darauf leuchteten in einem sanften, goldenen Licht. "Wir müssen uns gut vorbereiten", sagte Leni entschlossen. "Der Wald ist voller Gefahren, und wir wissen nicht, was uns erwartet."</p>
+                        <p>Finn und Arvid kamen neugierig näher, und gemeinsam schoben sie die Zweige beiseite. Dort, halb vergraben im weichen Waldboden, lag ein seltsames, leuchtendes Fragment. Es war etwa so groß wie Lenis Handfläche und hatte eine ungewöhnliche Form, die an einen Stern erinnerte. Die Oberfläche des Fragments war mit seltsamen, leuchtenden Symbolen bedeckt, die in einem sanften, goldenen Licht schimmerten. "Das ist ja unglaublich", flüsterte Finn ehrfürchtig. "Ich habe noch nie so etwas gesehen."</p>
                         
-                        <p>Sie begannen, ihre Rucksäcke zu packen. Leni steckte die Karte sorgfältig in eine kleine Tasche, Finn überprüfte ihre Ausrüstung, und Arvid packte die Fragmente der Lichtsteine, die sie bereits gefunden hatten, sorgfältig in einen kleinen Beutel. Die Steine leuchteten sanft und schimmerten in allen Farben des Regenbogens - ein magischer Anblick, der ihnen Mut und Entschlossenheit gab.</p>
-                        
-                        <p>Mit schweren Herzen, aber auch mit großer Entschlossenheit machten sie sich auf den Weg. Sie folgten der Karte durch ein weites Tal, das von hohen Bergen umgeben war. Die Landschaft war atemberaubend schön, mit grünen Wiesen, klaren Bächen und wilden Blumen. Doch sie wussten, dass sie vorsichtig sein mussten, denn das Tal war auch die Heimat vieler wilder Tiere, und sie waren entschlossen, die Fragmente der Lichtsteine zu finden und das Geheimnis zu lüften.</p>
+                        <p>Arvid, der immer mutig war, hob das Fragment vorsichtig auf. Sofort durchflutete sie ein warmes, beruhigendes Gefühl, und die Symbole auf dem Fragment begannen heller zu leuchten. "Es fühlt sich magisch an", sagte Arvid mit großen Augen. Leni, die immer nachdenklich war, betrachtete das Fragment genau. "Ich glaube, das ist etwas Besonderes", sagte sie. "Vielleicht ist es ein Teil von etwas Größerem."</p>
                     </div>
                 </div>
                 
                 <!-- Englische Version -->
                 <div class="lang-en hidden">
                     <div class="book-title">Volume 1: The Secret of the Glowing Fragment</div>
-                    <div class="chapter-title">Chapter 1: The Preparation</div>
+                    <div class="chapter-title">Chapter 1: The Discovery in the Park</div>
                     <div class="text-content">
-                        <p>The sun slowly rose over the small village, bathing everything in warm, golden light. Leni, Finn, and Arvid had gotten up early, for today was the day they would continue their journey into the mysterious forest. They had already experienced some adventures and knew that many challenges still lay ahead of them.</p>
+                        <p>On a sunny afternoon, Leni, Finn, and Arvid were playing in the park of their small village. It was a completely normal day when the birds were singing and a gentle breeze was blowing through the trees. The three friends had met at the big oak tree, their favorite place where they often planned their adventures. Leni, who was always curious, discovered something strange in the bushes. "Look, what is that?" she called out, pointing to a faint, golden light that shimmered through the leaves.</p>
                         
-                        <p>In Leni's room, the three friends sat together and looked at the map that would show them the way through the mysterious forest. The map was old and yellowed, but the symbols and signs on it glowed in a soft, golden light. "We must prepare well," said Leni determinedly. "The forest is full of dangers, and we don't know what awaits us."</p>
+                        <p>Finn and Arvid came closer curiously, and together they pushed the branches aside. There, half buried in the soft forest floor, lay a strange, glowing fragment. It was about as big as Leni's palm and had an unusual shape that reminded them of a star. The surface of the fragment was covered with strange, glowing symbols that shimmered in a soft, golden light. "This is incredible," whispered Finn reverently. "I have never seen anything like this."</p>
                         
-                        <p>They began to pack their backpacks. Leni carefully put the map in a small bag, Finn checked their equipment, and Arvid carefully packed the light stone fragments they had already found in a small pouch. The stones glowed softly and shimmered in all the colors of the rainbow - a magical sight that gave them courage and determination.</p>
-                        
-                        <p>With heavy hearts, but also with great determination, they set off on their way. They followed the map through a wide valley surrounded by high mountains. The landscape was breathtakingly beautiful, with green meadows, clear streams, and wild flowers. But they knew they had to be careful, for the valley was also home to many wild animals, and they were determined to find the light stone fragments and solve the mystery.</p>
+                        <p>Arvid, who was always brave, carefully picked up the fragment. Immediately, a warm, calming feeling flowed through them, and the symbols on the fragment began to glow brighter. "It feels magical," said Arvid with wide eyes. Leni, who was always thoughtful, examined the fragment closely. "I think this is something special," she said. "Maybe it's part of something bigger."</p>
                     </div>
                 </div>
             </div>
@@ -324,30 +325,26 @@
                 <!-- Deutsche Version -->
                 <div class="lang-de">
                     <div class="book-title">Band 2: Die Reise durch den geheimnisvollen Wald</div>
-                    <div class="chapter-title">Kapitel 1: Der Waldweg</div>
+                    <div class="chapter-title">Kapitel 1: Die Vorbereitung</div>
                     <div class="text-content">
-                        <p>Die drei Freunde setzten ihre Reise fort, bereit für das nächste Abenteuer, das sie erwarten würde. Der Pfad führte sie tiefer in den geheimnisvollen Wald hinein, wo die Bäume immer dichter standen und das Licht der Sonne kaum noch durch das dichte Blätterdach drang. Die Luft war kühl und feucht, und das leise Rascheln der Blätter schien ihnen zuzuraunen, als würden die Bäume selbst ihre Geheimnisse flüstern.</p>
+                        <p>Die Sonne ging langsam über dem kleinen Dorf auf und tauchte alles in ein warmes, goldenes Licht. Leni, Finn und Arvid waren früh aufgestanden, denn heute war der Tag, an dem sie ihre Reise in den geheimnisvollen Wald fortsetzen würden. Sie hatten bereits einige Abenteuer hinter sich und wussten, dass noch viele Herausforderungen vor ihnen lagen. Doch sie waren entschlossen, die Fragmente der Lichtsteine zu finden und das Geheimnis zu lüften, das die Welt vor einer dunklen Macht schützen würde.</p>
                         
-                        <p>Während sie tiefer in den Wald vordrangen, bemerkten sie, dass die Natur um sie herum lebendiger wurde. Vögel zwitscherten in den Baumkronen, und ab und zu huschte ein kleines Tier durch das Unterholz. Die Blumen am Wegesrand schienen in allen Farben des Regenbogens zu leuchten, und der Duft von frischem Moos und Erde erfüllte die Luft. Es war, als würden sie in eine andere Welt eintauchen, eine Welt voller Magie und Wunder.</p>
+                        <p>In Lenis Zimmer saßen die drei Freunde zusammen und betrachteten die Karte, die ihnen den Weg durch den geheimnisvollen Wald zeigen würde. Die Karte war alt und vergilbt, aber die Symbole und Zeichen darauf leuchteten in einem sanften, goldenen Licht. Es war, als würden sie die Kinder rufen und ihnen den Weg weisen. "Wir müssen uns gut vorbereiten", sagte Leni entschlossen. "Der Wald ist voller Gefahren, und wir wissen nicht, was uns erwartet."</p>
                         
-                        <p>Plötzlich hörten sie ein leises Plätschern in der Nähe. Neugierig folgten sie dem Geräusch und entdeckten einen kleinen, klaren Bach, der sich durch den Wald schlängelte. Sie setzten sich an das Ufer und tauchten ihre müden Füße in das kühle Nass. "Wisst ihr, was ich mich frage?", sagte Arvid nachdenklich. "Wie viele Fragmente der Lichtsteine gibt es eigentlich? Und woher kommen sie?"</p>
-                        
-                        <p>Nach ihrer Pause setzten sie ihre Reise fort. Der Bach führte sie tiefer in den Wald hinein, bis sie an eine kleine Lichtung kamen. In der Mitte der Lichtung stand ein alter, knorriger Baum, dessen Äste sich wie Arme in den Himmel streckten. In seinen Ästen funkelten kleine Lichter - Glühwürmchen, die in der Dämmerung leuchteten und dem Baum eine magische Aura verliehen. Plötzlich hörten sie eine sanfte Stimme: "Willkommen, junge Abenteurer. Ich habe schon lange auf euch gewartet."</p>
+                        <p>Finn und Arvid nickten zustimmend. Sie hatten bereits einige gefährliche Situationen gemeistert, aber sie wussten, dass diese Reise noch gefährlicher sein würde. Sie begannen, ihre Rucksäcke zu packen. Sie nahmen Proviant, warme Kleidung und andere nützliche Dinge mit. Leni steckte die Karte sorgfältig in eine kleine Tasche, um sie sicher aufzubewahren. Finn überprüfte ihre Ausrüstung und stellte sicher, dass sie alles hatten, was sie brauchten.</p>
                     </div>
                 </div>
                 
                 <!-- Englische Version -->
                 <div class="lang-en hidden">
                     <div class="book-title">Volume 2: The Journey Through the Mysterious Forest</div>
-                    <div class="chapter-title">Chapter 1: The Forest Path</div>
+                    <div class="chapter-title">Chapter 1: The Preparation</div>
                     <div class="text-content">
-                        <p>The three friends continued their journey, ready for the next adventure that awaited them. The path led them deeper into the mysterious forest, where the trees grew ever denser and the sunlight barely penetrated the thick canopy. The air was cool and moist, and the soft rustling of leaves seemed to whisper to them, as if the trees themselves were sharing their secrets.</p>
+                        <p>The sun slowly rose over the small village, bathing everything in warm, golden light. Leni, Finn, and Arvid had gotten up early, for today was the day they would continue their journey into the mysterious forest. They had already experienced some adventures and knew that many challenges still lay ahead of them. But they were determined to find the light stone fragments and solve the mystery that would protect the world from a dark power.</p>
                         
-                        <p>As they ventured deeper into the forest, they noticed that the nature around them became more vibrant. Birds chirped in the treetops, and occasionally a small animal scurried through the underbrush. The flowers along the path seemed to glow in all the colors of the rainbow, and the scent of fresh moss and earth filled the air. It was as if they were entering another world, a world full of magic and wonder.</p>
+                        <p>In Leni's room, the three friends sat together and looked at the map that would show them the way through the mysterious forest. The map was old and yellowed, but the symbols and signs on it glowed in a soft, golden light. It was as if they were calling to the children and showing them the way. "We must prepare well," said Leni determinedly. "The forest is full of dangers, and we don't know what awaits us."</p>
                         
-                        <p>Suddenly they heard a soft splashing nearby. Curious, they followed the sound and discovered a small, clear stream winding through the forest. They sat by the shore and dipped their tired feet in the cool water. "Do you know what I wonder?" said Arvid thoughtfully. "How many light stone fragments are there actually? And where do they come from?"</p>
-                        
-                        <p>After their break, they continued their journey. The stream led them deeper into the forest until they came to a small clearing. In the middle of the clearing stood an old, gnarled tree whose branches stretched like arms into the sky. In its branches, small lights sparkled - fireflies that glowed in the twilight and gave the tree a magical aura. Suddenly they heard a gentle voice: "Welcome, young adventurers. I have been waiting for you for a long time."</p>
+                        <p>Finn and Arvid nodded in agreement. They had already mastered some dangerous situations, but they knew that this journey would be even more dangerous. They began to pack their backpacks. They took provisions, warm clothing, and other useful things. Leni carefully put the map in a small bag to keep it safe. Finn checked their equipment and made sure they had everything they needed.</p>
                     </div>
                 </div>
             </div>
@@ -363,13 +360,11 @@
                     <div class="book-title">Band 3: Das Geheimnis des letzten Lichtsteins</div>
                     <div class="chapter-title">Kapitel 1: Die letzte Reise</div>
                     <div class="text-content">
-                        <p>Die drei Freunde erwachten früh am Morgen in ihrem gemütlichen Zuhause, bereit für das letzte große Abenteuer ihrer Reise. Die Sonne stand bereits hoch am Himmel und tauchte das Dorf in ein warmes, goldenes Licht. Leni, Finn und Arvid fühlten sich erfrischt und voller Energie nach einer erholsamen Nacht. Sie wussten, dass dies der Tag war, an dem sie ihre letzte und wichtigste Reise antreten würden, um den letzten Lichtstein zu finden.</p>
+                        <p>Die drei Freunde erwachten früh am Morgen in ihrem gemütlichen Zuhause, bereit für das letzte große Abenteuer ihrer Reise. Die Sonne stand bereits hoch am Himmel und tauchte das Dorf in ein warmes, goldenes Licht. Leni, Finn und Arvid fühlten sich erfrischt und voller Energie nach einer erholsamen Nacht. Sie wussten, dass dies der Tag war, an dem sie ihre letzte und wichtigste Reise antreten würden, um den letzten Lichtstein zu finden und das Geheimnis endgültig zu lüften.</p>
                         
-                        <p>"Wir müssen uns gut vorbereiten", sagte Leni entschlossen, während sie ihre Rucksäcke packten. "Dies ist unsere letzte Chance, das Geheimnis der Lichtsteine zu lüften und die Welt vor der dunklen Macht zu schützen." Sie packten ihre Rucksäcke mit Proviant, warmer Kleidung und anderen nützlichen Dingen. Arvid packte die Fragmente der Lichtsteine, die sie bereits gefunden hatten, sorgfältig in einen kleinen Beutel.</p>
+                        <p>Mit gemischten Gefühlen aus Aufregung und Nervosität bereiteten sie sich auf den Tag vor. "Wir müssen uns gut vorbereiten", sagte Leni entschlossen, während sie ihre Rucksäcke packten. "Dies ist unsere letzte Chance, das Geheimnis der Lichtsteine zu lüften und die Welt vor der dunklen Macht zu schützen." Finn und Arvid nickten zustimmend. Sie wussten, dass diese Reise die wichtigste und gefährlichste von allen sein würde.</p>
                         
-                        <p>Mit schweren Herzen, aber auch mit großer Entschlossenheit machten sie sich auf den Weg. Die Karte führte sie durch ein weites Tal, das von hohen Bergen umgeben war. Die Landschaft war atemberaubend schön, mit grünen Wiesen, klaren Bächen und wilden Blumen, die in allen Farben des Regenbogens blühten. Plötzlich hörten sie ein lautes Knurren hinter sich und sahen einen großen, braunen Bären, der sie mit einem drohenden Blick ansah.</p>
-                        
-                        <p>Leni fasste sich schnell und stellte sich mutig vor ihre Freunde. "Wir haben keine Angst vor dir", sagte sie mit fester Stimme. Der Bär begann zu sprechen: "Ihr seid mutig, junge Abenteurer. Aber wisst ihr auch, welche Gefahren auf euch warten?" Nach einem kurzen Gespräch ließ der Bär sie weiterziehen. Sie erreichten einen klaren Bergsee mit einer kleinen Insel, auf der ein alter, moosbewachsener Stein lag - ein weiteres Fragment der Lichtsteine, das ihrem Ziel näherbrachte.</p>
+                        <p>Sie packten ihre Rucksäcke mit Proviant, warmer Kleidung und anderen nützlichen Dingen, die sie für ihre Reise benötigten. Leni steckte die Karte sorgfältig in eine kleine Tasche, um sie sicher aufzubewahren. Finn überprüfte ihre Ausrüstung und stellte sicher, dass sie alles hatten, was sie brauchten. Arvid packte die Fragmente der Lichtsteine, die sie bereits gefunden hatten, sorgfältig in einen kleinen Beutel. Die Steine leuchteten sanft und schimmerten in allen Farben des Regenbogens.</p>
                     </div>
                 </div>
                 
@@ -378,19 +373,13 @@
                     <div class="book-title">Volume 3: The Secret of the Last Light Stone</div>
                     <div class="chapter-title">Chapter 1: The Final Journey</div>
                     <div class="text-content">
-                        <p>The three friends woke up early in the morning in their cozy home, ready for the last great adventure of their journey. The sun was already high in the sky, bathing the village in warm, golden light. Leni, Finn, and Arvid felt refreshed and full of energy after a restful night. They knew this was the day they would embark on their final and most important journey to find the last light stone.</p>
+                        <p>The three friends woke up early in the morning in their cozy home, ready for the last great adventure of their journey. The sun was already high in the sky, bathing the village in warm, golden light. Leni, Finn, and Arvid felt refreshed and full of energy after a restful night. They knew this was the day they would embark on their final and most important journey to find the last light stone and finally solve the mystery.</p>
                         
-                        <p>"We must prepare well," said Leni determinedly as they packed their backpacks. "This is our last chance to solve the mystery of the light stones and protect the world from the dark power." They packed their backpacks with provisions, warm clothing, and other useful things. Arvid carefully packed the light stone fragments they had already found in a small pouch.</p>
+                        <p>With mixed feelings of excitement and nervousness, they prepared for the day ahead. "We must prepare well," said Leni determinedly as they packed their backpacks. "This is our last chance to solve the mystery of the light stones and protect the world from the dark power." Finn and Arvid nodded in agreement. They knew that this journey would be the most important and dangerous of all.</p>
                         
-                        <p>With heavy hearts, but also with great determination, they set off on their way. The map led them through a wide valley surrounded by high mountains. The landscape was breathtakingly beautiful, with green meadows, clear streams, and wild flowers blooming in all the colors of the rainbow. Suddenly they heard a loud growling behind them and saw a large, brown bear looking at them with a threatening gaze.</p>
-                        
-                        <p>Leni quickly composed herself and bravely stood in front of her friends. "We are not afraid of you," she said with a firm voice. The bear began to speak: "You are brave, young adventurers. But do you also know what dangers await you?" After a brief conversation, the bear let them continue. They reached a clear mountain lake with a small island on which lay an old, moss-covered stone - another fragment of the light stones that brought them closer to their goal.</p>
+                        <p>They packed their backpacks with provisions, warm clothing, and other useful things they needed for their journey. Leni carefully put the map in a small bag to keep it safe. Finn checked their equipment and made sure they had everything they needed. Arvid carefully packed the light stone fragments they had already found in a small pouch. The stones glowed softly and shimmered in all the colors of the rainbow.</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="back-link">
-                <a href="kinderbuecher.html" class="btn-back">← Zurück zu Kinderbücher</a>
             </div>
         </div>
     </div>
