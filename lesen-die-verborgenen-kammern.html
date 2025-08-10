@@ -34,6 +34,27 @@
             color: white;
             padding: 30px;
             text-align: center;
+            position: relative;
+        }
+
+        .back-link-top {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .back-link-top:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .header h1 {
@@ -205,29 +226,6 @@
             font-weight: bold;
         }
 
-        .back-link {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #8A2BE2;
-        }
-
-        .btn-back {
-            background: linear-gradient(135deg, #6c757d, #495057);
-            color: white;
-            text-decoration: none;
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-back:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
         .hidden {
             display: none;
         }
@@ -250,12 +248,19 @@
             .header h1 {
                 font-size: 2em;
             }
+
+            .back-link-top {
+                position: static;
+                margin-bottom: 15px;
+                display: inline-block;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <a href="die-verborgenen-kammern.html" class="back-link-top">← Zurück zur Serie</a>
             <h1>Die Verborgenen Kammern</h1>
             <p>Geheimnisvolle Liebesgeschichten voller Leidenschaft und Mysterium</p>
         </div>
@@ -403,10 +408,6 @@
                         <p>A fleeting smile flitted across Marcus' face -- one of those small gestures of affection that were so rare in public but had become increasingly frequent since their reconciliation after the difficult time a few months ago. "Then let's find a better seat," he said, guiding her through the crowd with a gentle touch on her back.</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="back-link">
-                <a href="die-verborgenen-kammern.html" class="btn-back">← Zurück zur Serie</a>
             </div>
         </div>
     </div>
