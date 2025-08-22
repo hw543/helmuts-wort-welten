@@ -202,7 +202,7 @@
                     <a href="#" id="ebook-button" class="amazon-button unavailable">📱 Bald verfügbar</a>
                 </div>
             </div>
-            <img src="https://hw543.github.io/helmuts-wortwelten/enthuellte-wahrheiten.jpg" alt="Enthüllte Wahrheiten Cover" style="width: 200px; height: 280px; margin: 0 auto 20px auto; border-radius: 10px; border: 3px solid #FFD700; object-fit: cover; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+            <img src="enthuellte-wahrheiten.jpg" alt="Enthüllte Wahrheiten Cover" style="width: 200px; height: 280px; margin: 0 auto 20px auto; border-radius: 10px; border: 3px solid #FFD700; object-fit: cover; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
             <h1>Enthüllte Wahrheiten</h1>
             <h2>Kapitel 1: Nähe, die flieht</h2>
             <p>Band 2 der Serie "Zwischen Herz und Verstand"</p>
@@ -309,9 +309,9 @@
             document.querySelector('.header h1').textContent = book.title;
             document.querySelector('.header h2').textContent = book.chapter;
             
-            // Cover-Bild aktualisieren
+            // Cover-Bild aktualisieren - KORRIGIERT: Lokaler Pfad statt externer URL
             const coverImg = document.querySelector('.header img');
-            coverImg.src = `https://hw543.github.io/helmuts-wortwelten/${book.image}`;
+            coverImg.src = book.image;
             coverImg.alt = `${book.title} Cover`;
 
             // Amazon-Buttons aktualisieren
