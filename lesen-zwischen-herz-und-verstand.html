@@ -3,191 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enthüllte Wahrheiten - Kapitel 1 | New Adult</title>
+    <title>Zwischen Herz und Verstand Lesen - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #FEE9E1 0%, #E6F1F5 50%, #F1E6F9 100%);
-            min-height: 100vh;
-            color: #2F4F4F;
             line-height: 1.8;
+            color: #4a2c4a;
+            background: linear-gradient(135deg, #ffeef7 0%, #f0e6ff 30%, #ffe4f1 70%, #f8e8ff 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(188, 71, 127, 0.2);
+            overflow: hidden;
         }
+
         .header {
+            background: linear-gradient(135deg, #d63384, #bc477f);
+            color: white;
+            padding: 30px;
             text-align: center;
-            margin-bottom: 40px;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #FEE4E1 0%, #F5F5F5 100%);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 3px solid #FFD700;
             position: relative;
         }
-        .back-button {
+
+        .back-link-top {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: linear-gradient(135deg, #C06C84, #6C5B7B);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
-            padding: 10px 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 25px;
             text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            font-size: 0.9em;
-        }
-        .back-button:hover {
-            background: linear-gradient(135deg, #6C5B7B, #355C7D);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(96,89,124,0.4);
-        }
-        .top-controls {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: flex-end;
-        }
-        .amazon-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 5px;
-        }
-        .amazon-button {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #000;
-            padding: 8px 16px;
-            border: 2px solid #FF8C00;
+            padding: 8px 15px;
             border-radius: 20px;
-            text-decoration: none;
             font-weight: bold;
-            font-size: 0.9em;
             transition: all 0.3s ease;
-            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
-        .amazon-button:hover {
-            background: linear-gradient(135deg, #FFA500, #FF8C00);
+
+        .back-link-top:hover {
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255,215,0,0.4);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        .amazon-button.unavailable {
-            background: #ccc;
-            color: #666;
-            cursor: not-allowed;
-            border-color: #999;
-        }
-        .amazon-button.unavailable:hover {
-            transform: none;
-            box-shadow: none;
-        }
+
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            color: #E94E77;
-            text-shadow: 2px 2px 4px rgba(233,78,119,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        .header h2 {
-            font-size: 1.8em;
-            color: #6C5B7B;
-            margin-bottom: 15px;
-        }
+
         .header p {
-            font-size: 1.1em;
-            color: #2F4F4F;
+            font-size: 1.2em;
+            opacity: 0.9;
             font-style: italic;
         }
-        .book-navigation {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
+
+        .controls {
+            background: #f8e8ff;
+            padding: 20px;
+            border-bottom: 3px solid #d63384;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .book-nav-button {
-            background: linear-gradient(135deg, #6C5B7B, #C06C84);
-            color: white;
-            padding: 10px 20px;
+
+        .language-flags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .flag-btn {
+            padding: 8px 15px;
             border: none;
-            border-radius: 25px;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            border: 2px solid transparent;
+        }
+
+        .flag-btn.active {
+            border-color: #d63384;
+            box-shadow: 0 0 10px rgba(214, 51, 132, 0.5);
+        }
+
+        .amazon-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .btn-amazon {
+            background: #FFD700;
+            color: #000;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+            display: inline-block;
         }
-        .book-nav-button:hover {
-            background: linear-gradient(135deg, #8A6D9B, #D17FA3);
+
+        .btn-amazon:hover {
+            background: #FFC107;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
         }
-        .book-nav-button.active {
-            background: linear-gradient(135deg, #E94E77, #FF6B9D);
+
+        .btn-amazon.unavailable {
+            background: #999;
+            color: #666;
+            cursor: not-allowed;
         }
-        .language-toggle {
+
+        .btn-amazon.unavailable:hover {
+            background: #999;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .band-navigation {
             display: flex;
             gap: 10px;
             justify-content: center;
+            flex-wrap: wrap;
         }
-        .language-toggle a {
-            text-decoration: none;
+
+        .btn-band {
+            background: linear-gradient(135deg, #d63384, #bc477f);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-band.active {
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-band:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .book-cover {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-cover img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .book-title {
+            color: #d63384;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #bc477f;
+            padding-bottom: 15px;
+        }
+
+        .chapter-title {
+            color: #8b4b8b;
             font-size: 1.5em;
-            transition: transform 0.3s ease;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-style: italic;
         }
-        .language-toggle a:hover {
-            transform: scale(1.2);
-        }
-        .chapter-content {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+        .text-content {
+            text-align: justify;
             margin-bottom: 30px;
         }
-        .chapter-content p {
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            text-align: justify;
+
+        .text-content p {
+            margin-bottom: 15px;
+            text-indent: 20px;
         }
-        .chapter-content p:first-child::first-letter {
-            font-size: 4em;
+
+        .text-content p:first-child::first-letter {
+            font-size: 3em;
+            color: #d63384;
             float: left;
-            line-height: 0.8;
-            margin: 0.1em 0.1em 0 0;
-            color: #E94E77;
+            line-height: 1;
+            margin: 0 8px 0 0;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(233,78,119,0.3);
         }
-        @media (max-width: 768px) {
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .band-navigation {
+                gap: 5px;
+            }
+            
+            .btn-band {
+                font-size: 0.8em;
+                padding: 8px 12px;
+            }
+            
+            .content {
+                padding: 20px;
+                font-size: 1em;
+            }
+            
             .header h1 {
                 font-size: 2em;
             }
-            .header h2 {
-                font-size: 1.4em;
-            }
-            .chapter-content {
-                padding: 25px;
-            }
-            .chapter-content p:first-child::first-letter {
-                font-size: 3em;
-            }
-            .top-controls {
+
+            .back-link-top {
                 position: static;
-                flex-direction: row;
-                justify-content: center;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
+                display: inline-block;
             }
-            .book-navigation {
-                flex-wrap: wrap;
+
+            .language-flags {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .amazon-buttons {
+                margin-left: 0;
+                margin-top: 10px;
             }
         }
     </style>
@@ -195,160 +270,221 @@
 <body>
     <div class="container">
         <div class="header">
-            <a href="zwischen-herz-und-verstand.html" class="back-button">← Zurück zur Serie</a>
-            <div class="top-controls">
-                <div class="amazon-buttons">
-                    <a href="#" id="book-button" class="amazon-button unavailable">📚 Bald verfügbar</a>
-                    <a href="#" id="ebook-button" class="amazon-button unavailable">📱 Bald verfügbar</a>
+            <a href="zwischen-herz-und-verstand.html" class="back-link-top">← Zurück zur Serie</a>
+            <h1>Zwischen Herz und Verstand</h1>
+            <p>Emotionale Trilogie über junge Erwachsene auf der Suche nach sich selbst</p>
+        </div>
+
+        <div class="controls">
+            <div class="language-flags">
+                <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
+                <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
+                
+                <div class="amazon-buttons" id="amazonButtons">
+                    <a href="#" class="btn-amazon unavailable" id="bookButton" target="_blank">📚 Bald verfügbar</a>
+                    <a href="#" class="btn-amazon unavailable" id="ebookButton" target="_blank">📱 Bald verfügbar</a>
                 </div>
             </div>
-            <img src="enthuellte-wahrheiten.jpg" alt="Enthüllte Wahrheiten Cover" style="width: 200px; height: 280px; margin: 0 auto 20px auto; border-radius: 10px; border: 3px solid #FFD700; object-fit: cover; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
-            <h1>Enthüllte Wahrheiten</h1>
-            <h2>Kapitel 1: Nähe, die flieht</h2>
-            <p>Band 2 der Serie "Zwischen Herz und Verstand"</p>
-            
-            <div class="book-navigation">
-                <button class="book-nav-button" onclick="switchBook(1)">Band 1</button>
-                <button class="book-nav-button active" onclick="switchBook(2)">Band 2</button>
-                <button class="book-nav-button" onclick="switchBook(3)">Band 3</button>
-            </div>
-            
-            <div class="language-toggle" style="margin-top: 15px;">
-                <a href="enthuellte-wahrheiten-lesen.html" title="Deutsch">🇩🇪</a>
-                <a href="enthuellte-wahrheiten-english.html" title="English">🇬🇧</a>
+            <div class="band-navigation">
+                <button class="btn-band active" onclick="showBook(1)">Band 1: Verborgene Gefühle</button>
+                <button class="btn-band" onclick="showBook(2)">Band 2: Enthüllte Wahrheiten</button>
+                <button class="btn-band" onclick="showBook(3)">Band 3: Wo Liebe wachsen darf</button>
             </div>
         </div>
-        
-        <div class="chapter-content">
-            <p>Lena erwachte mit dem Gefühl, dass etwas fehlte. Die Wärme neben ihr war spürbar, körperlich präsent, atmend, real. Julians Arm lag schwer über ihrer Mitte, sein Atem gleichmäßig und tief an ihrem Nacken. Und doch existierte eine seltsame Leere, die sie nicht greifen konnte. Sie blinzelte in das frühe Morgenlicht, das durch die nicht ganz geschlossenen Vorhänge fiel, und versuchte, die Empfindung zu lokalisieren. Es war wie ein Wort, das ihr auf der Zunge lag -- präsent, aber unerreichbar.</p>
 
-            <p>Drei Monate waren seit dem ersten Kuss am Fluss vergangen. Drei Monate, in denen aus zögernden Berührungen Vertrautheit geworden war, aus geteilten Büchern ein geteiltes Bett, aus zwei separaten Leben ein gemeinsamer Alltag. Alles hatte sich so natürlich entwickelt, so mühelos, als wäre es eine Geschichte, die nur darauf gewartet hatte, erzählt zu werden.</p>
+        <div class="content">
+            <!-- Band 1: Verborgene Gefühle -->
+            <div id="book1" class="book-content">
+                <div class="book-cover">
+                    <img src="verborgene-gefuehle.jpg" alt="Verborgene Gefühle">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Verborgene Gefühle</div>
+                    <div class="chapter-title">Kapitel 1: Die Nachricht, die alles veränderte</div>
+                    <div class="text-content">
+                        <p>Die Bibliothek war wie immer ein Zufluchtsort. Lena Winter atmete tief den vertrauten Geruch nach altem Papier ein, während ihr Blick durch den Raum schweifte. Die Stille eines Donnerstagnachmittags war ein angenehmer Kontrast zum lauten Trubel draußen, wo die anderen Studenten in Gruppen zusammenstanden, lachten und redeten - ein soziales Spiel, bei dem sie nie die richtigen Karten in der Hand hatte. "Warum fällt es mir so schwer, mit anderen zu reden?", fragte sie sich zum hundertsten Mal.</p>
+                        
+                        <p>Diese Frage nagte ständig an ihr, besonders wenn sie andere Studenten beobachtete, die nach gerade mal drei Monaten an der Uni bereits enge Freundschaften geschlossen hatten. Freundschaften, die nach etwas Echtem aussahen, nicht nach den oberflächlichen Bekanntschaften, die sie in der Schule gehabt hatte. Sie strich über die Buchrücken in der Abteilung für deutsche Literatur, ihr Herzschlag beruhigte sich allmählich.</p>
+                        
+                        <p>Professor Kleinschmidt hatte ihnen für das Seminar „Realismus und gesellschaftliche Strömungen" eine Liste mit Primärliteratur gegeben. Anders als ihre Kommilitonen, die alles digital lasen, brauchte Lena das Gefühl von Papier unter ihren Fingern - eine Verbindung zur Vergangenheit, die ihr Halt gab, wenn die Gegenwart zu kompliziert wurde. Das war einer der Gründe, warum sie sich für Literaturwissenschaften entschieden hatte - hier konnte sie mit Menschen kommunizieren, die längst gestorben waren, ohne zu stottern oder rot zu werden.</p>
+                        
+                        <p>Durch Literatur verstand sie die Welt besser als durch direkte Erfahrung. "Du verschwendest deine besten Jahre zwischen verstaubten Büchern", hatte ihre Mutter beim letzten Besuch gesagt. Der Ton besorgt, die Augen voller Unverständnis. "Das Leben passiert da draußen, nicht auf Papierseiten." Lena biss sich auf die Lippe. Es war ihr drittes Semester, und während ihre Mitbewohnerin vom letzten Wochenende schwärmte - irgendein Typ namens Marc und zu viel Wodka - und ihre ehemalige Schulfreundin Sophie jeden zweiten Tag Fotos von Dates postete, verbrachte sie ihre Freitagabende mit fiktiven Charakteren.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Hidden Feelings</div>
+                    <div class="chapter-title">Chapter 1: The Message That Changed Everything</div>
+                    <div class="text-content">
+                        <p>The library was, as always, a refuge. Lena Winter breathed in deeply the familiar scent of old paper as her gaze swept through the room. The silence of a Thursday afternoon was a pleasant contrast to the loud bustle outside, where other students stood together in groups, laughing and talking - a social game where she never had the right cards in her hand. "Why is it so hard for me to talk to others?" she asked herself for the hundredth time.</p>
+                        
+                        <p>This question constantly gnawed at her, especially when she observed other students who had already formed close friendships after just three months at university. Friendships that looked like something real, not like the superficial acquaintances she had had in school. She ran her fingers over the book spines in the German literature section, her heartbeat gradually calming.</p>
+                        
+                        <p>Professor Kleinschmidt had given them a list of primary literature for the seminar "Realism and Social Currents." Unlike her fellow students, who read everything digitally, Lena needed the feeling of paper under her fingers - a connection to the past that gave her support when the present became too complicated. That was one of the reasons why she had chosen literary studies - here she could communicate with people who had long been dead, without stuttering or blushing.</p>
+                        
+                        <p>Through literature, she understood the world better than through direct experience. "You're wasting your best years among dusty books," her mother had said during her last visit. The tone worried, her eyes full of incomprehension. "Life happens out there, not on paper pages." Lena bit her lip. It was her third semester, and while her roommate raved about last weekend - some guy named Marc and too much vodka - and her former school friend Sophie posted photos of dates every other day, she spent her Friday evenings with fictional characters.</p>
+                    </div>
+                </div>
+            </div>
 
-            <p>Julian murmelte etwas im Schlaf, zog sie näher an sich. Sie spürte seinen Herzschlag durch den dünnen Stoff ihres T-Shirts, beständig und beruhigend. Sie sollte glücklich sein. Sie war glücklich. Warum also dieses nagende Gefühl der Unvollständigkeit?</p>
+            <!-- Band 2: Enthüllte Wahrheiten -->
+            <div id="book2" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="enthüllte wahrheiten.jpg" alt="Enthüllte Wahrheiten">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Enthüllte Wahrheiten</div>
+                    <div class="chapter-title">Kapitel 1: Nähe, die flieht</div>
+                    <div class="text-content">
+                        <p>Lena erwachte mit dem Gefühl, dass etwas fehlte. Die Wärme neben ihr war spürbar, körperlich präsent, atmend, real. Julians Arm lag schwer über ihrer Mitte, sein Atem gleichmäßig und tief an ihrem Nacken. Und doch existierte eine seltsame Leere, die sie nicht greifen konnte. Sie blinzelte in das frühe Morgenlicht, das durch die nicht ganz geschlossenen Vorhänge fiel, und versuchte, die Empfindung zu lokalisieren. Es war wie ein Wort, das ihr auf der Zunge lag - präsent, aber unerreichbar.</p>
+                        
+                        <p>Drei Monate waren seit dem ersten Kuss am Fluss vergangen. Drei Monate, in denen aus zögernden Berührungen Vertrautheit geworden war, aus geteilten Büchern ein geteiltes Bett, aus zwei separaten Leben ein gemeinsamer Alltag. Alles hatte sich so natürlich entwickelt, so mühelos, als wäre es eine Geschichte, die nur darauf gewartet hatte, erzählt zu werden. Julian murmelte etwas im Schlaf, zog sie näher an sich. Sie spürte seinen Herzschlag durch den dünnen Stoff ihres T-Shirts, beständig und beruhigend.</p>
+                        
+                        <p>Sie sollte glücklich sein. Sie war glücklich. Warum also dieses nagende Gefühl der Unvollständigkeit? Vorsichtig löste sie sich aus seiner Umarmung, darauf bedacht, ihn nicht zu wecken. Auf Zehenspitzen schlich sie aus dem Schlafzimmer, durchquerte den schmalen Flur seiner Wohnung und betrat die Küche. Seine Küche. Nicht ihre. Sie verbrachte mittlerweile mehr Zeit hier als in ihrer eigenen Wohnung, aber sie hatte ihre nicht aufgegeben. Noch nicht.</p>
+                        
+                        <p>Eine kleine, eigenartige Resistenz, die sie selbst nicht ganz verstand. Sie setzte Kaffee auf und beobachtete, wie das Wasser tropfenweise und geduldig durch das Kaffeepulver sickerte. Es gab einen Trost in diesen morgendlichen Ritualen, etwas Verlässliches. Der Geruch von frischem Kaffee erfüllte den Raum, verdrängte für einen Moment die unbestimmte Unruhe in ihr. Sie öffnete das Küchenfenster.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Revealed Truths</div>
+                    <div class="chapter-title">Chapter 1: Closeness That Flees</div>
+                    <div class="text-content">
+                        <p>Lena awoke with the feeling that something was missing. The warmth beside her was palpable, physically present, breathing, real. Julian's arm lay heavy across her middle, his breath steady and deep against her neck. And yet there existed a strange emptiness that she couldn't grasp. She blinked into the early morning light that fell through the not quite closed curtains and tried to locate the sensation. It was like a word on the tip of her tongue - present, but unreachable.</p>
+                        
+                        <p>Three months had passed since the first kiss by the river. Three months in which hesitant touches had become familiarity, shared books had become a shared bed, two separate lives had become a common everyday life. Everything had developed so naturally, so effortlessly, as if it were a story that had only been waiting to be told. Julian murmured something in his sleep, drew her closer to him. She felt his heartbeat through the thin fabric of her T-shirt, constant and reassuring.</p>
+                        
+                        <p>She should be happy. She was happy. So why this nagging feeling of incompleteness? Carefully she freed herself from his embrace, careful not to wake him. On tiptoes she crept out of the bedroom, crossed the narrow hallway of his apartment and entered the kitchen. His kitchen. Not hers. She now spent more time here than in her own apartment, but she hadn't given hers up. Not yet.</p>
+                        
+                        <p>A small, peculiar resistance that she didn't quite understand herself. She put on coffee and watched as the water seeped drop by drop and patiently through the coffee grounds. There was comfort in these morning rituals, something reliable. The smell of fresh coffee filled the room, displacing for a moment the indefinite restlessness within her. She opened the kitchen window.</p>
+                    </div>
+                </div>
+            </div>
 
-            <p>Vorsichtig löste sie sich aus seiner Umarmung, darauf bedacht, ihn nicht zu wecken. Auf Zehenspitzen schlich sie aus dem Schlafzimmer, durchquerte den schmalen Flur seiner Wohnung und betrat die Küche. Seine Küche. Nicht ihre. Sie verbrachte mittlerweile mehr Zeit hier als in ihrer eigenen Wohnung, aber sie hatte ihre nicht aufgegeben. Noch nicht. Eine kleine, eigenartige Resistenz, die sie selbst nicht ganz verstand.</p>
-
-            <p>Sie setzte Kaffee auf und beobachtete, wie das Wasser tropfenweise und geduldig durch das Kaffeepulver sickerte. Es gab einen Trost in diesen morgendlichen Ritualen, etwas Verlässliches. Der Geruch von frischem Kaffee erfüllte den Raum, verdrängte für einen Moment die unbestimmte Unruhe in ihr.</p>
-
-            <p>Sie öffnete das Küchenfenster. Draußen lag die Stadt noch im Halbschlaf, obwohl die ersten Autos bereits durch die Straßen fuhren, frühe Pendler, die dem Berufsverkehr voraus sein wollten. Der November hatte die Bäume fast kahl gefegt, nur einzelne hartnäckige Blätter klammerten sich noch an die Zweige. Ein wenig wie sie an ihre eigene Wohnung, dachte Lena und lächelte über den seltsamen Vergleich.</p>
-
-            <p>"Guten Morgen." Julians Stimme ließ sie zusammenzucken. Er stand in der Tür, in Boxershorts und T-Shirt, seine Haare zerzaust vom Schlaf, sein Gesicht noch weich von Träumen. "Entschuldige, ich wollte dich nicht erschrecken." Er kam zu ihr, schlang seine Arme von hinten um ihre Taille und drückte einen Kuss auf ihre Schulter. "Du warst weg."</p>
-
-            <p>"Ich wollte Kaffee machen", erklärte sie und deutete auf die Kaffeemaschine, die gerade ihre letzten Tropfen in die Kanne entließ. "Hm." Er vergrub sein Gesicht in ihrem Haar und atmete tief ein. "Du riechst gut." "Ich rieche nach Schlaf", korrigierte sie mit einem leichten Lachen. "Genau."</p>
-
-            <p>Seine Hände wanderten unter ihr T-Shirt, streiften sanft über ihren Bauch. Seine Berührung war warm, vertraut, sendete kleine Wellen der Erregung durch ihren Körper. Sie lehnte sich instinktiv gegen ihn, ließ ihren Kopf auf seine Schulter sinken. Das war einfach. Das funktionierte. Der körperliche Teil ihrer Beziehung hatte nie die Probleme bereitet, die sie anfangs befürchtet hatte. Keine Unsicherheit, keine Scham, keine Enttäuschung. Ihre Körper hatten von Anfang an eine Sprache gefunden, die keine Übersetzung brauchte.</p>
-
-            <p>Julian drehte sie zu sich, küsste ihren Mundwinkel, ihre Wange, schließlich ihren Mund. Sie erwiderte den Kuss, ließ ihre Finger durch seine Haare gleiten, genoss die Wärme, die sich zwischen ihnen aufbaute. Als sie sich voneinander lösten, lächelte er. "Guten Morgen", wiederholte er, diesmal mit einer tieferen Bedeutung in seiner Stimme.</p>
-
-            <p>"Guten Morgen", antwortete sie und versuchte, das Echo seines Lächelns auf ihrem eigenen Gesicht zu spüren. "Kaffee?" "Bitte." Er löste sich von ihr, griff nach zwei Tassen aus dem Schrank. Routinierte Bewegungen, eingeübter Tanz. Er wusste, wie sie ihren Kaffee mochte -- schwarz, kein Zucker -- wie sie morgens die Stille brauchte, bevor sie sprechen konnte, wie ihr Körper berührt werden wollte. Er kannte sie. Und doch hatte sie manchmal das Gefühl, dass etwas Wesentliches fehlte, dass sie aneinander vorbeischauten, obwohl sie sich direkt in die Augen sahen.</p>
-
-            <p>"Woran denkst du?" Julians Frage unterbrach ihre Gedanken. Er reichte ihr eine Tasse, die Wärme drang durch das Porzellan in ihre Hände. "Nichts Besonderes", log sie und hasste sich ein wenig dafür. Es war eine kleine Lüge, harmlos. Und doch spürte sie, wie sich eine Mauer zwischen ihnen aufbaute, Stein für Stein, Tag für Tag. Worte, die ungesagt blieben, Gedanken, die sie für sich behielt -- nicht aus Bosheit oder Berechnung, sondern aus einer seltsamen Scheu, einer Angst vor Enttäuschung. Seiner oder ihrer eigenen, sie war sich nicht sicher.</p>
-
-            <p>Julian akzeptierte ihre Antwort mit einem Nicken, keine Nachfrage, keine Insistenz. War das Respekt für ihre Grenzen oder Gleichgültigkeit? Sie fragte sich, ob er spürte, dass sie log, ob es ihn verletzte. Oder ob er einfach nicht wissen wollte, was wirklich in ihr vorging.</p>
-
-            <p>Sie tranken ihren Kaffee schweigend, jeder in Gedanken versunken. Die Uhr an der Wand tickte, markierte die Sekunden, die ungenutzt zwischen ihnen verstrichen. "Ich muss los", sagte Julian schließlich und stellte seine leere Tasse in die Spüle. Er hatte heute früh einen Workshop zu leiten, erinnerte sich Lena. Etwas über kreatives Schreiben für Oberstufenschüler.</p>
-
-            <p>"Natürlich." Sie trat beiseite, um ihn vorbeizulassen, obwohl die Küche groß genug war, dass es keine Notwendigkeit dafür gab. "Sehen wir uns heute Abend?" Er blieb kurz stehen, seine Hand auf ihrer Schulter, wie ein Anker. "Sophie hat gefragt, ob wir ins Kino wollen."</p>
-
-            <p>Lena hatte es vergessen, oder verdrängt. Sie mochte Sophie, wirklich. Die lebhafte, direkte Art ihrer Freundin war ein willkommenes Gegengewicht zu ihrer eigenen Introvertiertheit. Aber in letzter Zeit fiel es ihr schwer, die Energie für soziale Interaktionen aufzubringen, selbst mit Menschen, die sie mochte.</p>
-
-            <p>"Klingt gut", sagte sie dennoch, wieder eine kleine Lüge, wieder ein Stein in der Mauer. Julian küsste sie flüchtig auf die Stirn, eine Geste, die gleichzeitig zärtlich und distanziert wirkte. "Ich freue mich. Bis später dann."</p>
-
-            <p>Sie hörte, wie er ins Bad ging, die Dusche anstellte. Der vertraute Rhythmus des Morgens setzte sich fort, als wäre nichts anders als sonst. Sie trank ihren Kaffee aus, nahm einen Schreibblock vom Küchentisch -- Julian hatte die Angewohnheit, überall in der Wohnung Notizblöcke zu verteilen, immer bereit, einen Gedanken festzuhalten -- und kritzelte abwesend auf das Papier.</p>
-
-            <p>Nicht wirklich Worte, eher Formen, Spiralen, Linien, die ineinander übergingen. Ihre Hand bewegte sich, als hätte sie einen eigenen Willen. Wie viel einfacher wäre es, wenn sie einfach aufschreiben könnte, was in ihr vorging. Aber dafür müsste sie es erst selbst verstehen.</p>
-
-            <p>Später, nachdem Julian gegangen war und sie sich selbst für den Tag fertig gemacht hatte, sortierte sie ihre Unterlagen für die Seminare. Sie hatte heute einen vollgepackten Tag: Literaturtheorie am Vormittag, einen Workshop über deutsche Romantik am Nachmittag, dazwischen Recherche für ihre Masterarbeit.</p>
-
-            <p>Eigentlich hätte sie sich auf die Romantik-Sitzung freuen sollen -- Novalis, Eichendorff, die Sehnsucht nach dem Unendlichen, die in ihren Texten pulsierte. Themen, die sie früher in Begeisterung versetzt hatten. Aber jetzt spürte sie nur eine seltsame Gleichgültigkeit. Als hätte sich etwas zwischen sie und die Literatur geschoben, eine dünne, aber undurchdringliche Schicht aus... aus was?</p>
-
-            <p>Sie schob die Frage beiseite, packte ihre Tasche und verließ Julians Wohnung. Die kalte Novemberluft empfing sie wie ein Schock, weckte sie aus ihrer Benommenheit. Sie atmete tief ein, ließ die Kälte ihre Lungen füllen, spürte, wie ihr Körper darauf reagierte, sich zusammenzog, sich schützte. Vielleicht war es das, was sie brauchte -- ein Weckruf, etwas, das die Taubheit durchbrach, die sich langsam über ihr Leben gelegt hatte.</p>
+            <!-- Band 3: Wo Liebe wachsen darf -->
+            <div id="book3" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="wo-liebe-wachsen-darf.jpg" alt="Wo Liebe wachsen darf">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Wo Liebe wachsen darf</div>
+                    <div class="chapter-title">Kapitel 1: Und jetzt?</div>
+                    <div class="text-content">
+                        <p>Lena erinnerte sich an die Momente, in denen sie sich so verbunden gefühlt hatte, als ob die Worte zwischen ihnen eine Brücke gebaut hätten, die alle Unsicherheiten überwinden konnte. Aber jetzt war diese Brücke verschwunden, und sie stand wieder am Ufer, unsicher, wie sie den Fluss überqueren sollte. Sie öffnete die Schublade ihres Schreibtisches und nahm den Stapel Briefe heraus, die sie und Julian einander geschrieben hatten.</p>
+                        
+                        <p>Jeder Brief war ein Stück ihrer gemeinsamen Geschichte, ein Beweis dafür, dass sie einmal eine tiefe Verbindung gehabt hatten. Sie blätterte durch die Seiten, las hier und da einen Satz, der ihr ins Auge sprang. "Ich habe das Gefühl, als ob wir uns in einer Sprache verstehen, die niemand sonst spricht." "Deine Worte sind wie ein Zuhause für mich." "Manchmal frage ich mich, ob wir uns jemals wirklich verstehen werden."</p>
+                        
+                        <p>Diese Sätze hallten in ihr nach, und sie spürte einen Stich in der Brust. Warum war es so schwer, diese Verbindung in die reale Welt zu übertragen? Warum fühlte es sich an, als ob sie auf Papier so viel leichter atmen konnten als im echten Leben? Sie legte die Briefe zurück in die Schublade und schloss sie. Vielleicht war es an der Zeit, etwas Neues zu beginnen, etwas, das nicht von der Vergangenheit belastet war.</p>
+                        
+                        <p>Sie ging in die Küche und setzte Wasser für Tee auf. Während sie darauf wartete, dass das Wasser kochte, dachte sie über ihre Zukunft nach. Sie hatte immer davon geträumt, Schriftstellerin zu werden, aber jetzt, wo sie die Chance hatte, fühlte es sich an, als ob etwas fehlte. Vielleicht war es die Gewissheit, dass jemand da war, der an sie glaubte, der sie unterstützte. Julian hatte das getan, in seinen Briefen, aber im echten Leben war alles komplizierter.</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Where Love May Grow</div>
+                    <div class="chapter-title">Chapter 1: And Now?</div>
+                    <div class="text-content">
+                        <p>Lena remembered the moments when she had felt so connected, as if the words between them had built a bridge that could overcome all uncertainties. But now this bridge had disappeared, and she stood again at the shore, unsure how to cross the river. She opened the drawer of her desk and took out the stack of letters that she and Julian had written to each other.</p>
+                        
+                        <p>Each letter was a piece of their shared history, proof that they had once had a deep connection. She leafed through the pages, reading here and there a sentence that caught her eye. "I feel as if we understand each other in a language that no one else speaks." "Your words are like a home to me." "Sometimes I wonder if we will ever truly understand each other."</p>
+                        
+                        <p>These sentences echoed within her, and she felt a stab in her chest. Why was it so difficult to transfer this connection into the real world? Why did it feel as if they could breathe so much more easily on paper than in real life? She put the letters back in the drawer and closed it. Perhaps it was time to begin something new, something that was not burdened by the past.</p>
+                        
+                        <p>She went to the kitchen and put water on for tea. While she waited for the water to boil, she thought about her future. She had always dreamed of becoming a writer, but now that she had the chance, it felt as if something was missing. Perhaps it was the certainty that someone was there who believed in her, who supported her. Julian had done that, in his letters, but in real life everything was more complicated.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Buch-Daten für die Serie "Zwischen Herz und Verstand"
-        const bookData = {
-            1: {
-                title: "Verborgene Gefühle",
-                englishTitle: "Hidden Feelings",
-                chapter: "Kapitel 1: Die Nachricht, die alles veränderte",
-                image: "verborgene-gefuehle.jpg",
-                bookASIN: "", // Keine ASIN vorhanden
-                ebookASIN: "", // Keine ASIN vorhanden
-                germanPage: "verborgene-gefuehle-lesen.html",
-                englishPage: "verborgene-gefuehle-english.html"
-            },
-            2: {
-                title: "Enthüllte Wahrheiten",
-                englishTitle: "Revealed Truths", 
-                chapter: "Kapitel 1: Nähe, die flieht",
-                image: "enthuellte-wahrheiten.jpg",
-                bookASIN: "", // Keine ASIN vorhanden
-                ebookASIN: "", // Keine ASIN vorhanden
-                germanPage: "enthuellte-wahrheiten-lesen.html",
-                englishPage: "enthuellte-wahrheiten-english.html"
-            },
-            3: {
-                title: "Wo Liebe wachsen darf",
-                englishTitle: "Where Love May Grow",
-                chapter: "Kapitel 1: Und jetzt?",
-                image: "wo-liebe-wachsen-darf.jpg", 
-                bookASIN: "", // Keine ASIN vorhanden
-                ebookASIN: "", // Keine ASIN vorhanden
-                germanPage: "wo-liebe-wachsen-darf-lesen.html",
-                englishPage: "wo-liebe-wachsen-darf-english.html"
-            }
+        let currentBook = 1;
+        let currentLanguage = 'de';
+
+        // Amazon ASINs - aktuell alle unavailable
+        const amazonLinks = {
+            1: { de: { book: null, ebook: null }, en: { book: null, ebook: null } },
+            2: { de: { book: null, ebook: null }, en: { book: null, ebook: null } },
+            3: { de: { book: null, ebook: null }, en: { book: null, ebook: null } }
         };
 
-        function switchBook(bookNumber) {
-            const book = bookData[bookNumber];
-            if (!book) return;
-
-            // Titel und Kapitel aktualisieren
-            document.querySelector('.header h1').textContent = book.title;
-            document.querySelector('.header h2').textContent = book.chapter;
+        function updateAmazonButtons() {
+            const bookButton = document.getElementById('bookButton');
+            const ebookButton = document.getElementById('ebookButton');
             
-            // Cover-Bild aktualisieren - KORRIGIERT: Lokaler Pfad statt externer URL
-            const coverImg = document.querySelector('.header img');
-            coverImg.src = book.image;
-            coverImg.alt = `${book.title} Cover`;
-
-            // Amazon-Buttons aktualisieren
-            const bookButton = document.getElementById('book-button');
-            const ebookButton = document.getElementById('ebook-button');
-
-            if (book.bookASIN) {
-                bookButton.href = `https://www.amazon.com/dp/${book.bookASIN}`;
-                bookButton.textContent = "📚 Buch kaufen";
-                bookButton.classList.remove('unavailable');
-            } else {
-                bookButton.href = "#";
-                bookButton.textContent = "📚 Bald verfügbar";
-                bookButton.classList.add('unavailable');
-            }
-
-            if (book.ebookASIN) {
-                ebookButton.href = `https://www.amazon.com/dp/${book.ebookASIN}`;
-                ebookButton.textContent = "📱 eBook kaufen";
-                ebookButton.classList.remove('unavailable');
-            } else {
-                ebookButton.href = "#";
-                ebookButton.textContent = "📱 Bald verfügbar";
-                ebookButton.classList.add('unavailable');
-            }
-
-            // Sprach-Links aktualisieren
-            const germanLink = document.querySelector('a[title="Deutsch"]');
-            const englishLink = document.querySelector('a[title="English"]');
+            // Alle Bücher sind aktuell unavailable
+            bookButton.href = '#';
+            bookButton.classList.add('unavailable');
+            ebookButton.href = '#';
+            ebookButton.classList.add('unavailable');
             
-            germanLink.href = book.germanPage;
-            englishLink.href = book.englishPage;
-
-            // Aktiven Button hervorheben
-            document.querySelectorAll('.book-nav-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.book-nav-button')[bookNumber - 1].classList.add('active');
+            if (currentLanguage === 'de') {
+                bookButton.textContent = '📚 Bald verfügbar';
+                ebookButton.textContent = '📱 Bald verfügbar';
+            } else {
+                bookButton.textContent = '📚 Coming Soon';
+                ebookButton.textContent = '📱 Coming Soon';
+            }
         }
+
+        function showBook(bookNumber) {
+            // Verstecke alle Bücher
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`book${i}`).classList.add('hidden');
+                document.querySelectorAll('.btn-band')[i-1].classList.remove('active');
+            }
+            
+            // Zeige ausgewähltes Buch
+            document.getElementById(`book${bookNumber}`).classList.remove('hidden');
+            document.querySelectorAll('.btn-band')[bookNumber-1].classList.add('active');
+            
+            currentBook = bookNumber;
+            
+            // Stelle sicher, dass die richtige Sprache angezeigt wird
+            showLanguage(currentLanguage);
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
+        }
+
+        function showLanguage(lang) {
+            // Verstecke alle Sprachversionen
+            document.querySelectorAll('.lang-de, .lang-en').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Zeige gewählte Sprache
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update Flag-Buttons
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
+            
+            currentLanguage = lang;
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            showBook(1); // Zeige ersten Band
+            showLanguage('de'); // Zeige deutsche Version
+            updateAmazonButtons(); // Update Amazon Buttons
+        });
     </script>
 </body>
 </html>
