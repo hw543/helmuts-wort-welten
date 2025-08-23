@@ -1,1 +1,245 @@
-
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Adult - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            position: relative;
+        }
+        
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(244, 143, 177, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: rgba(244, 143, 177, 1);
+            transform: translateY(-2px);
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #d81b60;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header p {
+            font-size: 1.3em;
+            color: #ad1457;
+            font-style: italic;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .section-card {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid rgba(244, 143, 177, 0.3);
+        }
+        
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #d81b60;
+            text-align: center;
+        }
+        
+        .section-description {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #ad1457;
+        }
+        
+        .series-card {
+            background: rgba(244, 143, 177, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(244, 143, 177, 0.3);
+        }
+        
+        .series-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #d81b60;
+            text-align: center;
+        }
+        
+        .series-description {
+            margin-bottom: 15px;
+            text-align: center;
+            color: #ad1457;
+        }
+        
+        .series-info {
+            font-size: 0.9em;
+            color: #c2185b;
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .btn-explore {
+            background: linear-gradient(135deg, #e91e63, #f8bbd9);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        
+        .btn-explore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+        }
+        
+        .einzelromane-card {
+            background: rgba(244, 143, 177, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(244, 143, 177, 0.3);
+        }
+        
+        .einzelromane-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #d81b60;
+        }
+        
+        .einzelromane-description {
+            margin-bottom: 15px;
+            color: #ad1457;
+        }
+        
+        .einzelromane-info {
+            font-size: 0.9em;
+            color: #c2185b;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .btn-vorbereitung {
+            background: linear-gradient(135deg, #f06292, #f8bbd9);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: not-allowed;
+            opacity: 0.7;
+            text-decoration: none;
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .back-button {
+                position: static;
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+            <h1>New Adult</h1>
+            <p>Geschichten über junge Erwachsene auf der Suche nach sich selbst</p>
+        </div>
+        
+        <div class="content-grid">
+            <!-- Serien Sektion -->
+            <div class="section-card">
+                <h2 class="section-title">Serien entdecken</h2>
+                <p class="section-description">Emotionale Serien über junge Erwachsene und deren Reise zur Selbstfindung, Liebe und persönlichen Wachstum.</p>
+                
+                <div class="series-card">
+                    <h3 class="series-title">Zwischen Herz und Verstand</h3>
+                    <p class="series-description">Eine emotionale Trilogie über junge Erwachsene auf der Suche nach sich selbst. Lena entdeckt durch zufällige Notizen in Bibliotheksbüchern eine Welt voller Möglichkeiten und die Kraft der wahren Liebe.</p>
+                    <p class="series-info">3 Bände • Deutsch & Englisch • Lesen-System</p>
+                    <a href="zwischen-herz-und-verstand.html" class="btn-explore">Serie entdecken</a>
+                </div>
+            </div>
+            
+            <!-- Bücher Sektion -->
+            <div class="section-card">
+                <h2 class="section-title">Bücher entdecken</h2>
+                <p class="section-description">Standalone New Adult Romane mit Coming-of-Age Themen und modernen Konflikten des Erwachsenwerdens.</p>
+                
+                <div class="einzelromane-card">
+                    <h3 class="einzelromane-title">New Adult Einzelromane</h3>
+                    <p class="einzelromane-description">Eigenständige Geschichten über junge Erwachsene, die ihren Platz im Leben suchen, mit authentischen Charakteren und emotionalen Wendungen.</p>
+                    <p class="einzelromane-info">In Vorbereitung • Deutsch & Englisch • Lesen-System</p>
+                    <span class="btn-vorbereitung">In Vorbereitung</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
