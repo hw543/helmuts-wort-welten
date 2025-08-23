@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zwischen Herz und Verstand Lesen - Helmut Wegners Wortwelten</title>
+    <title>Zwischen Herz und Verstand - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -102,44 +102,6 @@
         .flag-btn.active {
             border-color: #d63384;
             box-shadow: 0 0 10px rgba(214, 51, 132, 0.5);
-        }
-
-        .amazon-buttons {
-            display: flex;
-            gap: 10px;
-            margin-left: 20px;
-        }
-
-        .btn-amazon {
-            background: #FFD700;
-            color: #000;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-amazon:hover {
-            background: #FFC107;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
-        }
-
-        .btn-amazon.unavailable {
-            background: #999;
-            color: #666;
-            cursor: not-allowed;
-        }
-
-        .btn-amazon.unavailable:hover {
-            background: #999;
-            transform: none;
-            box-shadow: none;
         }
 
         .band-navigation {
@@ -259,11 +221,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-
-            .amazon-buttons {
-                margin-left: 0;
-                margin-top: 10px;
-            }
         }
     </style>
 </head>
@@ -279,11 +236,6 @@
             <div class="language-flags">
                 <button class="flag-btn active" onclick="showLanguage('de')">🇩🇪 Deutsch</button>
                 <button class="flag-btn" onclick="showLanguage('en')">🇬🇧 English</button>
-                
-                <div class="amazon-buttons" id="amazonButtons">
-                    <a href="#" class="btn-amazon unavailable" id="bookButton" target="_blank">📚 Bald verfügbar</a>
-                    <a href="#" class="btn-amazon unavailable" id="ebookButton" target="_blank">📱 Bald verfügbar</a>
-                </div>
             </div>
             <div class="band-navigation">
                 <button class="btn-band active" onclick="showBook(1)">Band 1: Verborgene Gefühle</button>
@@ -293,13 +245,13 @@
         </div>
 
         <div class="content">
-            <!-- Band 1: Verborgene Gefühle -->
+            <!-- Band 1: Verborgene Gefühle - VOLLSTÄNDIGES KAPITEL -->
             <div id="book1" class="book-content">
                 <div class="book-cover">
                     <img src="verborgene-gefuehle.jpg" alt="Verborgene Gefühle">
                 </div>
                 
-                <!-- Deutsche Version -->
+                <!-- Deutsche Version - VOLLSTÄNDIG -->
                 <div class="lang-de">
                     <div class="book-title">Verborgene Gefühle</div>
                     <div class="chapter-title">Kapitel 1: Die Nachricht, die alles veränderte</div>
@@ -311,10 +263,40 @@
                         <p>Professor Kleinschmidt hatte ihnen für das Seminar „Realismus und gesellschaftliche Strömungen" eine Liste mit Primärliteratur gegeben. Anders als ihre Kommilitonen, die alles digital lasen, brauchte Lena das Gefühl von Papier unter ihren Fingern - eine Verbindung zur Vergangenheit, die ihr Halt gab, wenn die Gegenwart zu kompliziert wurde. Das war einer der Gründe, warum sie sich für Literaturwissenschaften entschieden hatte - hier konnte sie mit Menschen kommunizieren, die längst gestorben waren, ohne zu stottern oder rot zu werden.</p>
                         
                         <p>Durch Literatur verstand sie die Welt besser als durch direkte Erfahrung. "Du verschwendest deine besten Jahre zwischen verstaubten Büchern", hatte ihre Mutter beim letzten Besuch gesagt. Der Ton besorgt, die Augen voller Unverständnis. "Das Leben passiert da draußen, nicht auf Papierseiten." Lena biss sich auf die Lippe. Es war ihr drittes Semester, und während ihre Mitbewohnerin vom letzten Wochenende schwärmte - irgendein Typ namens Marc und zu viel Wodka - und ihre ehemalige Schulfreundin Sophie jeden zweiten Tag Fotos von Dates postete, verbrachte sie ihre Freitagabende mit fiktiven Charakteren.</p>
+
+                        <p>"Ich bin einundzwanzig und habe noch nie einen richtigen Freund gehabt", flüsterte sie so leise, dass niemand es hören konnte. War das normal? Oder stimmte etwas nicht mit ihr? Was würde Sophie sagen? Vermutlich: "Du musst dich nur öffnen, Lena. Wie soll dich jemand kennenlernen, wenn du dich hinter deinen Büchern versteckst?" Aber warum fühlte sich jedes "Hey, willst du mit uns einen Kaffee trinken?" an wie eine Prüfung, für die sie nicht gelernt hatte? Warum konnte sie nur in diesen stillen Momenten zwischen Buchregalen wirklich atmen?</p>
+
+                        <p>Trotzdem konnte sie manchmal die leise Stimme nicht ignorieren, die fragte, ob sie nicht etwas verpasste. Ob es da draußen jemanden gab, der sie verstehen würde, wenn sie nur den Mut hätte, sich zu öffnen. "Entschuldige", flüsterte jemand neben ihr, und Lena zuckte zusammen, als hätte man sie aus einem Traum gerissen. Ein junger Mann mit kurzen dunklen Haaren und einer randlosen Brille stand dort. Seine Augen - dunkelbraun mit einem interessanten goldenen Schimmer - trafen ihre, und für einen Moment vergaß sie zu atmen.</p>
+
+                        <p>Er lächelte, ein schiefes, entschuldigendes Lächeln, das etwas in ihr berührte. "Ich muss mal an das Regal." Seine Stimme war tief und angenehm, mit einer Wärme, die sie nicht erwartet hatte. "Oh, natürlich." Lena trat hastig zur Seite und stieß dabei gegen ein Bücherregal. Mehrere Bände drohten umzufallen, und sie griff panisch danach, während ihr Gesicht die Farbe einer überreifen Tomate annahm. 'Fantastisch, Lena. So macht man Eindruck.'</p>
+
+                        <p>Der Student fing geschickt einen der fallenden Bände auf. "Scheint, als würde Fontane unbedingt Aufmerksamkeit wollen", sagte er mit einem Augenzwinkern, das ihren Herzschlag beschleunigte. Er zog ein Buch heraus und betrachtete es kurz. Dann blickte er wieder zu ihr, schien kurz zu zögern, als wollte er etwas sagen, nickte ihr dann aber nur freundlich zu und ging.</p>
+
+                        <p>Lena atmete erst wieder richtig, als er außer Sichtweite war. Diese kurzen sozialen Interaktionen waren ein Minenfeld, und sie hatte gerade wieder einmal bewiesen, warum sie lieber mit Büchern als mit Menschen kommunizierte. Einundzwanzig Jahre alt und immer noch unfähig, mit einem attraktiven Mann zu sprechen, ohne sich zum Komplettidioten zu machen. 'Du solltest öfter unter Menschen gehen', hatte Sophie gesagt, bevor sie in eine andere Stadt gezogen war. 'Wie willst du sonst jemals jemanden kennenlernen?'</p>
+
+                        <p>Lena seufzte und wandte ihre Aufmerksamkeit wieder den Büchern zu. Ihre Hand blieb bei „Effi Briest" stehen - Fontanes Meisterwerk über eine junge Frau, die an den erstickenden Konventionen ihrer Zeit zerbricht. Sie zog das Buch heraus. 'Vielleicht geht es dir wie Effi', flüsterte eine Stimme in ihrem Kopf. 'Gefangen zwischen dem, was du willst, und dem, was du zu sein glaubst.'</p>
+
+                        <p>Das Buch war eine ältere Ausgabe, der Einband abgegriffen, die Seiten vergilbt, als hätte es schon hunderte Geschichten mit anderen Lesern geteilt. Wie viele einsame Studenten hatten sich wohl schon in Effis Geschichte verloren? Wie viele hatten sich in ihr wiedererkannt? Mit dem Buch in der Hand ging sie zu einem abgelegenen Leseplatz am Fenster. Die Nachmittagssonne tauchte alles in warmes Licht, und für einen Moment fragte sie sich, ob der Student mit der Brille das Buch gesucht hatte, das sie jetzt in Händen hielt.</p>
+
+                        <p>Lena setzte sich, schlug das Buch auf und tauchte ein in Effis Geschichte - die Geschichte einer jungen Frau, die heiratet, ohne zu wissen, was Liebe eigentlich bedeutet, die gesellschaftliche Erwartungen über eigene Bedürfnisse stellt und daran zerbricht. 'Was würde ich tun?', fragte sie sich. 'Wenn ich zwischen Herz und Verstand wählen müsste?'</p>
+
+                        <p>Als sie zu Kapitel fünf kam, blieb ihr Blick an etwas Ungewöhnlichem hängen. Am Rand der Seite 27 stand eine handschriftliche Notiz in blauer Tinte, die Schrift ordentlich und fast elegant: „Ist es nicht merkwürdig, wie Effi zwischen gesellschaftlichen Erwartungen und eigenen Wünschen zerrieben wird? Manche Dinge ändern sich nie, nicht wahr? -- J."</p>
+
+                        <p>Lena starrte auf die Notiz, ihr Herzschlag beschleunigte sich. In Bibliotheksbüchern zu schreiben war ein ungeschriebenes Tabu - aber diese Bemerkung war so treffend, so persönlich, als hätte jemand ihre eigenen Gedanken aufgeschrieben. J. Wer war J.? Männlich? Weiblich? Jemand, der die gleichen Fragen an das Leben stellte wie sie?</p>
+
+                        <p>Es war keine gewöhnliche Kritzelei oder belanglose Anmerkung, wie man sie manchmal in Lehrbüchern fand. Diese Worte kamen von jemandem, der nicht nur las, sondern fühlte, der zwischen den Zeilen las und Parallelen zur eigenen Welt zog. Dieser mysteriöse "J." stellte eine Frage, die direkt an künftige Leser gerichtet schien - an sie.</p>
+
+                        <p>Sie las die Textpassage, neben der die Notiz stand. Effi und Innstetten sehen sich nach seiner Werbung zum ersten Mal wieder - zwei Menschen, die heiraten werden, ohne sich zu kennen, ohne zu wissen, ob ihre Herzen im gleichen Takt schlagen. 'Wie viele Menschen machen das heute noch?', dachte Lena. 'Zusammen sein, weil es erwartet wird, nicht weil es sich richtig anfühlt?'</p>
+
+                        <p>Sie dachte an ihre letzte WG-Party, als Sophie sie überreden wollte, mit diesem BWL-Studenten zu flirten. "Er ist perfekt für dich", hatte sie gesagt. "Seine Eltern haben eine Kanzlei, er fährt einen Audi..." Als ob das die Dinge wären, die zählten. Als ob Liebe eine Checkliste wäre.</p>
+
+                        <p>Ein plötzlicher Impuls überkam sie. Dieser unbekannte J. hatte etwas in ihr berührt, eine Seite angeschlagen, die resonierte. Bevor sie ihren Mut verlieren konnte, holte sie ihren Kugelschreiber heraus und schrieb direkt unter die Notiz: „Die Formen ändern sich, aber der Druck bleibt. Heute zerreiben wir uns zwischen Authentizität und Selbstoptimierung. Fortschritt? -- L."</p>
+
+                        <p>Ihre Hand zitterte leicht, als sie den Stift absetzte. Sie, Lena Winter, Musterbeispiel für Regelkonformität, hatte gerade ein Bibliotheksbuch beschmiert! Eine Welle von Schuldgefühlen überkam sie, gefolgt von einem unerwarteten Kribbeln der Aufregung. Es fühlte sich an wie ein Geheimnis, ein intimer Moment zwischen zwei Fremden, die sich durch nichts verbunden fühlten außer durch ihre Gedanken.</p>
                     </div>
                 </div>
                 
-                <!-- Englische Version -->
+                <!-- Englische Version - VOLLSTÄNDIG -->
                 <div class="lang-en hidden">
                     <div class="book-title">Hidden Feelings</div>
                     <div class="chapter-title">Chapter 1: The Message That Changed Everything</div>
@@ -326,17 +308,47 @@
                         <p>Professor Kleinschmidt had given them a list of primary literature for the seminar "Realism and Social Currents." Unlike her fellow students, who read everything digitally, Lena needed the feeling of paper under her fingers - a connection to the past that gave her support when the present became too complicated. That was one of the reasons why she had chosen literary studies - here she could communicate with people who had long been dead, without stuttering or blushing.</p>
                         
                         <p>Through literature, she understood the world better than through direct experience. "You're wasting your best years among dusty books," her mother had said during her last visit. The tone worried, her eyes full of incomprehension. "Life happens out there, not on paper pages." Lena bit her lip. It was her third semester, and while her roommate raved about last weekend - some guy named Marc and too much vodka - and her former school friend Sophie posted photos of dates every other day, she spent her Friday evenings with fictional characters.</p>
+
+                        <p>"I'm twenty-one and have never had a real boyfriend," she whispered so quietly that no one could hear it. Was that normal? Or was something wrong with her? What would Sophie say? Probably: "You just have to open up, Lena. How is anyone supposed to get to know you if you hide behind your books?" But why did every "Hey, want to have coffee with us?" feel like an exam she hadn't studied for? Why could she only really breathe in these quiet moments between bookshelves?</p>
+
+                        <p>Still, she sometimes couldn't ignore the quiet voice that asked if she wasn't missing something. If there was someone out there who would understand her, if she only had the courage to open up. "Excuse me," someone whispered next to her, and Lena jumped as if she had been torn from a dream. A young man with short dark hair and rimless glasses stood there. His eyes - dark brown with an interesting golden shimmer - met hers, and for a moment she forgot to breathe.</p>
+
+                        <p>He smiled, a crooked, apologetic smile that touched something in her. "I need to get to the shelf." His voice was deep and pleasant, with a warmth she hadn't expected. "Oh, of course." Lena hastily stepped aside and bumped into a bookshelf. Several volumes threatened to fall, and she grabbed for them frantically while her face turned the color of an overripe tomato. 'Fantastic, Lena. That's how you make an impression.'</p>
+
+                        <p>The student skillfully caught one of the falling volumes. "Seems like Fontane really wants attention," he said with a wink that made her heartbeat quicken. He pulled out a book and looked at it briefly. Then he looked at her again, seemed to hesitate briefly as if he wanted to say something, but then just nodded friendly to her and left.</p>
+
+                        <p>Lena didn't breathe properly again until he was out of sight. These brief social interactions were a minefield, and she had just once again proven why she preferred communicating with books rather than people. Twenty-one years old and still unable to talk to an attractive man without making a complete fool of herself. 'You should get out among people more often,' Sophie had said before she moved to another city. 'How else are you ever going to meet someone?'</p>
+
+                        <p>Lena sighed and turned her attention back to the books. Her hand stopped at "Effi Briest" - Fontane's masterpiece about a young woman who breaks under the suffocating conventions of her time. She pulled out the book. 'Maybe you're like Effi,' whispered a voice in her head. 'Trapped between what you want and what you think you should be.'</p>
+
+                        <p>The book was an older edition, the cover worn, the pages yellowed, as if it had already shared hundreds of stories with other readers. How many lonely students had probably already lost themselves in Effi's story? How many had recognized themselves in her? With the book in hand, she went to a secluded reading spot by the window. The afternoon sun bathed everything in warm light, and for a moment she wondered if the student with the glasses had been looking for the book she now held in her hands.</p>
+
+                        <p>Lena sat down, opened the book and immersed herself in Effi's story - the story of a young woman who marries without knowing what love really means, who puts social expectations above her own needs and breaks from it. 'What would I do?' she asked herself. 'If I had to choose between heart and mind?'</p>
+
+                        <p>When she reached chapter five, her gaze caught on something unusual. In the margin of page 27 was a handwritten note in blue ink, the handwriting neat and almost elegant: "Isn't it strange how Effi is torn between social expectations and her own desires? Some things never change, do they? -- J."</p>
+
+                        <p>Lena stared at the note, her heartbeat quickening. Writing in library books was an unwritten taboo - but this remark was so apt, so personal, as if someone had written down her own thoughts. J. Who was J.? Male? Female? Someone who asked the same questions about life as she did?</p>
+
+                        <p>It wasn't an ordinary scribble or trivial comment, like you sometimes found in textbooks. These words came from someone who not only read, but felt, who read between the lines and drew parallels to their own world. This mysterious "J." was asking a question that seemed directed at future readers - at her.</p>
+
+                        <p>She read the text passage next to which the note stood. Effi and Innstetten see each other again after his proposal - two people who will marry without knowing each other, without knowing if their hearts beat in the same rhythm. 'How many people still do that today?' thought Lena. 'Being together because it's expected, not because it feels right?'</p>
+
+                        <p>She thought about her last dorm party, when Sophie wanted to persuade her to flirt with this business student. "He's perfect for you," she had said. "His parents have a law firm, he drives an Audi..." As if those were the things that mattered. As if love was a checklist.</p>
+
+                        <p>A sudden impulse overcame her. This unknown J. had touched something in her, struck a chord that resonated. Before she could lose her courage, she took out her ballpoint pen and wrote directly under the note: "The forms change, but the pressure remains. Today we are torn between authenticity and self-optimization. Progress? -- L."</p>
+
+                        <p>Her hand trembled slightly as she put down the pen. She, Lena Winter, model example of rule compliance, had just defaced a library book! A wave of guilt overcame her, followed by an unexpected tingle of excitement. It felt like a secret, an intimate moment between two strangers who felt connected by nothing but their thoughts.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Band 2: Enthüllte Wahrheiten -->
+            <!-- Band 2: Enthüllte Wahrheiten - VOLLSTÄNDIGES KAPITEL -->
             <div id="book2" class="book-content hidden">
                 <div class="book-cover">
-                    <img src="enthüllte wahrheiten.jpg" alt="Enthüllte Wahrheiten">
+                    <img src="enthuellte-wahrheiten.jpg" alt="Enthüllte Wahrheiten">
                 </div>
                 
-                <!-- Deutsche Version -->
+                <!-- Deutsche Version - VOLLSTÄNDIG -->
                 <div class="lang-de">
                     <div class="book-title">Enthüllte Wahrheiten</div>
                     <div class="chapter-title">Kapitel 1: Nähe, die flieht</div>
@@ -347,11 +359,33 @@
                         
                         <p>Sie sollte glücklich sein. Sie war glücklich. Warum also dieses nagende Gefühl der Unvollständigkeit? Vorsichtig löste sie sich aus seiner Umarmung, darauf bedacht, ihn nicht zu wecken. Auf Zehenspitzen schlich sie aus dem Schlafzimmer, durchquerte den schmalen Flur seiner Wohnung und betrat die Küche. Seine Küche. Nicht ihre. Sie verbrachte mittlerweile mehr Zeit hier als in ihrer eigenen Wohnung, aber sie hatte ihre nicht aufgegeben. Noch nicht.</p>
                         
-                        <p>Eine kleine, eigenartige Resistenz, die sie selbst nicht ganz verstand. Sie setzte Kaffee auf und beobachtete, wie das Wasser tropfenweise und geduldig durch das Kaffeepulver sickerte. Es gab einen Trost in diesen morgendlichen Ritualen, etwas Verlässliches. Der Geruch von frischem Kaffee erfüllte den Raum, verdrängte für einen Moment die unbestimmte Unruhe in ihr. Sie öffnete das Küchenfenster.</p>
+                        <p>Eine kleine, eigenartige Resistenz, die sie selbst nicht ganz verstand. Sie setzte Kaffee auf und beobachtete, wie das Wasser tropfenweise und geduldig durch das Kaffeepulver sickerte. Es gab einen Trost in diesen morgendlichen Ritualen, etwas Verlässliches. Der Geruch von frischem Kaffee erfüllte den Raum, verdrängte für einen Moment die unbestimmte Unruhe in ihr. Sie öffnete das Küchenfenster. Draußen lag die Stadt noch im Halbschlaf, obwohl die ersten Autos bereits durch die Straßen fuhren, frühe Pendler, die dem Berufsverkehr voraus sein wollten.</p>
+
+                        <p>Der November hatte die Bäume fast kahl gefegt, nur einzelne hartnäckige Blätter klammerten sich noch an die Zweige. Ein wenig wie sie an ihre eigene Wohnung, dachte Lena und lächelte über den seltsamen Vergleich. "Guten Morgen." Julians Stimme ließ sie zusammenzucken. Er stand in der Tür, in Boxershorts und T-Shirt, seine Haare zerzaust vom Schlaf, sein Gesicht noch weich von Träumen. "Entschuldige, ich wollte dich nicht erschrecken." Er kam zu ihr, schlang seine Arme von hinten um ihre Taille und drückte einen Kuss auf ihre Schulter. "Du warst weg."</p>
+
+                        <p>"Ich wollte Kaffee machen", erklärte sie und deutete auf die Kaffeemaschine, die gerade ihre letzten Tropfen in die Kanne entließ. "Hm." Er vergrub sein Gesicht in ihrem Haar und atmete tief ein. "Du riechst gut." "Ich rieche nach Schlaf", korrigierte sie mit einem leichten Lachen. "Genau." Seine Hände wanderten unter ihr T-Shirt, streiften sanft über ihren Bauch. Seine Berührung war warm, vertraut, sendete kleine Wellen der Erregung durch ihren Körper.</p>
+
+                        <p>Sie lehnte sich instinktiv gegen ihn, ließ ihren Kopf auf seine Schulter sinken. Das war einfach. Das funktionierte. Der körperliche Teil ihrer Beziehung hatte nie die Probleme bereitet, die sie anfangs befürchtet hatte. Keine Unsicherheit, keine Scham, keine Enttäuschung. Ihre Körper hatten von Anfang an eine Sprache gefunden, die keine Übersetzung brauchte.</p>
+
+                        <p>Julian drehte sie zu sich, küsste ihren Mundwinkel, ihre Wange, schließlich ihren Mund. Sie erwiderte den Kuss, ließ ihre Finger durch seine Haare gleiten, genoss die Wärme, die sich zwischen ihnen aufbaute. Als sie sich voneinander lösten, lächelte er. "Guten Morgen", wiederholte er, diesmal mit einer tieferen Bedeutung in seiner Stimme. "Guten Morgen", antwortete sie und versuchte, das Echo seines Lächelns auf ihrem eigenen Gesicht zu spüren.</p>
+
+                        <p>"Kaffee?" "Bitte." Er löste sich von ihr, griff nach zwei Tassen aus dem Schrank. Routinierte Bewegungen, eingeübter Tanz. Er wusste, wie sie ihren Kaffee mochte -- schwarz, kein Zucker -- wie sie morgens die Stille brauchte, bevor sie sprechen konnte, wie ihr Körper berührt werden wollte. Er kannte sie. Und doch hatte sie manchmal das Gefühl, dass etwas Wesentliches fehlte, dass sie aneinander vorbeischauten, obwohl sie sich direkt in die Augen sahen.</p>
+
+                        <p>"Woran denkst du?" Julians Frage unterbrach ihre Gedanken. Er reichte ihr eine Tasse, die Wärme drang durch das Porzellan in ihre Hände. "Nichts Besonderes", log sie und hasste sich ein wenig dafür. Es war eine kleine Lüge, harmlos. Und doch spürte sie, wie sich eine Mauer zwischen ihnen aufbaute, Stein für Stein, Tag für Tag. Worte, die ungesagt blieben, Gedanken, die sie für sich behielt -- nicht aus Bosheit oder Berechnung, sondern aus einer seltsamen Scheu, einer Angst vor Enttäuschung. Seiner oder ihrer eigenen, sie war sich nicht sicher.</p>
+
+                        <p>Julian akzeptierte ihre Antwort mit einem Nicken, keine Nachfrage, keine Insistenz. War das Respekt für ihre Grenzen oder Gleichgültigkeit? Sie fragte sich, ob er spürte, dass sie log, ob es ihn verletzte. Oder ob er einfach nicht wissen wollte, was wirklich in ihr vorging. Sie tranken ihren Kaffee schweigend, jeder in Gedanken versunken. Die Uhr an der Wand tickte, markierte die Sekunden, die ungenutzt zwischen ihnen verstrichen.</p>
+
+                        <p>"Ich muss los", sagte Julian schließlich und stellte seine leere Tasse in die Spüle. Er hatte heute früh einen Workshop zu leiten, erinnerte sich Lena. Etwas über kreatives Schreiben für Oberstufenschüler. "Natürlich." Sie trat beiseite, um ihn vorbeizulassen, obwohl die Küche groß genug war, dass es keine Notwendigkeit dafür gab. "Sehen wir uns heute Abend?" Er blieb kurz stehen, seine Hand auf ihrer Schulter, wie ein Anker. "Sophie hat gefragt, ob wir ins Kino wollen."</p>
+
+                        <p>Lena hatte es vergessen, oder verdrängt. Sie mochte Sophie, wirklich. Die lebhafte, direkte Art ihrer Freundin war ein willkommenes Gegengewicht zu ihrer eigenen Introvertiertheit. Aber in letzter Zeit fiel es ihr schwer, die Energie für soziale Interaktionen aufzubringen, selbst mit Menschen, die sie mochte. "Klingt gut", sagte sie dennoch, wieder eine kleine Lüge, wieder ein Stein in der Mauer.</p>
+
+                        <p>Julian küsste sie flüchtig auf die Stirn, eine Geste, die gleichzeitig zärtlich und distanziert wirkte. "Ich freue mich. Bis später dann." Sie hörte, wie er ins Bad ging, die Dusche anstellte. Der vertraute Rhythmus des Morgens setzte sich fort, als wäre nichts anders als sonst. Sie trank ihren Kaffee aus, nahm einen Schreibblock vom Küchentisch -- Julian hatte die Angewohnheit, überall in der Wohnung Notizblöcke zu verteilen, immer bereit, einen Gedanken festzuhalten -- und kritzelte abwesend auf das Papier.</p>
+
+                        <p>Nicht wirklich Worte, eher Formen, Spiralen, Linien, die ineinander übergingen. Ihre Hand bewegte sich, als hätte sie einen eigenen Willen. Wie viel einfacher wäre es, wenn sie einfach aufschreiben könnte, was in ihr vorging. Aber dafür müsste sie es erst selbst verstehen.</p>
                     </div>
                 </div>
                 
-                <!-- Englische Version -->
+                <!-- Englische Version - VOLLSTÄNDIG -->
                 <div class="lang-en hidden">
                     <div class="book-title">Revealed Truths</div>
                     <div class="chapter-title">Chapter 1: Closeness That Flees</div>
@@ -362,18 +396,40 @@
                         
                         <p>She should be happy. She was happy. So why this nagging feeling of incompleteness? Carefully she freed herself from his embrace, careful not to wake him. On tiptoes she crept out of the bedroom, crossed the narrow hallway of his apartment and entered the kitchen. His kitchen. Not hers. She now spent more time here than in her own apartment, but she hadn't given hers up. Not yet.</p>
                         
-                        <p>A small, peculiar resistance that she didn't quite understand herself. She put on coffee and watched as the water seeped drop by drop and patiently through the coffee grounds. There was comfort in these morning rituals, something reliable. The smell of fresh coffee filled the room, displacing for a moment the indefinite restlessness within her. She opened the kitchen window.</p>
+                        <p>A small, peculiar resistance that she didn't quite understand herself. She put on coffee and watched as the water seeped drop by drop and patiently through the coffee grounds. There was comfort in these morning rituals, something reliable. The smell of fresh coffee filled the room, displacing for a moment the indefinite restlessness within her. She opened the kitchen window. Outside, the city still lay in half-sleep, although the first cars were already driving through the streets, early commuters who wanted to be ahead of the rush hour traffic.</p>
+
+                        <p>November had swept the trees almost bare, only individual stubborn leaves still clung to the branches. A bit like she clung to her own apartment, thought Lena and smiled at the strange comparison. "Good morning." Julian's voice made her jump. He stood in the doorway, in boxers and T-shirt, his hair tousled from sleep, his face still soft from dreams. "Sorry, I didn't want to startle you." He came to her, wrapped his arms around her waist from behind and pressed a kiss on her shoulder. "You were gone."</p>
+
+                        <p>"I wanted to make coffee," she explained and pointed to the coffee machine, which was just releasing its last drops into the pot. "Hm." He buried his face in her hair and breathed deeply. "You smell good." "I smell like sleep," she corrected with a light laugh. "Exactly." His hands wandered under her T-shirt, gently caressing her stomach. His touch was warm, familiar, sending small waves of arousal through her body.</p>
+
+                        <p>She leaned against him instinctively, let her head sink onto his shoulder. That was easy. That worked. The physical part of their relationship had never caused the problems she had initially feared. No uncertainty, no shame, no disappointment. Their bodies had found a language from the beginning that needed no translation.</p>
+
+                        <p>Julian turned her towards him, kissed the corner of her mouth, her cheek, finally her mouth. She returned the kiss, let her fingers glide through his hair, enjoyed the warmth that built up between them. When they separated from each other, he smiled. "Good morning," he repeated, this time with a deeper meaning in his voice. "Good morning," she replied and tried to feel the echo of his smile on her own face.</p>
+
+                        <p>"Coffee?" "Please." He separated from her, reached for two cups from the cabinet. Routine movements, practiced dance. He knew how she liked her coffee -- black, no sugar -- how she needed silence in the mornings before she could speak, how her body wanted to be touched. He knew her. And yet she sometimes had the feeling that something essential was missing, that they looked past each other even though they looked directly into each other's eyes.</p>
+
+                        <p>"What are you thinking about?" Julian's question interrupted her thoughts. He handed her a cup, the warmth penetrated through the porcelain into her hands. "Nothing special," she lied and hated herself a little for it. It was a small lie, harmless. And yet she felt how a wall was building up between them, stone by stone, day by day. Words that remained unspoken, thoughts that she kept to herself -- not out of malice or calculation, but out of a strange shyness, a fear of disappointment. His or her own, she wasn't sure.</p>
+
+                        <p>Julian accepted her answer with a nod, no follow-up question, no insistence. Was that respect for her boundaries or indifference? She wondered if he sensed that she was lying, if it hurt him. Or if he simply didn't want to know what was really going on inside her. They drank their coffee silently, each lost in thought. The clock on the wall ticked, marking the seconds that passed unused between them.</p>
+
+                        <p>"I have to go," Julian finally said and put his empty cup in the sink. He had a workshop to lead early today, Lena remembered. Something about creative writing for high school students. "Of course." She stepped aside to let him pass, even though the kitchen was big enough that there was no need for it. "See you tonight?" He paused briefly, his hand on her shoulder, like an anchor. "Sophie asked if we want to go to the movies."</p>
+
+                        <p>Lena had forgotten, or repressed it. She liked Sophie, really. Her friend's lively, direct manner was a welcome counterbalance to her own introversion. But lately she found it hard to muster the energy for social interactions, even with people she liked. "Sounds good," she said nevertheless, again a small lie, again a stone in the wall.</p>
+
+                        <p>Julian kissed her fleetingly on the forehead, a gesture that seemed both tender and distant. "I'm looking forward to it. See you later then." She heard him go into the bathroom, turn on the shower. The familiar rhythm of the morning continued as if nothing was different from usual. She finished her coffee, took a notepad from the kitchen table -- Julian had the habit of distributing notepads everywhere in the apartment, always ready to capture a thought -- and doodled absently on the paper.</p>
+
+                        <p>Not really words, more like shapes, spirals, lines that merged into each other. Her hand moved as if it had a will of its own. How much easier it would be if she could simply write down what was going on inside her. But for that she would first have to understand it herself.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Band 3: Wo Liebe wachsen darf -->
+            <!-- Band 3: Wo Liebe wachsen darf - VOLLSTÄNDIGES KAPITEL -->
             <div id="book3" class="book-content hidden">
                 <div class="book-cover">
                     <img src="wo-liebe-wachsen-darf.jpg" alt="Wo Liebe wachsen darf">
                 </div>
                 
-                <!-- Deutsche Version -->
+                <!-- Deutsche Version - VOLLSTÄNDIG -->
                 <div class="lang-de">
                     <div class="book-title">Wo Liebe wachsen darf</div>
                     <div class="chapter-title">Kapitel 1: Und jetzt?</div>
@@ -385,10 +441,32 @@
                         <p>Diese Sätze hallten in ihr nach, und sie spürte einen Stich in der Brust. Warum war es so schwer, diese Verbindung in die reale Welt zu übertragen? Warum fühlte es sich an, als ob sie auf Papier so viel leichter atmen konnten als im echten Leben? Sie legte die Briefe zurück in die Schublade und schloss sie. Vielleicht war es an der Zeit, etwas Neues zu beginnen, etwas, das nicht von der Vergangenheit belastet war.</p>
                         
                         <p>Sie ging in die Küche und setzte Wasser für Tee auf. Während sie darauf wartete, dass das Wasser kochte, dachte sie über ihre Zukunft nach. Sie hatte immer davon geträumt, Schriftstellerin zu werden, aber jetzt, wo sie die Chance hatte, fühlte es sich an, als ob etwas fehlte. Vielleicht war es die Gewissheit, dass jemand da war, der an sie glaubte, der sie unterstützte. Julian hatte das getan, in seinen Briefen, aber im echten Leben war alles komplizierter.</p>
+
+                        <p>Der Wasserkessel pfiff, und sie goss das heiße Wasser über den Teebeutel in ihrer Tasse. Der Duft von Kamille stieg ihr in die Nase und beruhigte sie ein wenig. Sie nahm die Tasse und ging zurück ins Wohnzimmer, setzte sich auf das Sofa und blickte aus dem Fenster. Die Stadt lag nun in Dunkelheit, nur vereinzelt brannten noch Lichter in den Fenstern der Häuser. Es war ein beruhigender Anblick, der ihr das Gefühl gab, nicht ganz allein zu sein.</p>
+
+                        <p>Sie nippte an ihrem Tee und spürte, wie die Wärme sich in ihr ausbreitete. Vielleicht war das der Schlüssel, dachte sie. Vielleicht musste sie lernen, sich selbst zu genügen, sich selbst zu vertrauen, bevor sie wieder versuchen konnte, eine Brücke zu jemand anderem zu bauen. Sie schloss die Augen und lehnte sich zurück, ließ die Stille des Abends auf sich wirken.</p>
+
+                        <p>Es war ein neuer Anfang, ein leeres Blatt, und vielleicht war das genau das, was sie brauchte. Die Möglichkeit, etwas Neues zu schreiben, ohne die Last der Vergangenheit. Sie atmete tief durch und spürte, wie ein Funke Hoffnung in ihr aufkeimte. Vielleicht war dies der Moment, in dem sie lernen konnte, wieder zu atmen, wieder zu leben, ohne sich an jemand anderen zu klammern.</p>
+
+                        <p>Sie öffnete die Augen und blickte auf die leeren Blätter Papier auf ihrem Schreibtisch. Vielleicht war es an der Zeit, ihre eigene Geschichte zu schreiben, eine Geschichte, die nicht von Julian oder Emil handelte, sondern von ihr selbst. Von Lena, die allein stand, aber nicht verloren war. Von Lena, die bereit war, ihr eigenes Leben zu leben, mit all seinen Unsicherheiten und Möglichkeiten.</p>
+
+                        <p>Sie nahm einen tiefen Schluck von ihrem Tee und spürte, wie eine neue Entschlossenheit in ihr wuchs. Sie würde schreiben, nicht für jemanden anderen, sondern für sich selbst. Sie würde ihre eigene Stimme finden, ihre eigene Geschichte erzählen. Und vielleicht, nur vielleicht, würde sie dabei lernen, wieder zu atmen, wieder zu leben, ganz für sich allein.</p>
+
+                        <p>Sie stand auf, ging zu ihrem Schreibtisch und setzte sich hin. Die leeren Blätter lagen vor ihr, bereit, mit Worten gefüllt zu werden. Sie nahm den Stift zur Hand und spürte, wie etwas in ihr zum Leben erwachte. Es war Zeit, ihre eigene Geschichte zu schreiben. Sie spürte, wie die Feder ihres Stiftes das Papier berührte, und begann zu schreiben, ohne zu zögern, ohne nachzudenken.</p>
+
+                        <p>Die Worte flossen aus ihr heraus, als ob sie schon lange darauf gewartet hätten, endlich frei zu sein. Es war, als ob eine Tür in ihrem Inneren aufging, eine Tür, die sie lange verschlossen gehalten hatte. Sie schrieb über die Stille, die sie umgab, über das Gefühl, allein zu sein, aber nicht einsam. Sie schrieb über die Stadt, die draußen lag, über die Lichter, die in der Dunkelheit leuchteten, über die Geräusche, die zu ihr heraufdrangen.</p>
+
+                        <p>Sie schrieb über die Briefe, die sie und Julian ausgetauscht hatten, über die Verbindung, die sie auf Papier gefunden hatten, und über die Schwierigkeit, diese Verbindung in die reale Welt zu übertragen. Sie schrieb über Emil, über die Momente, die sie miteinander geteilt hatten, über das Lachen, die Tränen, die Hoffnung und die Enttäuschung.</p>
+
+                        <p>Sie schrieb über ihre Träume, ihre Ängste, ihre Hoffnungen und ihre Unsicherheiten. Sie schrieb über die Menschen, die sie kannte, über die Freundschaften, die sie geschlossen hatte, und über die Beziehungen, die sie verloren hatte. Sie schrieb über ihre Familie, über die Erwartungen, die sie an sie gestellt hatten, und über die Erwartungen, die sie an sich selbst stellte.</p>
+
+                        <p>Sie schrieb und schrieb, bis ihre Hand krampfte und der Stift fast keine Tinte mehr hatte. Sie schrieb, bis die Worte auf dem Papier verschwammen und die Tränen in ihren Augen alles unscharf machten. Sie schrieb, bis sie das Gefühl hatte, als ob sie alles gesagt hätte, was es zu sagen gab. Sie legte den Stift zur Seite und lehnte sich zurück, atmete tief durch und spürte, wie eine Last von ihr abfiel.</p>
+
+                        <p>Sie hatte geschrieben, nicht für jemanden anderen, sondern für sich selbst. Sie hatte ihre eigene Stimme gefunden, ihre eigene Geschichte erzählt. Und vielleicht, nur vielleicht, hatte sie dabei gelernt, wieder zu atmen, wieder zu leben, ganz für sich allein. Sie war bereit, ihre eigene Geschichte zu leben, mit all ihren Höhen und Tiefen, mit all ihren Freuden und Schmerzen. Sie war bereit, Lena zu sein, ganz und gar.</p>
                     </div>
                 </div>
                 
-                <!-- Englische Version -->
+                <!-- Englische Version - VOLLSTÄNDIG -->
                 <div class="lang-en hidden">
                     <div class="book-title">Where Love May Grow</div>
                     <div class="chapter-title">Chapter 1: And Now?</div>
@@ -400,6 +478,28 @@
                         <p>These sentences echoed within her, and she felt a stab in her chest. Why was it so difficult to transfer this connection into the real world? Why did it feel as if they could breathe so much more easily on paper than in real life? She put the letters back in the drawer and closed it. Perhaps it was time to begin something new, something that was not burdened by the past.</p>
                         
                         <p>She went to the kitchen and put water on for tea. While she waited for the water to boil, she thought about her future. She had always dreamed of becoming a writer, but now that she had the chance, it felt as if something was missing. Perhaps it was the certainty that someone was there who believed in her, who supported her. Julian had done that, in his letters, but in real life everything was more complicated.</p>
+
+                        <p>The kettle whistled, and she poured the hot water over the tea bag in her cup. The scent of chamomile rose to her nose and calmed her a little. She took the cup and went back to the living room, sat on the sofa and looked out the window. The city now lay in darkness, only scattered lights still burned in the windows of the houses. It was a soothing sight that gave her the feeling of not being completely alone.</p>
+
+                        <p>She sipped her tea and felt the warmth spread within her. Perhaps that was the key, she thought. Perhaps she had to learn to be sufficient for herself, to trust herself, before she could try again to build a bridge to someone else. She closed her eyes and leaned back, letting the silence of the evening wash over her.</p>
+
+                        <p>It was a new beginning, a blank page, and perhaps that was exactly what she needed. The possibility of writing something new, without the burden of the past. She breathed deeply and felt a spark of hope kindle within her. Perhaps this was the moment when she could learn to breathe again, to live again, without clinging to someone else.</p>
+
+                        <p>She opened her eyes and looked at the empty sheets of paper on her desk. Perhaps it was time to write her own story, a story that was not about Julian or Emil, but about herself. About Lena, who stood alone, but was not lost. About Lena, who was ready to live her own life, with all its uncertainties and possibilities.</p>
+
+                        <p>She took a deep sip of her tea and felt a new determination grow within her. She would write, not for someone else, but for herself. She would find her own voice, tell her own story. And perhaps, just perhaps, she would learn to breathe again, to live again, completely on her own.</p>
+
+                        <p>She stood up, went to her desk and sat down. The empty sheets lay before her, ready to be filled with words. She took the pen in her hand and felt something come alive within her. It was time to write her own story. She felt the tip of her pen touch the paper and began to write, without hesitation, without thinking.</p>
+
+                        <p>The words flowed out of her as if they had been waiting for a long time to finally be free. It was as if a door inside her opened, a door she had kept closed for a long time. She wrote about the silence that surrounded her, about the feeling of being alone, but not lonely. She wrote about the city that lay outside, about the lights that shone in the darkness, about the sounds that rose up to her.</p>
+
+                        <p>She wrote about the letters that she and Julian had exchanged, about the connection they had found on paper, and about the difficulty of transferring this connection to the real world. She wrote about Emil, about the moments they had shared together, about the laughter, the tears, the hope and the disappointment.</p>
+
+                        <p>She wrote about her dreams, her fears, her hopes and her uncertainties. She wrote about the people she knew, about the friendships she had made, and about the relationships she had lost. She wrote about her family, about the expectations they had placed on her, and about the expectations she placed on herself.</p>
+
+                        <p>She wrote and wrote until her hand cramped and the pen had almost no ink left. She wrote until the words on the paper blurred and the tears in her eyes made everything hazy. She wrote until she felt as if she had said everything there was to say. She set the pen aside and leaned back, breathed deeply and felt a weight lift from her.</p>
+
+                        <p>She had written, not for someone else, but for herself. She had found her own voice, told her own story. And perhaps, just perhaps, she had learned to breathe again, to live again, completely on her own. She was ready to live her own story, with all its highs and lows, with all its joys and pains. She was ready to be Lena, completely and entirely.</p>
                     </div>
                 </div>
             </div>
@@ -409,32 +509,6 @@
     <script>
         let currentBook = 1;
         let currentLanguage = 'de';
-
-        // Amazon ASINs - aktuell alle unavailable
-        const amazonLinks = {
-            1: { de: { book: null, ebook: null }, en: { book: null, ebook: null } },
-            2: { de: { book: null, ebook: null }, en: { book: null, ebook: null } },
-            3: { de: { book: null, ebook: null }, en: { book: null, ebook: null } }
-        };
-
-        function updateAmazonButtons() {
-            const bookButton = document.getElementById('bookButton');
-            const ebookButton = document.getElementById('ebookButton');
-            
-            // Alle Bücher sind aktuell unavailable
-            bookButton.href = '#';
-            bookButton.classList.add('unavailable');
-            ebookButton.href = '#';
-            ebookButton.classList.add('unavailable');
-            
-            if (currentLanguage === 'de') {
-                bookButton.textContent = '📚 Bald verfügbar';
-                ebookButton.textContent = '📱 Bald verfügbar';
-            } else {
-                bookButton.textContent = '📚 Coming Soon';
-                ebookButton.textContent = '📱 Coming Soon';
-            }
-        }
 
         function showBook(bookNumber) {
             // Verstecke alle Bücher
@@ -451,9 +525,6 @@
             
             // Stelle sicher, dass die richtige Sprache angezeigt wird
             showLanguage(currentLanguage);
-            
-            // Update Amazon Buttons
-            updateAmazonButtons();
         }
 
         function showLanguage(lang) {
@@ -474,16 +545,12 @@
             document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
             
             currentLanguage = lang;
-            
-            // Update Amazon Buttons
-            updateAmazonButtons();
         }
 
         // Initialisierung beim Seitenstart
         document.addEventListener('DOMContentLoaded', function() {
             showBook(1); // Zeige ersten Band
             showLanguage('de'); // Zeige deutsche Version
-            updateAmazonButtons(); // Update Amazon Buttons
         });
     </script>
 </body>
