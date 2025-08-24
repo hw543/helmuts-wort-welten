@@ -254,6 +254,23 @@
                 margin-bottom: 15px;
                 display: inline-block;
             }
+
+            .amazon-buttons {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .language-flags {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .text-content p:first-child::first-letter {
+                font-size: 2.5em;
+                margin: 0 5px 0 0;
+            }
         }
     </style>
 </head>
@@ -287,7 +304,7 @@
             <!-- Buch 1: Die Zauberakademie von Morgenstern -->
             <div id="book1" class="book-content">
                 <div class="book-cover">
-                    <img src="die zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern">
+                    <img src="die-zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -295,23 +312,43 @@
                     <div class="book-title">Die Zauberakademie von Morgenstern</div>
                     <div class="chapter-title">Kapitel 1: Die geheimnisvolle Einladung</div>
                     <div class="text-content">
-                        <p>Die Morgenluft war kühl und klar, als Leonas Grünfeld seinen Schulranzen über die Schulter schwang und den staubigen Weg zur Schule einschlug. Der Pfad schlängelte sich zwischen alten Eichen hindurch, deren Äste sich wie schützende Arme über ihm verwoben und Schatten auf den ausgetretenen Weg warfen.</p>
-                        
-                        <p>Sein Dorf, eingebettet in weite Felder und dichte Wälder, erwachte langsam zum Leben. Die Morgensonne malte goldene Streifen über die Wiesen, auf denen der Tau wie tausend kleine Diamanten funkelte. Kühe muhten leise in der Ferne, ihre Stimmen mischten sich mit dem Gezwitscher der Vögel, die ihre Morgenliedchen sangen.</p>
-                        
-                        <p>Für andere mochte es ein gewöhnlicher Tag sein, aber Leonas spürte eine ungewöhnliche Anspannung in der Luft, ein seltsames Kribbeln, das über seine Haut wanderte und ihn innerlich unruhig machte. Es war, als würde sich etwas Wichtiges anbahnen, etwas, das sein Leben für immer verändern würde.</p>
-                        
-                        <p>Leonas war ein schüchterner Junge von zwölf Jahren mit strohblonden Haaren, die ihm ständig in die Stirn fielen, und grünen Augen, die oft nachdenklich und ein wenig melancholisch in die Ferne blickten. Er mied die lauten Kinder in seiner Klasse und zog es vor, Zeit mit den Tieren des Waldes zu verbringen, die ihn nie verspotteten oder ausschlossen.</p>
-                        
-                        <p>Am Ende des langen Schultages eilte Leonas nach Hause und verbrachte den Nachmittag in seinem Lieblingsversteck, einer kleinen Lichtung im Wald, wo ein alter Baum mit knorrigen Wurzeln stand. Hier konnte er den wahren Stimmen der Natur lauschen und sich wie ein Teil der natürlichen Welt fühlen.</p>
-                        
-                        <p>Doch heute war etwas anders. Als er die Augen öffnete, bemerkte er eine seltsame Gestalt neben dem Stamm des alten Baumes. Es war ein Mann, hochgewachsen und von edler Haltung, in einen schimmernden, dunkelblauen Mantel gehüllt, der im gedämpften Licht des Waldes zu funkeln schien wie der Nachthimmel voller Sterne.</p>
-                        
-                        <p>"Leonas Grünfeld, nehme ich an?", fragte der Mann mit einer warmen und ruhigen Stimme. "Mein Name ist Elias Nachtflug. Ich bin ein Bote der Zauberakademie von Morgenstern. Und ich habe eine besondere Einladung für dich."</p>
-                        
-                        <p>Mit diesen Worten zog er eine Pergamentrolle aus seinem Mantel, die in einem sanften goldenen Licht schimmerte. Als Leonas das Pergament entrollte, bewegten sich die Buchstaben sanft, und er las die Worte, die sein Leben für immer verändern würden: Er war auserwählt worden, ein Schüler der Zauberakademie zu werden.</p>
-                        
-                        <p>Am nächsten Morgen stand eine prachtvolle Kutsche vor seinem Haus, gezogen von zwei schneeweißen, geflügelten Pferden. Als Leonas einstieg und die Kutsche sich in die Lüfte erhob, wusste er, dass das größte Abenteuer seines Lebens gerade erst begonnen hatte.</p>
+                        <p>Die Morgenluft war kühl und klar, als Leonas Grünfeld seinen Schulranzen über die Schulter schwang und den staubigen Weg zur Schule einschlug. Der Pfad schlängelte sich zwischen alten Eichen hindurch, deren Äste sich wie schützende Arme über ihm verwoben und Schatten auf den ausgetretenen Weg warfen. Sein Dorf, eingebettet in weite Felder und dichte Wälder, erwachte langsam zum Leben. Die Morgensonne malte goldene Streifen über die Wiesen, auf denen der Tau wie tausend kleine Diamanten funkelte. Kühe muhten leise in der Ferne, ihre Stimmen mischten sich mit dem Gezwitscher der Vögel, die ihre Morgenliedchen sangen. Die ersten warmen Sonnenstrahlen brachen durch die Baumwipfel und ließen die Blätter in allen Grüntönen leuchten. Für andere mochte es ein gewöhnlicher Tag sein, aber Leonas spürte eine ungewöhnliche Anspannung in der Luft, ein seltsames Kribbeln, das über seine Haut wanderte und ihn innerlich unruhig machte. Es war, als würde sich etwas Wichtiges anbahnen, etwas, das sein Leben für immer verändern würde.</p>
+
+                        <p>Leonas war ein schüchterner Junge von zwölf Jahren mit strohblonden Haaren, die ihm ständig in die Stirn fielen, und grünen Augen, die oft nachdenklich und ein wenig melancholisch in die Ferne blickten. Seine Haut war blass, da er die meiste Zeit im Schatten der Bäume verbrachte, und seine Hände waren immer ein wenig schmutzig von der Erde, in der er gerne grub, um Käfer und Würmer zu beobachten. Er mied die lauten Kinder in seiner Klasse und zog es vor, Zeit mit den Tieren des Waldes zu verbringen, die ihn nie verspotteten oder ausschlossen. Seine Schritte waren leise und bedacht, als würde er versuchen, so unsichtbar wie möglich zu bleiben, während er durch die Welt wandelte.</p>
+
+                        <p>Die anderen Kinder in der Schule verstanden ihn nicht, und er verstand sie genauso wenig. Während sie sich für Ballspiele und laute Scherze begeisterten, für die neuesten Spielzeuge und Trends, fand Leonas Trost in der stillen Beobachtung von Käfern, die über die raue Baumrinde krochen, oder Vögeln, die geschickt ihre Nester aus Zweigen und Moos bauten. Er kannte jeden Baum im Wald um sein Dorf, wusste, wo die Eichhörnchen ihre Wintervorräte versteckten und welche Pflanzen essbar waren. Seine Mutter nannte ihn oft ihren kleinen Naturphilosophen, doch für seine Mitschüler war er einfach nur der seltsame Junge, der lieber mit Tieren sprach als mit Menschen.</p>
+
+                        <p>Oft wurde er deshalb verspottet, besonders von Jasper und seiner Clique, einer Gruppe von fünf Jungen, die sich für die Könige des Schulhofs hielten. Sie nannten sich selbst "die Falken" und trugen diesen Namen mit einem Stolz, der völlig unangebracht war. Jasper war ihr Anführer, ein großer, kräftiger Junge mit schütterem braunen Haar und kleinen, stechenden Augen, die immer nach Schwäche suchten. Sie nannten ihn den "Waldgeist", den "Tier-Tuschler" oder den "Baum-Kuschler", Spitznamen, die bei jedem Aussprechen wie kleine Messerstiche in sein Herz drangen.</p>
+
+                        <p>Heute war keine Ausnahme. Als Leonas die Schule erreichte, das alte Backsteingebäude mit seinen hohen, schmalen Fenstern und dem verwitterten Schieferdach, war es nur eine Frage von Minuten, bevor sie ihn umringten. "Hey, Grünfeld! Hast du wieder mit deinen Eichhörnchen geplaudert?", fragte Jasper mit einem breiten Grinsen und stieß Leonas an die Schulter. Die anderen Kinder lachten, während Leonas stumm blieb und den Boden betrachtete. Seine Hände umklammerten den Riemen seines Ranzens, und er wünschte sich nichts sehnlicher, als unsichtbar zu werden.</p>
+
+                        <p>Der Unterricht zog sich endlos hin wie ein träger Fluss an einem heißen Sommertag. Leonas saß in der letzten Reihe, seinem gewohnten Platz, von wo aus er sowohl die Tafel sehen als auch unbemerkt aus dem Fenster blicken konnte. Frau Müller sprach über Mathematik, doch ihre Worte drangen kaum zu ihm durch. Seine Gedanken wanderten unwillkürlich zu den Eichhörnchen, die er gestern beim Sammeln von Nüssen beobachtet hatte. Eines der Eichhörnchen war besonders mutig gewesen und bis auf wenige Meter an ihn herangekommen, hatte ihn mit schwarzen Knopfaugen neugierig gemustert, als wüsste es, dass von diesem seltsamen menschlichen Jungen keine Gefahr ausging.</p>
+
+                        <p>Nach einem langen Tag voller peinlicher Momente und schiefer Blicke eilte Leonas nach Hause. Der kleine Hof seiner Familie, umgeben von dichten Hecken aus Weißdorn und Holunder und blühenden Wildblumen, die seine Mutter liebevoll pflegte, bot ihm zumindest etwas Geborgenheit. Seine Mutter bemerkte seine niedergeschlagene Stimmung. "War es wieder schlimm heute?", fragte sie sanft und strich ihm über das Haar. Leonas nickte nur. "Du bist etwas Besonderes, Leonas", sagte sie leise. "Eines Tages wirst du verstehen, was das bedeutet."</p>
+
+                        <p>Er verbrachte den Nachmittag wie gewohnt in seinem Lieblingsversteck, einer kleinen Lichtung im Wald, wo ein alter Baum mit knorrigen Wurzeln stand, der schon da gewesen war, als sein Großvater noch ein Kind war. Der alte Baum war gewaltig und ehrfurchtgebietend, sein Stamm so dick, dass drei Erwachsene ihn nicht hätten umfassen können, seine Wurzeln so ausladend, dass sie kleine Höhlen und Verstecke bildeten. Leonas liebte es, seine Hand auf die warme Rinde zu legen und zu spüren, wie lebendig der Baum war, wie stark und beständig.</p>
+
+                        <p>Ein Rotkehlchen landete auf einem Ast in seiner Nähe und betrachtete ihn neugierig mit seinen kleinen, glänzenden schwarzen Augen. Das kleine Vogelchen war so zutraulich, wie Leonas es noch nie bei anderen Menschen erlebt hatte. Tiere schienen sich in seiner Gegenwart wohler zu fühlen, als es normal war, als spürten sie etwas Besonderes in ihm, das andere Menschen nicht hatten. Seine Mutter sagte immer, er habe eine besondere Gabe, ein Geschenk, das nicht jeder Mensch besitze, doch Leonas verstand nie ganz, was sie damit meinte.</p>
+
+                        <p>Doch heute war etwas anders, etwas, das die gewohnte Ruhe des Waldes durchbrach. Die Luft schien gespannter, elektrischer, als läge ein Gewitter in der Luft, obwohl der Himmel klar und blau war. Als er die Augen öffnete, nachdem er sie eine Weile geschlossen hatte, bemerkte er eine seltsame Gestalt, die neben dem Stamm des alten Baumes stand, als wäre sie aus dem Nichts erschienen. Es war ein Mann, hochgewachsen und von edler, königlicher Haltung, in einen schimmernden, dunkelblauen Mantel gehüllt, der im gedämpften Licht des Waldes zu funkeln schien wie der Nachthimmel voller Sterne.</p>
+
+                        <p>Das Haar des Mannes war silbern wie frisch gefallener Schnee im Mondschein und fiel ihm in weichen, geschmeidigen Wellen über die Schultern. Seine Augen funkelten wie Sterne in einer klaren Winternacht, von einem tiefen, durchdringenden Blau, das an die Farbe des Himmels in der Dämmerung erinnerte. Eine Aura der Macht umgab ihn, und doch strahlte er gleichzeitig eine beruhigende Wärme aus, die Leonas seltsamerweise keine Angst machte.</p>
+
+                        <p>"Leonas Grünfeld, nehme ich an?", fragte der Mann mit einer warmen und ruhigen Stimme, die trotzdem die Stille des Waldes mit einer besonderen Macht durchdrang. "Ja, das bin ich", stammelte Leonas und fragte sich, woher dieser fremde Mann seinen Namen kannte. "Wer sind Sie? Und woher wissen Sie, wer ich bin?" Der Mann lächelte, und sein Gesicht wurde von einer inneren Güte erleuchtet, die Leonas sofort vertraute. "Mein Name ist Elias Nachtflug. Ich bin ein Bote der Zauberakademie von Morgenstern. Und ich habe eine besondere Einladung für dich, junger Leonas."</p>
+
+                        <p>Mit diesen Worten zog er eine Pergamentrolle aus seinem Mantel. Das Pergament schimmerte in einem sanften goldenen Licht, als wäre es von Magie durchdrungen. Es war mit einem Siegel verschlossen, das die Form eines Sterns hatte, der von Ranken umschlungen war. Leonas starrte den Mann ungläubig an. "Eine Zauberakademie?", flüsterte er. "Aber... aber das gibt es doch gar nicht. Das sind nur Märchen." Elias' Lächeln wurde breiter. "Märchen, sagst du? Schau dich um, Leonas. Siehst du nicht die Magie, die dich jeden Tag umgibt? Die Art, wie die Tiere zu dir kommen, wie die Pflanzen unter deinen Händen zu gedeihen scheinen? Du hast schon immer gewusst, dass du anders bist."</p>
+
+                        <p>Leonas nahm die Rolle mit zitternden Händen entgegen. Das Pergament fühlte sich glatt und kühl an, aber auch warm zugleich, als pulsiere Leben in ihm. Als er es entrollte, schien es in einem sanften Licht zu schimmern, und die Buchstaben auf dem Papier bewegten sich sanft, als wären sie lebendig. Die Schrift war elegant und kunstvoll, mit goldenen Akzenten verziert: "An Leonas Grünfeld, das Schicksal hat dich auserwählt, ein Schüler der Zauberakademie von Morgenstern zu werden. Deine Gabe ist einzigartig und verdient es, gefördert zu werden. Du besitzt eine seltene Verbindung zur natürlichen Welt, eine Fähigkeit, die nur wenige in jedem Jahrhundert entwickeln. Am ersten Lichtstrahl des kommenden Morgens wirst du von einem magischen Gefährt abgeholt. Professor Efraim Morgenstern, Direktor der Zauberakademie von Morgenstern."</p>
+
+                        <p>Leonas' Kopf schwirrte. Eine Zauberakademie? Er hatte immer von Magie geträumt, von einer Welt, in der seine Andersartigkeit nicht nur akzeptiert, sondern geschätzt wurde, aber das war doch unmöglich! "Das muss ein Irrtum sein", flüsterte er und blickte zu Elias auf. "Ich bin nur ein ganz normaler Junge. Ich kann nichts Besonderes." Elias schüttelte den Kopf. "Du bist alles andere als normal, Leonas. Du hast eine Gabe, die selten und wertvoll ist. Die Art, wie du mit der Natur verbunden bist, wie du ihre Stimmen hörst und ihre Geheimnisse verstehst - das ist nicht gewöhnlich."</p>
+
+                        <p>Leonas dachte an all die merkwürdigen Momente in seinem Leben zurück. An die kranke Katze, die nach seiner Berührung wieder gesund geworden war. An den Baum in ihrem Garten, der nach einem Sturm fast gestorben war, aber unter seiner täglichen Pflege wieder aufgeblüht hatte. "Es liegt an dir, diese Gabe zu entdecken und zu entfalten", fuhr Elias fort. "In der Akademie von Morgenstern wirst du andere treffen, die ebenfalls besondere Fähigkeiten haben. Du wirst lernen, dass das, was dich anders macht, in Wahrheit deine größte Stärke ist."</p>
+
+                        <p>Als Elias zu verschwinden begann, sein Körper wurde durchsichtig wie Nebel, fügte er hinzu: "Die Entscheidung liegt bei dir, Leonas. Aber denk daran: Manchmal führen uns die Wege, die uns am meisten Angst machen, zu den schönsten Zielen." Als Elias verschwunden war, so lautlos wie er gekommen war, kehrte Leonas nach Hause zurück. Mit zitternden, aber entschlossenen Händen packte Leonas eine kleine Tasche: ein Notizbuch, seinen Lieblingsstift aus Holz, den sein Großvater geschnitzt hatte, und ein altes Amulett, das seiner verstorbenen Mutter gehört hatte.</p>
+
+                        <p>Als die ersten Sonnenstrahlen durch sein Fenster fielen, hörte er ein sanftes Klopfen an der Haustür. Vor dem Haus stand eine prachtvolle Kutsche, prächtiger als alles, was er je gesehen hatte. Sie war aus dunklem Holz geschnitzt und mit goldenen Verzierungen versehen, die in der Morgensonne funkelten wie Edelsteine. Gezogen wurde sie von zwei schneeweißen, geflügelten Pferden, deren Flügel im Morgenlicht schimmerten wie Perlmutt.</p>
+
+                        <p>Ein Kutscher in einem sternenbesetzten Umhang öffnete die Tür der Kutsche und lächelte ihm freundlich zu. "Bereit für dein Abenteuer, junger Herr Grünfeld? Die Akademie wartet auf dich." Leonas warf einen letzten Blick auf sein Zuhause und sah seine Mutter am Fenster stehen, Tränen in den Augen, aber auch Stolz in ihrem Lächeln. Dann stieg er in die Kutsche und spürte, wie sich unter seinen Füßen etwas Wunderbares veränderte. Als die Kutsche sich in die Lüfte erhob und die geflügelten Pferde ihre majestätischen Schwingen ausbreiteten, wusste Leonas, dass das Abenteuer seines Lebens gerade erst begonnen hatte.</p>
                     </div>
                 </div>
                 
@@ -320,23 +357,17 @@
                     <div class="book-title">The Academy of Magic at Morgenstern</div>
                     <div class="chapter-title">Chapter 1: The Mysterious Invitation</div>
                     <div class="text-content">
-                        <p>The morning air was cool and clear as Leonas Greenfield swung his school bag over his shoulder and set off down the dusty path to school. The path wound between old oak trees whose branches wove together like protective arms above him, casting shadows on the worn trail.</p>
+                        <p>The morning air was cool and clear as Leonas Greenfield swung his school bag over his shoulder and set off down the dusty path to school. The path wound between old oak trees whose branches wove together like protective arms above him, casting shadows on the worn trail. His village, nestled among wide fields and dense forests, was slowly awakening to life. The morning sun painted golden stripes across the meadows where dew sparkled like thousands of tiny diamonds.</p>
                         
-                        <p>His village, nestled among wide fields and dense forests, was slowly awakening to life. The morning sun painted golden stripes across the meadows where dew sparkled like thousands of tiny diamonds. Cows lowed softly in the distance, their voices mixing with the chirping of birds singing their morning songs.</p>
+                        <p>Leonas was a shy twelve-year-old boy with straw-blond hair that constantly fell into his forehead, and green eyes that often gazed thoughtfully and somewhat melancholically into the distance. He avoided the loud children in his class and preferred to spend time with the animals of the forest, who never mocked or excluded him. Often he was teased by Jasper and his gang, who called themselves "the Falcons" and considered themselves the kings of the schoolyard.</p>
                         
-                        <p>For others, it might have been an ordinary day, but Leonas felt an unusual tension in the air, a strange tingling that wandered across his skin and made him restless inside. It was as if something important was about to happen, something that would change his life forever.</p>
+                        <p>After a long day at school, Leonas hurried home and spent the afternoon in his favorite hiding place, a small clearing in the forest where an old tree with gnarled roots stood. Here he could listen to the true voices of nature and feel like part of the natural world. But today was different. When he opened his eyes, he noticed a strange figure beside the trunk of the old tree.</p>
                         
-                        <p>Leonas was a shy twelve-year-old boy with straw-blond hair that constantly fell into his forehead, and green eyes that often gazed thoughtfully and somewhat melancholically into the distance. He avoided the loud children in his class and preferred to spend time with the animals of the forest, who never mocked or excluded him.</p>
+                        <p>It was a man, tall and of noble bearing, wrapped in a shimmering dark blue cloak that seemed to sparkle in the dim light of the forest like a starry night sky. "Leonas Greenfield, I presume?" asked the man with a warm and calm voice. "My name is Elias Nightflight. I am a messenger from the Academy of Magic at Morgenstern. And I have a special invitation for you."</p>
                         
-                        <p>At the end of the long school day, Leonas hurried home and spent the afternoon in his favorite hiding place, a small clearing in the forest where an old tree with gnarled roots stood. Here he could listen to the true voices of nature and feel like part of the natural world.</p>
+                        <p>With these words, he drew a parchment scroll from his cloak that shimmered in a soft golden light. When Leonas unrolled the parchment, the letters moved gently, and he read the words that would change his life forever: he had been chosen to become a student at the Academy of Magic. The letter spoke of his unique gift, his rare connection to the natural world.</p>
                         
-                        <p>But today was different. When he opened his eyes, he noticed a strange figure beside the trunk of the old tree. It was a man, tall and of noble bearing, wrapped in a shimmering dark blue cloak that seemed to sparkle in the dim light of the forest like a starry night sky.</p>
-                        
-                        <p>"Leonas Greenfield, I presume?" asked the man with a warm and calm voice. "My name is Elias Nightflight. I am a messenger from the Academy of Magic at Morgenstern. And I have a special invitation for you."</p>
-                        
-                        <p>With these words, he drew a parchment scroll from his cloak that shimmered in a soft golden light. When Leonas unrolled the parchment, the letters moved gently, and he read the words that would change his life forever: he had been chosen to become a student at the Academy of Magic.</p>
-                        
-                        <p>The next morning, a magnificent carriage stood before his house, drawn by two snow-white, winged horses. As Leonas climbed in and the carriage rose into the skies, he knew that the greatest adventure of his life had just begun.</p>
+                        <p>The next morning, a magnificent carriage stood before his house, drawn by two snow-white, winged horses. As Leonas climbed in and the carriage rose into the skies, he knew that the greatest adventure of his life had just begun. The Academy of Magic awaited him, a place where his differences would not be seen as weaknesses, but as his greatest strengths.</p>
                     </div>
                 </div>
             </div>
@@ -352,23 +383,35 @@
                     <div class="book-title">Der Zeitnarr</div>
                     <div class="chapter-title">Kapitel 1: Der Flohmarktfund</div>
                     <div class="text-content">
-                        <p>Der Flohmarkt war eine Welt für sich. Reihen von Ständen zogen sich über den kleinen Marktplatz, jeder beladen mit einer kunterbunten Mischung aus Altem, Kuriosem und Wertvollem. Max schob sich durch die Menschenmenge, die Hände tief in den Taschen seiner abgetragenen Jeans vergraben.</p>
-                        
-                        <p>Seine Mutter hatte ihn mitgeschleppt, obwohl er eigentlich lieber zu Hause geblieben wäre. Er streifte ziellos durch die Gassen, bis sein Blick an einem kleinen Stand hängen blieb. Ein alter Mann mit einem zerknitterten Gesicht saß auf einem wackeligen Stuhl hinter einem Tisch voller scheinbar wertlosem Kram.</p>
-                        
-                        <p>Doch etwas auf diesem Tisch zog Max magisch an. Eine Taschenuhr. Die Uhr war aus Messing, verziert mit filigranen Gravuren, die sich wie ein Labyrinth über die Oberfläche zogen. Ihr Glas war leicht zerkratzt, und der Deckel lag halb offen.</p>
-                        
-                        <p>"Interessierst du dich für alte Dinge?" fragte der Mann mit heiserer Stimme. Seine Augen funkelten auf eine Art, die Max nicht einordnen konnte. "Für dich? Zehn Euro. Aber sei vorsichtig mit ihr. Diese Uhr hat mehr Geschichte, als du dir vorstellen kannst."</p>
-                        
-                        <p>Zuhause setzte sich Max an seinen Schreibtisch und betrachtete das Zifferblatt genauer. Es schien fast zu leben. Ohne lange nachzudenken, zog er die kleine Krone an der Seite auf. Plötzlich schien die Luft im Raum zu vibrieren. Ein tiefes Summen erfüllte seine Ohren, und die Wände um ihn herum verschwammen.</p>
-                        
-                        <p>Ein grelles Licht flammte auf, und für einen Moment schien die Welt stillzustehen. Als Max blinzelte, fand er sich nicht mehr in seinem Zimmer wieder. Er stand in einer engen, kopfsteingepflasterten Gasse. Die Gebäude zu beiden Seiten waren alt und schief, aus grobem Holz und Stein gebaut.</p>
-                        
-                        <p>Menschen in seltsamen Kleidern eilten an ihm vorbei. "Wo bin ich?" murmelte er, doch seine Stimme klang fremd. Dann hörte er eine Stimme hinter sich: "Na, Zeitnarr? Du hast keine Ahnung, was du da angerichtet hast."</p>
-                        
-                        <p>Max drehte sich ruckartig um, doch die Gasse war leer. Eine Frau in einem Umhang zog ihn in einen Hauseingang. "Die Jäger kommen", flüsterte sie. "Wenn du nicht schnell lernst, die Uhr zu kontrollieren, wirst du nicht überleben."</p>
-                        
-                        <p>Max begriff, dass er mit der mysteriösen Uhr nicht nur durch die Zeit gereist war, sondern auch in große Gefahr geraten war. Das Abenteuer hatte gerade erst begonnen, und er musste lernen, seine neue Macht zu verstehen, bevor es zu spät war.</p>
+                        <p>Der Flohmarkt war eine Welt für sich. Reihen von Ständen zogen sich über den kleinen Marktplatz, jeder beladen mit einer kunterbunten Mischung aus Altem, Kuriosem und Wertvollem. Max schob sich durch die Menschenmenge, die Hände tief in den Taschen seiner abgetragenen Jeans vergraben. Seine Mutter hatte ihn mitgeschleppt, obwohl er eigentlich lieber zu Hause geblieben wäre.</p>
+
+                        <p>Er streifte ziellos durch die Gassen, bis sein Blick an einem kleinen Stand hängen blieb. Er war unscheinbar -- ein alter Mann mit einem zerknitterten Gesicht saß auf einem wackeligen Stuhl hinter einem Tisch, auf dem eine Ansammlung von scheinbar wertlosem Kram lag. Doch etwas auf diesem Tisch zog Max magisch an. Eine Taschenuhr. Die Uhr war aus Messing, verziert mit filigranen Gravuren, die sich wie ein Labyrinth über die Oberfläche zogen. Ihr Glas war leicht zerkratzt, und der Deckel lag halb offen. Max griff danach, zögerte kurz, doch dann nahm er sie in die Hand. Sie fühlte sich überraschend schwer an, und als er sie öffnete, schlug die Zeiger wie von selbst einen wilden Tanz.</p>
+
+                        <p>"Interessierst du dich für alte Dinge?" fragte der Mann mit heiserer Stimme. Seine Augen funkelten auf eine Art, die Max nicht einordnen konnte -- irgendwo zwischen Neugier und Geheimnis. "Vielleicht. Was kostet sie?" Max drehte die Uhr in seiner Hand, während das Zifferblatt im Licht der Nachmittagssonne aufblitzte. Der Mann schien kurz nachzudenken. "Für dich? Zehn Euro. Aber sei vorsichtig mit ihr. Diese Uhr hat mehr Geschichte, als du dir vorstellen kannst." Max zog sein Taschengeld hervor und legte es auf den Tisch. Der Mann nickte knapp, nahm das Geld und lächelte, als Max sich mit der Uhr in der Hand entfernte.</p>
+
+                        <p>Zuhause setzte sich Max an seinen Schreibtisch. Er klappte die Uhr auf und betrachtete das Zifferblatt genauer. Es schien fast zu leben -- die Gravuren bewegten sich leicht, als ob sie atmeten. Ohne lange nachzudenken, zog er die kleine Krone an der Seite auf. Plötzlich schien die Luft im Raum zu vibrieren. Ein tiefes Summen erfüllte seine Ohren, und die Wände um ihn herum verschwammen. Max riss die Augen auf, wollte die Uhr fallen lassen, doch sie klebte wie festgewachsen an seiner Hand. Ein grelles Licht flammte auf, und für einen Moment schien die Welt stillzustehen. Dann war es vorbei.</p>
+
+                        <p>Als Max blinzelte, fand er sich nicht mehr in seinem Zimmer wieder. Er stand in einer engen, kopfsteingepflasterten Gasse. Die Gebäude zu beiden Seiten waren alt und schief, aus grobem Holz und Stein gebaut. Menschen in seltsamen Kleidern eilten an ihm vorbei, manche warfen ihm irritierte Blicke zu. Max schnappte nach Luft. "Wo bin ich?" murmelte er, doch seine Stimme klang fremd, fast erstickt. Er spürte die Uhr in seiner Hand pulsieren, wie ein Herzschlag. Und dann hörte er eine Stimme hinter sich, leise und bedrohlich: "Na, Zeitnarr? Du hast keine Ahnung, was du da angerichtet hast."</p>
+
+                        <p>Max drehte sich ruckartig um, doch die Gasse war leer. Sein Herz raste. Wer hatte gesprochen? Und vor allem -- wie würde er hier wieder herauskommen? Max blieb wie angewurzelt stehen, während die kühle Luft der Gasse seine Haut prickeln ließ. Die Worte hallten in seinem Kopf wider: "Zeitnarr... keine Ahnung, was du da angerichtet hast." Sein Blick huschte über die unebenen Pflastersteine und die schiefen Holztüren der umliegenden Häuser. Kein Mensch war zu sehen, der die Worte hätte gesprochen haben können. Doch das Gefühl, beobachtet zu werden, ließ ihn nicht los.</p>
+
+                        <p>Er ging langsam die Gasse entlang, sein Kopf drehte sich von rechts nach links, während er die Umgebung absuchte. Eine Markise, ausgeblichen und von Rissen durchzogen, hing über einem Laden, dessen schiefes Schild "Bäcker" verkündete. Aus einer Seitengasse drang das Lachen von Kindern, und der Duft von frisch gebackenem Brot ließ Max kurz innehalten. Doch bevor er den Mut fand, jemanden anzusprechen, ertönte ein erneutes Flüstern. Es klang jetzt näher, fast so, als stünde der Sprecher direkt hinter ihm. "Du gehörst nicht hierher."</p>
+
+                        <p>Max wirbelte herum, doch erneut war niemand zu sehen. Das Flüstern war verschwunden, aber diesmal bemerkte er etwas anderes: Ein Schatten huschte am Rand seines Blickfelds vorbei. "Hallo?" Seine Stimme klang unsicher, fast wie ein Wimmern, und er verfluchte sich dafür. "Wer ist da? Zeig dich!" Eine Tür knarrte hinter ihm, und Max drehte sich so schnell um, dass ihm schwindelig wurde. Ein Junge, nicht viel älter als er selbst, trat aus einem der Häuser. Sein zerfledderter Umhang und die abgetragenen Stiefel passten perfekt in diese seltsam mittelalterliche Umgebung.</p>
+
+                        <p>Der Junge warf ihm einen misstrauischen Blick zu und hielt einen Korb voller Holzstücke in den Händen. "Wer bist du?" fragte Max, bevor er sich selbst davon abhalten konnte. Der Junge kniff die Augen zusammen, als würde er etwas an Max prüfen. "Du kommst nicht von hier", sagte er schließlich, mehr eine Feststellung als eine Frage. "Pass besser auf. Fremde haben hier keinen guten Stand." Bevor Max etwas erwidern konnte, zog der Junge die Tür wieder hinter sich zu und ließ ihn allein.</p>
+
+                        <p>Max strich sich mit der freien Hand durch die Haare und versuchte, einen klaren Gedanken zu fassen. Doch alles an diesem Ort war fremd. Die Geräusche, die Gerüche, selbst die Luft fühlten sich anders an. Er musste einen Weg finden, hier wegzukommen. Seine Finger schlossen sich um die Taschenuhr. Sie war die einzige Verbindung zu seiner Welt. Vielleicht konnte sie ihn zurückbringen, wenn er sie erneut aufzog. Doch die Worte des alten Mannes kamen ihm in den Sinn: "Sei vorsichtig mit ihr." "Wieso hast du das nicht gleich gesagt, du Depp", murmelte Max und hob die Uhr.</p>
+
+                        <p>Doch bevor er eine Entscheidung treffen konnte, verdunkelte sich der Himmel über ihm. Ein tiefes, grollendes Geräusch ließ den Boden unter seinen Füßen vibrieren, und Max sah, wie die Menschen aus den umliegenden Häusern stürmten. Sie zeigten zum Horizont, wo sich eine dunkle Wolke rasend schnell näherte. "Der Sturm! Schließt die Tore!" rief eine Frau, während sie panisch Kinder ins Haus zog. Max stand wie erstarrt da, seine Beine wollten sich nicht bewegen. Was für ein Sturm konnte so etwas auslösen? Und warum hatte er das Gefühl, dass es irgendwie mit ihm zusammenhing? Das Flüstern kehrte zurück, diesmal mit einem harten, eindringlichen Ton: "Renn, Zeitnarr, bevor es dich erwischt!" Max spürte, wie sein Herz raste. Ohne weiter nachzudenken, sprintete er los -- direkt auf den drohenden Sturm zu.</p>
+
+                        <p>Plötzlich wurde Max am Arm gepackt und grob in einen Hauseingang gezogen. Eine raue Stimme zischte: "Bist du verrückt? Willst du, dass der Sturm dich erwischt?" Max taumelte gegen die Wand des schmalen Flurs, in den er gestoßen worden war. Vor ihm stand eine Frau, ihr Gesicht war von einer Kapuze halb verborgen. Ihre Augen, scharf und funkelnd wie Klingen, fixierten ihn. "Wer...?" brachte Max hervor, aber die Frau schnitt ihm das Wort ab. "Keine Zeit für Fragen, Zeitnarr. Du bist das Ziel des Sturms, nicht der Schutz."</p>
+
+                        <p>Max blinzelte sie an. "Was soll das heißen? Wieso bin ich das Ziel? Und warum nennt ihr mich alle so?" Die Frau ignorierte seine Fragen. Sie zog die schwere Holztür mit einem Seufzen zu und ließ die Dunkelheit des Flurs über sie hereinbrechen. "Die Uhr", sagte sie schließlich und deutete auf Max' Hand. "Hast du sie benutzt?" "Ja, aber ich weiß nicht, wie das alles funktioniert! Ich wollte nur---" "Natürlich hast du es nicht verstanden", unterbrach sie ihn. "Niemand, der dieses Artefakt findet, versteht es sofort. Aber jede Nutzung hat ihren Preis. Der Sturm ist nur der Anfang."</p>
+
+                        <p>Max fühlte, wie ihm die Kehle zuschnürte. "Was meinst du mit 'Preis'? Und wie kann ich das rückgängig machen?" Die Frau musterte ihn kurz, dann lachte sie trocken. "Rückgängig machen? Junge, das hier ist keine Spieluhr. Die Zeit lässt sich nicht einfach zurückdrehen, ohne Spuren zu hinterlassen." Bevor Max eine Erwiderung finden konnte, wurde die Tür von einem mächtigen Schlag erschüttert. Holz splitterte, und ein kalter Wind fegte durch den Raum. "Sie sind hier", flüsterte sie, ihre Stimme jetzt angespannt. "Die Jäger. Sie kommen, um zu holen, was ihnen gehört. Wenn du nicht schnell lernst, die Uhr zu kontrollieren, wirst du nicht überleben."</p>
+
+                        <p>Max stolperte hinter ihr her, während sein Verstand vor Fragen und Angst überquoll. Die Wände des engen Flurs schienen näher zu rücken, und das Heulen des Sturms draußen mischte sich mit einem unheilvollen Kreischen. Was habe ich nur getan? dachte er, während die Dunkelheit ihn immer weiter verschluckte. Das Abenteuer war gefährlicher, als er es sich je vorgestellt hatte, und Max begriff, dass er mit der mysteriösen Uhr nicht nur durch die Zeit gereist war, sondern auch in eine Welt voller Geheimnisse und tödlicher Gefahren geraten war.</p>
                     </div>
                 </div>
                 
@@ -377,23 +420,15 @@
                     <div class="book-title">The Time Fool</div>
                     <div class="chapter-title">Chapter 1: The Flea Market Find</div>
                     <div class="text-content">
-                        <p>The flea market was a world of its own. Rows of stalls stretched across the small marketplace, each loaded with a colorful mixture of old, curious, and valuable items. Max pushed through the crowd, his hands buried deep in the pockets of his worn jeans.</p>
+                        <p>The flea market was a world of its own. Rows of stalls stretched across the small marketplace, each loaded with a colorful mixture of old, curious, and valuable items. Max pushed through the crowd, his hands buried deep in the pockets of his worn jeans. His mother had dragged him along, although he would have preferred to stay home.</p>
                         
-                        <p>His mother had dragged him along, although he would have preferred to stay home. He wandered aimlessly through the alleys until his gaze fell upon a small stall. An old man with a wrinkled face sat on a wobbly chair behind a table full of seemingly worthless junk.</p>
+                        <p>He wandered aimlessly through the alleys until his gaze fell upon a small stall. It was inconspicuous -- an old man with a wrinkled face sat on a wobbly chair behind a table full of seemingly worthless junk. But something on this table magically attracted Max. A pocket watch. The watch was made of brass, decorated with delicate engravings that spread like a labyrinth across the surface.</p>
                         
-                        <p>But something on this table magically attracted Max. A pocket watch. The watch was made of brass, decorated with delicate engravings that spread like a labyrinth across the surface. Its glass was slightly scratched, and the lid lay half open.</p>
+                        <p>"Are you interested in old things?" asked the man with a hoarse voice. His eyes sparkled in a way that Max couldn't place. "For you? Ten euros. But be careful with it. This watch has more history than you can imagine." Max bought the watch and took it home.</p>
                         
-                        <p>"Are you interested in old things?" asked the man with a hoarse voice. His eyes sparkled in a way that Max couldn't place. "For you? Ten euros. But be careful with it. This watch has more history than you can imagine."</p>
+                        <p>At home, Max sat at his desk and examined the dial more closely. It almost seemed to be alive. Without thinking long, he pulled the small crown on the side. Suddenly the air in the room seemed to vibrate. A bright light flared up, and for a moment the world seemed to stand still. When Max blinked, he was no longer in his room. He stood in a narrow, cobblestone alley.</p>
                         
-                        <p>At home, Max sat at his desk and examined the dial more closely. It almost seemed to be alive. Without thinking long, he pulled the small crown on the side. Suddenly the air in the room seemed to vibrate. A deep humming filled his ears, and the walls around him blurred.</p>
-                        
-                        <p>A bright light flared up, and for a moment the world seemed to stand still. When Max blinked, he was no longer in his room. He stood in a narrow, cobblestone alley. The buildings on both sides were old and crooked, built of rough wood and stone.</p>
-                        
-                        <p>People in strange clothes hurried past him. "Where am I?" he murmured, but his voice sounded foreign. Then he heard a voice behind him: "Well, Time Fool? You have no idea what you've done."</p>
-                        
-                        <p>Max turned around abruptly, but the alley was empty. A woman in a cloak pulled him into a doorway. "The hunters are coming," she whispered. "If you don't quickly learn to control the watch, you won't survive."</p>
-                        
-                        <p>Max realized that with the mysterious watch, he had not only traveled through time but had also gotten into great danger. The adventure had just begun, and he had to learn to understand his new power before it was too late.</p>
+                        <p>Then he heard a voice behind him: "Well, Time Fool? You have no idea what you've done." A woman in a cloak pulled him into a doorway. "The hunters are coming," she whispered. "If you don't quickly learn to control the watch, you won't survive." Max realized that with the mysterious watch, he had not only traveled through time but had also gotten into great danger. The adventure had just begun.</p>
                     </div>
                 </div>
             </div>
@@ -409,23 +444,31 @@
                     <div class="book-title">Der Rätseldetektivclub</div>
                     <div class="chapter-title">Kapitel 1: Ein neuer Fall beginnt</div>
                     <div class="text-content">
-                        <p>Die Nachmittagssonne schien durch die hohen Fenster der Schulbibliothek, und Max blätterte gelangweilt in einem alten Buch. Sein Blick wanderte über die staubigen Regale, als er plötzlich einen alten, vergilbten Umschlag bemerkte, der aus einem zerlesenen Band hervorstand.</p>
-                        
-                        <p>Neugierig zog er den Umschlag heraus und öffnete ihn vorsichtig. Innen befand sich eine Notiz in geschwungener Handschrift: "Suche dort, wo die Schatten Geschichten erzählen, und finde den ersten Schlüssel." Max' Herz schlug schneller. Das klang nach einem Rätsel, das nur darauf wartete, gelöst zu werden.</p>
-                        
-                        <p>Der Club versammelte sich in ihrem geheimen Hauptquartier: dem alten Baumhaus im Garten von Jonas. Die Wände waren mit Landkarten, Zeitungsausschnitten und Fotos dekoriert, die sie von ihren bisherigen Abenteuern gesammelt hatten. "Was hast du da, Max?", fragte Emma neugierig.</p>
-                        
-                        <p>Die Gruppe diskutierte lebhaft, bis sie sich darauf einigte, zuerst das alte Theater zu untersuchen. "Wo die Schatten Geschichten erzählen" - das klang wie das perfekte Versteck für einen Hinweis.</p>
-                        
-                        <p>Am Abend schlichen sich die vier Freunde in das alte, längst geschlossene Theater. Der große Saal war dunkel, und Staub tanzte in den Lichtstrahlen ihrer Taschenlampen. Emma entdeckte schließlich eine unscheinbare Holztruhe, die halb unter der Bühne verborgen war.</p>
-                        
-                        <p>Mit klopfendem Herzen öffneten sie die Truhe und fanden darin eine kleine Karte und eine weitere Nachricht: "Der Weg beginnt mit einem Schritt ins Ungewisse. Folge den Sternen, und du wirst den zweiten Hinweis finden."</p>
-                        
-                        <p>Als die Kinder das Theater verließen, bemerkten sie, dass sie nicht allein waren. Ein dunkler Schatten bewegte sich hinter einem der Fenster. "Jemand beobachtet uns", flüsterte Emma. Sie rannten in eine schmale Gasse und versteckten sich hinter alten Kisten.</p>
-                        
-                        <p>"Das war knapp", sagte Lena atemlos. "Aber jetzt wissen wir, dass wir nicht die Einzigen sind, die hinter diesem Rätsel her sind." Max nickte. "Das macht es nur noch spannender. Morgen gehen wir zum Uhrenturm."</p>
-                        
-                        <p>Max wusste, dass dies kein gewöhnliches Abenteuer werden würde - und der wahre Schlüssel im Verborgenen lag. Das Rätsel hatte sie in seinen Bann gezogen, und es gab kein Zurück mehr.</p>
+                        <p>Die Nachmittagssonne schien durch die hohen Fenster der Schulbibliothek, und Max blätterte gelangweilt in einem alten Buch. Sein Blick wanderte über die staubigen Regale, als er plötzlich einen alten, vergilbten Umschlag bemerkte, der aus einem zerlesenen Band hervorstand. Neugierig zog er den Umschlag heraus und öffnete ihn vorsichtig. Innen befand sich eine Notiz in geschwungener Handschrift: "Suche dort, wo die Schatten Geschichten erzählen, und finde den ersten Schlüssel." Max' Herz schlug schneller. Das klang nach einem Rätsel, das nur darauf wartete, gelöst zu werden. Ohne zu zögern, steckte er den Umschlag ein und eilte aus der Bibliothek.</p>
+
+                        <p>Der Club versammelte sich in ihrem geheimen Hauptquartier: dem alten Baumhaus im Garten von Jonas. Die Wände des Baumhauses waren mit Landkarten, Zeitungsausschnitten und Fotos dekoriert, die sie von ihren bisherigen Abenteuern gesammelt hatten. "Was hast du da, Max?", fragte Emma neugierig, als er den Umschlag auf den Tisch legte. "Das ist ein Rätsel!" Max erklärte aufgeregt, was er in der Bibliothek gefunden hatte. Jonas lehnte sich nach vorn, die Stirn gerunzelt. "Wo die Schatten Geschichten erzählen" ... Das klingt wie das alte Theater in der Stadt." "Oder vielleicht das Museum?", warf Lena ein. "Dort gibt es doch diese Abteilung mit alten Märchenfiguren." Die Gruppe diskutierte lebhaft, bis sie sich schließlich darauf einigte, zuerst das Theater zu untersuchen.</p>
+
+                        <p>Am Abend schlichen sich die vier Freunde in das alte, längst geschlossene Theater. Der große Saal war dunkel, und Staub tanzte in den Lichtstrahlen ihrer Taschenlampen. Überall standen alte Kulissen und Requisiten. "Hier erzählen die Schatten wirklich Geschichten", murmelte Lena und zeigte auf die seltsamen Schatten, die die Kulissen auf die Wände warfen. Emma entdeckte schließlich eine unscheinbare Holztruhe, die halb unter einer Bühne verborgen war. Sie kniete sich hin und zog sie hervor. "Hier! Das könnte der Schlüssel sein!" Mit klopfendem Herzen öffneten sie die Truhe und fanden darin eine kleine Karte und eine weitere Nachricht: "Der Weg beginnt mit einem Schritt ins Ungewisse. Folge den Sternen, und du wirst den zweiten Hinweis finden."</p>
+
+                        <p>Jonas hielt die Karte hoch. "Das ist ein Plan von unserer Stadt ... und diese Markierung zeigt den alten Uhrenturm. Das ist unser nächster Halt." Als die Kinder das Theater verließen, bemerkten sie, dass sie nicht allein waren. Ein dunkler Schatten bewegte sich hinter einem der Fenster, und draußen auf der Straße war das leise Summen eines Motors zu hören. "Jemand beobachtet uns", flüsterte Emma, während sie sich an Jonas klammerte. "Weg hier!", rief Max und rannte los, die anderen dicht hinter ihm. In letzter Sekunde schlüpften sie in eine schmale Gasse und versteckten sich hinter einem Stapel alter Kisten. Keuchend lauschten sie, wie schwere Schritte näherkamen und dann wieder verschwanden.</p>
+
+                        <p>"Das war knapp", sagte Lena atemlos. "Aber jetzt wissen wir, dass wir nicht die Einzigen sind, die hinter diesem Rätsel her sind." Max nickte. "Das macht es nur noch spannender. Morgen gehen wir zum Uhrenturm." Die Freunde trennten sich schließlich, jeder in Gedanken versunken. Max lag in seinem Bett und starrte an die Decke. Wer könnte noch hinter dem Rätsel her sein? Und was würde sie am Uhrenturm erwarten? Das geheimnisvolle Rätsel ließ ihn nicht los. Die Worte der Nachricht hallten in seinem Kopf wider: "Der Weg beginnt mit einem Schritt ins Ungewisse."</p>
+
+                        <p>Die Nacht war ungewöhnlich still, fast bedrückend. Plötzlich ertönte ein leises Kratzen an seinem Fenster. Max' Herz setzte einen Schlag aus. Mit zitternden Fingern griff er nach seiner Taschenlampe und schaltete sie ein. Ein Schatten bewegte sich draußen im Garten, kaum erkennbar im schwachen Mondlicht. Er spähte hinaus, hielt den Atem an. "Nur der Wind ...", flüsterte er zu sich selbst, doch ein ungutes Gefühl blieb. Schließlich zwang er sich, die Augen zu schließen. Morgen würde ein langer Tag werden.</p>
+
+                        <p>Am nächsten Morgen wirkte alles normal -- zumindest auf den ersten Blick. Am Treffpunkt im Park warteten Jonas, Emma und Lena bereits ungeduldig. "Du siehst aus, als hättest du die ganze Nacht nicht geschlafen", bemerkte Emma und runzelte die Stirn. "Habe ich auch nicht", gab Max zu und zog die Karte hervor. "Ich habe nachgedacht. Der Uhrenturm ... glaubt ihr, dass dort wirklich etwas versteckt ist?" "Das werden wir gleich herausfinden", sagte Jonas entschlossen. "Aber wir müssen vorsichtig sein. Wenn uns wirklich jemand beobachtet hat, könnte das gefährlich werden."</p>
+
+                        <p>Der Uhrenturm ragte düster vor ihnen auf, als sie das verlassene Gelände betraten. Die Zeit hatte ihre Spuren hinterlassen -- bröckelnde Steine, verwilderte Ranken und ein Tor, das nur noch an einer Scharnierhälfte hing. "Das fühlt sich unheimlich an", flüsterte Lena. "Genau richtig für ein Abenteuer", entgegnete Jonas mit einem schiefen Grinsen und schob das quietschende Tor auf. Drinnen roch es nach feuchtem Holz und Staub. Der Boden war mit alten Blättern und Schutt bedeckt, und in der Ferne hörten sie das Tropfen von Wasser.</p>
+
+                        <p>Max leuchtete mit seiner Taschenlampe umher, während Emma das Tagebuch hervorzog, das sie am Abend zuvor gefunden hatten. "Hier steht etwas über eine geheime Treppe", sagte sie. "Sie soll hinter einer Falltür sein." Jonas klopfte mit seinem Fuß gegen die Dielen und lauschte. "Hier! Das klingt hohl." Gemeinsam schafften sie es, die schwere Holzklappe anzuheben, die eine schmale, steinerne Treppe freigab, die hinab in die Dunkelheit führte. "Ich gehe zuerst", sagte Jonas, doch Max hielt ihn zurück. "Warte. Lass mich. Ich habe die Karte."</p>
+
+                        <p>Die Stufen knarrten unter Max' Gewicht, während er langsam hinunterstieg. Die anderen folgten ihm dicht auf den Fersen. Die Luft wurde kühler, und ein schwaches Licht flackerte am Ende der Treppe -- als würde eine alte Lampe mit letzter Kraft kämpfen, nicht zu erlöschen. "Was ist das für ein Ort?", fragte Lena flüsternd, während sie in einen kleinen Raum traten. Die Wände waren mit seltsamen Symbolen bemalt, die Max an alte Karten erinnerten. In der Mitte des Raumes stand ein Podest, auf dem eine kleine Truhe lag, umgeben von einer dünnen Staubschicht.</p>
+
+                        <p>Emma trat vorsichtig näher und untersuchte sie. "Keine Schlösser, keine Fallen ... zumindest keine, die ich sehe", murmelte sie, bevor sie den Deckel öffnete. Drinnen lag ein seltsames Medaillon, das in die Karte eingearbeitet zu sein schien. "Das sieht aus wie ... ein Teil von etwas Größerem", bemerkte Max. "Vielleicht ein Schlüssel", überlegte Jonas. Doch bevor sie weiter nachdenken konnten, hallte ein lautes Geräusch durch den Raum -- Schritte, die sich der Treppe näherten. "Schnell, wir müssen hier raus!", flüsterte Lena panisch.</p>
+
+                        <p>Die Freunde griffen nach dem Medaillon und suchten verzweifelt nach einem zweiten Ausgang. Der Raum schien jedoch keine weiteren Türen zu haben. Die Schritte wurden lauter, und eine dunkle Silhouette erschien oben an der Treppe. Max presste das Medaillon fest an sich und flüsterte: "Egal, was passiert -- wir dürfen das Rätsel nicht aufgeben." Emma deutete plötzlich auf eine schmale Öffnung in der Wand, kaum groß genug, um hindurchzukriechen. "Da! Vielleicht führt das nach draußen!" Die Passage war eng und kalt, doch sie führte sie zu einem verlassenen Lagerraum und schließlich in Sicherheit.</p>
+
+                        <p>Zurück in ihrem Baumhaus untersuchten sie das gefundene Medaillon genauer. Es war mit geheimnisvollen Symbolen verziert und schien Teil eines größeren Rätsels zu sein. Plötzlich klopfte es an der Tür. Die Freunde starrten einander an. Niemand außer ihnen kannte das Baumhaus. Max öffnete vorsichtig die Tür und sah einen alten Mann in einem langen Mantel vor sich stehen. "Ihr habt das Medaillon", sagte er ohne Umschweife. "Das ist gut. Aber wenn ihr weitermacht, müsst ihr bereit sein, die Wahrheit zu riskieren." Bevor Max antworten konnte, war der Mann verschwunden. Das Abenteuer hatte gerade erst begonnen, doch sie ahnten bereits, dass der Weg gefährlicher war, als sie sich vorgestellt hatten.</p>
                     </div>
                 </div>
                 
@@ -434,23 +477,15 @@
                     <div class="book-title">The Puzzle Detective Club</div>
                     <div class="chapter-title">Chapter 1: A New Case Begins</div>
                     <div class="text-content">
-                        <p>The afternoon sun shone through the tall windows of the school library, and Max was leafing boredly through an old book. His gaze wandered over the dusty shelves when he suddenly noticed an old, yellowed envelope protruding from a well-worn volume.</p>
+                        <p>The afternoon sun shone through the tall windows of the school library, and Max was leafing boredly through an old book. His gaze wandered over the dusty shelves when he suddenly noticed an old, yellowed envelope protruding from a well-worn volume. Curious, he pulled out the envelope and opened it carefully. Inside was a note in flowing handwriting: "Search where shadows tell stories, and find the first key."</p>
                         
-                        <p>Curious, he pulled out the envelope and opened it carefully. Inside was a note in flowing handwriting: "Search where shadows tell stories, and find the first key." Max's heart beat faster. This sounded like a puzzle just waiting to be solved.</p>
+                        <p>The club gathered in their secret headquarters: the old tree house in Jonas's garden. The walls were decorated with maps, newspaper clippings, and photos from their previous adventures. "What do you have there, Max?" Emma asked curiously. The group discussed animatedly until they agreed to investigate the old theater first.</p>
                         
-                        <p>The club gathered in their secret headquarters: the old tree house in Jonas's garden. The walls were decorated with maps, newspaper clippings, and photos they had collected from their previous adventures. "What do you have there, Max?" Emma asked curiously.</p>
+                        <p>In the evening, the four friends snuck into the old, long-closed theater. The great hall was dark, and dust danced in the light beams of their flashlights. Emma finally discovered an inconspicuous wooden chest hidden under the stage. With pounding hearts, they opened the chest and found a small map and another message.</p>
                         
-                        <p>The group discussed animatedly until they agreed to investigate the old theater first. "Where shadows tell stories" - that sounded like the perfect hiding place for a clue.</p>
+                        <p>As the children left the theater, they noticed they were not alone. A dark shadow moved behind one of the windows. "Someone is watching us," Emma whispered. They ran into a narrow alley and hid behind old boxes. "That was close," Lena said breathlessly. "But now we know we're not the only ones after this puzzle."</p>
                         
-                        <p>In the evening, the four friends snuck into the old, long-closed theater. The great hall was dark, and dust danced in the light beams of their flashlights. Emma finally discovered an inconspicuous wooden chest that was half hidden under the stage.</p>
-                        
-                        <p>With pounding hearts, they opened the chest and found a small map and another message: "The path begins with a step into the unknown. Follow the stars, and you will find the second clue."</p>
-                        
-                        <p>As the children left the theater, they noticed they were not alone. A dark shadow moved behind one of the windows. "Someone is watching us," Emma whispered. They ran into a narrow alley and hid behind old boxes.</p>
-                        
-                        <p>"That was close," Lena said breathlessly. "But now we know we're not the only ones after this puzzle." Max nodded. "That just makes it more exciting. Tomorrow we go to the clock tower."</p>
-                        
-                        <p>Max knew this wouldn't be an ordinary adventure - and the true key lay hidden. The puzzle had drawn them under its spell, and there was no turning back.</p>
+                        <p>The next day they investigated the old clock tower, where they found a mysterious medallion in an underground chamber. But they were being pursued by unknown figures, and when they returned to their tree house, a strange old man appeared with a cryptic warning about the truth they would have to risk. The adventure had just begun, and they already sensed that the path ahead was more dangerous than they had imagined.</p>
                     </div>
                 </div>
             </div>
@@ -466,25 +501,37 @@
                     <div class="book-title">Der verborgene Wald</div>
                     <div class="chapter-title">Kapitel 1: Die geheimnisvolle Karte</div>
                     <div class="text-content">
-                        <p>Die Sonne neigte sich dem Horizont entgegen und tauchte den Himmel in ein sanftes Orange. Max und Lisa standen auf dem alten Marktplatz ihrer Stadt und schauten sich neugierig um. Der Platz war leer, die meisten Geschäfte hatten bereits geschlossen, und nur das entfernte Kichern der Kinder, die auf dem Heimweg waren, war zu hören.</p>
-                        
-                        <p>"Glaubst du, es ist wirklich der Verborgene Wald?", fragte Max aufgeregt. Er sprang von einem Bein auf das andere und klopfte sich mit der Hand auf die Tasche, in der er eine kleine Notiz versteckt hatte, die sie den ganzen Nachmittag über verfolgt hatte.</p>
-                        
-                        <p>Sie hatten die Nachricht in einem alten Buch gefunden, das sie im Antiquariat der Stadt entdeckt hatten. Die Nachricht sprach von einem alten Mann, der sie zur geheimen Karte führen würde - eine Karte, die zu einem versteckten Ort voller Magie und Abenteuer führte.</p>
-                        
-                        <p>"Schau mal da!", rief Max plötzlich und zeigte auf einen schmalen, fast verborgenen Weg zwischen den Häusern. Am Ende des Weges stand ein alter Mann in einem langen, grauen Umhang. Seine Augen leuchteten wie zwei funkelnde Sterne.</p>
-                        
-                        <p>"Ah, ihr seid gekommen", sagte er mit einer Stimme, die sich wie das Flüstern des Windes anhörte. "Ich habe gewusst, dass ihr es seid." Er zog eine alte, zusammengerollte Karte aus seinem Mantel und überreichte sie Max. Die Karte war mit seltsamen Symbolen und bunten, geheimen Markierungen verziert.</p>
-                        
-                        <p>"Der Verborgene Wald", erklärte der Mann. "Er wartet auf euch. Wenn ihr ihm begegnet, werdet ihr ein Geheimnis erfahren, das schon viele Jahre verborgen ist. Doch nur die, die das Herz eines Abenteurers haben, können es finden."</p>
-                        
-                        <p>Max' Augen glänzten vor Aufregung, während Lisa die Karte misstrauisch betrachtete. Als der alte Mann plötzlich verschwand, als hätte er sich im Schatten aufgelöst, standen sie einen Moment verblüfft da.</p>
-                        
-                        <p>Die Karte in Max' Händen begann zu schimmern, und ein warmes, goldenes Licht erstrahlte. Es war, als ob die Karte von einer eigenen, geheimen Energie erweckt wurde. "Sie lebt...", flüsterte Lisa fasziniert.</p>
-                        
-                        <p>Mit einem letzten Blick zurück auf die Stadt traten Max, Lisa und Bruno, ihr Hund, in den geheimen Wald ein. Der Wald schien in dieser Nacht lebendig zu sein, und sie spürten, dass sie nicht alleine auf diesem Weg waren.</p>
-                        
-                        <p>"Bist du bereit?", fragte Max mit einem schelmischen Grinsen. "Ich weiß nicht", sagte Lisa nachdenklich. "Aber ich glaube, die Reise hat gerade erst begonnen." Und so begann ihr Abenteuer - eine Reise, die sie nie vergessen würden.</p>
+                        <p>Die Sonne neigte sich dem Horizont entgegen und tauchte den Himmel in ein sanftes Orange. Max und Lisa standen auf dem alten Marktplatz ihrer Stadt und schauten sich neugierig um. Der Platz war leer, die meisten Geschäfte hatten bereits geschlossen, und nur das entfernte Kichern der Kinder, die auf dem Heimweg waren, war zu hören. Aber Max und Lisa waren nicht in die Richtung nach Hause gegangen. Sie hatten etwas anderes im Kopf.</p>
+
+                        <p>"Glaubst du, es ist wirklich der Verborgene Wald?", fragte Max aufgeregt. Er sprang von einem Bein auf das andere und klopfte sich mit der Hand auf die Tasche, in der er eine kleine Notiz versteckt hatte, die sie den ganzen Nachmittag über verfolgt hatte. Sie hatten die Nachricht in einem alten Buch gefunden, das sie im Antiquariat der Stadt entdeckt hatten. Sie hatte sie verwirrt, aber auch neugierig gemacht. Die Nachricht sprach von einem alten Mann, der sie zur geheimen Karte führen würde -- eine Karte, die zu einem versteckten Ort voller Magie und Abenteuer führte.</p>
+
+                        <p>Max hatte sofort entschieden, dass sie sich auf den Weg machen sollten, aber Lisa hatte etwas mehr Zeit gebraucht, um sich zu überlegen, ob es wirklich sicher war. "Schau mal da!", rief Max plötzlich und zeigte auf einen schmalen, fast verborgenen Weg zwischen den Häusern. Am Ende des Weges stand ein alter Mann in einem langen, grauen Umhang. Seine Augen leuchteten wie zwei funkelnde Sterne. Lisa spürte sofort eine seltsame Energie in seiner Nähe -- als ob der Wald, von dem sie gehört hatten, in ihm lebte.</p>
+
+                        <p>Der Mann bemerkte sie sofort und winkte mit einer einladenden Geste. "Ah, ihr seid gekommen", sagte er mit einer Stimme, die sich wie das Flüstern des Windes anhörte. "Ich habe gewusst, dass ihr es seid." "W-wir?", fragte Max überrascht. "Wie können Sie das wissen?" Der Mann lächelte geheimnisvoll. "Ich kenne viele Dinge, die andere nicht wissen. Die Karte, die ihr sucht, wird euch den Weg zeigen, aber nur, wenn ihr mutig genug seid, ihn zu gehen."</p>
+
+                        <p>Er zog eine alte, zusammengerollte Karte aus seinem Mantel und überreichte sie Max. Die Karte war mit seltsamen Symbolen und bunten, geheimen Markierungen verziert. Der Rand war mit goldenen Schnörkeln geschmückt, die in der Dämmerung im Schein des Mondes schimmerten. Max öffnete die Karte und hielt sie neugierig in der Hand. Es war, als ob die Karte lebendig wurde. Sie schien zu flimmern und zu pulsieren, als ob sie aufgeregt darauf wartete, dass er sie entdeckte.</p>
+
+                        <p>"Was bedeutet das?", fragte Lisa und deutete auf einen merkwürdigen, leuchtenden Punkt in der Mitte der Karte. "Der Verborgene Wald", erklärte der Mann. "Er wartet auf euch. Wenn ihr ihm begegnet, werdet ihr ein Geheimnis erfahren, das schon viele Jahre verborgen ist. Doch nur die, die das Herz eines Abenteurers haben, können es finden." Max' Augen glänzten vor Aufregung. "Das hört sich nach einem echten Abenteuer an!", rief er und drückte die Karte fest an sich.</p>
+
+                        <p>Lisa hingegen schaute sich die Karte und den alten Mann misstrauisch an. "Aber was passiert, wenn wir nicht zurückkommen?", fragte sie leise. Der Mann schaute sie mit einem wissenden Blick an. "Ihr werdet zurückkommen", sagte er sanft. "Doch nicht so, wie ihr gegangen seid. Ihr werdet stärker, weiser und vielleicht auch ein wenig anders sein. Aber das ist das Abenteuer." Max zog Lisa etwas ungeduldig am Ärmel. "Komm schon, Lisa! Wir können es doch wenigstens versuchen!" Lisa seufzte, doch in ihren Augen funkelte die Neugier. "Okay", sagte sie schließlich. "Aber nur, wenn du uns auch hilfst, den Weg zu finden." Der alte Mann nickte und verschwand dann im Schatten der Gasse, als ob er nie da gewesen wäre.</p>
+
+                        <p>Max und Lisa standen einen Moment lang unschlüssig da, dann drehten sie sich gemeinsam in Richtung des Waldes. Es war bereits Abend, und die ersten Sterne waren am Himmel zu sehen. Die Karte in Max' Händen leuchtete schwach, als ob sie ihnen den Weg wies. Sie waren sich nicht sicher, was sie erwarten würde -- doch die Spannung, die das Unbekannte mit sich brachte, ließ ihre Herzen schneller schlagen. "Lass uns aufbrechen", sagte Max entschlossen. Lisa zögerte kurz, dann nickte sie. "Ja, aufbrechen, aber vorsichtig", murmelte sie, während sie Bruno, ihren Hund, der freudig neben ihnen herlief, ansah.</p>
+
+                        <p>"Wir müssen uns gut vorbereiten. Vielleicht brauchen wir Proviant, ein paar Seile und auf jeden Fall etwas zum Leuchten", überlegte Lisa laut, während Max bereits in eine der Taschen seiner Jacke griff und nach seinen Abenteuergütern suchte. "Das wird großartig", sagte Max und packte eine Taschenlampe ein. "Was ist, wenn wir Magie entdecken?" Lisa drehte sich um und blickte zur Karte, die in seinen Händen pulsierte. "Was, wenn wir uns verlaufen oder etwas anderes passiert?" Doch gerade, als sie die Frage laut aussprach, schimmerte die Karte plötzlich heller. Ein warmes, goldenes Licht flimmerte auf der Karte auf und löste sich wie ein Nebel in der Luft auf. Ein leises Geräusch, wie das sanfte Rascheln von Blättern, war zu hören. "Sie lebt...", flüsterte Lisa fasziniert.</p>
+
+                        <p>Max griff nach ihrer Hand, und gemeinsam folgten sie der magischen Spur, die die Karte ihnen zeigte. Doch gerade als sie die ersten Schritte auf den Waldweg setzten, erklang ein leises, unheimliches Knistern in der Luft -- ein Geräusch, das ihnen das Gefühl gab, dass sie nicht alleine waren. "Bist du bereit?", fragte Max. "Ich weiß nicht", sagte Lisa mit einem Blick auf die Karte, "aber ich glaube, die Reise hat gerade erst begonnen." Mit einem letzten Blick zurück auf die Stadt, die langsam in der Dunkelheit verschwand, traten Max, Lisa und Bruno in den geheimen Wald ein, und das Abenteuer begann.</p>
+
+                        <p>Die Sonne neigte sich langsam dem Horizont entgegen, und die letzten goldenen Strahlen tauchten die Welt in ein sanftes, warmes Orange. Der alte Marktplatz, auf dem Max und Lisa standen, war in den späten Nachmittagsstunden fast leer. Die Fenster der Geschäfte waren bereits geschlossen, und nur das entfernte Lachen von Kindern war zu hören, die auf dem Heimweg waren. Der Marktplatz war nun der ruhigste Ort in der Stadt, und trotzdem hatten Max und Lisa keinen Gedanken daran verschwendet, nach Hause zu gehen.</p>
+
+                        <p>In ihren Gedanken kreisten die Worte der geheimen Nachricht. Sie hatten sie aus einem vergilbten Buch herausgelesen, das Max in einem kleinen Antiquariat aufgestöbert hatte. Ein Buch, das mehr Fragen aufwarf, als es Antworten gab. Die Nachricht versprach ihnen eine Karte, die zu einem magischen Ort führte -- einem Ort voller Abenteuer, der nur denjenigen offenbart wurde, die bereit waren, ihn zu suchen. Und Max, der von Natur aus neugierig war, hatte sofort beschlossen, dass sie dem Geheimnis auf den Grund gehen mussten.</p>
+
+                        <p>Am Ende dieses geheimen Pfades stand ein alter Mann in einem langen grauen Umhang. Seine silbernen Haare fielen in weichen Wellen auf seine Schultern, und seine Augen funkelten wie zwei Sterne, die in der Dämmerung leuchteten. Die Atmosphäre um ihn herum schien durchzogen von einer fast greifbaren Energie -- als ob der Wald, von dem sie in der Nachricht gelesen hatten, in diesem Mann lebte. Mit einer eleganten Bewegung zog der alte Mann eine vergilbte, zusammengerollte Karte aus seinem Mantel. Er hielt sie Max entgegen. Die Karte war mit seltsamen Symbolen und mystischen Markierungen versehen, die wie geheime Botschaften wirkten. Am Rand waren goldene Schnörkel zu sehen, die im letzten Licht des Tages schimmerten.</p>
+
+                        <p>Max nahm die Karte vorsichtig in seine Hände. Als er sie berührte, fühlte er, wie ein leises Knistern durch seine Finger zog, fast so, als ob die Karte aufgeregt darauf wartete, entdeckt zu werden. Sie schien zu flimmern, als ob sie einen unsichtbaren Rhythmus hatte. Der alte Mann sah sie mit einem durchdringenden Blick an. "Ihr werdet zurückkommen", sagte er ruhig. "Doch nicht so, wie ihr gegangen seid. Ihr werdet stärker, weiser und vielleicht auch ein wenig anders sein. Aber das ist es, was ein Abenteuer ausmacht."</p>
+
+                        <p>Der alte Mann nickte, und in dem Moment, als er sich zum Gehen wandte, war er plötzlich verschwunden, als hätte er sich im Schatten der Gasse aufgelöst. Max und Lisa standen einen Moment lang verblüfft da. War er wirklich dort gewesen? Es fühlte sich an, als ob die Zeit für einen Augenblick stillgestanden hatte. Der Wald schien in dieser Nacht lebendig zu sein. Das Rascheln der Blätter war wie ein leises, einladendes Murmeln, das nur für sie bestimmt war. Doch gleichzeitig war da ein Gefühl der Unheimlichkeit -- als ob sie nicht alleine auf diesem Weg waren. Ein Knistern lag in der Luft.</p>
+
+                        <p>Mit einem letzten Blick zurück auf die Stadt, die nun hinter den Bäumen verschwunden war, traten Max, Lisa und Bruno in den geheimen Wald ein. Ihre Herzen klopften schneller, als sie sich tiefer in die Dunkelheit wagten. Und so begann ihre Reise -- ein Abenteuer, das sie nie vergessen würden. Der Wald war voller Geheimnisse, und sie spürten, dass jeder Schritt sie näher zu einem Geheimnis brachte, das ihr Leben für immer verändern könnte.</p>
                     </div>
                 </div>
                 
@@ -493,25 +540,15 @@
                     <div class="book-title">The Hidden Forest</div>
                     <div class="chapter-title">Chapter 1: The Mysterious Map</div>
                     <div class="text-content">
-                        <p>The sun was setting toward the horizon, painting the sky in a soft orange. Max and Lisa stood on the old marketplace of their town, looking around curiously. The square was empty, most shops had already closed, and only the distant giggling of children on their way home could be heard.</p>
+                        <p>The sun was setting toward the horizon, painting the sky in a soft orange. Max and Lisa stood on the old marketplace of their town, looking around curiously. The square was empty, most shops had already closed, and only the distant giggling of children on their way home could be heard. But Max and Lisa had not gone in the direction of home. They had something else on their minds.</p>
                         
-                        <p>"Do you think it's really the Hidden Forest?" Max asked excitedly. He jumped from one leg to the other and tapped his pocket with his hand, where he had hidden a small note that had occupied them all afternoon.</p>
+                        <p>"Do you think it's really the Hidden Forest?" Max asked excitedly. He jumped from one leg to the other and tapped his pocket where he had hidden a small note that had occupied them all afternoon. They had found the message in an old book they had discovered in the town's antique shop. The message spoke of an old man who would lead them to the secret map.</p>
                         
-                        <p>They had found the message in an old book they had discovered in the town's antique shop. The message spoke of an old man who would lead them to the secret map - a map that led to a hidden place full of magic and adventure.</p>
+                        <p>"Look there!" Max suddenly shouted, pointing to a narrow, almost hidden path between the houses. At the end of the path stood an old man in a long, gray cloak. His eyes shone like two twinkling stars. "Ah, you have come," he said with a voice that sounded like the whisper of the wind. "I knew it was you."</p>
                         
-                        <p>"Look there!" Max suddenly shouted, pointing to a narrow, almost hidden path between the houses. At the end of the path stood an old man in a long, gray cloak. His eyes shone like two twinkling stars.</p>
+                        <p>He pulled an old, rolled-up map from his cloak and handed it to Max. The map was decorated with strange symbols and colorful, secret markings. "The Hidden Forest," the man explained. "It awaits you. When you encounter it, you will learn a secret that has been hidden for many years." The map began to shimmer in Max's hands, and a warm, golden light shone forth.</p>
                         
-                        <p>"Ah, you have come," he said with a voice that sounded like the whisper of the wind. "I knew it was you." He pulled an old, rolled-up map from his cloak and handed it to Max. The map was decorated with strange symbols and colorful, secret markings.</p>
-                        
-                        <p>"The Hidden Forest," the man explained. "It awaits you. When you encounter it, you will learn a secret that has been hidden for many years. But only those who have the heart of an adventurer can find it."</p>
-                        
-                        <p>Max's eyes gleamed with excitement, while Lisa looked at the map suspiciously. When the old man suddenly disappeared, as if he had dissolved in the shadows, they stood stunned for a moment.</p>
-                        
-                        <p>The map in Max's hands began to shimmer, and a warm, golden light shone forth. It was as if the map was awakened by its own secret energy. "It's alive..." Lisa whispered, fascinated.</p>
-                        
-                        <p>With one last look back at the town, Max, Lisa, and Bruno, their dog, entered the secret forest. The forest seemed alive that night, and they felt they were not alone on this path.</p>
-                        
-                        <p>"Are you ready?" Max asked with a mischievous grin. "I don't know," Lisa said thoughtfully. "But I think the journey has just begun." And so their adventure began - a journey they would never forget.</p>
+                        <p>With one last look back at the town, Max, Lisa, and Bruno, their dog, entered the secret forest. The forest seemed alive that night, and they felt they were not alone on this path. "Are you ready?" Max asked with a mischievous grin. "I don't know," Lisa said thoughtfully. "But I think the journey has just begun." And so their adventure began - a journey they would never forget.</p>
                     </div>
                 </div>
             </div>
@@ -602,7 +639,7 @@
                     }
                 }
             } else {
-                // Fallback für unbekannte Kombinationen
+                // Fallback
                 bookButton.href = '#';
                 bookButton.classList.add('unavailable');
                 ebookButton.href = '#';
