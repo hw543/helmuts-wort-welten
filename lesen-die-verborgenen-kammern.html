@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Die Verborgenen Kammern Lesen - Helmut Wegners Wortwelten</title>
+    <title>Die verborgenen Kammern - Helmut Wegners Romantik-Serie</title>
     <style>
         * {
             margin: 0;
@@ -12,25 +12,25 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.8;
             color: #2c1810;
-            background: linear-gradient(135deg, #4B0082 0%, #8A2BE2 30%, #DDA0DD 70%, #F0E68C 100%);
+            background: linear-gradient(135deg, #8B0000 0%, #4B0082 30%, #8B0000 70%, #4B0082 100%);
             min-height: 100vh;
             padding: 20px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             background: #FFF8DC;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             overflow: hidden;
         }
 
         .header {
-            background: linear-gradient(135deg, #4B0082, #8A2BE2);
+            background: linear-gradient(135deg, #8B0000, #4B0082);
             color: white;
             padding: 30px;
             text-align: center;
@@ -70,7 +70,7 @@
         }
 
         .controls {
-            background: #E6E6FA;
+            background: #F5DEB3;
             padding: 20px;
             border-bottom: 3px solid #DDD;
             position: sticky;
@@ -100,8 +100,8 @@
         }
 
         .flag-btn.active {
-            border-color: #8A2BE2;
-            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            border-color: #8B0000;
+            box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
         }
 
         .amazon-buttons {
@@ -150,7 +150,7 @@
         }
 
         .btn-band {
-            background: linear-gradient(135deg, #4B0082, #8A2BE2);
+            background: linear-gradient(135deg, #8B0000, #4B0082);
             color: white;
             padding: 10px 15px;
             border: none;
@@ -184,23 +184,23 @@
         }
 
         .book-cover img {
-            max-width: 200px;
+            max-width: 250px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .book-title {
-            color: #4B0082;
-            font-size: 2em;
+            color: #8B0000;
+            font-size: 2.2em;
             margin-bottom: 10px;
             text-align: center;
-            border-bottom: 2px solid #8A2BE2;
+            border-bottom: 2px solid #4B0082;
             padding-bottom: 15px;
         }
 
         .chapter-title {
-            color: #663399;
+            color: #4B0082;
             font-size: 1.5em;
             margin: 30px 0 20px 0;
             text-align: center;
@@ -219,7 +219,7 @@
 
         .text-content p:first-child::first-letter {
             font-size: 3em;
-            color: #4B0082;
+            color: #8B0000;
             float: left;
             line-height: 1;
             margin: 0 8px 0 0;
@@ -228,6 +228,17 @@
 
         .hidden {
             display: none;
+        }
+
+        .age-warning {
+            background: #FFE4E1;
+            border: 2px solid #8B0000;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #8B0000;
+            font-weight: bold;
         }
 
         @media (max-width: 600px) {
@@ -254,15 +265,32 @@
                 margin-bottom: 15px;
                 display: inline-block;
             }
+
+            .amazon-buttons {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .language-flags {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .text-content p:first-child::first-letter {
+                font-size: 2.5em;
+                margin: 0 5px 0 0;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <a href="die-verborgenen-kammern.html" class="back-link-top">← Zurück zur Serie</a>
-            <h1>Die Verborgenen Kammern</h1>
-            <p>Geheimnisvolle Liebesgeschichten voller Leidenschaft und Mysterium</p>
+            <a href="romantik.html" class="back-link-top">← Zurück zur Romantik-Serie</a>
+            <h1>Die verborgenen Kammern</h1>
+            <p>Eine sinnliche Reise durch Kunst, Leidenschaft und Geheimnisse</p>
         </div>
 
         <div class="controls">
@@ -277,17 +305,21 @@
                 </div>
             </div>
             <div class="band-navigation">
-                <button class="btn-band active" onclick="showBook(1)">Band 1</button>
-                <button class="btn-band" onclick="showBook(2)">Band 2</button>
-                <button class="btn-band" onclick="showBook(3)">Band 3</button>
+                <button class="btn-band active" onclick="showBook(1)">Band 1: Hinter verschlossenen Türen</button>
+                <button class="btn-band" onclick="showBook(2)">Band 2: Die Tiefe der Begierde</button>
+                <button class="btn-band" onclick="showBook(3)">Band 3: Die Kunst der Hingabe</button>
             </div>
         </div>
 
         <div class="content">
+            <div class="age-warning">
+                ⚠️ Hinweis: Diese Serie richtet sich an erwachsene Leser (18+) und enthält explizite Inhalte.
+            </div>
+
             <!-- Band 1: Hinter verschlossenen Türen -->
             <div id="book1" class="book-content">
                 <div class="book-cover">
-                    <img src="https://hw543.github.io/helmuts-wortwelten/hinter-verschlossenen-tueren.jpg" alt="Hinter verschlossenen Türen">
+                    <img src="hinter-verschlossenen-tueren.jpg" alt="Hinter verschlossenen Türen">
                 </div>
                 
                 <!-- Deutsche Version -->
@@ -296,275 +328,548 @@
                     <div class="chapter-title">Kapitel 1: Das Angebot</div>
                     <div class="text-content">
                         <p>Das Pigment bröckelte unter Elenas behutsamen Bewegungen. Winzige Farbpartikel, einst leuchtend rot, nun zu einem matten Braun verblasst, rieselten auf das weiße Tuch, das sie unter dem Gemälde ausgebreitet hatte. Vor über zweihundert Jahren hatte ein Künstler diesen Farbton mit Quecksilbersulfid und organischen Bindemitteln angerührt, ohne zu ahnen, dass seine Schöpfung eines Tages unter Elenas Mikroskop und Skalpell liegen würde.</p>
-                        
+
                         <p>„Jahrhunderte", murmelte sie, während sie mit geübten Fingern die nächste Schicht freilegte. „Und trotzdem verrätst du mir deine Geheimnisse." Elena Winters arbeitete im großzügigen Restaurierungsatelier des Friedrich-Museums in Berlin, umgeben von Spezialinstrumenten, Chemikalien und Referenzwerken. Die hohen Fenster ließen gleichmäßiges Nordlicht herein -- das ideale Licht für ihre präzise Arbeit. Das spätbarocke Gemälde, eine Darstellung der Göttin Diana bei der Jagd, war seit drei Wochen ihr Projekt. Es war eine Herausforderung, doch genau das machte die Arbeit für sie so befriedigend.</p>
-                        
+
                         <p>Elenas Handy vibrierte auf dem Arbeitstisch. Sie ignorierte es. Der Bereich um Dianas rechtes Auge bedurfte ihrer vollen Konzentration -- zu viele übermalte Schichten, zu viel Firnis, aufgetragen von wohlmeinenden, aber unkundigen Restauratoren vergangener Jahrhunderte. Ihre Aufgabe war es, durch all diese Schichten zum Original vorzudringen, ohne es zu beschädigen.</p>
-                        
-                        <p>Das Telefon vibrierte erneut. Elena seufzte, legte ihr Skalpell beiseite und streifte die Latexhandschuhe ab. Es war Direktor Schumann, wie die Anzeige verriet. Der Museumsdirektor rief sie selten direkt an; normalerweise kommunizierte er über seine Assistentin oder E-Mail.</p>
-                        
-                        <p>„Winters", meldete sie sich knapp.</p>
-                        
-                        <p>„Elena, gut, dass ich Sie erreiche." Die Stimme des Direktors klang ungewöhnlich enthusiastisch. „Könnten Sie in einer halben Stunde in meinem Büro sein? Ich habe jemanden hier, der Sie kennenlernen möchte."</p>
-                        
-                        <p>Sie blickte auf das halb restaurierte Gemälde. „Ich bin mitten in der Arbeit an der Diana, Herr Direktor."</p>
-                        
-                        <p>„Das kann warten. Diese Gelegenheit nicht."</p>
-                        
-                        <p>Elena unterdrückte ein Seufzen. In ihrem Beruf hatte sie gelernt, dass Zeit relativ war. Für sie bedeuteten Minuten manchmal den Unterschied zwischen erhaltener und zerstörter Geschichte. Für Administratoren wie Schumann waren Termine und Netzwerkgespräche wichtiger.</p>
-                        
-                        <p>„In Ordnung. Dreißig Minuten."</p>
-                        
-                        <p>Sie legte auf und begann methodisch, ihren Arbeitsplatz zu sichern. Das Gemälde wurde sorgfältig abgedeckt, die Instrumente gereinigt und die Chemikalien verschlossen. Elena zog ihren weißen Laborkittel aus und betrachtete ihr Spiegelbild in der Fensterscheibe. Ihr rotbraunes Haar war zu einem strengen Knoten gebunden, ihre Kleidung -- eine schlichte schwarze Hose und eine graue Seidenbluse -- war zweckmäßig und unauffällig. Die einzige Extravaganz, die sie sich erlaubte, war eine antike Brosche aus Silberfiligran -- ein Erbstück ihrer Großmutter und ein subtiler Hinweis auf ihre Verbundenheit mit der Vergangenheit.</p>
-                        
-                        <p>Auf dem Weg zum Direktorenbüro passierte Elena die öffentlichen Galerien des Museums. Touristen und Kunstliebhaber schlenderten zwischen den Meisterwerken umher, nahmen Selfies vor Gemälden oder hörten aufmerksam den Erklärungen der Museumsführer zu. All diese Menschen sahen nur die glänzende Oberfläche -- den vollendeten Restaurierungsprozess, die polierte Präsentation. Die mühsame Arbeit, die sie und ihre Kollegen im Verborgenen leisteten, blieb unsichtbar.</p>
-                        
-                        <p>Genau so wollte Elena es haben. Sie arbeitete lieber im Hintergrund, tauchte ein in die Intimität der Kunstwerke, lernte ihre Geheimnisse kennen. Die Rampenlichtmomente überließ sie gerne anderen.</p>
-                        
-                        <p>Schumanns Büro lag im historischen Flügel des Museums, ein hoher, mit dunklem Holz getäfelter Raum mit Blick auf den Museumspark. Als Elena nach kurzem Klopfen eintrat, erhob sich der Direktor hastig von seinem Schreibtisch.</p>
-                        
-                        <p>„Ah, Frau Winters! Kommen Sie herein, kommen Sie herein."</p>
-                        
-                        <p>Schumann war ein korpulenter Mann mit schütterem Haar und einer Vorliebe für teure, maßgeschneiderte Anzüge. Im Gegensatz zum klischeehaften zerstreuten Museumsdirektor war er ein scharfsinniger Administrator und brillanter Fundraiser -- Qualitäten, die das Museum dringend brauchte, um in Zeiten knapper öffentlicher Kassen zu überleben.</p>
-                        
+
+                        <p>Das Telefon vibrierte erneut. Elena seufzte, legte ihr Skalpell beiseite und streifte die Latexhandschuhe ab. Es war Direktor Schumann, wie die Anzeige verriet. Der Museumsdirektor rief sie selten direkt an; normalerweise kommunizierte er über seine Assistentin oder E-Mail. „Winters", meldete sie sich knapp. „Elena, gut, dass ich Sie erreiche." Die Stimme des Direktors klang ungewöhnlich enthusiastisch. „Könnten Sie in einer halben Stunde in meinem Büro sein? Ich habe jemanden hier, der Sie kennenlernen möchte."</p>
+
+                        <p>Sie blickte auf das halb restaurierte Gemälde. „Ich bin mitten in der Arbeit an der Diana, Herr Direktor." „Das kann warten. Diese Gelegenheit nicht." Elena unterdrückte ein Seufzen. In ihrem Beruf hatte sie gelernt, dass Zeit relativ war. Für sie bedeuteten Minuten manchmal den Unterschied zwischen erhaltener und zerstörter Geschichte. Für Administratoren wie Schumann waren Termine und Netzwerkgespräche wichtiger. „In Ordnung. Dreißig Minuten." Sie legte auf und begann methodisch, ihren Arbeitsplatz zu sichern.</p>
+
+                        <p>Das Gemälde wurde sorgfältig abgedeckt, die Instrumente gereinigt und die Chemikalien verschlossen. Elena zog ihren weißen Laborkittel aus und betrachtete ihr Spiegelbild in der Fensterscheibe. Ihr rotbraunes Haar war zu einem strengen Knoten gebunden, ihre Kleidung -- eine schlichte schwarze Hose und eine graue Seidenbluse -- war zweckmäßig und unauffällig. Die einzige Extravaganz, die sie sich erlaubte, war eine antike Brosche aus Silberfiligran -- ein Erbstück ihrer Großmutter und ein subtiler Hinweis auf ihre Verbundenheit mit der Vergangenheit.</p>
+
+                        <p>Auf dem Weg zum Direktorenbüro passierte Elena die öffentlichen Galerien des Museums. Touristen und Kunstliebhaber schlenderten zwischen den Meisterwerken umher, nahmen Selfies vor Gemälden oder hörten aufmerksam den Erklärungen der Museumsführer zu. All diese Menschen sahen nur die glänzende Oberfläche -- den vollendeten Restaurierungsprozess, die polierte Präsentation. Die mühsame Arbeit, die sie und ihre Kollegen im Verborgenen leisteten, blieb unsichtbar. Genau so wollte Elena es haben. Sie arbeitete lieber im Hintergrund, tauchte ein in die Intimität der Kunstwerke, lernte ihre Geheimnisse kennen. Die Rampenlichtmomente überließ sie gerne anderen.</p>
+
+                        <p>Schumanns Büro lag im historischen Flügel des Museums, ein hoher, mit dunklem Holz getäfelter Raum mit Blick auf den Museumspark. Als Elena nach kurzem Klopfen eintrat, erhob sich der Direktor hastig von seinem Schreibtisch. „Ah, Frau Winters! Kommen Sie herein, kommen Sie herein." Schumann war ein korpulenter Mann mit schütterem Haar und einer Vorliebe für teure, maßgeschneiderte Anzüge. Im Gegensatz zum klischeehaften zerstreuten Museumsdirektor war er ein scharfsinniger Administrator und brillanter Fundraiser -- Qualitäten, die das Museum dringend brauchte, um in Zeiten knapper öffentlicher Kassen zu überleben.</p>
+
                         <p>Ein zweiter Mann stand am Fenster, den Rücken zu ihr gewandt. Er drehte sich langsam um, als Elena den Raum betrat. Groß, schlank, in einem perfekt sitzenden dunkelgrauen Anzug, der selbst Schumanns Garderobe in den Schatten stellte. Elena schätzte ihn auf Mitte bis Ende dreißig. Sein Gesicht war markant geschnitten, mit hohen Wangenknochen und einer geraden Nase, die an klassische Skulpturen erinnerte. Sein Haar, tiefschwarz und an den Schläfen leicht angegraut, war kurz und präzise geschnitten. Doch es waren seine Augen, die Elenas Aufmerksamkeit auf sich zogen -- dunkel, durchdringend und von einer Intensität, die sie unwillkürlich an die Porträts alter Renaissance-Meister denken ließ.</p>
-                        
-                        <p>„Frau Winters", begann Schumann, seine Stimme eine Nuance zu enthusiastisch, „darf ich vorstellen: Marcus Castellano."</p>
-                        
-                        <p>Der Mann trat vor und reichte Elena die Hand. Sein Händedruck war fest und trocken, seine Haut kühl.</p>
-                        
-                        <p>„Es ist mir eine Freude, Sie kennenzulernen, Frau Winters", sagte er mit einer Stimme, die überraschend warm klang, im Kontrast zu seiner kühlen Erscheinung. Ein leichter Akzent war zu hören -- mediterran, vielleicht italienisch oder spanisch.</p>
-                        
-                        <p>„Herr Castellano ist der Besitzer des Castellano-Privatmuseums", erklärte Schumann. „Eine der bedeutendsten privaten Kunstsammlungen Europas."</p>
-                        
-                        <p>Elena nickte knapp. Der Name Castellano war ihr bekannt, wenn auch nur am Rande. Eine alte europäische Familie, Kunstsammler seit Generationen, ihr Privatmuseum legendär, aber notorisch schwer zugänglich für die Öffentlichkeit.</p>
-                        
-                        <p>„Bitte, setzen wir uns", forderte Schumann sie auf und deutete auf die Sitzgruppe in der Ecke des Büros.</p>
-                        
-                        <p>Elena nahm auf einem der Ledersessel Platz, Castellano ihr gegenüber. Schumann platzierte sich auf einem dritten Sessel, leicht abseits, als wolle er bewusst die Interaktion zwischen seinen Gästen beobachten.</p>
-                        
-                        <p>„Herr Castellano hat ein faszinierendes Angebot für Sie", begann der Direktor.</p>
-                        
-                        <p>Castellano lehnte sich leicht vor. „Ich habe Ihre Arbeit an der Sammlung der flämischen Meister verfolgt, Frau Winters. Besonders Ihre Restaurierung der verlorenen Details in Van Dycks 'Dame mit dem Hermelin' war... bemerkenswert."</p>
-                        
-                        <p>Elena hob überrascht eine Augenbraue. Die Van Dyck-Restaurierung war ein komplexes Projekt gewesen, das sie vor zwei Jahren abgeschlossen hatte. Es hatte in Fachkreisen einige Aufmerksamkeit erregt, aber sie hätte nicht erwartet, dass jemand außerhalb dieser Kreise davon Notiz genommen hatte.</p>
-                        
-                        <p>„Danke", erwiderte sie neutral. „Es war ein herausforderndes Projekt."</p>
-                        
-                        <p>„Sie waren nicht nur herausfordernd, Sie haben etwas zurückgebracht, das für verloren gehalten wurde", sagte Castellano. Seine Augen ruhten unverwandt auf ihr, als suchte er nach etwas in ihrem Gesicht. „Diese Fähigkeit, verborgene Schichten zu enthüllen, ohne das Wesentliche zu zerstören -- das ist eine seltene Gabe."</p>
-                        
-                        <p>Elena spürte ein leichtes Unbehagen. Sie war nicht gewohnt, so direkt beobachtet zu werden, noch weniger, so explizit gelobt zu werden. Ihre Arbeit sprach für sich selbst; sie brauchte keine verbalen Lorbeeren.</p>
-                        
-                        <p>„Worum geht es, Herr Castellano?"</p>
-                        
-                        <p>Ein flüchtiges Lächeln huschte über sein Gesicht, als hätte er genau diese direkte Reaktion erwartet.</p>
-                        
+
+                        <p>„Frau Winters", begann Schumann, seine Stimme eine Nuance zu enthusiastisch, „darf ich vorstellen: Marcus Castellano." Der Mann trat vor und reichte Elena die Hand. Sein Händedruck war fest und trocken, seine Haut kühl. „Es ist mir eine Freude, Sie kennenzulernen, Frau Winters", sagte er mit einer Stimme, die überraschend warm klang, im Kontrast zu seiner kühlen Erscheinung. Ein leichter Akzent war zu hören -- mediterran, vielleicht italienisch oder spanisch.</p>
+
+                        <p>„Herr Castellano ist der Besitzer des Castellano-Privatmuseums", erklärte Schumann. „Eine der bedeutendsten privaten Kunstsammlungen Europas." Elena nickte knapp. Der Name Castellano war ihr bekannt, wenn auch nur am Rande. Eine alte europäische Familie, Kunstsammler seit Generationen, ihr Privatmuseum legendär, aber notorisch schwer zugänglich für die Öffentlichkeit.</p>
+
+                        <p>„Bitte, setzen wir uns", forderte Schumann sie auf und deutete auf die Sitzgruppe in der Ecke des Büros. Elena nahm auf einem der Ledersessel Platz, Castellano ihr gegenüber. Schumann platzierte sich auf einem dritten Sessel, leicht abseits, als wolle er bewusst die Interaktion zwischen seinen Gästen beobachten.</p>
+
+                        <p>„Herr Castellano hat ein faszinierendes Angebot für Sie", begann der Direktor. Castellano lehnte sich leicht vor. „Ich habe Ihre Arbeit an der Sammlung der flämischen Meister verfolgt, Frau Winters. Besonders Ihre Restaurierung der verlorenen Details in Van Dycks 'Dame mit dem Hermelin' war... bemerkenswert." Elena hob überrascht eine Augenbraue. Die Van Dyck-Restaurierung war ein komplexes Projekt gewesen, das sie vor zwei Jahren abgeschlossen hatte. Es hatte in Fachkreisen einige Aufmerksamkeit erregt, aber sie hätte nicht erwartet, dass jemand außerhalb dieser Kreise davon Notiz genommen hatte.</p>
+
+                        <p>„Danke", erwiderte sie neutral. „Es war ein herausforderndes Projekt." „Sie waren nicht nur herausfordernd, Sie haben etwas zurückgebracht, das für verloren gehalten wurde", sagte Castellano. Seine Augen ruhten unverwandt auf ihr, als suchte er nach etwas in ihrem Gesicht. „Diese Fähigkeit, verborgene Schichten zu enthüllen, ohne das Wesentliche zu zerstören -- das ist eine seltene Gabe."</p>
+
+                        <p>Elena spürte ein leichtes Unbehagen. Sie war nicht gewohnt, so direkt beobachtet zu werden, noch weniger, so explizit gelobt zu werden. Ihre Arbeit sprach für sich selbst; sie brauchte keine verbalen Lorbeeren. „Worum geht es, Herr Castellano?" Ein flüchtiges Lächeln huschte über sein Gesicht, als hätte er genau diese direkte Reaktion erwartet.</p>
+
                         <p>„Mein Privatmuseum beherbergt eine umfangreiche Sammlung, die seit Generationen in meiner Familie ist", begann er. „Das Gebäude selbst ist ein historisches Juwel -- ein Stadtpalais aus dem frühen 19. Jahrhundert mit Elementen aus verschiedenen Epochen. In den letzten Jahren habe ich es umfassend renovieren lassen, aber..." Er machte eine kurze Pause. „Es gibt Bereiche, die einer speziellen Expertise bedürfen."</p>
-                        
-                        <p>„Was für Bereiche?", fragte Elena.</p>
-                        
-                        <p>„Unter anderem ein Freskenzyklus aus dem späten 18. Jahrhundert, der sich in der Haupthalle befindet. Er ist in einem besorgniserregenden Zustand -- teilweise übermalt, teilweise beschädigt durch frühere unsachgemäße Restaurierungsversuche."</p>
-                        
-                        <p>Elena nickte langsam. Fresken waren eine besondere Herausforderung -- die Verbindung von Pigment und Putz machte sie anfälliger für Umwelteinflüsse als Leinwandgemälde.</p>
-                        
-                        <p>„Außerdem", fuhr Castellano fort, „gibt es eine Sammlung von Gemälden und Skulpturen, die ebenfalls Aufmerksamkeit benötigen. Manche wurden nie richtig restauriert, andere wurden von... weniger talentierten Händen als den Ihren behandelt."</p>
-                        
-                        <p>Schumann räusperte sich. „Herr Castellano möchte Sie für ein exklusives Projekt engagieren, Elena. Drei Monate im Castellano-Museum."</p>
-                        
-                        <p>Elena runzelte die Stirn. „Drei Monate? Das ist eine lange Zeit, um von hier weg zu sein."</p>
-                        
-                        <p>„Das Museum würde Ihnen einen bezahlten Sonderurlaub gewähren", erklärte Schumann hastig. „Herr Castellano hat ein äußerst großzügiges Angebot für die Institution gemacht, im Gegenzug für Ihre Dienste."</p>
-                        
-                        <p>Sie verstand sofort. Das Museum brauchte Geld, und Castellano war bereit, viel zu zahlen. Schumann erwartete von ihr, dass sie zustimmte -- nicht als Bitte, sondern als kaum verhüllte Anweisung.</p>
-                        
-                        <p>„Ich habe bereits mehrere Projekte in Arbeit", wandte sie ein. „Die Diana, den Tizian-Zyklus, die Vorbereitung für die Herbstausstellung..."</p>
-                        
-                        <p>„All das kann warten oder von Ihren Kollegen übernommen werden", unterbrach Schumann sie mit einem falschen Lächeln. „Diese Gelegenheit sollten wir nicht ausschlagen."</p>
-                        
-                        <p>Elena wusste, wann eine Schlacht verloren war. Der Direktor hatte bereits entschieden.</p>
-                        
-                        <p>Sie wandte sich wieder an Castellano. „Wo genau befindet sich Ihr Museum, Herr Castellano?"</p>
-                        
-                        <p>„An der Küste Norditaliens, etwa eine Stunde von Genua entfernt", antwortete er. „Eine ruhige Lage, ideal für konzentrierte Arbeit. Sie würden im Museum selbst wohnen -- es gibt einen Gästeflügel mit komfortablen Appartements für Spezialisten wie Sie."</p>
-                        
-                        <p>Im Museum wohnen. Elena unterdrückte ein Stirnrunzeln. Sie schätzte die Trennung zwischen ihrer Arbeit und ihrem privaten Raum. Die Vorstellung, vierundzwanzig Stunden am Tag von fremden Kunstwerken umgeben zu sein, war gleichzeitig verlockend und beunruhigend.</p>
-                        
-                        <p>„Warum ich?", fragte sie unvermittelt. „Es gibt viele qualifizierte Restauratoren, auch solche mit mehr Erfahrung im Umgang mit Fresken."</p>
-                        
-                        <p>Castellano betrachtete sie mit einem Blick, der gleichzeitig durchdringend und undurchschaubar war. „Wie ich bereits sagte, Frau Winters -- Ihre Fähigkeit, das Verborgene zu enthüllen, ohne es zu zerstören, ist selten. Meine Sammlung... sie benötigt einen besonderen Zugang."</p>
-                        
-                        <p>Etwas in seinem Ton ließ Elena aufhorchen. Da war mehr als nur professionelles Interesse. Eine persönliche Note, fast eine Dringlichkeit, die hinter seiner kontrollierten Fassade durchschimmerte.</p>
-                        
-                        <p>„Ich verstehe, dass Sie Zeit zum Nachdenken brauchen", fuhr Castellano fort und zog eine schlanke Ledermappe aus seiner Aktentasche. „Hier sind die Details des Projekts, Informationen zum Museum und zu Ihrer Unterkunft. Sowie die finanziellen Bedingungen."</p>
-                        
-                        <p>Er reichte ihr die Mappe. Elena nahm sie entgegen und öffnete sie kurz. Ihr Blick fiel auf die Zahl am Ende des Vertragsentwurfs -- ein Honorar, das ihr fast den Atem raubte. Es war mehr, als sie in einem ganzen Jahr im Museum verdiente.</p>
-                        
-                        <p>„Das ist sehr großzügig", sagte sie, bemüht, ihre Überraschung zu verbergen.</p>
-                        
-                        <p>„Kunst hat ihren Preis, Frau Winters. Expertise ebenso." Castellano erhob sich. „Ich bleibe noch zwei Tage in Berlin. Ich hoffe, bis dahin von Ihnen zu hören."</p>
-                        
-                        <p>Schumann sprang ebenfalls auf, eifrig wie ein Schuljunge. „Natürlich wird sie zusagen, nicht wahr, Elena? Eine solche Chance..."</p>
-                        
-                        <p>Elena stand langsamer auf, ihre Gedanken bereits bei den logistischen Herausforderungen, die ein dreimonatiger Aufenthalt im Ausland mit sich bringen würde. Ihre Wohnung, ihre Verpflichtungen hier, die laufenden Projekte...</p>
-                        
-                        <p>„Ich werde es mir ansehen und Ihnen so bald wie möglich Bescheid geben", sagte sie schließlich.</p>
-                        
-                        <p>Castellano nickte, als hätte er nichts anderes erwartet. „Ausgezeichnet. Direktor Schumann hat meine Kontaktdaten." Er reichte ihr noch einmal die Hand. „Ich freue mich auf unsere Zusammenarbeit, Frau Winters."</p>
-                        
-                        <p>Als seine Hand die ihre berührte, hatte Elena einen flüchtigen, irrationalen Gedanken: Diese Hand kannte Geheimnisse -- Geheimnisse, die älter und tiefer waren als die Kunstwerke, die sie restaurieren sollte.</p>
-                        
-                        <p>Unsinn, schalt sie sich. Zu viele Stunden unter dem Mikroskop, zu viel Einsamkeit im stillen Atelier.</p>
-                        
-                        <p>Castellano verabschiedete sich mit einer leichten Verbeugung und verließ das Büro, gefolgt von einem diensteifrigen Schumann, der ihm bis zum Ausgang begleiten wollte.</p>
-                        
-                        <p>Elena blieb allein zurück, die Ledermappe in der Hand. Sie ging zum Fenster und blickte hinaus auf den Museumspark, wo die ersten Blätter des Herbstes zu fallen begannen. Drei Monate in Italien, in einem privaten Museum, umgeben von unbekannten Kunstwerken...</p>
-                        
-                        <p>Die professionelle Neugier in ihr war geweckt, trotz ihrer Vorbehalte. Neue Herausforderungen, unentdeckte Meisterwerke, die Möglichkeit, mit Techniken zu arbeiten, die sie bisher nur theoretisch kannte -- all das war verlockend.</p>
-                        
-                        <p>Andererseits gab es etwas an Marcus Castellano, das sie nicht einordnen konnte. Eine Intensität, die über das übliche Interesse eines Sammlers hinausging. Als ob er nicht nur ihre professionellen Fähigkeiten suchte, sondern etwas anderes, etwas Persönlicheres.</p>
-                        
-                        <p>Sie öffnete die Mappe erneut und blätterte durch die Unterlagen. Hochglanzfotos zeigten ein beeindruckendes Gebäude, halb Palast, halb Festung, auf einer Klippe mit Blick auf das Mittelmeer. Weitere Bilder zeigten Innenräume -- hohe Decken, kunstvoll verzierte Wände, imponierende Treppenhäuser und Galerien voller Kunstschätze. Und dann das Fresko, von dem Castellano gesprochen hatte -- eine mythologische Szene, teilweise verblasst, teilweise offensichtlich beschädigt, aber selbst in diesem Zustand von atemberaubender Schönheit und Komplexität.</p>
-                        
+
+                        <p>„Was für Bereiche?", fragte Elena. „Unter anderem ein Freskenzyklus aus dem späten 18. Jahrhundert, der sich in der Haupthalle befindet. Er ist in einem besorgniserregenden Zustand -- teilweise übermalt, teilweise beschädigt durch frühere unsachgemäße Restaurierungsversuche." Elena nickte langsam. Fresken waren eine besondere Herausforderung -- die Verbindung von Pigment und Putz machte sie anfälliger für Umwelteinflüsse als Leinwandgemälde.</p>
+
+                        <p>„Außerdem", fuhr Castellano fort, „gibt es eine Sammlung von Gemälden und Skulpturen, die ebenfalls Aufmerksamkeit benötigen. Manche wurden nie richtig restauriert, andere wurden von... weniger talentierten Händen als den Ihren behandelt." Schumann räusperte sich. „Herr Castellano möchte Sie für ein exklusives Projekt engagieren, Elena. Drei Monate im Castellano-Museum."</p>
+
+                        <p>Elena runzelte die Stirn. „Drei Monate? Das ist eine lange Zeit, um von hier weg zu sein." „Das Museum würde Ihnen einen bezahlten Sonderurlaub gewähren", erklärte Schumann hastig. „Herr Castellano hat ein äußerst großzügiges Angebot für die Institution gemacht, im Gegenzug für Ihre Dienste." Sie verstand sofort. Das Museum brauchte Geld, und Castellano war bereit, viel zu zahlen. Schumann erwartete von ihr, dass sie zustimmte -- nicht als Bitte, sondern als kaum verhüllte Anweisung.</p>
+
+                        <p>„Ich habe bereits mehrere Projekte in Arbeit", wandte sie ein. „Die Diana, den Tizian-Zyklus, die Vorbereitung für die Herbstausstellung..." „All das kann warten oder von Ihren Kollegen übernommen werden", unterbrach Schumann sie mit einem falschen Lächeln. „Diese Gelegenheit sollten wir nicht ausschlagen." Elena wusste, wann eine Schlacht verloren war. Der Direktor hatte bereits entschieden.</p>
+
+                        <p>Sie wandte sich wieder an Castellano. „Wo genau befindet sich Ihr Museum, Herr Castellano?" „An der Küste Norditaliens, etwa eine Stunde von Genua entfernt", antwortete er. „Eine ruhige Lage, ideal für konzentrierte Arbeit. Sie würden im Museum selbst wohnen -- es gibt einen Gästeflügel mit komfortablen Appartements für Spezialisten wie Sie." Im Museum wohnen. Elena unterdrückte ein Stirnrunzeln. Sie schätzte die Trennung zwischen ihrer Arbeit und ihrem privaten Raum. Die Vorstellung, vierundzwanzig Stunden am Tag von fremden Kunstwerken umgeben zu sein, war gleichzeitig verlockend und beunruhigend.</p>
+
+                        <p>„Warum ich?", fragte sie unvermittelt. „Es gibt viele qualifizierte Restauratoren, auch solche mit mehr Erfahrung im Umgang mit Fresken." Castellano betrachtete sie mit einem Blick, der gleichzeitig durchdringend und undurchschaubar war. „Wie ich bereits sagte, Frau Winters -- Ihre Fähigkeit, das Verborgene zu enthüllen, ohne es zu zerstören, ist selten. Meine Sammlung... sie benötigt einen besonderen Zugang." Etwas in seinem Ton ließ Elena aufhorchen. Da war mehr als nur professionelles Interesse. Eine persönliche Note, fast eine Dringlichkeit, die hinter seiner kontrollierten Fassade durchschimmerte.</p>
+
+                        <p>„Ich verstehe, dass Sie Zeit zum Nachdenken brauchen", fuhr Castellano fort und zog eine schlanke Ledermappe aus seiner Aktentasche. „Hier sind die Details des Projekts, Informationen zum Museum und zu Ihrer Unterkunft. Sowie die finanziellen Bedingungen." Er reichte ihr die Mappe. Elena nahm sie entgegen und öffnete sie kurz. Ihr Blick fiel auf die Zahl am Ende des Vertragsentwurfs -- ein Honorar, das ihr fast den Atem raubte. Es war mehr, als sie in einem ganzen Jahr im Museum verdiente.</p>
+
+                        <p>„Das ist sehr großzügig", sagte sie, bemüht, ihre Überraschung zu verbergen. „Kunst hat ihren Preis, Frau Winters. Expertise ebenso." Castellano erhob sich. „Ich bleibe noch zwei Tage in Berlin. Ich hoffe, bis dahin von Ihnen zu hören." Schumann sprang ebenfalls auf, eifrig wie ein Schuljunge. „Natürlich wird sie zusagen, nicht wahr, Elena? Eine solche Chance..."</p>
+
+                        <p>Elena stand langsamer auf, ihre Gedanken bereits bei den logistischen Herausforderungen, die ein dreimonatiger Aufenthalt im Ausland mit sich bringen würde. Ihre Wohnung, ihre Verpflichtungen hier, die laufenden Projekte... „Ich werde es mir ansehen und Ihnen so bald wie möglich Bescheid geben", sagte sie schließlich. Castellano nickte, als hätte er nichts anderes erwartet. „Ausgezeichnet. Direktor Schumann hat meine Kontaktdaten." Er reichte ihr noch einmal die Hand. „Ich freue mich auf unsere Zusammenarbeit, Frau Winters."</p>
+
+                        <p>Als seine Hand die ihre berührte, hatte Elena einen flüchtigen, irrationalen Gedanken: Diese Hand kannte Geheimnisse -- Geheimnisse, die älter und tiefer waren als die Kunstwerke, die sie restaurieren sollte. Unsinn, schalt sie sich. Zu viele Stunden unter dem Mikroskop, zu viel Einsamkeit im stillen Atelier. Castellano verabschiedete sich mit einer leichten Verbeugung und verließ das Büro, gefolgt von einem diensteifrigen Schumann, der ihm bis zum Ausgang begleiten wollte.</p>
+
+                        <p>Elena blieb allein zurück, die Ledermappe in der Hand. Sie ging zum Fenster und blickte hinaus auf den Museumspark, wo die ersten Blätter des Herbstes zu fallen begannen. Drei Monate in Italien, in einem privaten Museum, umgeben von unbekannten Kunstwerken... Die professionelle Neugier in ihr war geweckt, trotz ihrer Vorbehalte. Neue Herausforderungen, unentdeckte Meisterwerke, die Möglichkeit, mit Techniken zu arbeiten, die sie bisher nur theoretisch kannte -- all das war verlockend.</p>
+
+                        <p>Andererseits gab es etwas an Marcus Castellano, das sie nicht einordnen konnte. Eine Intensität, die über das übliche Interesse eines Sammlers hinausging. Als ob er nicht nur ihre professionellen Fähigkeiten suchte, sondern etwas anderes, etwas Persönlicheres. Sie öffnete die Mappe erneut und blätterte durch die Unterlagen. Hochglanzfotos zeigten ein beeindruckendes Gebäude, halb Palast, halb Festung, auf einer Klippe mit Blick auf das Mittelmeer. Weitere Bilder zeigten Innenräume -- hohe Decken, kunstvoll verzierte Wände, imponierende Treppenhäuser und Galerien voller Kunstschätze. Und dann das Fresko, von dem Castellano gesprochen hatte -- eine mythologische Szene, teilweise verblasst, teilweise offensichtlich beschädigt, aber selbst in diesem Zustand von atemberaubender Schönheit und Komplexität.</p>
+
                         <p>Zwischen den Seiten fiel ein kleineres Foto heraus. Elena hob es auf und betrachtete es stirnrunzelnd. Es zeigte einen abgesperrten Bereich des Museums -- einen Korridor mit einer schweren, verschlossenen Tür am Ende. Die Tür war mit kunstvollen Schnitzereien verziert, Motive, die sie nicht sofort einordnen konnte. Warum war ein Foto von einer verschlossenen Tür in der Mappe?</p>
-                        
-                        <p>„Ein beeindruckendes Angebot, nicht wahr?"</p>
-                        
-                        <p>Elena zuckte zusammen. Schumann war zurückgekehrt und stand nun im Türrahmen.</p>
-                        
-                        <p>„Ja, das ist es", antwortete sie und steckte das Foto schnell wieder zwischen die anderen Unterlagen.</p>
-                        
-                        <p>„Sie werden natürlich annehmen." Es war keine Frage.</p>
-                        
-                        <p>„Ich muss es mir noch überlegen, Herr Direktor. Es gibt viele Faktoren zu berücksichtigen."</p>
-                        
-                        <p>Schumann trat näher, seine jovialen Manieren vom Treffen waren einer ernsteren Miene gewichen. „Elena, lassen Sie mich offen sein. Die finanzielle Situation des Museums ist angespannt. Castellanos Angebot -- die Spende, die er für Ihre Dienste leistet -- würde uns helfen, die nächsten zwei Quartale zu überbrücken."</p>
-                        
-                        <p>Elena seufzte innerlich. Da war es also: institutioneller Druck. „Und wenn ich ablehne?"</p>
-                        
-                        <p>„Dann müssten wir über Budgetkürzungen nachdenken. Möglicherweise auch in Ihrer Abteilung." Seine Stimme war sanft, aber die Drohung unmissverständlich.</p>
-                        
-                        <p>Elena nickte langsam. Sie war keine Politikerin, keine Kämpferin in den administrativen Schlachten des Museums. Ihre Welt waren Farben und Formen, chemische Reaktionen und historische Techniken -- nicht Budgets und Verhandlungen.</p>
-                        
-                        <p>„Ich verstehe", sagte sie knapp.</p>
-                        
-                        <p>„Ausgezeichnet!" Schumann klatschte in die Hände, wieder der joviale Direktor. „Ich wusste, dass Sie vernünftig sein würden. Informieren Sie mich, sobald Sie mit Castellano gesprochen haben, ja?"</p>
-                        
-                        <p>Er verließ das Büro, ohne ihre Antwort abzuwarten.</p>
-                        
-                        <p>Elena sammelte die Unterlagen zusammen und ging langsam den langen Korridor zurück zu ihrem Atelier. Unterwegs öffnete sie erneut die Mappe und zog das Foto mit der verschlossenen Tür hervor. Warum war es hier? Ein Versehen oder... eine Botschaft?</p>
-                        
-                        <p>Sie schüttelte den Kopf über ihre eigenen Gedanken. Zu viele alte Romane gelesen, zu viele Geschichten über geheimnisvolle Kunstsammler gehört. Dies war ein professionelles Angebot, nichts weiter.</p>
-                        
-                        <p>Und doch... Marcus Castellanos Augen hatten etwas gesehen, als er sie anblickte. Etwas, das über ihre beruflichen Fähigkeiten hinausging.</p>
-                        
-                        <p>In ihrem Atelier angekommen, legte Elena die Mappe auf ihren Schreibtisch und kehrte zu Diana zurück, deren Gesicht noch immer geduldig auf ihre Befreiung von Jahrhunderten falscher Übermalungen wartete.</p>
-                        
-                        <p>„Was würdest du tun?", murmelte sie, während sie ihre Handschuhe wieder anzog. Die Göttin der Jagd schwieg, ihre Augen halb verdeckt unter Schichten fremder Pinselstriche.</p>
-                        
-                        <p>Elena nahm ihr Skalpell wieder auf und begann, vorsichtig um das Auge der Göttin herum zu arbeiten. Schicht um Schicht legte sie frei, enthüllte das Original darunter. So wie sie es immer tat -- methodisch, geduldig, kontrolliert.</p>
-                        
-                        <p>Doch ihre Gedanken waren bereits woanders. Bei einem Museum an einer italienischen Klippe. Bei einem rätselhaften Kunstsammler mit durchdringenden Augen. Und bei einer verschlossenen Tür, die auf etwas zu warten schien, das seit langem vergessen war.</p>
-                        
-                        <p>Als sie am Abend ihr Atelier verließ, hatte sie ihre Entscheidung bereits getroffen. Sie nahm ihr Handy heraus und wählte die Nummer, die Castellano ihr hinterlassen hatte.</p>
-                        
-                        <p>„Herr Castellano", sagte sie, als er antwortete. „Hier ist Elena Winters. Ich nehme Ihr Angebot an."</p>
-                        
-                        <p>Eine kurze Pause folgte. „Das freut mich zu hören, Frau Winters." Seine Stimme klang warm, aber nicht überrascht, als hätte er ihre Entscheidung bereits erwartet. „Ich lasse alles für Ihre Ankunft vorbereiten."</p>
-                        
-                        <p>„Ich habe allerdings einige Bedingungen", fügte Elena hinzu. Ihre Entscheidung mochte unter Druck entstanden sein, aber sie würde zumindest ihre eigenen Regeln festlegen.</p>
-                        
-                        <p>„Natürlich. Ich höre."</p>
-                        
-                        <p>„Ich benötige vollständige Autonomie in meiner Arbeit. Kein Einmischen in meine Methoden oder meinen Zeitplan."</p>
-                        
-                        <p>„Selbstverständlich."</p>
-                        
-                        <p>„Zweitens möchte ich umfassenden Zugang zu allen Informationen über die zu restaurierenden Werke -- Herkunft, Vorbesitzer, frühere Restaurierungsversuche, alles."</p>
-                        
-                        <p>Eine winzige Pause entstand, kaum wahrnehmbar, aber Elena bemerkte sie dennoch. „Das wird arrangiert", sagte Castellano schließlich.</p>
-                        
-                        <p>„Und drittens behalte ich mir das Recht vor, das Projekt jederzeit zu beenden, falls ich feststelle, dass die Arbeiten nicht meinen ethischen oder professionellen Standards entsprechen."</p>
-                        
-                        <p>Diesmal war die Pause länger. „Eine interessante Bedingung, Frau Winters. Darf ich fragen, welche Bedenken Sie haben?"</p>
-                        
-                        <p>Elena überlegte kurz. Sie wollte nicht unhöflich erscheinen, aber etwas an der ganzen Situation ließ sie vorsichtig sein. „Keine spezifischen Bedenken. Nur professionelle Sorgfalt. Ich bevorzuge klare Vereinbarungen von Anfang an."</p>
-                        
-                        <p>„Ich respektiere das. Ihre Bedingungen sind akzeptiert."</p>
-                        
-                        <p>Sie besprachen die praktischen Details -- Reisedaten, notwendige Ausrüstung, Versicherungsfragen. Elena notierte alles in ihrem präzisen, methodischen Stil.</p>
-                        
-                        <p>„Ich erwarte Sie dann in einer Woche", schloss Castellano. „Meine Assistentin wird Ihnen die Reiseunterlagen zukommen lassen."</p>
-                        
-                        <p>„Bis dahin, Herr Castellano."</p>
-                        
-                        <p>„Auf bald, Frau Winters. Und... bereiten Sie sich vor. Meine Sammlung wird Sie überraschen."</p>
-                        
-                        <p>Die Verbindung wurde getrennt, und Elena blieb mit dem seltsamen Gefühl zurück, dass sie gerade einen Vertrag unterzeichnet hatte, dessen Kleingedrucktes sie noch nicht kannte.</p>
-                        
-                        <p>Die folgenden Tage vergingen in einem Wirbel aus Vorbereitungen. Elena informierte ihre Verwaltung, übergab laufende Projekte an Kollegen und erstellte detaillierte Unterlagen zu ihren bisherigen Arbeiten. Die Diana würde Andrea Korff übernehmen, eine kompetente jüngere Kollegin, wenn auch nicht ganz so präzise, wie Elena es bevorzugt hätte.</p>
-                        
+
+                        <p>„Ein beeindruckendes Angebot, nicht wahr?" Elena zuckte zusammen. Schumann war zurückgekehrt und stand nun im Türrahmen. „Ja, das ist es", antwortete sie und steckte das Foto schnell wieder zwischen die anderen Unterlagen. „Sie werden natürlich annehmen." Es war keine Frage. „Ich muss es mir noch überlegen, Herr Direktor. Es gibt viele Faktoren zu berücksichtigen."</p>
+
+                        <p>Schumann trat näher, seine jovialen Manieren vom Treffen waren einer ernsteren Miene gewichen. „Elena, lassen Sie mich offen sein. Die finanzielle Situation des Museums ist angespannt. Castellanos Angebot -- die Spende, die er für Ihre Dienste leistet -- würde uns helfen, die nächsten zwei Quartale zu überbrücken." Elena seufzte innerlich. Da war es also: institutioneller Druck. „Und wenn ich ablehne?" „Dann müssten wir über Budgetkürzungen nachdenken. Möglicherweise auch in Ihrer Abteilung." Seine Stimme war sanft, aber die Drohung unmissverständlich.</p>
+
+                        <p>Elena nickte langsam. Sie war keine Politikerin, keine Kämpferin in den administrativen Schlachten des Museums. Ihre Welt waren Farben und Formen, chemische Reaktionen und historische Techniken -- nicht Budgets und Verhandlungen. „Ich verstehe", sagte sie knapp. „Ausgezeichnet!" Schumann klatschte in die Hände, wieder der joviale Direktor. „Ich wusste, dass Sie vernünftig sein würden. Informieren Sie mich, sobald Sie mit Castellano gesprochen haben, ja?" Er verließ das Büro, ohne ihre Antwort abzuwarten.</p>
+
+                        <p>Elena sammelte die Unterlagen zusammen und ging langsam den langen Korridor zurück zu ihrem Atelier. Unterwegs öffnete sie erneut die Mappe und zog das Foto mit der verschlossenen Tür hervor. Warum war es hier? Ein Versehen oder... eine Botschaft? Sie schüttelte den Kopf über ihre eigenen Gedanken. Zu viele alte Romane gelesen, zu viele Geschichten über geheimnisvolle Kunstsammler gehört. Dies war ein professionelles Angebot, nichts weiter.</p>
+
+                        <p>Und doch... Marcus Castellanos Augen hatten etwas gesehen, als er sie anblickte. Etwas, das über ihre beruflichen Fähigkeiten hinausging. In ihrem Atelier angekommen, legte Elena die Mappe auf ihren Schreibtisch und kehrte zu Diana zurück, deren Gesicht noch immer geduldig auf ihre Befreiung von Jahrhunderten falscher Übermalungen wartete.</p>
+
+                        <p>„Was würdest du tun?", murmelte sie, während sie ihre Handschuhe wieder anzog. Die Göttin der Jagd schwieg, ihre Augen halb verdeckt unter Schichten fremder Pinselstriche. Elena nahm ihr Skalpell wieder auf und begann, vorsichtig um das Auge der Göttin herum zu arbeiten. Schicht um Schicht legte sie frei, enthüllte das Original darunter. So wie sie es immer tat -- methodisch, geduldig, kontrolliert. Doch ihre Gedanken waren bereits woanders. Bei einem Museum an einer italienischen Klippe. Bei einem rätselhaften Kunstsammler mit durchdringenden Augen. Und bei einer verschlossenen Tür, die auf etwas zu warten schien, das seit langem vergessen war.</p>
+
+                        <p>Als sie am Abend ihr Atelier verließ, hatte sie ihre Entscheidung bereits getroffen. Sie nahm ihr Handy heraus und wählte die Nummer, die Castellano ihr hinterlassen hatte. „Herr Castellano", sagte sie, als er antwortete. „Hier ist Elena Winters. Ich nehme Ihr Angebot an." Eine kurze Pause folgte. „Das freut mich zu hören, Frau Winters." Seine Stimme klang warm, aber nicht überrascht, als hätte er ihre Entscheidung bereits erwartet. „Ich lasse alles für Ihre Ankunft vorbereiten."</p>
+
+                        <p>„Ich habe allerdings einige Bedingungen", fügte Elena hinzu. Ihre Entscheidung mochte unter Druck entstanden sein, aber sie würde zumindest ihre eigenen Regeln festlegen. „Natürlich. Ich höre." „Ich benötige vollständige Autonomie in meiner Arbeit. Kein Einmischen in meine Methoden oder meinen Zeitplan." „Selbstverständlich." „Zweitens möchte ich umfassenden Zugang zu allen Informationen über die zu restaurierenden Werke -- Herkunft, Vorbesitzer, frühere Restaurierungsversuche, alles." Eine winzige Pause entstand, kaum wahrnehmbar, aber Elena bemerkte sie dennoch. „Das wird arrangiert", sagte Castellano schließlich.</p>
+
+                        <p>„Und drittens behalte ich mir das Recht vor, das Projekt jederzeit zu beenden, falls ich feststelle, dass die Arbeiten nicht meinen ethischen oder professionellen Standards entsprechen." Diesmal war die Pause länger. „Eine interessante Bedingung, Frau Winters. Darf ich fragen, welche Bedenken Sie haben?" Elena überlegte kurz. Sie wollte nicht unhöflich erscheinen, aber etwas an der ganzen Situation ließ sie vorsichtig sein. „Keine spezifischen Bedenken. Nur professionelle Sorgfalt. Ich bevorzuge klare Vereinbarungen von Anfang an."</p>
+
+                        <p>„Ich respektiere das. Ihre Bedingungen sind akzeptiert." Sie besprachen die praktischen Details -- Reisedaten, notwendige Ausrüstung, Versicherungsfragen. Elena notierte alles in ihrem präzisen, methodischen Stil. „Ich erwarte Sie dann in einer Woche", schloss Castellano. „Meine Assistentin wird Ihnen die Reiseunterlagen zukommen lassen." „Bis dahin, Herr Castellano." „Auf bald, Frau Winters. Und... bereiten Sie sich vor. Meine Sammlung wird Sie überraschen."</p>
+
+                        <p>Die Verbindung wurde getrennt, und Elena blieb mit dem seltsamen Gefühl zurück, dass sie gerade einen Vertrag unterzeichnet hatte, dessen Kleingedrucktes sie noch nicht kannte. Die folgenden Tage vergingen in einem Wirbel aus Vorbereitungen. Elena informierte ihre Verwaltung, übergab laufende Projekte an Kollegen und erstellte detaillierte Unterlagen zu ihren bisherigen Arbeiten. Die Diana würde Andrea Korff übernehmen, eine kompetente jüngere Kollegin, wenn auch nicht ganz so präzise, wie Elena es bevorzugt hätte.</p>
+
                         <p>Ihre kleine Wohnung in Charlottenburg wurde gesichert -- Pflanzen zu einer Nachbarin gebracht, Zeitungsabonnement pausiert, eine Reinigungskraft würde monatlich nach dem Rechten sehen. Elena packte methodisch, wie sie alles tat: Ihre Spezialinstrumente, die sie niemandem anvertraute; Fachliteratur, die nicht digital verfügbar war; Kleidung für drei Monate, praktisch und unauffällig.</p>
-                        
-                        <p>Am Abend vor ihrer Abreise stand sie in ihrer aufgeräumten Wohnung und blickte auf die zwei großen Koffer und die spezielle Transportbox für ihre empfindlichsten Werkzeuge. Alles war organisiert, kontrolliert, vorbereitet. So hatte sie immer gelebt -- jede Variable bedacht, jede Eventualität eingeplant.</p>
-                        
-                        <p>Ihr Blick fiel auf das Foto der verschlossenen Tür, das sie aus Castellanos Unterlagen kopiert hatte. Sie hatte in den vergangenen Tagen viel recherchiert -- über das Castellano-Museum, über die Familie, über die bekannten Teile der Sammlung. Die Informationen waren spärlich. Das Museum öffnete nur selten für die Öffentlichkeit, Publikationen über die Sammlung waren rar und meist veraltet.</p>
-                        
-                        <p>Die Familie Castellano selbst war ein Mysterium -- alte italienische Aristokratie mit Wurzeln bis ins 15. Jahrhundert, immer am Rande wichtiger historischer Ereignisse, nie im Zentrum. Kunstsammler und Mäzene seit Generationen, aber stets diskret, fast schon zurückgezogen. Über Marcus Castellano persönlich fand sie fast nichts -- keine Interviews, keine Pressefotos, nur gelegentliche Erwähnungen in Berichten über Kunstauktionen oder Wohltätigkeitsveranstaltungen.</p>
-                        
-                        <p>Die verschlossene Tür jedoch blieb ein Rätsel. In keiner der spärlichen Publikationen über das Museum war sie erwähnt. Kein Grundriss zeigte diesen Korridor, keine Beschreibung erwähnte einen abgesperrten Bereich.</p>
-                        
-                        <p>„Du wirst paranoid", murmelte Elena zu sich selbst. Vermutlich war es ein Lagerraum, ein Bereich in Renovierung oder einfach ein privater Teil des Gebäudes.</p>
-                        
-                        <p>Und doch -- warum war das Foto in der Mappe? Ein Versehen? Oder eine Art Test?</p>
-                        
-                        <p>Elena schüttelte den Kopf über ihre eigenen Gedanken. Sie war Wissenschaftlerin, keine Romanheldin. Sie würde nach Italien reisen, ihre Arbeit tun und zurückkehren. Professionell, effizient, distanziert.</p>
-                        
-                        <p>Mit diesem festen Vorsatz legte sie sich schlafen, doch ihre Träume waren unruhig, gefüllt mit endlosen Korridoren und Türen, die sich vor ihr öffneten, nur um zu weiteren Türen zu führen, in einem Labyrinth ohne Ausgang.</p>
-                        
-                        <p>Der Flug nach Genua verlief reibungslos. Elena verbrachte die Zeit mit der Lektüre einer Fachpublikation über die Restaurierung von Fresken im mediterranen Raum -- Vorbereitungen für die bevorstehende Aufgabe.</p>
-                        
-                        <p>Am Flughafen wurde sie von einem Fahrer erwartet, einem schweigsamen Mann in schwarzer Uniform, der ihr Gepäck übernahm und sie zu einem eleganten schwarzen Mercedes führte. Die Fahrt entlang der ligurischen Küste bot spektakuläre Ausblicke auf das Mittelmeer, doch Elena bemerkte sie kaum. Ihre Gedanken waren bereits bei der Arbeit, die vor ihr lag.</p>
-                        
-                        <p>Nach etwa einer Stunde verließ der Wagen die Hauptstraße und folgte einer schmalen, gewundenen Straße, die sich durch dichte Pinienwälder schlängelte. Schließlich öffnete sich die Landschaft, und Elena erhielt ihren ersten Blick auf das Castellano-Museum.</p>
-                        
-                        <p>Die Fotos in der Mappe hatten nicht gelogen, aber sie hatten auch nicht die volle Wirkung vermittelt. Das Gebäude thronte auf einer Klippe über dem Meer, halb Palast, halb Festung. Seine Fassade aus goldenem Sandstein schimmerte im Nachmittagslicht. Terrassierte Gärten mit Zypressen und antiken Statuen umgaben es, und dahinter erstreckte sich das endlose Blau des Mittelmeers.</p>
-                        
-                        <p>Der Wagen fuhr durch ein schmiedeeisernes Tor und folgte einer gewundenen Auffahrt zur Haupteingangstreppe. Dort wartete bereits eine Frau -- schlank, in einem eleganten schwarzen Kostüm, mit einer Haltung, die gleichzeitig einladend und distanziert wirkte.</p>
-                        
-                        <p>„Frau Winters", begrüßte sie Elena, als diese ausstieg. „Willkommen im Castellano-Museum. Ich bin Sophia Melendez, die Kuratorin."</p>
-                        
-                        <p>Elena schüttelte ihre Hand. Sophia war eine attraktive Frau in den Dreißigern, mit olivfarbener Haut und dunklen, intelligenten Augen. Ihr schwarzes Haar war zu einem strengen Knoten gebunden, der Elenas eigenen Stil widerspiegelte.</p>
-                        
-                        <p>„Herr Castellano entschuldigt sich, dass er Sie nicht persönlich empfangen kann", fuhr Sophia fort. „Dringende Geschäfte halten ihn in Mailand fest. Er wird morgen zurückkehren."</p>
-                        
-                        <p>Elena nickte, eine Mischung aus Erleichterung und -- überraschenderweise -- leichter Enttäuschung empfindend. „Natürlich. Ich bin hier, um zu arbeiten, nicht für soziale Anlässe."</p>
-                        
-                        <p>Ein flüchtiges Lächeln huschte über Sophias Gesicht. „Genau das hat er vorhergesagt, dass Sie das sagen würden." Sie deutete auf die breite Treppe. „Kommen Sie, ich zeige Ihnen Ihre Unterkunft. Ihr Gepäck wird gebracht."</p>
-                        
+
+                        <p>Am Abend vor ihrer Abreise stand sie in ihrer aufgeräumten Wohnung und blickte auf die zwei großen Koffer und die spezielle Transportbox für ihre empfindlichsten Werkzeuge. Alles war organisiert, kontrolliert, vorbereitet. So hatte sie immer gelebt -- jede Variable bedacht, jede Eventualität eingeplant. Ihr Blick fiel auf das Foto der verschlossenen Tür, das sie aus Castellanos Unterlagen kopiert hatte. Sie hatte in den vergangenen Tagen viel recherchiert -- über das Castellano-Museum, über die Familie, über die bekannten Teile der Sammlung. Die Informationen waren spärlich.</p>
+
+                        <p>Das Museum öffnete nur selten für die Öffentlichkeit, Publikationen über die Sammlung waren rar und meist veraltet. Die Familie Castellano selbst war ein Mysterium -- alte italienische Aristokratie mit Wurzeln bis ins 15. Jahrhundert, immer am Rande wichtiger historischer Ereignisse, nie im Zentrum. Kunstsammler und Mäzene seit Generationen, aber stets diskret, fast schon zurückgezogen. Über Marcus Castellano persönlich fand sie fast nichts -- keine Interviews, keine Pressefotos, nur gelegentliche Erwähnungen in Berichten über Kunstauktionen oder Wohltätigkeitsveranstaltungen.</p>
+
+                        <p>Die verschlossene Tür jedoch blieb ein Rätsel. In keiner der spärlichen Publikationen über das Museum war sie erwähnt. Kein Grundriss zeigte diesen Korridor, keine Beschreibung erwähnte einen abgesperrten Bereich. „Du wirst paranoid", murmelte Elena zu sich selbst. Vermutlich war es ein Lagerraum, ein Bereich in Renovierung oder einfach ein privater Teil des Gebäudes. Und doch -- warum war das Foto in der Mappe? Ein Versehen? Oder eine Art Test?</p>
+
+                        <p>Elena schüttelte den Kopf über ihre eigenen Gedanken. Sie war Wissenschaftlerin, keine Romanheldin. Sie würde nach Italien reisen, ihre Arbeit tun und zurückkehren. Professionell, effizient, distanziert. Mit diesem festen Vorsatz legte sie sich schlafen, doch ihre Träume waren unruhig, gefüllt mit endlosen Korridoren und Türen, die sich vor ihr öffneten, nur um zu weiteren Türen zu führen, in einem Labyrinth ohne Ausgang.</p>
+
+                        <p>Der Flug nach Genua verlief reibungslos. Elena verbrachte die Zeit mit der Lektüre einer Fachpublikation über die Restaurierung von Fresken im mediterranen Raum -- Vorbereitungen für die bevorstehende Aufgabe. Am Flughafen wurde sie von einem Fahrer erwartet, einem schweigsamen Mann in schwarzer Uniform, der ihr Gepäck übernahm und sie zu einem eleganten schwarzen Mercedes führte. Die Fahrt entlang der ligurischen Küste bot spektakuläre Ausblicke auf das Mittelmeer, doch Elena bemerkte sie kaum. Ihre Gedanken waren bereits bei der Arbeit, die vor ihr lag.</p>
+
+                        <p>Nach etwa einer Stunde verließ der Wagen die Hauptstraße und folgte einer schmalen, gewundenen Straße, die sich durch dichte Pinienwälder schlängelte. Schließlich öffnete sich die Landschaft, und Elena erhielt ihren ersten Blick auf das Castellano-Museum. Die Fotos in der Mappe hatten nicht gelogen, aber sie hatten auch nicht die volle Wirkung vermittelt. Das Gebäude thronte auf einer Klippe über dem Meer, halb Palast, halb Festung. Seine Fassade aus goldenem Sandstein schimmerte im Nachmittagslicht. Terrassierte Gärten mit Zypressen und antiken Statuen umgaben es, und dahinter erstreckte sich das endlose Blau des Mittelmeers.</p>
+
+                        <p>Der Wagen fuhr durch ein schmiedeeisernes Tor und folgte einer gewundenen Auffahrt zur Haupteingangstreppe. Dort wartete bereits eine Frau -- schlank, in einem eleganten schwarzen Kostüm, mit einer Haltung, die gleichzeitig einladend und distanziert wirkte. „Frau Winters", begrüßte sie Elena, als diese ausstieg. „Willkommen im Castellano-Museum. Ich bin Sophia Melendez, die Kuratorin." Elena schüttelte ihre Hand. Sophia war eine attraktive Frau in den Dreißigern, mit olivfarbener Haut und dunklen, intelligenten Augen. Ihr schwarzes Haar war zu einem strengen Knoten gebunden, der Elenas eigenen Stil widerspiegelte.</p>
+
+                        <p>„Herr Castellano entschuldigt sich, dass er Sie nicht persönlich empfangen kann", fuhr Sophia fort. „Dringende Geschäfte halten ihn in Mailand fest. Er wird morgen zurückkehren." Elena nickte, eine Mischung aus Erleichterung und -- überraschenderweise -- leichter Enttäuschung empfindend. „Natürlich. Ich bin hier, um zu arbeiten, nicht für soziale Anlässe." Ein flüchtiges Lächeln huschte über Sophias Gesicht. „Genau das hat er vorhergesagt, dass Sie das sagen würden." Sie deutete auf die breite Treppe. „Kommen Sie, ich zeige Ihnen Ihre Unterkunft. Ihr Gepäck wird gebracht."</p>
+
                         <p>Sie führte Elena durch die imposante Eingangshalle -- ein hoher, eleganter Raum mit Marmorböden und einer großen, geschwungenen Treppe. Kunstwerke schmückten die Wände -- meisterhaft arrangiert, nicht überladen, jedes Stück hatte Raum zum Atmen. Elena erkannte einige bedeutende Werke, hauptsächlich italienische Renaissance und Barock, aber auch überraschende moderne Elemente, die geschickt integriert waren.</p>
-                        
-                        <p>„Der Gästeflügel befindet sich im Westtrakt", erklärte Sophia, während sie einen langen Korridor entlanggingen. „Sie haben ein Appartement mit Blick auf das Meer. Herr Castellano dachte, das würde Ihnen gefallen."</p>
-                        
-                        <p>Elena nickte abwesend, ihre Aufmerksamkeit bereits von einem großen Gemälde gefangen, das im Korridor hing -- ein Caravaggio, oder eine meisterhafte Kopie. Die dramatische Lichtführung, die plastischen Gestalten -- es war atemberaubend, egal ob Original oder nicht.</p>
-                        
-                        <p>Sophia bemerkte ihren Blick. „Ein Frühwerk Caravaggios. Nicht in den Katalogen verzeichnet. Die Sammlung enthält viele solcher... Überraschungen."</p>
-                        
-                        <p>Sie erreichten schließlich eine Flügeltür am Ende des Korridors, die Sophia mit einem altmodischen Schlüssel öffnete. Dahinter lag ein helles, luftiges Appartement -- ein Wohnzimmer mit antiken Möbeln und modernen Akzenten, ein separates Schlafzimmer, ein luxuriöses Badezimmer und eine kleine Küchenzeile. Hohe Fenster öffneten sich zu einer Terrasse mit Blick auf das Meer.</p>
-                        
-                        <p>„Ich hoffe, es entspricht Ihren Erwartungen", sagte Sophia.</p>
-                        
-                        <p>Elena trat ans Fenster. Die Sonne neigte sich dem Horizont zu, tauchte das Meer in goldenes Licht. „Es ist... beeindruckend."</p>
-                        
-                        <p>„Das Abendessen wird um acht Uhr im kleinen Speisesaal serviert", informierte Sophia sie. „Falls Sie lieber allein essen möchten, kann ich es auch hierher bringen lassen."</p>
-                        
-                        <p>„Nein, der Speisesaal ist in Ordnung." Elena drehte sich um. „Wann kann ich die Fresken sehen?"</p>
-                        
-                        <p>Ein Schatten huschte über Sophias Gesicht, so flüchtig, dass Elena sich fragte, ob sie es sich eingebildet hatte. „Herr Castellano möchte sie Ihnen persönlich zeigen. Morgen, nach seiner Rückkehr."</p>
-                        
-                        <p>„Verstehe." Elena unterdrückte ihre Ungeduld. „Dann werde ich den Rest des Tages nutzen, um mich einzurichten und auszuruhen."</p>
-                        
-                        <p>Sophia nickte. „Perfekt. Hier ist Ihr Schlüssel, und hier..." Sie reichte Elena ein kleines, ledernes Notizbuch. „...ein Plan des Museums mit Notizen zu den wichtigsten Ausstellungsstücken. Herr Castellano dachte, das könnte Ihr Interesse wecken."</p>
-                        
-                        <p>Elena nahm das Buch entgegen, sofort neugierig auf seinen Inhalt.</p>
-                        
-                        <p>„Bis später dann
+
+                        <p>„Der Gästeflügel befindet sich im Westtrakt", erklärte Sophia, während sie einen langen Korridor entlanggingen. „Sie haben ein Appartement mit Blick auf das Meer. Herr Castellano dachte, das würde Ihnen gefallen." Elena nickte abwesend, ihre Aufmerksamkeit bereits von einem großen Gemälde gefangen, das im Korridor hing -- ein Caravaggio, oder eine meisterhafte Kopie. Die dramatische Lichtführung, die plastischen Gestalten -- es war atemberaubend, egal ob Original oder nicht.</p>
+
+                        <p>Sophia bemerkte ihren Blick. „Ein Frühwerk Caravaggios. Nicht in den Katalogen verzeichnet. Die Sammlung enthält viele solcher... Überraschungen." Sie erreichten schließlich eine Flügeltür am Ende des Korridors, die Sophia mit einem altmodischen Schlüssel öffnete. Dahinter lag ein helles, luftiges Appartement -- ein Wohnzimmer mit antiken Möbeln und modernen Akzenten, ein separates Schlafzimmer, ein luxuriöses Badezimmer und eine kleine Küchenzeile. Hohe Fenster öffneten sich zu einer Terrasse mit Blick auf das Meer.</p>
+
+                        <p>„Ich hoffe, es entspricht Ihren Erwartungen", sagte Sophia. Elena trat ans Fenster. Die Sonne neigte sich dem Horizont zu, tauchte das Meer in goldenes Licht. „Es ist... beeindruckend." „Das Abendessen wird um acht Uhr im kleinen Speisesaal serviert", informierte Sophia sie. „Falls Sie lieber allein essen möchten, kann ich es auch hierher bringen lassen." „Nein, der Speisesaal ist in Ordnung." Elena drehte sich um. „Wann kann ich die Fresken sehen?"</p>
+
+                        <p>Ein Schatten huschte über Sophias Gesicht, so flüchtig, dass Elena sich fragte, ob sie es sich eingebildet hatte. „Herr Castellano möchte sie Ihnen persönlich zeigen. Morgen, nach seiner Rückkehr." „Verstehe." Elena unterdrückte ihre Ungeduld. „Dann werde ich den Rest des Tages nutzen, um mich einzurichten und auszuruhen." Sophia nickte. „Perfekt. Hier ist Ihr Schlüssel, und hier..." Sie reichte Elena ein kleines, ledernes Notizbuch. „...ein Plan des Museums mit Notizen zu den wichtigsten Ausstellungsstücken. Herr Castellano dachte, das könnte Ihr Interesse wecken."</p>
+
+                        <p>Elena nahm das Buch entgegen, sofort neugierig auf seinen Inhalt. „Bis später dann." Sophia verabschiedete sich mit einem professionellen Lächeln und ließ Elena allein. Kaum hatte sich die Tür geschlossen, öffnete Elena das Notizbuch. Es enthielt, wie versprochen, detaillierte Grundrisse des Museums, unterteilt in verschiedene Flügel und Etagen. Handgeschriebene Notizen markierten besondere Kunstwerke, mit kurzen Anmerkungen zu ihrer Herkunft oder Bedeutung.</p>
+
+                        <p>Elena blätterte durch die Seiten, beeindruckt von der Tiefe und dem Umfang der Sammlung. Das Museum war größer, als es von außen erschien, mit zahlreichen Galerien, Studienräumen und Lagerräumen. Auf der letzten Seite stoppte sie plötzlich. Dort, in einer Ecke des Grundrisses, war ein Bereich markiert, der nicht beschriftet war -- ein Korridor, der in einen leeren, nicht näher bezeichneten Raum führte. Mit einem Kribbeln der Erkenntnis realisierte Elena, dass dies der Korridor sein musste, den sie auf dem Foto gesehen hatte. Der Korridor mit der verschlossenen Tür.</p>
+
+                        <p>Und daneben, in einer eleganten, geschwungenen Handschrift, stand eine einzelne Notiz: „Nicht alle Türen sind zum Öffnen bestimmt. Noch nicht."</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">Behind Closed Doors</div>
+                    <div class="chapter-title">Chapter 1: The Offer</div>
+                    <div class="text-content">
+                        <p>The pigment crumbled under Elena's careful movements. Tiny particles of color, once bright red, now faded to a dull brown, trickled onto the white cloth she had spread beneath the painting. Over two hundred years ago, an artist had mixed this hue with mercuric sulfide and organic binders, unaware that his creation would one day lie beneath Elena's microscope and scalpel.</p>
+
+                        <p>"Centuries," she murmured, as she uncovered the next layer with practiced fingers. "And yet you tell me your secrets." Elena Winters worked in the spacious restoration studio of the Friedrich Museum in Berlin, surrounded by specialized instruments, chemicals, and reference works. The high windows let in steady northern light---the ideal light for her precise work.</p>
+
+                        <p>The late Baroque painting, a depiction of the goddess Diana hunting, had been her project for three weeks. It was a challenge, but that was precisely what made the work so satisfying. Elena's cell phone vibrated on the worktable. She ignored it. The area around Diana's right eye needed her full concentration.</p>
+
+                        <p>The phone vibrated again. Elena sighed, put down her scalpel, and removed her latex gloves. It was Director Schumann, as the display revealed. "Winters," she answered tersely. "Elena, good to reach you." The director's voice sounded unusually enthusiastic. "Could you be in my office in half an hour? I have someone here who would like to meet you."</p>
+
+                        <p>In Schumann's office, a second man stood by the window. When he turned, Elena saw a tall, slim man in a perfectly fitting dark gray suit. His face was strikingly chiseled, with high cheekbones and a straight nose reminiscent of classical sculpture. But it was his eyes that caught Elena's attention---dark, piercing, and of an intensity that involuntarily made her think of the portraits of old Renaissance masters.</p>
+
+                        <p>"Mrs. Winters," Schumann began, "may I introduce: Marcus Castellano." The man stepped forward and held out his hand to Elena. "It's a pleasure to meet you, Mrs. Winters," he said in a voice that sounded surprisingly warm. A slight accent was audible---Mediterranean, perhaps Italian or Spanish.</p>
+
+                        <p>"Mr. Castellano is the owner of the Castellano Private Museum," Schumann explained. "One of the most important private art collections in Europe." Castellano leaned forward slightly. "I have been following your work on the Flemish Masters collection, Ms. Winters. Your restoration of the lost details in Van Dyck's 'Lady with an Ermine' was particularly remarkable."</p>
+
+                        <p>Elena felt a slight discomfort. She was not used to being observed so directly. "What is it about, Mr. Castellano?" A fleeting smile flitted across his face. "My private museum houses an extensive collection that has been in my family for generations. There are areas that require special expertise."</p>
+
+                        <p>He spoke of a fresco cycle from the late 18th century, paintings and sculptures that needed attention. Schumann explained hastily: "Mr. Castellano would like to hire you for an exclusive project, Elena. Three months at the Castellano Museum." The museum needed money, and Castellano was willing to pay a lot.</p>
+
+                        <p>"Why me?" Elena asked abruptly. Castellano regarded her with a piercing gaze. "Your ability to reveal the hidden without destroying it is rare. My collection... it requires special access." Something in his tone made Elena sit up and take notice. There was more than just professional interest.</p>
+
+                        <p>He pulled out a slim leather folder. "Here are the details of the project." Elena opened it briefly and saw a number that almost took her breath away---more than she earned in a whole year. Among the glossy photos of the museum, a smaller photograph fell out: a cordoned-off area with a heavy, locked door. Why was a photograph of a locked door in the folder?</p>
+
+                        <p>Schumann made it clear that a refusal would put the museum in financial difficulties. Elena knew when a battle was lost. That evening she called Castellano: "This is Elena Winters. I accept your offer." "I'm glad to hear it," he replied, as if he had already anticipated her decision.</p>
+
+                        <p>The following days passed in preparations. When she finally arrived in Italy, the Castellano Museum perched on a cliff above the Mediterranean---half palace, half fortress. Sophia Melendez, the curator, received her. In her apartment, Elena found a notebook with museum plans. On the last page was marked an unlabeled area---the corridor with the locked door. Beside it, in elegant handwriting: "Not all doors are meant to open yet."</p>
+                    </div>
+                </div>
+
+                <!-- Spanische Version -->
+                <div class="lang-es hidden">
+                    <div class="book-title">Tras Puertas Cerradas</div>
+                    <div class="chapter-title">Capítulo 1: La Oferta</div>
+                    <div class="text-content">
+                        <p>El pigmento se desmoronó bajo los cuidadosos movimientos de Elena. Diminutas partículas de color, antes rojo brillante, ahora desvanecidas en un marrón apagado, se deslizaron sobre la tela blanca que había extendido debajo de la pintura. Hacía más de doscientos años, un artista había mezclado este tono con sulfuro de mercurio y aglutinantes orgánicos, sin saber que su creación algún día yacería bajo el microscopio y el bisturí de Elena. «Siglos», murmuró, mientras descubría la siguiente capa con dedos expertos. «Y aun así me revelas tus secretos».</p>
+
+                        <p>Elena Winters trabajaba en el espacioso estudio de restauración del Museo Friedrich de Berlín, rodeada de instrumentos especializados, productos químicos y obras de referencia. Los altos ventanales dejaban entrar una luz constante del norte, la luz ideal para su preciso trabajo. La pintura del Barroco tardío, una representación de la diosa Diana cazando, había sido su proyecto durante tres semanas. Era un desafío, pero eso era precisamente lo que hacía que el trabajo fuera tan satisfactorio.</p>
+
+                        <p>El móvil de Lena vibró sobre la mesa de trabajo. Lo ignoró. La zona alrededor del ojo derecho de Diana requería toda su concentración: demasiadas capas de pintura, demasiado barniz, aplicado por restauradores bienintencionados pero ignorantes de siglos pasados. Su tarea consistía en penetrar a través de todas esas capas hasta llegar al original sin dañarlo. El teléfono volvió a vibrar. Elena suspiró, dejó el bisturí y se quitó los guantes de látex. Era el director Schumann, como revelaba el anuncio. El director del museo rara vez la llamaba directamente; solía comunicarse a través de su asistente o por correo electrónico.</p>
+
+                        <p>\"Winters\", respondió secamente. \"Elena, me alegro de contactarla\". La voz del director sonaba inusualmente entusiasta. \"¿Podría estar en mi oficina en media hora? Tengo a alguien aquí que quiere conocerla\". Miró la pintura a medio restaurar. \"Estoy trabajando en la Diana, señor director\". \"Eso puede esperar. Esta oportunidad no\", reprimió Elena con un suspiro. En su profesión, había aprendido que el tiempo era relativo. Para ella, los minutos a veces marcaban la diferencia entre la historia preservada y la destruida. Para administradores como Schumann, las citas y las conversaciones para establecer contactos eran más importantes. \"Muy bien, treinta minutos\". Colgó y comenzó a asegurar metódicamente su puesto de trabajo.</p>
+
+                        <p>El cuadro fue cuidadosamente cubierto, los instrumentos limpiados y los productos químicos sellados. Elena se quitó la bata blanca y se miró en el cristal de la ventana. Llevaba el pelo castaño rojizo recogido en un moño apretado; su ropa ---un pantalón negro sencillo y una blusa de seda gris--- era práctica y discreta. La única extravagancia que se permitió fue un antiguo broche de filigrana de plata, una reliquia de su abuela y un sutil guiño a su conexión con el pasado.</p>
+
+                        <p>De camino a la oficina del director, Elena pasó por las galerías públicas del museo. Turistas y amantes del arte paseaban entre las obras maestras, haciéndose selfis frente a los cuadros o escuchando atentamente las explicaciones de los guías. Todas estas personas solo veían la superficie brillante: el proceso de restauración completo, la pulida presentación. El minucioso trabajo que ella y sus colegas realizaban en secreto permanecía invisible. Así era exactamente como Elena lo deseaba. Ella prefería trabajar en segundo plano, inmersa en la intimidad de las obras de arte, aprendía sus secretos. Con mucho gusto dejaba los momentos de protagonismo a otros.</p>
+
+                        <p>La oficina de Schumann estaba en el ala histórica del museo, una habitación de techo alto revestida de madera oscura con vista al parque del museo. Cuando Elena entró después de un breve golpe, el director se levantó apresuradamente de su escritorio, ¡la señora Winters! Pase, pase. \"Schumann era un hombre corpulento, de pelo ralo y con predilección por los trajes caros y a medida. En contraste con el estereotipo del director de museo distraído, era un administrador astuto y un brillante recaudador de fondos, cualidades que el museo necesitaba desesperadamente para sobrevivir en tiempos de finanzas públicas ajustadas.</p>
+
+                        <p>Un segundo hombre estaba junto a la ventana, de espaldas a ella. Se giró lentamente cuando Elena entró en la habitación. Alto, delgado, con un traje gris oscuro que le sentaba perfectamente y que avergonzaba incluso al vestuario de Schumann. Elena supuso que tendría entre treinta y tantos y treinta y tantos. Su rostro estaba sorprendentemente cincelado, con pómulos altos y una nariz recta que recordaba a la escultura clásica. Su cabello, negro azabache, ligeramente canoso en las sienes, estaba cortado corto y con precisión. Pero fueron sus ojos los que llamaron la atención de Elena: oscuros, penetrantes y de una intensidad que involuntariamente la hizo pensar en los retratos de antiguos maestros del Renacimiento.</p>
+
+                        <p>\"La Sra. ---Señora Winters ---comenzó Schumann con un tono de voz un tanto entusiasta---, le presento a Marcus Castellano. El hombre dio un paso al frente y le tendió la mano a Elena. Su apretón fue firme y seco, su piel fresca. ---Es un placer conocerla, señora Winters ---dijo con una voz sorprendentemente cálida, en contraste con su apariencia fría. Se le percibía un ligero acento mediterráneo, quizá italiano o español---.Castellano es el propietario del Museo Privado Castellano ---explicó Schumann---. Una de las colecciones privadas de arte más importantes de Europa.</p>
+
+                        <p>Elena asintió brevemente. El nombre Castellano le sonaba, aunque solo fuera de pasada. Una antigua familia europea, coleccionistas de arte durante generaciones, con un museo privado legendario, pero notoriamente difícil de acceder para el público. ---Por favor, sentémonos ---la invitó Schumann, señalando la zona de asientos en la esquina de la oficina. Elena se sentó en uno de los sillones de cuero, con Castellano frente a ella. Schumann se sentó en un tercer sillón, ligeramente apartado, como observando deliberadamente la interacción entre sus invitados.</p>
+
+                        <p>---El señor Castellano tiene una propuesta fascinante para usted ---comenzó el director. Castellano se inclinó ligeramente hacia delante---. He estado siguiendo su trabajo en la colección de Maestros Flamencos, señora Winters. Su restauración de los detalles perdidos en \'La dama del armiño\' de Van Dyck fue particularmente notable. Elena arqueó una ceja sorprendida. La restauración de Van Dyck había sido un proyecto complejo que había completado hacía dos años. Había atraído cierta atención en círculos profesionales, pero no esperaba que alguien fuera de ellos se fijara en él.</p>
+
+                        <p>\"Gracias\", respondió con neutralidad. \"Fue un proyecto desafiante\". \"No solo fue desafiante, sino que recuperó algo que se creía perdido\", dijo Castellano. Su mirada permaneció fija en ella, como buscando algo en su rostro. \"Esta capacidad de revelar capas ocultas sin destruir lo esencial es un don excepcional\". Elena sintió una ligera incomodidad. No estaba acostumbrada a que la observaran tan directamente, y menos aún a que la elogiaran de forma tan explícita. Su trabajo hablaba por sí solo; no necesitaba elogios verbales. \"¿De qué se trata, Sr. Castellano?\"</p>
+
+                        <p>Una fugaz sonrisa se dibujó en su rostro, como si hubiera esperado precisamente esa reacción directa. «Mi museo privado alberga una extensa colección que ha pertenecido a mi familia durante generaciones», comenzó. «El edificio en sí es una joya histórica: un palacio de principios del siglo XIX con elementos de diversas épocas. En los últimos años, lo he renovado a fondo, pero\...» Hizo una breve pausa. «Hay zonas que requieren una especialización». «¿Qué zonas?», preguntó Elena. «Entre ellas se encuentra un ciclo de frescos de finales del siglo XVIII, ubicado en la sala principal. Se encuentra en un estado preocupante: en parte pintado encima, en parte dañado por restauraciones incorrectas previas».</p>
+
+                        <p>Elena asintió lentamente. Los frescos eran un desafío particular: la combinación de pigmento y yeso los hacía más vulnerables a las influencias ambientales que las pinturas sobre lienzo. «Además», continuó Castellano, «hay una colección de pinturas y esculturas que también requieren atención. Algunas nunca se han restaurado adecuadamente, otras fueron tratadas por manos menos talentosas que las suyas». Schumann se aclaró la garganta. «Señor\... Castellano quiere contratarte para un proyecto exclusivo, Elena. Tres meses en el Museo Castellano.</p>
+
+                        <p>Elena frunció el ceño. \"¿Tres meses? Es mucho tiempo para estar fuera de aquí\". \"El museo te concedería una licencia especial con goce de sueldo\", explicó Schumann apresuradamente. \"Señor\... Castellano ha hecho una oferta extremadamente generosa por la institución a cambio de sus servicios. Ella lo entendió de inmediato. El museo necesitaba dinero, y Castellano estaba dispuesto a pagar mucho. Schumann esperaba que aceptara, no como una petición, sino como una orden apenas disimulada. \"Ya tengo varios proyectos en marcha\", objetó. \"La Diana, el ciclo de Tiziano, la preparación para la exposición de otoño\".</p>
+
+                        <p>\"Todo eso puede esperar o que lo asuman sus colegas\", interrumpió Schumann con una sonrisa falsa. \"No deberíamos rechazar esta oportunidad\". Elena sabía cuándo una batalla estaba perdida. El director ya lo había decidido. Se volvió hacia Castellano. \"¿Dónde está exactamente su museo, señor Castellano?\" \"En la costa del norte de Italia, a una hora de Génova\", respondió. \"Un lugar tranquilo, ideal para trabajar con concentración\". Se alojaría en el propio museo; hay un ala para invitados con cómodos apartamentos para especialistas como usted.</p>
+
+                        <p>Alojarse en el museo. Elena reprimió una mueca. Apreciaba la separación entre su trabajo y su espacio privado. La idea de estar rodeada de obras de arte ajenas las 24 horas del día era a la vez atractiva e inquietante. \"¿Por qué yo?\", preguntó bruscamente. \"Hay muchos restauradores cualificados, incluso con más experiencia trabajando con frescos\". Castellano la observó con una mirada penetrante e inescrutable a la vez. \"Como le dije, Sra. Winters, su capacidad para revelar lo oculto sin destruirlo es excepcional. Mi colección requiere acceso especial. Algo en su tono hizo que Elena se incorporara y se diera cuenta. Había algo más que un simple interés profesional. Un toque personal, casi una urgencia, brillaba tras su fachada controlada.</p>
+
+                        <p>\"Entiendo que necesita tiempo para pensar\", continuó Castellano, sacando una delgada carpeta de cuero de su maletín. \"Aquí tiene los detalles del proyecto, información sobre el museo y su alojamiento, así como las condiciones financieras\". Le entregó la carpeta. Elena la tomó y la abrió brevemente. Su mirada se posó en la cifra al final del borrador del contrato: unos honorarios que casi la dejaron sin aliento. Era más de lo que ganaba en todo un año en el museo. \" Es muy generoso\", dijo, intentando disimular su sorpresa. \"El arte tiene un precio, y también la experiencia de la Sra. Winter\".</p>
+
+                        <p>Castellano se levantó. \"Me quedaré en Berlín dos días más. Espero tener noticias suyas para entonces\". Schumann también se puso de pie de un salto, ansioso como un colegial. \"Por supuesto que aceptará, ¿verdad, Elena?\" Qué oportunidad.\" Elena se puso de pie más despacio, pensando ya en los retos logísticos que supondría una estancia de tres meses en el extranjero: su apartamento, sus obligaciones aquí, los proyectos en curso. \" Le echaré un vistazo y te lo haré saber lo antes posible\", dijo finalmente . Castellano asintió, como si no hubiera esperado menos. \"Excelente.\" \"El director Schumann tiene mi información de contacto.\" Volvió a extender la mano. \"Espero con interés nuestra colaboración, Sra. Winters.\"</p>
+
+                        <p>Cuando su mano tocó la de ella, Elena tuvo un pensamiento fugaz e irracional: Esta mano conocía secretos, secretos más antiguos y profundos que las obras de arte que se suponía que debía restaurar . Tonterías, se reprendió. Demasiadas horas bajo el microscopio, demasiada soledad en el silencioso estudio. Castellano se despidió con una leve reverencia y salió de la oficina, seguido por un servicial Schumann, que quiso acompañarlo a la salida . Elena se quedó sola, carpeta de cuero en mano. Caminó hasta la ventana y miró hacia el parque del museo, donde empezaban a caer las primeras hojas de otoño.</p>
+
+                        <p>Tres meses en Italia, en un museo privado, rodeada de obras de arte desconocidas. Su curiosidad profesional se había despertado, a pesar de sus reservas. Nuevos retos, obras maestras por descubrir, la oportunidad de trabajar con técnicas que antes solo conocía teóricamente; todo aquello era tentador. Por otro lado, había algo en Marcus Castellano que no lograba identificar. Una intensidad que trascendía el interés habitual de un coleccionista. Como si no solo buscara sus habilidades profesionales, sino algo más, algo más personal.</p>
+
+                        <p>Abrió la carpeta de nuevo y hojeó los papeles. Fotografías brillantes mostraban un edificio impresionante, mitad palacio, mitad fortaleza, en un acantilado con vistas al Mediterráneo. Más imágenes mostraban interiores: techos altos, paredes intrincadamente decoradas, imponentes escaleras y galerías repletas de tesoros artísticos. Y entonces el fresco del que Castellano había hablado: una escena mitológica, en parte descolorida, en parte visiblemente dañada, pero incluso en ese estado de impresionante belleza y complejidad.</p>
+
+                        <p>Una fotografía más pequeña cayó de entre las páginas. Elena la recogió y la miró con el ceño fruncido. Mostraba una zona acordonada del museo: un pasillo con una pesada puerta cerrada al final. La puerta estaba decorada con intrincados grabados, motivos que no pudo identificar de inmediato. ¿Por qué había una fotografía de una puerta cerrada en la carpeta ? «Una obra impresionante, ¿verdad?». Elena se estremeció. Schumann había regresado y ahora estaba en la puerta. \"Sí , lo es\", respondió, guardando rápidamente la foto entre los demás papeles. \"Por supuesto que aceptará\". No era una pregunta. \" Todavía tengo que pensarlo, director. Hay muchos factores que considerar\".</p>
+
+                        <p>Schumann se acercó, su jovialidad de la reunión reemplazada por una expresión más seria. \"Elena, permíteme ser franca. La situación financiera del museo es complicada. La oferta de Castellano ---la donación que hará por tus servicios--- nos ayudaría a superar los próximos dos trimestres\". Elena suspiró para sus adentros. Así que ahí estaba: presión institucional. \"¿Y si me niego?\" \"Entonces tendríamos que considerar recortes presupuestarios. Posiblemente también en tu departamento\". Su voz era suave, pero la amenaza era inconfundible.</p>
+
+                        <p>Elena asintió lentamente. No era política, ni luchadora en las batallas administrativas del museo. Su mundo eran colores y formas, reacciones químicas y técnicas históricas, no presupuestos y negociaciones. \" Ya veo\", dijo secamente. \"¡Excelente !\" Schumann aplaudió, una vez más con el jovial director. \"Sabía que serías razonable. Infórmame en cuanto hayas hablado con Castellano, ¿de acuerdo?\" Salió de la oficina sin esperar su respuesta . Elena recogió los papeles y caminó lentamente por el largo pasillo de vuelta a su estudio. De camino, volvió a abrir la carpeta y sacó la fotografía de la puerta cerrada. ¿Por qué estaba allí? ¿Un descuido o un mensaje?</p>
+
+                        <p>Negó con la cabeza, reflexionando sobre sus propios pensamientos. Demasiadas novelas antiguas leídas, demasiadas historias sobre misteriosos coleccionistas de arte. Era una oferta profesional, nada más . Y, sin embargo, los ojos de Marcus Castellano habían visto algo al mirarla. Algo que superaba sus capacidades profesionales . Una vez en su estudio, Elena dejó la carpeta sobre su escritorio y regresó con Diana, cuyo rostro aún esperaba pacientemente ser liberado de siglos de falsos repintados. \"¿Qué harías tú?\", murmuró mientras se ponía los guantes. La diosa de la caza permaneció en silencio, con los ojos medio ocultos bajo las capas. Pinceladas extrañas.</p>
+
+                        <p>Elena volvió a tomar su bisturí y comenzó a trabajar cuidadosamente alrededor del ojo de la diosa. Capa a capa, descubrió, revelando el original que se escondía debajo. Como siempre, metódica, paciente y controlada. Pero\... Sus pensamientos ya estaban en otra parte. En un museo en un acantilado italiano. En un enigmático coleccionista de arte de mirada penetrante. Y en una puerta cerrada que parecía aguardar algo olvidado hacía mucho tiempo.</p>
+
+                        <p>Para cuando salió de su estudio esa noche, ya había tomado una decisión. Sacó su móvil y marcó el número que Castellano le había dejado. \"Sr. Castellano\", dijo al responder. \"Soy Elena Winters. Acepto su oferta \". Siguió una breve pausa. \"Me alegra oírlo, Sra. Winters\". Su voz sonaba cálida pero no sorprendida, como si ya hubiera anticipado su decisión. \"Lo tendré todo preparado para su llegada\". \" Aunque tengo algunas condiciones\", añadió Elena. Su decisión podría haber sido tomada bajo presión, pero al menos ella establecería sus propias reglas. \"Por supuesto. Escucho \".</p>
+
+                        <p>\" Exijo total autonomía en mi trabajo. Ninguna interferencia con mis métodos ni mi horario\". \"Por supuesto\". En segundo lugar, quiero tener acceso completo a toda la información sobre las obras que se restaurarán: procedencia, propietarios anteriores, intentos de restauración previos, todo. Se produjo una breve pausa, apenas perceptible, pero Elena la notó. \"Eso se arreglará\", dijo Castellano finalmente. \"Y en tercer lugar, me reservo el derecho a cancelar el proyecto en cualquier momento si determino que el trabajo no cumple con mis estándares éticos o profesionales \". Esta vez la pausa fue más larga. \"Una condición interesante, Sra. Winters. ¿Puedo preguntarle qué le preocupa?\"</p>
+
+                        <p>Elena reflexionó un momento. No quería parecer grosera, pero algo en la situación la hizo cautelosa. \"Ninguna preocupación específica. Solo diligencia profesional. Prefiero acuerdos claros desde el principio \". \" Lo respeto. Acepto sus condiciones \". Hablaron de los detalles prácticos: fechas de viaje, equipo necesario, seguros. Elena lo anotó todo con su estilo preciso y metódico. \" Entonces, la espero en una semana\", concluyó Castellano. \"Mi asistente le enviará los documentos de viaje \". \"Hasta entonces, Sr. Castellano\". \" Hasta pronto, Sra. Winters. Y prepárese. Mi colección la sorprenderá.\"</p>
+
+                        <p>La comunicación se cortó, y Elena tuvo la extraña sensación de estar firmando un contrato, cuya letra pequeña aún desconocía. Los días siguientes transcurrieron en un torbellino de preparativos. Elena informó a su administración, entregó los proyectos en curso a sus colegas y preparó documentos detallados sobre su trabajo anterior. Andrea Korff asumiría el puesto de Diana, una colega más joven y competente, aunque no tan precisa como Elena hubiera preferido . Su pequeño apartamento en Charlottenburg estaba asegurado: se llevaron las plantas a un vecino, se suspendió la suscripción al periódico y una limpiadora revisaría todo mensualmente.</p>
+
+                        <p>Elena empacó metódicamente, como hacía todo: sus instrumentos especiales, que no confiaba a nadie; literatura especializada que no estaba disponible digitalmente; ropa para tres meses, práctica y discreta. La noche antes de partir, se detuvo en su ordenado apartamento y miró las dos maletas grandes y la caja de transporte especial para sus herramientas más delicadas. Todo estaba organizado, controlado, preparado. Así era como siempre había vivido: cada variable considerada, cada eventualidad prevista.</p>
+
+                        <p>Su mirada se posó en la foto de la puerta cerrada, que había copiado de los archivos de Castellano. Había investigado mucho en los últimos días: sobre el Museo Castellano, sobre la familia, sobre las partes conocidas de la colección. La información era escasa. El museo rara vez abría al público, las publicaciones sobre la colección eran escasas y, en su mayoría, obsoletas. La familia Castellano en sí misma era un misterio: una antigua aristocracia italiana con raíces que se remontaban al siglo XV, siempre al margen de los acontecimientos históricos importantes, nunca en el centro. Coleccionistas de arte y mecenas durante generaciones, pero siempre discretos, casi retraídos.</p>
+
+                        <p>No encontró casi nada sobre Marcus Castellano personalmente: ni entrevistas, ni fotos de prensa, solo menciones ocasionales en informes sobre subastas de arte o eventos benéficos. La puerta cerrada, sin embargo, seguía siendo un enigma. No se mencionaba en ninguna de las escasas publicaciones sobre el museo. Ningún plano mostraba este pasillo, ninguna descripción mencionaba una zona acordonada . «Te estás volviendo paranoica», murmuró Elena para sí misma. Supuestamente era un almacén, una zona en reformas o simplemente una parte privada del edificio. Y sin embargo, ¿por qué estaba la foto en la carpeta? ¿Un descuido? ¿O una especie de prueba?</p>
+
+                        <p>Elena negó con la cabeza, sumida en sus propios pensamientos. Era una científica, no la heroína de una novela. Viajaría a Italia, haría su trabajo y regresaría. Profesional, eficiente, distante. Con esta firme intención, se durmió, pero sus sueños fueron inquietos, llenos de pasillos interminables y puertas que se abrían ante ella, solo para conducir a más puertas, en un laberinto sin salida.</p>
+
+                        <p>El vuelo a Génova transcurrió sin contratiempos. Elena dedicó el tiempo a leer una publicación especializada sobre la restauración de frescos en el Mediterráneo, preparándose para la tarea que le aguardaba. En el aeropuerto, la esperaba un chófer, un hombre taciturno con uniforme negro, que recogió su equipaje y la condujo a un elegante Mercedes negro. El trayecto por la costa de Liguria ofrecía vistas espectaculares del Mediterráneo, pero Elena apenas las notó. Su mente ya estaba en el trabajo que le aguardaba.</p>
+
+                        <p>Después de aproximadamente una hora, el coche dejó la carretera principal y siguió un camino estrecho y sinuoso que serpenteaba entre densos pinares. Por fin, el paisaje se abrió y Elena vislumbró por primera vez el Museo Castellano. Las fotos de la carpeta no mentían, pero no transmitían todo el impacto. El edificio se alzaba sobre un acantilado sobre el mar, mitad palacio, mitad fortaleza. Su dorada fachada de arenisca relucía a la luz de la tarde. Lo rodeaban jardines en terrazas salpicados de cipreses y estatuas antiguas, y más allá se extendía el infinito azul del Mediterráneo.</p>
+
+                        <p>El coche atravesó una verja de hierro forjado y siguió un camino sinuoso hasta la entrada principal. Una mujer ya la esperaba allí: esbelta, con un elegante traje negro, con una postura a la vez acogedora y distante. «Señora Winters», saludó a Elena al salir. «Bienvenida al Museo Castellano. Soy Sophia Meléndez , la conservadora». Elena le estrechó la mano. Sophia era una atractiva mujer de unos treinta años, de piel aceitunada y ojos oscuros e inteligentes. Llevaba el pelo negro recogido en un moño apretado que reflejaba el estilo propio de Elena.</p>
+
+                        <p>«El Sr. Castellano se disculpa por no poder recibirla en persona», continuó Sophia. «Un asunto urgente lo retiene en Milán. Regresará mañana». Elena asintió, con una mezcla de alivio y, sorprendentemente, una ligera decepción. «Por supuesto. Estoy aquí para trabajar, no para eventos sociales». Una fugaz sonrisa se dibujó en el rostro de Sophia. «Eso es exactamente lo que predijo que dirías». Señaló la amplia escalera. «Ven, te mostraré tu alojamiento. Te traeré el equipaje ».</p>
+
+                        <p>Condujo a Elena a través del imponente recibidor, un espacio alto y elegante con suelos de mármol y una gran escalera. Obras de arte adornaban las paredes, magistralmente dispuestas, sin amontonar, con cada pieza respirando. Elena reconoció algunas obras significativas, principalmente del Renacimiento y el Barroco italianos, pero también sorprendentes elementos modernos inteligentemente integrados. «El ala de invitados está en el ala oeste», explicó Sophia mientras caminaban por un largo pasillo. \"Tiene un apartamento con vistas al mar. El señor Castellano pensó que le gustaría.\"</p>
+
+                        <p>Elena asintió distraídamente; su atención ya estaba fijada en un gran cuadro colgado en el pasillo: un Caravaggio, o una copia magistral. La iluminación dramática, las figuras escultóricas\... era impresionante, fuera original o no. Sophia notó su mirada. \"Una obra temprana de Caravaggio. No figura en los catálogos. La colección contiene muchas sorpresas como esta.\" Finalmente llegaron a un par de puertas francesas al final del pasillo, que Sophia abrió con una llave antigua. Más allá se encontraba un apartamento luminoso y espacioso: una sala de estar con muebles antiguos y toques modernos, un dormitorio independiente, un baño de lujo y una pequeña cocina americana. Unos altos ventanales daban a una terraza con vistas al mar.</p>
+
+                        <p>\" Espero que esté a la altura de sus expectativas\", dijo Sophia . Elena se acercó a la ventana. El sol se ponía en el horizonte, bañando el mar con una luz dorada. \"Es impresionante.\" \" La cena se servirá a las ocho en el pequeño comedor\", le informó Sophia. Si prefieres comer solo, puedo pedir que te lo traigan. ---No , el comedor está bien. ---Elena se dio la vuelta---. ¿Cuándo podré ver los frescos?</p>
+
+                        <p>Una sombra cruzó el rostro de Sophia, tan fugaz que Elena se preguntó si la había imaginado. «El Sr. Castellano quiere enseñárselas personalmente mañana, a su regreso». «Entiendo ». Elena contuvo su impaciencia. «Entonces, usaré el resto del día para acomodarme y descansar». Sophia asintió. «Perfecto. Aquí tiene su llave, y aquí». Le entregó a Elena una pequeña libreta de cuero. «Un mapa del museo con notas sobre las principales exposiciones. El Sr. Castellano pensó que esto podría despertar su interés».</p>
+
+                        <p>Elena tomó la libreta, inmediatamente curiosa por su contenido. « Hasta luego, entonces». Sophia se despidió con una sonrisa profesional y dejó a Elena sola . Apenas se cerró la puerta, Elena abrió la libreta. Contenía, como había prometido, planos detallados del museo, dividido en diferentes alas y plantas. Notas manuscritas marcaban las obras de arte especiales, con breves comentarios sobre su origen o significado. Elena hojeó las páginas, impresionada por la profundidad y el alcance de la colección.</p>
+
+                        <p>El museo era más grande de lo que parecía desde fuera, con numerosas galerías, salas de estudio y almacenes. En la última página, se detuvo de repente. Allí, en una esquina del plano, había una zona sin etiquetar: un pasillo que conducía a una sala vacía y sin marcar. Con un escalofrío de reconocimiento, Elena comprendió que debía ser el pasillo que había visto en la fotografía. El pasillo con la puerta cerrada . Y junto a él, con una caligrafía elegante y fluida, había una sola nota: « Todavía no se abren todas las puertas».</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 2: Die Tiefe der Begierde -->
+            <div id="book2" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="die-tiefe-der-begierde.jpg" alt="Die Tiefe der Begierde">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Die Tiefe der Begierde</div>
+                    <div class="chapter-title">Kapitel 1: Der Schatz von Venedig</div>
+                    <div class="text-content">
+                        <p>Das Licht der untergehenden Sonne brach sich auf der Lagune Venedigs und tauchte die Stadt in ein goldenes Glühen, das sich in den unzähligen Fenstern des Palazzo Grassi spiegelte. Elena Winters ließ ihren Blick über den Canale Grande schweifen, während sie dem Gemurmel der Auktionsbesucher lauschte, die sich um sie herum im opulenten Saal versammelten. Vor weniger als einem Jahr hätte sie es für unmöglich gehalten, an diesem Ort zu stehen -- als Begleiterin eines der bedeutendsten privaten Kunstsammler Europas und mit der Aussicht, ein Stück zur Vervollständigung einer der exklusivsten Kollektionen erotischer Renaissancekunst zu erwerben.</p>
+
+                        <p>Marcus Castellano stand neben ihr, seine Präsenz so ruhig und kontrolliert wie immer, doch sie spürte die feine Spannung, die seinen Körper durchlief. Es war die subtile Intensität eines Jägers, der seine Beute bereits im Visier hatte. Seit drei Monaten bereiteten sie sich auf diese Auktion vor -- seit sie in den Archiven des Museums auf Hinweise zu einer verschollenen Serie erotischer Skulpturen aus dem 16. Jahrhundert gestoßen waren, von denen heute eines der Hauptstücke versteigert werden sollte.</p>
+
+                        <p>"Lot 27 wird in etwa zwanzig Minuten aufgerufen", flüsterte Marcus, während er diskret auf sein Programmheft blickte. Seine Stimme, tief und kontrolliert, löste noch immer dieses vertraute Kribbeln in ihrer Wirbelsäule aus. "Bist du bereit?" Elena nickte, ihr Blick fest. "Absolut. Die Skulptur ist es wert, um sie zu kämpfen."</p>
+
+                        <p>Die Skulptur, um die es ging -- "Venus und Adonis in Umarmung" -- war ein Meisterwerk der Renaissance-Erotik. Aus makellosem Marmor geschaffen, zeigte sie das mythologische Paar in einem Moment intensiver Intimität, kunstvoll balancierend zwischen klassischer Schönheit und expliziter Darstellung. Marcus besaß bereits eines der Stücke aus der Serie; dieses würde sie der Vervollständigung der Sammlung einen bedeutenden Schritt näher bringen.</p>
+
+                        <p>Als "Lot 27" aufgerufen wurde, begann ein Bieterwettkampf. Marcus bot mit ruhiger Selbstsicherheit, und die Gebote stiegen stetig. Bei 2,4 Millionen schienen die meisten Bieter ausgestiegen zu sein. Nur Marcus und ein anonymer Telefonbieter blieben im Rennen. Doch dann geschah etwas Unerwartetes.</p>
+
+                        <p>"3,7 Millionen." Die neue Stimme kam von hinten im Saal. Elena drehte sich um und ihr Herz setzte einen Schlag aus. In der letzten Reihe stand eine Frau -- schlank, elegant, mit rabenschwarzem Haar, das in perfekten Wellen auf ihre Schultern fiel. Sie trug ein dunkelrotes Kleid und lächelte mit einer Herausforderung, die nichts mit Freundlichkeit zu tun hatte. Sophia Melendez.</p>
+
+                        <p>Die Frau, deren Name Marcus in den vergangenen Monaten nie erwähnt hatte, obwohl Elena aus Andeutungen wusste, dass sie einst mehr als nur beruflich verbunden gewesen waren. Eine der bedeutendsten Kunsthändlerinnen Europas -- und Marcus' frühere Geliebte. Elena spürte, wie sich Marcus neben ihr versteifte, seine Hände zu Fäusten geballt.</p>
+
+                        <p>Ein Bieterwettkampf zwischen Marcus und Sophia entbrannte. Die Spannung im Saal war greifbar -- es ging nicht nur um die Skulptur, sondern um Geschichte, um unausgesprochene Worte, um alte Wunden. Schließlich bot Marcus "5 Millionen", und Sophia trat zurück. Sie hatten gewonnen, aber Elena wusste, dass der wahre Kampf erst begann.</p>
+
+                        <p>Beim Empfang nach der Auktion näherte sich Sophia ihnen mit einem rätselhaften Lächeln. "Guten Abend, Marcus. Elena." Sie sprach von ihrer geplanten Biennale-Ausstellung "Verborgene Leidenschaften" und bot Informationen über die Vittoria-Skulpturen an -- Briefe, die sie in Madrid entdeckt hatte, die eine tiefere Verbindung zwischen der Kurtisane Veronica Franco und dem Künstler nahelegten.</p>
+
+                        <p>Elena beobachtete die Interaktion zwischen Marcus und Sophia -- die Art, wie sie sich ansahen, die unausgesprochenen Botschaften, die zwischen ihnen ausgetauscht wurden. Es war offensichtlich, dass ihre Vergangenheit kompliziert war. "Ich freue mich darauf, dich wiederzusehen, Marcus", sagte Sophia schließlich. "Und dich besser kennenzulernen, Elena. Ich bin sicher, wir haben viel zu... besprechen."</p>
+
+                        <p>Als sie außer Hörweite war, fragte Elena: "Du hast nie von ihr erzählt." Marcus' Blick wanderte über den Raum. "Sophia und ich haben eine... Geschichte. Nicht nur persönlich, sondern auch beruflich. Sie weiß Dinge über die Sammlung, über meine Familie, die wenige andere kennen." Seine Stimme wurde härter. "Sophia tut nichts ohne Grund. Was auch immer sie vorhat -- wir sollten vorsichtig sein."</p>
+
+                        <p>Im Wassertaxi zurück zum Hotel erzählte Marcus schließlich die Wahrheit. Er hatte Sophia vor acht Jahren kennengelernt, sie waren zwei Jahre lang ein Paar gewesen -- vereint durch ihre Leidenschaft für Kunst und verborgene Schätze. Doch der Bruch kam, als er entdeckte, dass sie gefälschte Provenienznachweise erstellt hatte. "Sie bewegte sich oft am Rande der Legalität", erklärte er. "Sophia akzeptiert keine moralischen Grenzen, die ihre Pläne durchkreuzen."</p>
+
+                        <p>In ihrer Hotelsuite angekommen, warnte Marcus Elena eindringlich: "Sie gibt niemals auf, was sie als ihren Besitz betrachtet. Und in ihrem Geist gehöre ich noch immer in diese Kategorie." Elena spürte eine Mischung aus Eifersucht und Sorge. "Und? Tust du das?" Marcus umfasste sanft ihr Gesicht. "Nein. Was zwischen Sophia und mir war, ist lange vorbei. Unwiderruflich vorbei. Aber sie ist gefährlich, Elena. Nicht wegen dem, was sie einmal für mich bedeutet hat, sondern wegen dem, was sie bereit ist zu tun, um zu bekommen, was sie will."</p>
+                    </div>
+                </div>
+                
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">The Depths of Desire</div>
+                    <div class="chapter-title">Chapter 1: The Treasure of Venice</div>
+                    <div class="text-content">
+                        <p>The light of the setting sun refracted on the Venetian lagoon, bathing the city in a golden glow reflected in the countless windows of Palazzo Grassi. Elena Winters let her gaze sweep over the Grand Canal while listening to the murmur of auction visitors gathering around them in the opulent hall. Less than a year ago, she would have considered it impossible to stand in this place -- as the companion of one of Europe's most important private art collectors and with the prospect of acquiring a piece to complete one of the most exclusive collections of erotic Renaissance art.</p>
+
+                        <p>Marcus Castellano stood beside her, his presence as calm and controlled as always, yet she felt the fine tension running through his body. It was the subtle intensity of a hunter who already had his prey in sight. For three months they had been preparing for this auction -- since they had discovered hints in the museum archives of a lost series of erotic sculptures from the 16th century, one of the main pieces of which was to be auctioned today.</p>
+
+                        <p>"Lot 27 will be called in about twenty minutes," Marcus whispered while discretely glancing at his program booklet. His voice, deep and controlled, still triggered that familiar tingling in her spine. "Are you ready?" Elena nodded, her gaze firm. "Absolutely. The sculpture is worth fighting for."</p>
+
+                        <p>The sculpture in question -- "Venus and Adonis in Embrace" -- was a masterpiece of Renaissance eroticism. Created from flawless marble, it showed the mythological couple in a moment of intense intimacy, artfully balancing between classical beauty and explicit representation. Marcus already owned one of the pieces from the series; this one would bring them significantly closer to completing the collection.</p>
+
+                        <p>When "Lot 27" was called, a bidding war began. Marcus bid with calm confidence, and the bids rose steadily. At 2.4 million, most bidders seemed to have dropped out. Only Marcus and an anonymous phone bidder remained in the race. But then something unexpected happened.</p>
+
+                        <p>"3.7 million." The new voice came from the back of the hall. Elena turned around and her heart skipped a beat. In the last row stood a woman -- slender, elegant, with raven-black hair falling in perfect waves on her shoulders. She wore a dark red dress and smiled with a challenge that had nothing to do with friendliness. Sophia Melendez.</p>
+
+                        <p>The woman whose name Marcus had never mentioned in recent months, although Elena knew from hints that they had once been connected in more than just professional ways. One of Europe's most important art dealers -- and Marcus's former lover. Elena felt Marcus stiffen beside her, his hands clenched into fists.</p>
+
+                        <p>A bidding war erupted between Marcus and Sophia. The tension in the hall was palpable -- it wasn't just about the sculpture, but about history, unspoken words, old wounds. Finally, Marcus bid "5 million," and Sophia stepped back. They had won, but Elena knew the real battle was just beginning.</p>
+
+                        <p>At the reception after the auction, Sophia approached them with an enigmatic smile. "Good evening, Marcus. Elena." She spoke of their planned Biennale exhibition "Hidden Passions" and offered information about the Vittoria sculptures -- letters she had discovered in Madrid that suggested a deeper connection between the courtesan Veronica Franco and the artist.</p>
+
+                        <p>Elena observed the interaction between Marcus and Sophia -- the way they looked at each other, the unspoken messages exchanged between them. It was obvious their past was complicated. "I look forward to seeing you again, Marcus," Sophia finally said. "And to getting to know you better, Elena. I'm sure we have much to... discuss."</p>
+
+                        <p>When she was out of earshot, Elena asked: "You never told me about her." Marcus's gaze wandered around the room. "Sophia and I have a... history. Not just personal, but professional too. She knows things about the collection, about my family, that few others know." His voice became harder. "Sophia does nothing without reason. Whatever she's planning -- we should be careful."</p>
+
+                        <p>In the water taxi back to the hotel, Marcus finally told the truth. He had met Sophia eight years ago, they had been a couple for two years -- united by their passion for art and hidden treasures. But the break came when he discovered she had created false provenance documents. "She often moved on the edge of legality," he explained. "Sophia accepts no moral boundaries that interfere with her plans."</p>
+
+                        <p>Arriving at their hotel suite, Marcus urgently warned Elena: "She never gives up what she considers her property. And in her mind, I still belong in that category." Elena felt a mixture of jealousy and concern. "And? Do you?" Marcus gently cupped her face. "No. What was between Sophia and me is long over. Irrevocably over. But she's dangerous, Elena. Not because of what she once meant to me, but because of what she's willing to do to get what she wants."</p>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Band 3: Die Kunst der Hingabe -->
+            <div id="book3" class="book-content hidden">
+                <div class="book-cover">
+                    <img src="die-kunst-der-hingabe.jpg" alt="Die Kunst der Hingabe">
+                </div>
+                
+                <!-- Deutsche Version -->
+                <div class="lang-de">
+                    <div class="book-title">Die Kunst der Hingabe</div>
+                    <div class="chapter-title">Kapitel 1: Das Vermächtnis</div>
+                    <div class="text-content">
+                        <p>Die Nachricht vom Tod seiner Tante Marie erreichte Marcus an einem kühlen Herbstmorgen. Die Sonne stand tief am Horizont und tauchte die toskanische Landschaft in ein goldenes Licht, das die Schatten der Vergangenheit kaum zu durchdringen vermochte. Elena, die an seiner Seite stand, spürte die Last der Nachricht, die schwer auf Marcus' Schultern ruhte. Marie, die Matriarchin der Familie Castellano, war nicht nur eine Verwandte gewesen, sondern auch die Hüterin eines Erbes, das weit über Kunst und Geschichte hinausging.</p>
+
+                        <p>Die Reise zum Familienanwesen in der Toskana war von einer seltsamen Stille geprägt. Elena beobachtete, wie Marcus' Gesichtszüge mit jedem Kilometer härter wurden, als ob er sich hinter einer Maske aus Kontrolle und Pflichtbewusstsein versteckte. Sie wusste, dass die Beerdigung mehr war als nur ein Abschied -- es war eine Konfrontation mit der Vergangenheit, die Marcus so lange zu verdrängen versucht hatte.</p>
+
+                        <p>Das Anwesen, ein imposantes Gebäude aus Stein und Geschichte, ragte vor ihnen auf wie ein stummer Zeuge der Zeit. In der großen Halle, wo das Licht durch die hohen Fenster fiel, versammelte sich die Familie. Die Luft war schwer von unausgesprochenen Worten und alten Geheimnissen. Als das Testament verlesen wurde, spürte Elena, wie sich die Atmosphäre veränderte. Ein unbekannter Teil der Sammlung wurde erwähnt, ein "verlorener Schatz", der die Familie seit Generationen begleitete.</p>
+
+                        <p>Marie hatte Marcus eine verschlüsselte Botschaft hinterlassen, die von einem Erbe sprach, das weit mehr war als nur materieller Besitz. Elena sah, wie Marcus' Hände leicht zitterten, als er das Dokument entgegennahm. Die Trauer und die Familiendynamik schienen ihn in alte Verhaltensmuster zurückzuführen, und Elena fragte sich, ob die Last der Vergangenheit jemals von ihm abfallen würde.</p>
+
+                        <p>"Was denkst du, was sie uns damit sagen will?" fragte Elena leise, ihre Stimme kaum mehr als ein Flüstern. Marcus hob den Blick und sah sie an, seine Augen spiegelten eine Mischung aus Trauer und Entschlossenheit wider. "Marie war immer eine Meisterin der Geheimnisse. Sie wollte, dass wir die Wahrheit selbst herausfinden, dass wir uns mit der Vergangenheit auseinandersetzen."</p>
+
+                        <p>Die Beerdigung war ein stilles, würdevolles Ereignis. Nach der Zeremonie zog sich die Familie in das große Wohnzimmer des Anwesens zurück. "Ich erinnere mich an die Sommer, die wir hier verbracht haben", begann Marcus, seine Stimme leise und nachdenklich. "Marie hat uns immer Geschichten über die Familie erzählt, über die Kunstwerke und ihre Bedeutung. Aber ich habe nie wirklich verstanden, wie tief diese Verbindungen reichen."</p>
+
+                        <p>Elena drückte seine Hand sanft. "Du bist nicht allein, Marcus. Wir werden das zusammen durchstehen." Die Nacht brach herein, und das Anwesen wurde von einer sanften Dunkelheit umhüllt. Marcus und Elena saßen noch lange zusammen, sprachen über die Vergangenheit und die Zukunft, über die Geheimnisse und die Hoffnungen, die sie teilten. Es war der Beginn einer Reise, die sie beide verändern würde.</p>
+
+                        <p>"Wir sollten uns die Dokumente von Marie genauer ansehen", schlug Elena vor, während sie die Treppe zu Maries altem Arbeitszimmer hinaufstiegen. Das Arbeitszimmer war ein Raum voller Geschichte und Erinnerungen. Die Wände waren gesäumt von Bücherregalen, die bis zur Decke reichten und mit alten Büchern und Dokumenten gefüllt waren. Sie begannen, die Dokumente durchzusehen, auf der Suche nach Hinweisen auf den verlorenen Schatz.</p>
+
+                        <p>"Hier ist etwas Interessantes", sagte Marcus schließlich und hielt ein altes Dokument hoch. "Es ist eine Karte des Anwesens, die ein geheimes Zimmer in der Bibliothek zeigt. Vielleicht ist das der Ort, an dem der Schatz versteckt ist." Gemeinsam machten sie sich auf den Weg zur Bibliothek und fanden schließlich den Mechanismus, um das geheime Zimmer zu öffnen.</p>
+
+                        <p>Mit einem leisen Knarren schwang ein Teil des Regals zur Seite und enthüllte eine verborgene Tür. Der Raum dahinter war klein und dunkel, erleuchtet nur von einer einzigen Kerze. In der Mitte des Raumes stand eine Truhe, bedeckt mit einer dicken Staubschicht. Mit einem tiefen Atemzug öffnete Marcus die Truhe. Im Inneren fanden sie eine Sammlung von Dokumenten und Kunstwerken, die von der Geschichte der Familie Castellano zeugten.</p>
+
+                        <p>"Das ist unglaublich", sagte Elena, während sie die Dokumente durchblätterte. "Hier ist die Geschichte der Familie, verborgen und bewahrt für die Nachwelt." Marcus nickte, seine Augen leuchteten vor Stolz und Erstaunen. Die Entdeckung des geheimen Zimmers und des verlorenen Schatzes war ein Wendepunkt in ihrer Reise -- der Beginn einer neuen Phase, in der sie die Geheimnisse der Vergangenheit lüften und die Wahrheit ans Licht bringen würden.</p>
+
+                        <p>Die beiden verbrachten noch lange Zeit in dem geheimen Zimmer, durchforsteten die Dokumente und Kunstwerke und tauchten tief in die Geschichte ihrer Familie ein. "Diese Briefe zeigen uns, dass die Liebe und die Verbindungen, die wir in unserem Leben schaffen, das Wichtigste sind", sagte Marcus leise. "Sie sind das, was bleibt, wenn alles andere vergangen ist."</p>
+
+                        <p>Als die Nacht hereinbrach, wussten Marcus und Elena, dass sie auf dem richtigen Weg waren. Die Reise, die vor ihnen lag, würde nicht einfach sein, aber sie waren bereit, sich den Herausforderungen zu stellen und die Wahrheit ans Licht zu bringen. Gemeinsam würden sie die Geschichte der Familie Castellano neu schreiben und die Schatten der Vergangenheit hinter sich lassen. Das Vermächtnis von Marie war mehr als nur Kunst und Geschichte -- es war eine Einladung, die tiefsten Geheimnisse der menschlichen Seele zu erkunden.</p>
+                    </div>
+                </div>
+
+                <!-- Englische Version -->
+                <div class="lang-en hidden">
+                    <div class="book-title">The Art of Devotion</div>
+                    <div class="chapter-title">Chapter 1: The Legacy</div>
+                    <div class="text-content">
+                        <p>The news of his Aunt Marie's death reached Marcus on a cool autumn morning. The sun stood low on the horizon, bathing the Tuscan landscape in golden light that could barely penetrate the shadows of the past. Elena, standing at his side, felt the weight of the news resting heavily on Marcus's shoulders. Marie, the matriarch of the Castellano family, had been more than just a relative -- she was also the keeper of a legacy that went far beyond art and history.</p>
+
+                        <p>The journey to the family estate in Tuscany was marked by a strange silence. Elena watched as Marcus's features grew harder with each kilometer, as if he were hiding behind a mask of control and duty. She knew that the funeral was more than just a farewell -- it was a confrontation with the past that Marcus had tried so long to suppress.</p>
+
+                        <p>The estate, an imposing building of stone and history, loomed before them like a silent witness to time. In the great hall, where light fell through high windows, the family gathered. The air was heavy with unspoken words and old secrets. When the will was read, Elena felt the atmosphere change. An unknown part of the collection was mentioned, a "lost treasure" that had accompanied the family for generations.</p>
+
+                        <p>Marie had left Marcus an encrypted message that spoke of a legacy far more than just material possessions. Elena saw how Marcus's hands trembled slightly as he received the document. The grief and family dynamics seemed to lead him back into old patterns of behavior, and Elena wondered if the burden of the past would ever fall from him.</p>
+
+                        <p>"What do you think she's trying to tell us with this?" Elena asked quietly, her voice barely more than a whisper. Marcus looked up and met her eyes, his gaze reflecting a mixture of sorrow and determination. "Marie was always a master of secrets. She wanted us to find the truth ourselves, to confront the past."</p>
+
+                        <p>The funeral was a quiet, dignified event. After the ceremony, the family retreated to the great living room of the estate. "I remember the summers we spent here," Marcus began, his voice quiet and thoughtful. "Marie always told us stories about the family, about the artworks and their meaning. But I never really understood how deep these connections run."</p>
+
+                        <p>Elena squeezed his hand gently. "You're not alone, Marcus. We'll get through this together." Night fell, and the estate was enveloped in gentle darkness. Marcus and Elena sat together for a long time, talking about the past and the future, about the secrets and hopes they shared. It was the beginning of a journey that would change them both.</p>
+
+                        <p>"We should take a closer look at Marie's documents," Elena suggested as they climbed the stairs to Marie's old study. The study was a room full of history and memories. The walls were lined with bookshelves reaching to the ceiling, filled with old books and documents. They began examining the documents, searching for clues to the lost treasure.</p>
+
+                        <p>"Here's something interesting," Marcus finally said, holding up an old document. "It's a map of the estate showing a secret room in the library. Maybe that's where the treasure is hidden." Together they made their way to the library and finally found the mechanism to open the secret room.</p>
+
+                        <p>With a quiet creak, part of the shelf swung aside, revealing a hidden door. The room beyond was small and dark, illuminated only by a single candle. In the center of the room stood a chest, covered with a thick layer of dust. With a deep breath, Marcus opened the chest. Inside they found a collection of documents and artworks that testified to the history of the Castellano family.</p>
+
+                        <p>"This is incredible," Elena said as she leafed through the documents. "Here is the family's history, hidden and preserved for posterity." Marcus nodded, his eyes shining with pride and amazement. The discovery of the secret room and the lost treasure was a turning point in their journey -- the beginning of a new phase in which they would uncover the secrets of the past and bring the truth to light.</p>
+
+                        <p>The two spent a long time in the secret room, sifting through documents and artworks and delving deep into the history of their family. "These letters show us that the love and connections we create in our lives are what matter most," Marcus said quietly. "They are what remains when everything else has passed."</p>
+
+                        <p>As night fell, Marcus and Elena knew they were on the right path. The journey ahead would not be easy, but they were ready to face the challenges and bring the truth to light. Together they would rewrite the history of the Castellano family and leave the shadows of the past behind. Marie's legacy was more than just art and history -- it was an invitation to explore the deepest secrets of the human soul.</p>
+                    </div>
+                </div>
+
+                <!-- Spanische Version nicht verfügbar -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentBook = 1;
+        let currentLanguage = 'de';
+
+        // Amazon ASINs pro Buch und Sprache
+        const amazonLinks = {
+            1: { // Hinter verschlossenen Türen
+                de: {
+                    book: 'https://www.amazon.de/dp/B0F1YC3J79',
+                    ebook: 'https://www.amazon.de/dp/B0F8F1CVCL'
+                },
+                en: {
+                    book: 'https://www.amazon.de/dp/B0F311L2ZQ',
+                    ebook: 'https://www.amazon.de/dp/B0F8NJQ56P'
+                },
+                es: {
+                    book: 'https://www.amazon.de/dp/B0F37NJD39',
+                    ebook: null // Kein spanisches eBook verfügbar
+                }
+            },
+            2: { // Die Tiefe der Begierde - keine ASINs verfügbar
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null },
+                es: { book: null, ebook: null }
+            },
+            3: { // Die Kunst der Hingabe - keine ASINs verfügbar
+                de: { book: null, ebook: null },
+                en: { book: null, ebook: null },
+                es: { book: null, ebook: null }
+            }
+        };
+
+        function updateAmazonButtons() {
+            const bookButton = document.getElementById('bookButton');
+            const ebookButton = document.getElementById('ebookButton');
+            const links = amazonLinks[currentBook] && amazonLinks[currentBook][currentLanguage];
+
+            if (links) {
+                // Buch Button
+                if (links.book) {
+                    bookButton.href = links.book;
+                    bookButton.classList.remove('unavailable');
+                    bookButton.textContent = currentLanguage === 'de' ? '📚 Buch kaufen' : 
+                                             currentLanguage === 'en' ? '📚 Buy Book' : 
+                                             '📚 Comprar Libro';
+                } else {
+                    bookButton.href = '#';
+                    bookButton.classList.add('unavailable');
+                    bookButton.textContent = currentLanguage === 'de' ? '📚 Bald verfügbar' : 
+                                             currentLanguage === 'en' ? '📚 Coming Soon' : 
+                                             '📚 Próximamente';
+                }
+
+                // eBook Button
+                if (links.ebook) {
+                    ebookButton.href = links.ebook;
+                    ebookButton.classList.remove('unavailable');
+                    ebookButton.textContent = currentLanguage === 'de' ? '📱 eBook kaufen' : 
+                                              currentLanguage === 'en' ? '📱 Buy eBook' : 
+                                              '📱 Comprar eBook';
+                } else {
+                    ebookButton.href = '#';
+                    ebookButton.classList.add('unavailable');
+                    ebookButton.textContent = currentLanguage === 'de' ? '📱 Bald verfügbar' : 
+                                              currentLanguage === 'en' ? '📱 Coming Soon' : 
+                                              '📱 Próximamente';
+                }
+            } else {
+                // Fallback
+                bookButton.href = '#';
+                bookButton.classList.add('unavailable');
+                ebookButton.href = '#';
+                ebookButton.classList.add('unavailable');
+                bookButton.textContent = currentLanguage === 'de' ? '📚 Bald verfügbar' : 
+                                         currentLanguage === 'en' ? '📚 Coming Soon' : 
+                                         '📚 Próximamente';
+                ebookButton.textContent = currentLanguage === 'de' ? '📱 Bald verfügbar' : 
+                                          currentLanguage === 'en' ? '📱 Coming Soon' : 
+                                          '📱 Próximamente';
+            }
+        }
+
+        function showBook(bookNumber) {
+            // Verstecke alle Bücher
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`book${i}`).classList.add('hidden');
+                document.querySelectorAll('.btn-band')[i-1].classList.remove('active');
+            }
+            
+            // Zeige ausgewähltes Buch
+            document.getElementById(`book${bookNumber}`).classList.remove('hidden');
+            document.querySelectorAll('.btn-band')[bookNumber-1].classList.add('active');
+            
+            currentBook = bookNumber;
+            
+            // Zeige/Verstecke spanische Flagge je nach Band
+            const spanishFlag = document.querySelector(`[onclick="showLanguage('es')"]`);
+            if (bookNumber === 1) {
+                spanishFlag.style.display = 'inline-block';
+            } else {
+                spanishFlag.style.display = 'none';
+                // Wechsle zu Deutsch wenn Spanisch aktiv und nicht verfügbar
+                if (currentLanguage === 'es') {
+                    showLanguage('de');
+                    return; // Return hier, damit showLanguage nicht doppelt aufgerufen wird
+                }
+            }
+            
+            // Stelle sicher, dass die richtige Sprache angezeigt wird
+            showLanguage(currentLanguage);
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
+        }
+
+        function showLanguage(lang) {
+            // Verstecke alle Sprachversionen
+            document.querySelectorAll('.lang-de, .lang-en, .lang-es').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Zeige gewählte Sprache
+            document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Update Flag-Buttons
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showLanguage('${lang}')"]`).classList.add('active');
+            
+            currentLanguage = lang;
+            
+            // Update Amazon Buttons
+            updateAmazonButtons();
+        }
+
+        // Initialisierung beim Seitenstart
+        document.addEventListener('DOMContentLoaded', function() {
+            showBook(1); // Zeige erstes Buch
+            showLanguage('de'); // Zeige deutsche Version
+            updateAmazonButtons(); // Update Amazon Buttons
+        });
+    </script>
+</body>
+</html>
