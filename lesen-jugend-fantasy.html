@@ -1,1 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugend Fantasy zum Lesen - Helmut Wegners Wortwelten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .header-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .language-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.deutsch {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .lang-btn.english {
+            background: #3498db;
+            color: white;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .genre-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .genre-tag {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .genre-tag.zauberakademie { background: #e91e63; color: white; }
+        .genre-tag.zeitreise { background: #9c27b0; color: white; }
+        .genre-tag.raetsel { background: #673ab7; color: white; }
+        .genre-tag.wald { background: #3f51b5; color: white; }
+
+        .book-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .book-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .book-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .book-cover-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .book-cover {
+            width: 150px;
+            height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+
+        .book-info {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .book-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .book-meta {
+            font-size: 14px;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .chapter-section {
+            padding: 30px;
+        }
+
+        .chapter-title {
+            font-size: 1.5rem;
+            color: #3f51b5;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .chapter-content {
+            line-height: 1.8;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .chapter-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .chapter-content .initial-letter {
+            float: left;
+            font-size: 4rem;
+            line-height: 3rem;
+            margin: 0 8px 0 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(103, 126, 234, 0.1);
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #e74c3c, #ff6b35);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .book-cover-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .book-cover {
+                width: 120px;
+                height: 160px;
+            }
+
+            .header-title {
+                font-size: 2rem;
+            }
+
+            .genre-tags {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .language-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .english-content {
+            display: none;
+        }
+
+        body.english-mode .german-content {
+            display: none;
+        }
+
+        body.english-mode .english-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="back-button" onclick="window.history.back()">← Zurück zu Kinderbücher</button>
+
+        <div class="header-card">
+            <h1 class="header-title german-content">Jugend Fantasy zum Lesen</h1>
+            <h1 class="header-title english-content">Youth Fantasy Reading</h1>
+            
+            <p class="header-subtitle german-content">Spannende Abenteuer für junge Entdecker - Deutsch und Englisch</p>
+            <p class="header-subtitle english-content">Exciting Adventures for Young Explorers - German and English</p>
+
+            <div class="language-buttons">
+                <button class="lang-btn deutsch" onclick="switchLanguage('german')">🇩🇪 Deutsch</button>
+                <button class="lang-btn english" onclick="switchLanguage('english')">🇬🇧 English</button>
+            </div>
+
+            <div class="genre-tags">
+                <button class="genre-tag zauberakademie">Zauberakademie</button>
+                <button class="genre-tag zeitreise">Zeitreise</button>
+                <button class="genre-tag raetsel">Rätseldetektivclub</button>
+                <button class="genre-tag wald">Verborgener Wald</button>
+            </div>
+        </div>
+
+        <div class="book-content">
+            <div class="book-header">
+                <div class="book-cover-section">
+                    <div class="book-cover">
+                        <div>die-zauberakademie.jpg<br>(Cover wird hier angezeigt)</div>
+                    </div>
+                    <div class="book-info">
+                        <h2 class="book-title german-content">Die Zauberakademie von Morgenstern</h2>
+                        <h2 class="book-title english-content">The Magic Academy of Morningstar</h2>
+                        
+                        <p class="book-description german-content">
+                            Ein aufregender Abenteuer in einer geheimnisvollen Schule für Magie. Begleite junge Zauberschüler auf ihrem Weg zu sich selbst und entdecke die Kraft der Freundschaft.
+                        </p>
+                        <p class="book-description english-content">
+                            An exciting adventure in a mysterious school of magic. Join young magic students on their journey of self-discovery and discover the power of friendship.
+                        </p>
+                        
+                        <p class="book-meta german-content">Elternband • Deutsch & Englisch • Lesen System</p>
+                        <p class="book-meta english-content">Family Edition • German & English • Reading System</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-section">
+                <h3 class="chapter-title german-content">Kapitel 1: Die geheimnisvolle Einladung</h3>
+                <h3 class="chapter-title english-content">Chapter 1: The Mysterious Invitation</h3>
+
+                <div class="chapter-content german-content">
+                    <p><span class="initial-letter">D</span>ie Morgensonne schien golden durch Leos Kinderzimmerfenster, als er seinen bunten Schulrucksack über die Schulter schwang und vergnügt pfeifend den Weg zur Grundschule einschlug. Sein kleines Dorf wirkte wie aus einem Bilderbuch: blühende Gärten umgaben die Häuser, und die Bewohner winkten ihm herzlich vom Gartenzaun aus zu. Die Kühe auf der Weide muhten friedlich, während die ersten Sonnenstrahlen ihm die Nase kitzelten und er über den Feldweg hüpfte.</p>
+
+                    <p>Für andere mochte es ein gewöhnlicher Dienstag sein, aber Leo spürte ein erregendes Kribbeln in seinem Bauch -- als würde heute etwas Besonderes passieren. Leo war ein eher schüchterner Junge, der lieber mit den Kätzchen auf dem Bauernhof spielte oder den Vögeln im Wald zuhörte, anstatt auf dem lauten Schulhof Fußball zu spielen. Oft wurde er deshalb von den anderen Kindern übersehen, besonders von Max und seiner Gruppe, die jeden kleinen Fehler mit lautem Gelächter kommentierten.</p>
+
+                    <p>Heute war keine Ausnahme. Als Leo die Schule erreichte, dauerte es nur wenige Minuten, bis sie ihn umringten. Max rief mit seinem frechen Grinsen: "Hey Leo, hast du wieder mit den Eichhörnchen Geheimnisse ausgetauscht?" Die anderen Kinder kicherten, während Leo stumm den Boden anstarrte. Seine Hände umklammerten die Träger seines Rucksacks, und er wünschte sich sehnlichst, er könnte einfach verschwinden -- irgendwo sein, wo niemand über ihn lachte.</p>
+
+                    <p>Nach einem langen Schultag voller peinlicher Momente und merkwürdiger Blicke lief Leo schnell nach Hause zu dem kleinen Hof seiner Familie, der von blühenden Beeten und summenden Bienen umgeben war. Er verbrachte den Nachmittag wie immer an seinem Lieblingsversteck -- einer kleinen, sonnigen Lichtung im Wald, wo ein alter, knorriger Baum mit weichen Wurzeln zum Anlehnen stand. Hier konnte er den Stimmen der Natur lauschen: dem Rascheln der Blätter, dem Zwitschern der Vögel und dem leisen Summen der fleißigen Bienen.</p>
+
+                    <p>Doch heute war etwas anders. Als er seinen Lieblingsplatz erreichte, bemerkte er eine ungewöhnliche Gestalt, die neben dem Baumstamm wartete. Es war ein freundlicher älterer Herr in einem blauen Mantel mit silbernen Haaren und Augen, die wie Sterne glitzerten. Leo blieb überrascht stehen, während der Mann ihn mit einem breiten Lächeln begrüßte und mit sanfter Stimme fragte: "Du bist Leo, oder?"</p>
+
+                    <p>Leo nickte zögernd und stammelte: "Ja, das bin ich. Aber wer sind Sie denn?"</p>
+
+                    <p>Der Mann lächelte noch breiter und zog eine elegant verzierte Einladungskarte aus seinem Mantel hervor. "Mein Name ist Herr Morgenstern, und ich bin ein Lehrer der Waldschule von Sonnenhain", sagte er mit beruhigender Stimme. "Ich habe eine ganz besondere Einladung für dich."</p>
+                </div>
+
+                <div class="chapter-content english-content">
+                    <p><span class="initial-letter">T</span>he morning sun shone golden through Leo's bedroom window as he swung his colorful school backpack over his shoulder and whistled cheerfully on his way to elementary school. His small village looked like something from a picture book: blooming gardens surrounded the houses, and the residents waved warmly to him from their garden fences. The cows in the meadow mooed peacefully while the first rays of sunshine tickled his nose and he hopped along the field path.</p>
+
+                    <p>For others, it might have been an ordinary Tuesday, but Leo felt an exciting tingling in his stomach -- as if something special would happen today. Leo was a rather shy boy who preferred playing with the kittens on the farm or listening to the birds in the forest rather than playing soccer in the noisy schoolyard. He was often overlooked by the other children because of this, especially by Max and his group, who commented on every small mistake with loud laughter.</p>
+
+                    <p>Today was no exception. When Leo reached the school, it only took a few minutes before they surrounded him. Max called out with his cheeky grin: "Hey Leo, have you been exchanging secrets with the squirrels again?" The other children giggled while Leo stared silently at the ground. His hands clutched the straps of his backpack, and he desperately wished he could just disappear -- be somewhere where no one laughed at him.</p>
+
+                    <p>After a long school day full of embarrassing moments and strange looks, Leo quickly ran home to his family's small farm, which was surrounded by blooming flower beds and buzzing bees. He spent the afternoon as always at his favorite hiding place -- a small, sunny clearing in the forest where an old, gnarled tree with soft roots stood for leaning against. Here he could listen to the voices of nature: the rustling of leaves, the chirping of birds, and the quiet humming of busy bees.</p>
+
+                    <p>But today was different. When he reached his favorite spot, he noticed an unusual figure waiting next to the tree trunk. It was a friendly elderly gentleman in a blue coat with silver hair and eyes that glittered like stars. Leo stopped in surprise while the man greeted him with a broad smile and asked in a gentle voice: "You're Leo, aren't you?"</p>
+
+                    <p>Leo nodded hesitantly and stammered: "Yes, that's me. But who are you?"</p>
+
+                    <p>The man smiled even broader and pulled out an elegantly decorated invitation card from his coat. "My name is Mr. Morningstar, and I am a teacher at the Forest School of Sunshine Valley," he said with a reassuring voice. "I have a very special invitation for you."</p>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="nav-btn" disabled>← Vorheriges Kapitel</button>
+                <button class="nav-btn">Nächstes Kapitel →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            if (lang === 'english') {
+                document.body.classList.add('english-mode');
+            } else {
+                document.body.classList.remove('english-mode');
+            }
+        }
+
+        // Initialize German as default
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage('german');
+        });
+    </script>
+</body>
+</html>
