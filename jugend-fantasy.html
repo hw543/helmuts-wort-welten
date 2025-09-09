@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jugend Fantasy - Helmut Wegners Wortwelten</title>
+    <title>Jugend Fantasy zum Lesen - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -12,278 +12,627 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #3F51B5 0%, #5C6BC0 50%, #7986CB 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            color: #333;
             padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        /* Back Button */
-        .back-btn {
-            background: rgba(255, 255, 255, 0.9);
-            color: #3F51B5;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .back-btn:hover {
-            background: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 3px solid rgba(63, 81, 181, 0.3);
-        }
-
-        .genre-title {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #3F51B5;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .genre-subtitle {
-            font-size: 1.2rem;
-            color: #5C6BC0;
-            font-style: italic;
-        }
-
-        /* Main Content */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .content-section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 2px solid rgba(63, 81, 181, 0.2);
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #3F51B5;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .section-description {
-            font-size: 1rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        /* Book Card */
-        .book-card {
-            background: rgba(63, 81, 181, 0.05);
-            border: 2px solid rgba(63, 81, 181, 0.2);
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            margin-bottom: 1.5rem;
-        }
-
-        .book-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(63, 81, 181, 0.2);
-            border-color: #3F51B5;
-        }
-
-        .book-cover {
-            width: 120px;
-            height: 180px;
-            border-radius: 8px;
-            margin: 0 auto 1rem auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .book-cover img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Fallback styling if no image */
-        .book-cover:not(:has(img)) {
-            background: linear-gradient(135deg, #3F51B5, #5C6BC0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
+        .back-button {
+            background: rgba(255, 255, 255, 0.3);
             color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .header-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .language-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.deutsch {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .lang-btn.english {
+            background: #3498db;
+            color: white;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .genre-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .genre-tag {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .genre-tag.zauberakademie { background: #e91e63; color: white; }
+        .genre-tag.zeitreise { background: #9c27b0; color: white; }
+        .genre-tag.raetsel { background: #673ab7; color: white; }
+        .genre-tag.wald { background: #3f51b5; color: white; }
+
+        .book-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .book-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
         }
 
         .book-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #3F51B5;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .book-cover-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .book-cover {
+            width: 150px;
+            height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+
+        .book-info {
+            flex: 1;
+            max-width: 400px;
         }
 
         .book-description {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.5;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
-        .book-tags {
-            font-size: 0.85rem;
-            color: #5C6BC0;
+        .book-meta {
+            font-size: 14px;
+            opacity: 0.9;
             font-style: italic;
-            margin-bottom: 1rem;
         }
 
-        .read-btn {
-            background: linear-gradient(135deg, #3F51B5, #5C6BC0);
+        .chapter-navigation {
+            background: rgba(103, 126, 234, 0.1);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .section-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            padding: 10px 24px;
             border: none;
-            border-radius: 25px;
-            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
             cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(63, 81, 181, 0.3);
         }
 
-        .read-btn:hover {
+        .section-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(63, 81, 181, 0.4);
+            box-shadow: 0 4px 12px rgba(103, 126, 234, 0.4);
         }
 
-        /* Series Section Placeholder */
-        .coming-soon {
+        .section-btn.active {
+            background: linear-gradient(45deg, #e74c3c, #ff6b35);
+        }
+
+        .chapter-section {
+            padding: 30px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .chapter-title {
+            font-size: 1.5rem;
+            color: #3f51b5;
+            margin-bottom: 20px;
             text-align: center;
-            color: #999;
-            font-style: italic;
-            padding: 3rem 1rem;
-            background: rgba(63, 81, 181, 0.05);
-            border-radius: 15px;
-            border: 2px dashed rgba(63, 81, 181, 0.3);
+            font-weight: 600;
         }
 
-        .coming-soon::before {
-            content: "⭐";
+        .chapter-content {
+            line-height: 1.8;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .chapter-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .chapter-content .initial-letter {
+            float: left;
+            font-size: 4rem;
+            line-height: 3rem;
+            margin: 0 8px 0 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
             display: block;
-            font-size: 3rem;
-            margin-bottom: 1rem;
         }
 
-        /* Mobile Responsiveness */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background: rgba(103, 126, 234, 0.1);
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #e74c3c, #ff6b35);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         @media (max-width: 768px) {
-            .content-grid {
-                grid-template-columns: 1fr;
+            .book-cover-section {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .genre-title {
+            .book-cover {
+                width: 120px;
+                height: 160px;
+            }
+
+            .header-title {
                 font-size: 2rem;
             }
 
-            .header {
-                padding: 2rem 1rem;
+            .genre-tags {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .content-section {
-                padding: 1.5rem;
+            .language-buttons {
+                flex-direction: column;
+                align-items: center;
             }
+
+            .chapter-section {
+                max-height: 500px;
+            }
+
+            .chapter-navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .english-content {
+            display: none;
+        }
+
+        body.english-mode .german-content {
+            display: none;
+        }
+
+        body.english-mode .english-content {
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Back Button -->
-        <a href="index.html" class="back-btn">
-            ← Zurück zur Startseite
-        </a>
+        <button class="back-button" onclick="window.history.back()">← Zurück zu Kinderbücher</button>
 
-        <!-- Header -->
-        <div class="header">
-            <h1 class="genre-title">Jugend Fantasy</h1>
-            <p class="genre-subtitle">Magische Abenteuer für junge Entdecker</p>
+        <div class="header-card">
+            <h1 class="header-title german-content">Jugend Fantasy zum Lesen</h1>
+            <h1 class="header-title english-content">Youth Fantasy Reading</h1>
+            
+            <p class="header-subtitle german-content">Spannende Abenteuer für junge Entdecker - Deutsch und Englisch</p>
+            <p class="header-subtitle english-content">Exciting Adventures for Young Explorers - German and English</p>
+
+            <div class="language-buttons">
+                <button class="lang-btn deutsch" onclick="switchLanguage('german')">🇩🇪 Deutsch</button>
+                <button class="lang-btn english" onclick="switchLanguage('english')">🇬🇧 English</button>
+            </div>
+
+            <div class="genre-tags">
+                <button class="genre-tag zauberakademie">Zauberakademie</button>
+                <button class="genre-tag zeitreise">Zeitreise</button>
+                <button class="genre-tag raetsel">Rätseldetektivclub</button>
+                <button class="genre-tag wald">Verborgener Wald</button>
+            </div>
         </div>
 
-        <!-- Main Content -->
-        <div class="content-grid">
-            <!-- Serien entdecken -->
-            <div class="content-section">
-                <h2 class="section-title">Serien entdecken</h2>
-                <p class="section-description">
-                    Mehrteilige Geschichten mit durchgehenden Charakteren und 
-                    zusammenhängenden emotionalen Entwicklungen.
-                </p>
-                
-                <div class="coming-soon">
-                    <p>Spannende Serien sind in Vorbereitung!<br>
-                    Bald erwarten dich magische Welten voller Abenteuer.</p>
+        <div class="book-content">
+            <div class="book-header">
+                <div class="book-cover-section">
+                    <div class="book-cover">
+                        <img src="die zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern - Buchcover" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                    </div>
+                    <div class="book-info">
+                        <h2 class="book-title german-content">Die Zauberakademie von Morgenstern</h2>
+                        <h2 class="book-title english-content">The Magic Academy of Morningstar</h2>
+                        
+                        <p class="book-description german-content">
+                            Ein aufregender Abenteuer in einer geheimnisvollen Schule für Magie. Begleite junge Zauberschüler auf ihrem Weg zu sich selbst und entdecke die Kraft der Freundschaft.
+                        </p>
+                        <p class="book-description english-content">
+                            An exciting adventure in a mysterious school of magic. Join young magic students on their journey of self-discovery and discover the power of friendship.
+                        </p>
+                        
+                        <p class="book-meta german-content">Elternband • Deutsch & Englisch • Lesen System</p>
+                        <p class="book-meta english-content">Family Edition • German & English • Reading System</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Bücher entdecken -->
-            <div class="content-section">
-                <h2 class="section-title">Bücher entdecken</h2>
-                <p class="section-description">
-                    Einzelne Geschichten mit abgeschlossenen Handlungen und 
-                    lebensechten Charakteren.
-                </p>
+            <div class="chapter-navigation">
+                <button class="section-btn active" onclick="showSection(1)">1.1 Die Einladung</button>
+                <button class="section-btn" onclick="showSection(2)">1.2 Die Reise</button>
+                <button class="section-btn" onclick="showSection(3)">1.3 Ankunft</button>
+            </div>
 
-                <!-- Die Zauberakademie -->
-                <div class="book-card">
-                    <div class="book-cover">
-                        <img src="die-zauberakademie.jpg" alt="Die Zauberakademie von Morgenstern Cover">
+            <div class="chapter-section">
+                <!-- Section 1.1: Die Einladung -->
+                <div class="section active" id="section-1">
+                    <h3 class="chapter-title german-content">Kapitel 1.1: Die geheimnisvolle Einladung</h3>
+                    <h3 class="chapter-title english-content">Chapter 1.1: The Mysterious Invitation</h3>
+
+                    <div class="chapter-content german-content">
+                        <p><span class="initial-letter">D</span>ie Morgensonne schien golden durch Leos Kinderzimmerfenster, als er seinen bunten Schulrucksack über die Schulter schwang und vergnügt pfeifend den Weg zur Grundschule einschlug. Sein kleines Dorf wirkte wie aus einem Bilderbuch: blühende Gärten umgaben die Häuser, und die Bewohner winkten ihm herzlich vom Gartenzaun aus zu. Die Kühe auf der Weide muhten friedlich, während die ersten Sonnenstrahlen ihm die Nase kitzelten und er über den Feldweg hüpfte.</p>
+
+                        <p>Für andere mochte es ein gewöhnlicher Dienstag sein, aber Leo spürte ein erregendes Kribbeln in seinem Bauch -- als würde heute etwas Besonderes passieren. Leo war ein eher schüchterner Junge, der lieber mit den Kätzchen auf dem Bauernhof spielte oder den Vögeln im Wald zuhörte, anstatt auf dem lauten Schulhof Fußball zu spielen. Oft wurde er deshalb von den anderen Kindern übersehen, besonders von Max und seiner Gruppe, die jeden kleinen Fehler mit lautem Gelächter kommentierten.</p>
+
+                        <p>Heute war keine Ausnahme. Als Leo die Schule erreichte, dauerte es nur wenige Minuten, bis sie ihn umringten. Max rief mit seinem frechen Grinsen: "Hey Leo, hast du wieder mit den Eichhörnchen Geheimnisse ausgetauscht?" Die anderen Kinder kicherten, während Leo stumm den Boden anstarrte. Seine Hände umklammerten die Träger seines Rucksacks, und er wünschte sich sehnlichst, er könnte einfach verschwinden -- irgendwo sein, wo niemand über ihn lachte.</p>
+
+                        <p>Nach einem langen Schultag voller peinlicher Momente und merkwürdiger Blicke lief Leo schnell nach Hause zu dem kleinen Hof seiner Familie, der von blühenden Beeten und summenden Bienen umgeben war. Er verbrachte den Nachmittag wie immer an seinem Lieblingsversteck -- einer kleinen, sonnigen Lichtung im Wald, wo ein alter, knorriger Baum mit weichen Wurzeln zum Anlehnen stand. Hier konnte er den Stimmen der Natur lauschen: dem Rascheln der Blätter, dem Zwitschern der Vögel und dem leisen Summen der fleißigen Bienen.</p>
+
+                        <p>Doch heute war etwas anders. Als er seinen Lieblingsplatz erreichte, bemerkte er eine ungewöhnliche Gestalt, die neben dem Baumstamm wartete. Es war ein freundlicher älterer Herr in einem blauen Mantel mit silbernen Haaren und Augen, die wie Sterne glitzerten. Leo blieb überrascht stehen, während der Mann ihn mit einem breiten Lächeln begrüßte und mit sanfter Stimme fragte: "Du bist Leo, oder?"</p>
+
+                        <p>Leo nickte zögernd und stammelte: "Ja, das bin ich. Aber wer sind Sie denn?"</p>
+
+                        <p>Der Mann lächelte noch breiter und zog eine elegant verzierte Einladungskarte aus seinem Mantel hervor. "Mein Name ist Herr Morgenstern, und ich bin ein Lehrer der Waldschule von Sonnenhain", sagte er mit beruhigender Stimme. "Ich habe eine ganz besondere Einladung für dich."</p>
+
+                        <p>Leo nahm die Karte mit zittrigen Händen entgegen und spürte, wie das edle Papier sich glatt und kühl anfühlte -- fast als wäre es von einem rätselhaften Zauber durchzogen. Vorsichtig öffnete er den goldenen Verschluss und zog eine Karte hervor, die in prächtigen Farben schimmerte und deren Worte zu tanzen schienen.</p>
+
+                        <p><em>"Lieber Leo"</em>, stand dort in einer eleganten Schrift mit goldenen Verzierungen, <em>"das Schicksal hat dich auserwählt, ein Schüler der Waldschule von Sonnenhain zu werden, denn deine besondere Gabe ist einzigartig und verdient es, gefördert zu werden. Am ersten Sonnenstrahl des kommenden Morgens wirst du von einem Kutschenwagen abgeholt werden -- packe, was dir lieb ist, und sei bereit für das spannendste Abenteuer deines Lebens. Unterschrieben: Direktor Wilhelm Sonnenhain."</em></p>
+
+                        <p>Leo las die Einladung immer wieder, während sein Kopf vor Aufregung schwirrte. Eine Waldschule hatte er noch nie gehört, aber es klang wie der faszinierendste Ort der Welt.</p>
+
+                        <p>"Das muss ein Irrtum sein", flüsterte er schließlich. "Ich bin doch nur ein ganz normaler Junge, der oft zu schüchtern ist, um auch nur 'Hallo' zu sagen."</p>
+
+                        <p>Herr Morgenstern schüttelte gütig den Kopf, und seine Augen glitzerten wie kleine Sterne: "Du bist alles andere als normal, Leo. Du hast eine Gabe, die selten und wertvoll ist, und es liegt an dir, sie zu entdecken und zu entfalten. In der Waldschule wirst du andere Kinder treffen, die genau wie du besondere Talente haben, und ihr werdet gemeinsam aufregende Abenteuer erleben."</p>
                     </div>
-                    <h3 class="book-title">Die Zauberakademie von Morgenstern</h3>
-                    <p class="book-description">
-                        Ein aufregendes Abenteuer in einer geheimnisvollen Schule 
-                        für Magie. Begleite junge Zauberschüler auf ihrem Weg zu 
-                        sich selbst und entdecke die Kraft der Freundschaft.
-                    </p>
-                    <p class="book-tags">
-                        Freundschaft • Deutsch & Englisch • Lern-System
-                    </p>
-                    <a href="jugend-fantasy-lesen.html" class="read-btn">Lesen</a>
+
+                    <div class="chapter-content english-content">
+                        <p><span class="initial-letter">T</span>he morning sun shone golden through Leo's bedroom window as he swung his colorful school backpack over his shoulder and whistled cheerfully on his way to elementary school. His small village looked like something from a picture book: blooming gardens surrounded the houses, and the residents waved warmly to him from their garden fences. The cows in the meadow mooed peacefully while the first rays of sunshine tickled his nose and he hopped along the field path.</p>
+
+                        <p>For others, it might have been an ordinary Tuesday, but Leo felt an exciting tingling in his stomach -- as if something special would happen today. Leo was a rather shy boy who preferred playing with the kittens on the farm or listening to the birds in the forest rather than playing soccer in the noisy schoolyard. He was often overlooked by the other children because of this, especially by Max and his group, who commented on every small mistake with loud laughter.</p>
+
+                        <p>Today was no exception. When Leo reached the school, it only took a few minutes before they surrounded him. Max called out with his cheeky grin: "Hey Leo, have you been exchanging secrets with the squirrels again?" The other children giggled while Leo stared silently at the ground. His hands clutched the straps of his backpack, and he desperately wished he could just disappear -- be somewhere where no one laughed at him.</p>
+
+                        <p>After a long school day full of embarrassing moments and strange looks, Leo quickly ran home to his family's small farm, which was surrounded by blooming flower beds and buzzing bees. He spent the afternoon as always at his favorite hiding place -- a small, sunny clearing in the forest where an old, gnarled tree with soft roots stood for leaning against. Here he could listen to the voices of nature: the rustling of leaves, the chirping of birds, and the quiet humming of busy bees.</p>
+
+                        <p>But today was different. When he reached his favorite spot, he noticed an unusual figure waiting next to the tree trunk. It was a friendly elderly gentleman in a blue coat with silver hair and eyes that glittered like stars. Leo stopped in surprise while the man greeted him with a broad smile and asked in a gentle voice: "You're Leo, aren't you?"</p>
+
+                        <p>Leo nodded hesitantly and stammered: "Yes, that's me. But who are you?"</p>
+
+                        <p>The man smiled even broader and pulled out an elegantly decorated invitation card from his coat. "My name is Mr. Morningstar, and I am a teacher at the Forest School of Sunshine Valley," he said with a reassuring voice. "I have a very special invitation for you."</p>
+
+                        <p>Leo took the card with trembling hands and felt how the noble paper felt smooth and cool -- almost as if it were permeated with a mysterious magic. Carefully he opened the golden clasp and pulled out a card that shimmered in magnificent colors and whose words seemed to dance.</p>
+
+                        <p><em>"Dear Leo,"</em> it read in elegant script with golden decorations, <em>"fate has chosen you to become a student of the Forest School of Sunshine Valley, for your special gift is unique and deserves to be fostered. At the first ray of sun tomorrow morning, you will be picked up by a carriage -- pack what is dear to you and be ready for the most exciting adventure of your life. Signed: Director Wilhelm Sunshine Valley."</em></p>
+
+                        <p>Leo read the invitation over and over while his head buzzed with excitement. He had never heard of a Forest School, but it sounded like the most fascinating place in the world.</p>
+
+                        <p>"This must be a mistake," he finally whispered. "I'm just a normal boy who's often too shy to even say 'hello.'"</p>
+
+                        <p>Mr. Morningstar shook his head kindly, and his eyes glittered like little stars: "You are anything but normal, Leo. You have a gift that is rare and valuable, and it's up to you to discover and develop it. At the Forest School you will meet other children who, just like you, have special talents, and together you will experience exciting adventures."</p>
+                    </div>
                 </div>
+
+                <!-- Section 1.2: Die Reise -->
+                <div class="section" id="section-2">
+                    <h3 class="chapter-title german-content">Kapitel 1.2: Die magische Reise</h3>
+                    <h3 class="chapter-title english-content">Chapter 1.2: The Magical Journey</h3>
+
+                    <div class="chapter-content german-content">
+                        <p><span class="initial-letter">A</span>ls Herr Morgenstern wieder verschwunden war, kehrte Leo nach Hause zurück, den Kopf voller wirbelnder Fragen und Gedanken. Sollte er wirklich gehen? Und was, wenn er versagte oder die anderen Kinder ihn nicht mochten?</p>
+
+                        <p>Doch als die Nacht hereinbrach, spürte er tief in seinem Herzen eine klare Antwort: Es war keine Frage mehr, ob er gehen sollte -- er musste, denn dies war seine Chance, endlich einen Ort zu finden, wo er dazugehörte. Mit erwartungsvollen, aber entschlossenen Händen packte Leo eine kleine, bunte Reisetasche mit seinem liebsten Kuscheltier, einem Notizbuch mit seinen Naturbeobachtungen, seinem Lieblingsstift und einem alten Anhänger, den seine Oma ihm einmal geschenkt hatte.</p>
+
+                        <p>Als die ersten Sonnenstrahlen durch sein Fenster fielen, hörte er ein sanftes Klopfen. Als er hinausblickte, stockte ihm der Atem vor Staunen. Vor seinem Haus stand die prächtigste Kutsche, die er je gesehen hatte, gezogen von zwei majestätischen weißen Pferden mit glänzenden Mähnen, die im Morgenlicht wie Seide schimmerten. Die Kutsche selbst war in intensiven Blau- und Goldtönen bemalt, mit kleinen Blumen und Sternen, die zu leuchten schienen.</p>
+
+                        <p>Leo drückte sich gespannt gegen das kalte Fenster seines Zimmers und konnte kaum glauben, dass dies wirklich geschah. Das Licht der aufgehenden Sonne tanzte über den Dorfplatz, und die ersten Vögel begannen ihr heiteres Morgenlied zu singen, während er schnell in seine beste Kleidung schlüpfte. Seine blauen Augen glänzten vor Vorfreude, als er die Treppe hinunterlief und seine Reisetasche fest in den Händen hielt. Dies war kein gewöhnlicher Morgen, sondern der Beginn des größten Abenteuers seines Lebens.</p>
+
+                        <p>"Guten Morgen, Leo!", rief eine fröhliche Stimme, und ein sympathischer Kutscher mit einem großen Hut und einem noch größeren Lächeln winkte ihm zu. "Ich bin Karl, und ich bringe dich zur Waldschule von Sonnenhain. Bist du bereit für die spannendste Reise deines Lebens?"</p>
+
+                        <p>Leo nickte eifrig und kletterte erwartungsvoll in die gemütliche Kutsche, die innen mit den weichsten Kissen und den farbenprächtigsten Decken ausgestattet war. Als sie losfuhren, winkte er seinen Eltern zu, die stolz und ein wenig wehmütig vor dem Haus standen und ihm alles Gute wünschten. Die Reise zu seinem neuen Leben hatte begonnen.</p>
+
+                        <p>Die Fahrt war wie eine Reise durch ein Märchen, denn der Weg führte sie durch die eindrucksvollsten Landschaften, die Leo je gesehen hatte. Saftig grüne Wiesen, auf denen bunte Blumen blühten und Schmetterlinge tanzten, wechselten sich ab mit friedlichen Wäldern, aus denen das vergnügte Zwitschern der Vögel ertönte. Kleine Bäche plätscherten munter neben dem Weg, und hier und da erblickte er Rehe, die neugierig zwischen den Bäumen hervorlugten.</p>
+
+                        <p>Kutscher Karl erzählte ihm während der Fahrt von der Waldschule und ihren bemerkenswerten Lehrern, die alle ehemalige Schüler waren und ihre besonderen Talente an die nächste Generation weitergeben wollten.</p>
+
+                        <p>"Manche Kinder können mit Pflanzen sprechen", erzählte Karl mit blitzenden Augen, "andere verstehen die Sprache der Tiere, und wieder andere können die faszinierendsten Kunstwerke erschaffen oder haben ein Talent für Musik, das jeden verzaubert. Du wirst sehen, Leo -- jeder hat ein besonderes Geschenk, und in der Waldschule helfen wir euch dabei, es zu entdecken und zu entwickeln."</p>
+
+                        <p>Je weiter sie fuhren, desto aufgeregter wurde Leo, denn die Landschaft um sie herum wurde immer märchenhafter. Die Bäume schienen größer und einladender zu werden, ihre Äste wiegten sich sanft im Wind, als würden sie ihm zuwinken, und die Blumen am Wegesrand glühten in intensiven Farben, die er nie zuvor gesehen hatte. Sogar die Luft fühlte sich anders an -- frischer und voller geheimnisvoller Möglichkeiten.</p>
+                    </div>
+
+                    <div class="chapter-content english-content">
+                        <p><span class="initial-letter">W</span>hen Mr. Morningstar had disappeared again, Leo returned home with his head full of swirling questions and thoughts. Should he really go? And what if he failed or the other children didn't like him?</p>
+
+                        <p>But as night fell, he felt a clear answer deep in his heart: it was no longer a question of whether he should go -- he had to, because this was his chance to finally find a place where he belonged. With expectant but determined hands, Leo packed a small, colorful travel bag with his favorite stuffed animal, a notebook with his nature observations, his favorite pen, and an old pendant that his grandmother had once given him.</p>
+
+                        <p>When the first rays of sunshine fell through his window, he heard a gentle knocking. When he looked out, his breath caught in amazement. In front of his house stood the most magnificent carriage he had ever seen, drawn by two majestic white horses with shining manes that gleamed like silk in the morning light. The carriage itself was painted in intense blue and gold tones, with small flowers and stars that seemed to glow.</p>
+
+                        <p>Leo pressed himself excitedly against the cold window of his room and could hardly believe that this was really happening. The light of the rising sun danced across the village square, and the first birds began their cheerful morning song while he quickly slipped into his best clothes. His blue eyes sparkled with anticipation as he ran down the stairs, holding his travel bag firmly in his hands. This was no ordinary morning, but the beginning of the greatest adventure of his life.</p>
+
+                        <p>"Good morning, Leo!" called a cheerful voice, and a friendly coachman with a big hat and an even bigger smile waved to him. "I'm Karl, and I'm taking you to the Forest School of Sunshine Valley. Are you ready for the most exciting journey of your life?"</p>
+
+                        <p>Leo nodded eagerly and climbed expectantly into the cozy carriage, which was equipped inside with the softest cushions and the most colorful blankets. As they drove off, he waved to his parents, who stood proudly and a little wistfully in front of the house, wishing him all the best. The journey to his new life had begun.</p>
+
+                        <p>The ride was like a journey through a fairy tale, as the path led them through the most impressive landscapes Leo had ever seen. Lush green meadows where colorful flowers bloomed and butterflies danced alternated with peaceful forests from which the cheerful chirping of birds could be heard. Small streams babbled merrily beside the path, and here and there he glimpsed deer peeking curiously from between the trees.</p>
+
+                        <p>Coachman Karl told him during the ride about the Forest School and its remarkable teachers, who were all former students and wanted to pass on their special talents to the next generation.</p>
+
+                        <p>"Some children can speak with plants," Karl told with sparkling eyes, "others understand the language of animals, and still others can create the most fascinating artworks or have a talent for music that enchants everyone. You'll see, Leo -- everyone has a special gift, and at the Forest School we help you discover and develop it."</p>
+
+                        <p>The further they traveled, the more excited Leo became, as the landscape around them became increasingly fairy-tale-like. The trees seemed to grow larger and more inviting, their branches swayed gently in the wind as if waving to him, and the flowers along the roadside glowed in intense colors he had never seen before. Even the air felt different -- fresher and full of mysterious possibilities.</p>
+                    </div>
+                </div>
+
+                <!-- Section 1.3: Ankunft -->
+                <div class="section" id="section-3">
+                    <h3 class="chapter-title german-content">Kapitel 1.3: Ankunft in der Waldschule</h3>
+                    <h3 class="chapter-title english-content">Chapter 1.3: Arrival at the Forest School</h3>
+
+                    <div class="chapter-content german-content">
+                        <p><span class="initial-letter">P</span>lötzlich hielt die Kutsche an, und Kutscher Karl deutete aufgeregt nach vorn: "Sieh nur, Leo -- wir sind da!"</p>
+
+                        <p>Leo streckte neugierig den Kopf aus dem Kutschenfenster, und sein Mund klappte vor Staunen auf. Vor ihnen lag die Waldschule von Sonnenhain, und sie war noch imposanter, als er sie sich in seinen kühnsten Träumen vorgestellt hatte. Das Hauptgebäude der Schule war ein prächtiges Holzhaus, das sich harmonisch zwischen die großen alten Bäume schmiegte, als wäre es ein natürlicher Teil des Waldes. Die Fenster glänzten wie Edelsteine im Sonnenlicht, und überall rankten blühende Blumen an den Wänden empor.</p>
+
+                        <p>Kleine Türmchen und Erkertürmchen gaben dem Gebäude das Aussehen eines charmanten Märchenschlosses, und auf dem roten Ziegeldach nisteten friedlich Störche und andere Vögel. Um das Hauptgebäude herum lagen weitere kleinere Häuser, die wie farbenfrohe Pilze zwischen den Bäumen verteilt waren -- manche hatten runde Türen und Fenster, andere sahen aus wie gemütliche Baumhäuser, die in den Ästen der großen Eichen gebaut waren.</p>
+
+                        <p>Überall liefen lachende Kinder herum, die sich ausgelassen unterhielten oder gemeinsam Spiele spielten. Einige saßen unter den schattigen Bäumen und lasen in dicken, bunten Büchern, während andere auf einer großen Wiese Ballspiele veranstalteten oder mit bunten Bändern tanzten.</p>
+
+                        <p>Leo stieg mit klopfendem Herzen aus der Kutsche und atmete tief die frische Waldluft ein, die nach Blumen, Gras und einem Hauch von Abenteuer duftete. Kutscher Karl half ihm beim Ausladen seiner Reisetasche und zwinkerte ihm aufmunternd zu: "Viel Spaß, Leo, und vergiss nicht -- jeder hier war einmal neu und genauso erwartungsvoll wie du. Die Kinder sind alle sehr herzlich, und du wirst schnell neue Freunde finden."</p>
+
+                        <p>Mit diesen ermutigenden Worten fuhr Karl wieder davon und winkte fröhlich, während Leo allein vor der Waldschule stand und sich fragte, was wohl als nächstes passieren würde. Doch er musste nicht lange warten, denn schon kam eine freundliche Frau mit einem einladenden Lächeln auf ihn zu, die ein hübsches grünes Kleid trug, das mit kleinen goldenen Blättern bestickt war.</p>
+
+                        <p>"Hallo, Leo!", rief sie munter. "Ich bin Frau Blütenstern, die Schulleiterin, und ich freue mich so sehr, dass du zu uns gefunden hast. Willkommen in der Waldschule von Sonnenhain, wo jedes Kind seine besonderen Talente entdecken und entwickeln kann. Komm, ich zeige dir alles und stelle dich den anderen Kindern vor -- du wirst sehen, hier wirst du dich schnell zu Hause fühlen."</p>
+
+                        <p>Sie nahm seine Hand und führte ihn über den Schulhof, der mit schillernden Blumen und kleinen Bäumchen bepflanzt war. Überall hingen bunte Windspiele und Girlanden, die vergnügt im Wind tanzten und eine märchenhafte Atmosphäre schufen.</p>
+
+                        <p>"Das hier ist unser Hauptgebäude", erklärte Frau Blütenstern, während sie auf das prächtige Holzhaus zuging. "Hier haben wir die Klassenräume, unsere große Bibliothek voller spannender Bücher und den Speisesaal, wo wir alle zusammen die leckersten Mahlzeiten genießen. Dort drüben siehst du das Musikhaus, wo die Kinder mit dem Talent für Töne und Melodien erstaunliche Lieder lernen und komponieren, und das runde Gebäude mit den vielen Fenstern ist unser Kunsthaus, wo gemalt, gezeichnet und die eindrucksvollsten Skulpturen erschaffen werden."</p>
+
+                        <p>Leo bestaunte alles mit großen Augen, während sie weitergingen und Frau Blütenstern ihm die verschiedenen Bereiche der Schule zeigte. Während sie über den Schulhof spazierten, kamen ihnen drei Kinder entgegen, die neugierig lächelten und Leo herzlich begrüßten.</p>
+
+                        <p>"Das sind Emma, Tom und Sophie", erzählte Frau Blütenstern. "Sie sind auch erst seit ein paar Wochen hier und können dir bestimmt viel über das Leben in unserer Schule erzählen."</p>
+
+                        <p>"Hallo, Leo!", rief Emma, ein Mädchen mit langen braunen Zöpfen und funkelnden grünen Augen. "Ich freue mich, dich kennenzulernen! Willst du mit uns die Schule erkunden?"</p>
+
+                        <p>Tom, ein Junge mit roten Locken und einem verschmitzten Lächeln, nickte eifrig: "Ja, das wird super! Wir zeigen dir alle geheimen Verstecke und die besten Plätze zum Spielen."</p>
+
+                        <p>Und Sophie, ein zartes Mädchen mit blonden Haaren und einem sanften Lächeln, fügte hinzu: "Du wirst sehen -- hier ist es fantastisch, und alle sind so nett. Du wirst dich bestimmt schnell einleben."</p>
+
+                        <p>Leo spürte, wie sich sein Herz mit Freude und Erleichterung füllte, denn die drei Kinder strahlten eine solche Herzlichkeit aus, dass er sofort wusste -- hier gehörte er hin. Dies war der Beginn eines neuen, wundervollen Kapitels seines Lebens in der Waldschule von Sonnenhain.</p>
+                    </div>
+
+                    <div class="chapter-content english-content">
+                        <p><span class="initial-letter">S</span>uddenly the carriage stopped, and Coachman Karl pointed excitedly ahead: "Look, Leo -- we're here!"</p>
+
+                        <p>Leo curiously stretched his head out of the carriage window, and his mouth fell open in amazement. Before them lay the Forest School of Sunshine Valley, and it was even more impressive than he had imagined in his wildest dreams. The main building of the school was a magnificent wooden house that nestled harmoniously among the large old trees, as if it were a natural part of the forest. The windows gleamed like jewels in the sunlight, and everywhere blooming flowers climbed up the walls.</p>
+
+                        <p>Small turrets and bay towers gave the building the appearance of a charming fairy-tale castle, and storks and other birds nested peacefully on the red tile roof. Around the main building were other smaller houses, distributed like colorful mushrooms among the trees -- some had round doors and windows, others looked like cozy tree houses built in the branches of the large oaks.</p>
+
+                        <p>Laughing children were running around everywhere, chatting exuberantly or playing games together. Some sat under the shady trees reading thick, colorful books, while others played ball games on a large meadow or danced with colorful ribbons.</p>
+
+                        <p>Leo got out of the carriage with a beating heart and breathed in the fresh forest air, which smelled of flowers, grass and a hint of adventure. Coachman Karl helped him unload his travel bag and winked at him encouragingly: "Have fun, Leo, and don't forget -- everyone here was once new and just as expectant as you. The children are all very warm, and you'll quickly find new friends."</p>
+
+                        <p>With these encouraging words, Karl drove away again, waving cheerfully, while Leo stood alone in front of the Forest School wondering what would happen next. But he didn't have to wait long, because a friendly woman with an inviting smile came up to him, wearing a pretty green dress embroidered with small golden leaves.</p>
+
+                        <p>"Hello, Leo!" she called cheerfully. "I'm Mrs. Blossomstar, the headmistress, and I'm so happy that you found your way to us. Welcome to the Forest School of Sunshine Valley, where every child can discover and develop their special talents. Come, I'll show you everything and introduce you to the other children -- you'll see, you'll quickly feel at home here."</p>
+
+                        <p>She took his hand and led him across the schoolyard, which was planted with shimmering flowers and small trees. Everywhere hung colorful wind chimes and garlands that danced merrily in the wind and created a fairy-tale atmosphere.</p>
+
+                        <p>"This is our main building," explained Mrs. Blossomstar as they walked toward the magnificent wooden house. "Here we have the classrooms, our large library full of exciting books, and the dining hall where we all enjoy the most delicious meals together. Over there you can see the music house, where children with a talent for sounds and melodies learn and compose amazing songs, and the round building with many windows is our art house, where paintings, drawings and the most impressive sculptures are created."</p>
+
+                        <p>Leo marveled at everything with wide eyes as they continued walking and Mrs. Blossomstar showed him the different areas of the school. While they strolled across the schoolyard, three children came toward them, smiling curiously and warmly greeting Leo.</p>
+
+                        <p>"These are Emma, Tom and Sophie," Mrs. Blossomstar told him. "They've only been here for a few weeks too and can certainly tell you a lot about life at our school."</p>
+
+                        <p>"Hello, Leo!" called Emma, a girl with long brown braids and sparkling green eyes. "I'm happy to meet you! Do you want to explore the school with us?"</p>
+
+                        <p>Tom, a boy with red curls and a mischievous smile, nodded eagerly: "Yes, that'll be great! We'll show you all the secret hiding places and the best spots for playing."</p>
+
+                        <p>And Sophie, a delicate girl with blonde hair and a gentle smile, added: "You'll see -- it's fantastic here, and everyone is so nice. You'll surely settle in quickly."</p>
+
+                        <p>Leo felt his heart fill with joy and relief, because the three children radiated such warmth that he immediately knew -- this was where he belonged. This was the beginning of a new, wonderful chapter of his life at the Forest School of Sunshine Valley.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="nav-btn" id="prev-btn" onclick="previousSection()" disabled>← Vorheriger Abschnitt</button>
+                <button class="nav-btn" id="next-btn" onclick="nextSection()">Nächster Abschnitt →</button>
             </div>
         </div>
     </div>
+
+    <script>
+        let currentSection = 1;
+        const totalSections = 3;
+
+        function switchLanguage(lang) {
+            if (lang === 'english') {
+                document.body.classList.add('english-mode');
+            } else {
+                document.body.classList.remove('english-mode');
+            }
+        }
+
+        function showSection(sectionNum) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.section-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(`section-${sectionNum}`).classList.add('active');
+            
+            // Add active class to selected button
+            buttons[sectionNum - 1].classList.add('active');
+            
+            currentSection = sectionNum;
+            updateNavigationButtons();
+        }
+
+        function nextSection() {
+            if (currentSection < totalSections) {
+                showSection(currentSection + 1);
+            }
+        }
+
+        function previousSection() {
+            if (currentSection > 1) {
+                showSection(currentSection - 1);
+            }
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            prevBtn.disabled = currentSection === 1;
+            nextBtn.disabled = currentSection === totalSections;
+            
+            // Update button text based on language
+            const isEnglish = document.body.classList.contains('english-mode');
+            
+            if (isEnglish) {
+                prevBtn.innerHTML = currentSection === 1 ? '← Previous Section' : '← Previous Section';
+                nextBtn.innerHTML = currentSection === totalSections ? 'Next Chapter →' : 'Next Section →';
+            } else {
+                prevBtn.innerHTML = currentSection === 1 ? '← Vorheriger Abschnitt' : '← Vorheriger Abschnitt';
+                nextBtn.innerHTML = currentSection === totalSections ? 'Nächstes Kapitel →' : 'Nächster Abschnitt →';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage('german');
+            showSection(1);
+        });
+    </script>
 </body>
 </html>
