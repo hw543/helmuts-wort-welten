@@ -26,6 +26,31 @@
             min-height: 100vh;
         }
 
+        .top-nav {
+            background: #4169E1;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-link {
+            background: white;
+            color: #4169E1;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #f0f0f0;
+            transform: translateY(-1px);
+        }
+
         .header {
             background: linear-gradient(135deg, #FF69B4, #87CEEB);
             color: white;
@@ -200,6 +225,11 @@
         }
 
         @media (max-width: 600px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
             .header h1 {
                 font-size: 1.5em;
             }
@@ -226,6 +256,11 @@
 </head>
 <body>
     <div class="container">
+        <div class="top-nav">
+            <a href="kinderbuecher.html" class="nav-link">← Kinderbücher</a>
+            <a href="index.html" class="nav-link">Startseite →</a>
+        </div>
+        
         <div class="header">
             <h1>Kinderbücher zum Lesen</h1>
             <p>Spannende Abenteuer für junge Entdecker</p>
@@ -233,13 +268,13 @@
 
         <div class="controls">
             <div class="language-flags">
-                <button class="flag-btn active" onclick="switchLanguage('de')">🇩🇪 Deutsch</button>
-                <button class="flag-btn" onclick="switchLanguage('en')">🇬🇧 English</button>
+                <button class="flag-btn active" id="btn-de">🇩🇪 Deutsch</button>
+                <button class="flag-btn" id="btn-en">🇬🇧 English</button>
             </div>
             <div class="book-navigation">
-                <button class="book-btn active" onclick="switchBook(1)">Der Zeitnarr</button>
-                <button class="book-btn" onclick="switchBook(2)">Rätseldetektivclub</button>
-                <button class="book-btn" onclick="switchBook(3)">Der verborgene Wald</button>
+                <button class="book-btn active" id="book-btn-1">Der Zeitnarr</button>
+                <button class="book-btn" id="book-btn-2">Rätseldetektivclub</button>
+                <button class="book-btn" id="book-btn-3">Der verborgene Wald</button>
             </div>
         </div>
 
@@ -263,7 +298,7 @@
                         <div class="navigation-buttons">
                             <button class="nav-btn" disabled>← Zurück</button>
                             <div class="section-counter">Abschnitt 1 von 4</div>
-                            <button class="nav-btn" onclick="showSection(1, 2)">Weiter →</button>
+                            <button class="nav-btn" data-next="1-2">Weiter →</button>
                         </div>
                     </div>
 
@@ -277,9 +312,9 @@
                             <p>Max blieb wie angewurzelt stehen, während die kühle Luft der Gasse seine Haut prickeln ließ. Die Worte hallten in seinem Kopf wider: "Zeitnarr... keine Ahnung, was du da angerichtet hast." Sein Blick huschte über die unebenen Pflastersteine und die schiefen Holztüren der umliegenden Häuser. Kein Mensch war zu sehen, der die Worte hätte gesprochen haben können. Doch das Gefühl, beobachtet zu werden, ließ ihn nicht los.</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(1, 1)">← Zurück</button>
+                            <button class="nav-btn" data-prev="1-1">← Zurück</button>
                             <div class="section-counter">Abschnitt 2 von 4</div>
-                            <button class="nav-btn" onclick="showSection(1, 3)">Weiter →</button>
+                            <button class="nav-btn" data-next="1-3">Weiter →</button>
                         </div>
                     </div>
 
@@ -293,9 +328,9 @@
                             <p>Eine Tür knarrte hinter ihm, und Max drehte sich so schnell um, dass ihm schwindelig wurde. Ein Junge, nicht viel älter als er selbst, trat aus einem der Häuser. Sein zerfledderter Umhang und die abgetragenen Stiefel passten perfekt in diese seltsam mittelalterliche Umgebung. Der Junge warf ihm einen misstrauischen Blick zu und hielt einen Korb voller Holzstücke in den Händen. "Wer bist du?" fragte Max, bevor er sich selbst davon abhalten konnte. Der Junge kniff die Augen zusammen, als würde er etwas an Max prüfen. "Du kommst nicht von hier", sagte er schließlich, mehr eine Feststellung als eine Frage. "Pass besser auf. Fremde haben hier keinen guten Stand." Bevor Max etwas erwidern konnte, zog der Junge die Tür wieder hinter sich zu und ließ ihn allein.</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(1, 2)">← Zurück</button>
+                            <button class="nav-btn" data-prev="1-2">← Zurück</button>
                             <div class="section-counter">Abschnitt 3 von 4</div>
-                            <button class="nav-btn" onclick="showSection(1, 4)">Weiter →</button>
+                            <button class="nav-btn" data-next="1-4">Weiter →</button>
                         </div>
                     </div>
 
@@ -306,10 +341,10 @@
                             
                             <p>Der Gedanke, sie einfach aufzuziehen, erschien ihm gleichzeitig verlockend und furchteinflößend. Doch bevor er eine Entscheidung treffen konnte, verdunkelte sich der Himmel über ihm. Ein tiefes, grollendes Geräusch ließ den Boden unter seinen Füßen vibrieren, und Max sah, wie die Menschen aus den umliegenden Häusern stürmten. Sie zeigten zum Horizont, wo sich eine dunkle Wolke rasend schnell näherte. "Der Sturm! Schließt die Tore!" rief eine Frau, während sie panisch Kinder ins Haus zog. Max stand wie erstarrt da, seine Beine wollten sich nicht bewegen. Was für ein Sturm konnte so etwas auslösen? Und warum hatte er das Gefühl, dass es irgendwie mit ihm zusammenhing?</p>
                             
-                            <p>Das Flüstern kehrte zurück, diesmal mit einem harten, eindringlichen Ton: "Renn, Zeitnarr, bevor es dich erwischt!" Max spürte, wie sein Herz raste. Ohne weiter nachzudenken, sprintete er los -- direkt auf den drohenden Sturm zu. Max rannte, obwohl er keine Ahnung hatte, wohin er eigentlich lief. Die dunkle Wolke am Horizont wuchs mit erschreckender Geschwindigkeit, und das dröhnende Grollen verstärkte sich, wie eine wütende Stimme, die ihn verfolgte. Die Pflastersteine unter seinen Füßen waren uneben, und mehrmals stolperte er, fing sich aber im letzten Moment. Sein Atem ging stoßweise, und sein Herz pochte wie ein Vorschlaghammer in seiner Brust.</p>
+                            <p>Das Flüstern kehrte zurück, diesmal mit einem harten, eindringlichen Ton: "Renn, Zeitnarr, bevor es dich erwischt!" Max spürte, wie sein Herz raste. Ohne weiter nachzudenken, sprintete er los -- direkt auf den drohenden Sturm zu. Max rannte, obwohl er keine Ahnung hatte, wohin er eigentlich lief. Die dunkle Wolke am Horizont wuchs mit erschreckender Geschwindigkeit, und das dröhnende Grollen verstärkte sich, wie eine wütende Stimme, die ihn verfolgte. Die Pflastersteine unter seinen Füßen waren uneven, und mehrmals stolperte er, fing sich aber im letzten Moment. Sein Atem ging stoßweise, und sein Herz pochte wie ein Vorschlaghammer in seiner Brust.</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(1, 3)">← Zurück</button>
+                            <button class="nav-btn" data-prev="1-3">← Zurück</button>
                             <div class="section-counter">Abschnitt 4 von 4</div>
                             <button class="nav-btn" disabled>Weiter →</button>
                         </div>
@@ -333,7 +368,7 @@
                         <div class="navigation-buttons">
                             <button class="nav-btn" disabled>← Back</button>
                             <div class="section-counter">Section 1 of 4</div>
-                            <button class="nav-btn" onclick="showSection(1, 2)">Next →</button>
+                            <button class="nav-btn" data-next="1-2">Next →</button>
                         </div>
                     </div>
 
@@ -347,9 +382,9 @@
                             <p>Max stood rooted to the spot while the cool air of the alley made his skin tingle. The words echoed in his head: "Time Fool... no idea what you've done." His gaze flitted over the uneven cobblestones and the crooked wooden doors of the surrounding houses. No person was visible who could have spoken the words. But the feeling of being watched would not leave him.</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(1, 1)">← Back</button>
+                            <button class="nav-btn" data-prev="1-1">← Back</button>
                             <div class="section-counter">Section 2 of 4</div>
-                            <button class="nav-btn" onclick="showSection(1, 3)">Next →</button>
+                            <button class="nav-btn" data-next="1-3">Next →</button>
                         </div>
                     </div>
 
@@ -363,9 +398,9 @@
                             <p>A door creaked behind him, and Max turned so quickly that he became dizzy. A boy, not much older than himself, stepped out of one of the houses. His tattered cloak and worn boots fit perfectly into this strangely medieval environment. The boy gave him a suspicious look and held a basket full of pieces of wood in his hands. "Who are you?" Max asked before he could stop himself. The boy narrowed his eyes as if examining something about Max. "You're not from here," he finally said, more a statement than a question. "You'd better be careful. Strangers don't have a good standing here." Before Max could reply, the boy pulled the door shut behind him and left him alone.</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(1, 2)">← Back</button>
+                            <button class="nav-btn" data-prev="1-2">← Back</button>
                             <div class="section-counter">Section 3 of 4</div>
-                            <button class="nav-btn" onclick="showSection(1, 4)">Next →</button>
+                            <button class="nav-btn" data-next="1-4">Next →</button>
                         </div>
                     </div>
 
@@ -379,7 +414,7 @@
                             <p>The whisper returned, this time with a hard, urgent tone: "Run, Time Fool, before it catches you!" Max felt his heart racing. Without thinking further, he sprinted off -- directly toward the threatening storm. Max ran, even though he had no idea where he was actually going. The dark cloud on the horizon grew at a frightening speed, and the thundering rumble intensified, like an angry voice pursuing him. The cobblestones under his feet were uneven, and several times he stumbled but caught himself at the last moment. His breath came in gasps, and his heart pounded like a sledgehammer in his chest.</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(1, 3)">← Back</button>
+                            <button class="nav-btn" data-prev="1-3">← Back</button>
                             <div class="section-counter">Section 4 of 4</div>
                             <button class="nav-btn" disabled>Next →</button>
                         </div>
@@ -404,7 +439,7 @@
                         <div class="navigation-buttons">
                             <button class="nav-btn" disabled>← Zurück</button>
                             <div class="section-counter">Abschnitt 1 von 4</div>
-                            <button class="nav-btn" onclick="showSection(2, 2)">Weiter →</button>
+                            <button class="nav-btn" data-next="2-2">Weiter →</button>
                         </div>
                     </div>
 
@@ -418,9 +453,9 @@
                             <p>„Das war knapp", sagte Lena atemlos. „Aber jetzt wissen wir, dass wir nicht die Einzigen sind, die hinter diesem Rätsel her sind." Max nickte. „Das macht es nur noch spannender. Morgen gehen wir zum Uhrenturm." Die Freunde trennten sich schließlich, jeder in Gedanken versunken. Max lag in seinem Bett und starrte an die Decke. Wer könnte noch hinter dem Rätsel her sein? Und was würde sie am Uhrenturm erwarten?</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(2, 1)">← Zurück</button>
+                            <button class="nav-btn" data-prev="2-1">← Zurück</button>
                             <div class="section-counter">Abschnitt 2 von 4</div>
-                            <button class="nav-btn" onclick="showSection(2, 3)">Weiter →</button>
+                            <button class="nav-btn" data-next="2-3">Weiter →</button>
                         </div>
                     </div>
 
@@ -434,9 +469,9 @@
                             <p>Am nächsten Morgen wirkte alles normal -- zumindest auf den ersten Blick. Die Sonne strahlte warm durch die Fenster, und der Duft von frisch gebackenem Brot zog aus der Küche in Max' Zimmer. Doch das Kratzen der vergangenen Nacht ließ ihn nicht los. „Max, beeil dich, du kommst noch zu spät!", rief seine Mutter. Er schnappte sich seinen Rucksack, indem er die Karte und die Notizen sicher verstaut hatte, und eilte hinaus. Am Treffpunkt im Park warteten Jonas, Emma und Lena bereits ungeduldig. „Du siehst aus, als hättest du die ganze Nacht nicht geschlafen", bemerkte Emma und runzelte die Stirn. „Habe ich auch nicht", gab Max zu und zog die Karte hervor. „Ich habe nachgedacht. Der Uhrenturm ... glaubt ihr, dass dort wirklich etwas versteckt ist?" „Das werden wir gleich herausfinden", sagte Jonas entschlossen. „Aber wir müssen vorsichtig sein. Wenn uns wirklich jemand beobachtet hat, könnte das gefährlich werden." Lena nickte und sah sich nervös um. „Vielleicht sollten wir einen Plan machen, bevor wir einfach hineinstürmen."</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(2, 2)">← Zurück</button>
+                            <button class="nav-btn" data-prev="2-2">← Zurück</button>
                             <div class="section-counter">Abschnitt 3 von 4</div>
-                            <button class="nav-btn" onclick="showSection(2, 4)">Weiter →</button>
+                            <button class="nav-btn" data-next="2-4">Weiter →</button>
                         </div>
                     </div>
 
@@ -450,7 +485,7 @@
                             <p>Emma trat vorsichtig näher und untersuchte sie. „Keine Schlösser, keine Fallen ... zumindest keine, die ich sehe", murmelte sie, bevor sie den Deckel öffnete. Drinnen lag ein seltsames Medaillon, das in die Karte eingearbeitet zu sein schien. „Das sieht aus wie ... ein Teil von etwas Größerem", bemerkte Max. „Vielleicht ein Schlüssel", überlegte Jonas. Doch bevor sie weiter nachdenken konnten, hallte ein lautes Geräusch durch den Raum -- Schritte, die sich der Treppe näherten. „Schnell, wir müssen hier raus!", flüsterte Lena panisch. Die Freunde griffen nach dem Medaillon und suchten verzweifelt nach einem zweiten Ausgang. Der Raum schien jedoch keine weiteren Türen zu haben. Die Schritte wurden lauter, und eine dunkle Silhouette erschien oben an der Treppe. Max presste das Medaillon fest an sich und flüsterte: „Egal, was passiert -- wir dürfen das Rätsel nicht aufgeben."</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(2, 3)">← Zurück</button>
+                            <button class="nav-btn" data-prev="2-3">← Zurück</button>
                             <div class="section-counter">Abschnitt 4 von 4</div>
                             <button class="nav-btn" disabled>Weiter →</button>
                         </div>
@@ -472,7 +507,7 @@
                         <div class="navigation-buttons">
                             <button class="nav-btn" disabled>← Back</button>
                             <div class="section-counter">Section 1 of 4</div>
-                            <button class="nav-btn" onclick="showSection(2, 2)">Next →</button>
+                            <button class="nav-btn" data-next="2-2">Next →</button>
                         </div>
                     </div>
 
@@ -486,9 +521,9 @@
                             <p>"That was close," Lena said breathlessly. "But now we know we're not the only ones after this puzzle." Max nodded. "That just makes it more exciting. Tomorrow we go to the clock tower." The friends finally parted, each lost in thought. Max lay in his bed and stared at the ceiling. Who else could be after the puzzle? And what would await them at the clock tower?</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(2, 1)">← Back</button>
+                            <button class="nav-btn" data-prev="2-1">← Back</button>
                             <div class="section-counter">Section 2 of 4</div>
-                            <button class="nav-btn" onclick="showSection(2, 3)">Next →</button>
+                            <button class="nav-btn" data-next="2-3">Next →</button>
                         </div>
                     </div>
 
@@ -502,9 +537,9 @@
                             <p>The next morning everything seemed normal -- at least at first glance. The sun shone warmly through the windows, and the scent of freshly baked bread drifted from the kitchen into Max's room. But the scratching from the night before wouldn't let him go. "Max, hurry up, you'll be late!" his mother called. He grabbed his backpack, in which he had safely stored the map and notes, and hurried out. At the meeting point in the park, Jonas, Emma and Lena were already waiting impatiently. "You look like you didn't sleep all night," Emma remarked, frowning. "I didn't," Max admitted and pulled out the map. "I was thinking. The clock tower... do you think there's really something hidden there?" "We'll find out soon enough," Jonas said determinedly. "But we have to be careful. If someone really was watching us, this could be dangerous." Lena nodded and looked around nervously. "Maybe we should make a plan before we just storm in."</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(2, 2)">← Back</button>
+                            <button class="nav-btn" data-prev="2-2">← Back</button>
                             <div class="section-counter">Section 3 of 4</div>
-                            <button class="nav-btn" onclick="showSection(2, 4)">Next →</button>
+                            <button class="nav-btn" data-next="2-4">Next →</button>
                         </div>
                     </div>
 
@@ -518,7 +553,7 @@
                             <p>Emma stepped closer cautiously and examined it. "No locks, no traps... at least none that I can see," she murmured before opening the lid. Inside lay a strange medallion that seemed to be incorporated into the map. "This looks like... a part of something bigger," Max noted. "Maybe a key," Jonas pondered. But before they could think further, a loud noise echoed through the room -- footsteps approaching the stairs. "Quick, we have to get out of here!" Lena whispered in panic. The friends grabbed the medallion and desperately searched for a second exit. However, the room seemed to have no other doors. The footsteps grew louder, and a dark silhouette appeared at the top of the stairs. Max pressed the medallion tightly to himself and whispered: "No matter what happens -- we mustn't give up the puzzle."</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(2, 3)">← Back</button>
+                            <button class="nav-btn" data-prev="2-3">← Back</button>
                             <div class="section-counter">Section 4 of 4</div>
                             <button class="nav-btn" disabled>Next →</button>
                         </div>
@@ -545,7 +580,7 @@
                         <div class="navigation-buttons">
                             <button class="nav-btn" disabled>← Zurück</button>
                             <div class="section-counter">Abschnitt 1 von 3</div>
-                            <button class="nav-btn" onclick="showSection(3, 2)">Weiter →</button>
+                            <button class="nav-btn" data-next="3-2">Weiter →</button>
                         </div>
                     </div>
 
@@ -559,9 +594,9 @@
                             <p>Lisa hingegen schaute sich die Karte und den alten Mann misstrauisch an. „Aber was passiert, wenn wir nicht zurückkommen?", fragte sie leise. Der Mann schaute sie mit einem wissenden Blick an. „Ihr werdet zurückkommen", sagte er sanft. „Doch nicht so, wie ihr gegangen seid. Ihr werdet stärker, weiser und vielleicht auch ein wenig anders sein. Aber das ist das Abenteuer." Max zog Lisa etwas ungeduldig am Ärmel. „Komm schon, Lisa! Wir können es doch wenigstens versuchen!" Lisa seufzte, doch in ihren Augen funkelte die Neugier. „Okay", sagte sie schließlich. „Aber nur, wenn du uns auch hilfst, den Weg zu finden." Der alte Mann nickte und verschwand dann im Schatten der Gasse, als ob er nie da gewesen wäre. Max und Lisa standen einen Moment lang unschlüssig da, dann drehten sie sich gemeinsam in Richtung des Waldes.</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(3, 1)">← Zurück</button>
+                            <button class="nav-btn" data-prev="3-1">← Zurück</button>
                             <div class="section-counter">Abschnitt 2 von 3</div>
-                            <button class="nav-btn" onclick="showSection(3, 3)">Weiter →</button>
+                            <button class="nav-btn" data-next="3-3">Weiter →</button>
                         </div>
                     </div>
 
@@ -575,7 +610,7 @@
                             <p>Max griff nach ihrer Hand, und gemeinsam folgten sie der magischen Spur, die die Karte ihnen zeigte. Doch gerade als sie die ersten Schritte auf den Waldweg setzten, erklang ein leises, unheimliches Knistern in der Luft -- ein Geräusch, das ihnen das Gefühl gab, dass sie nicht alleine waren. „Bist du bereit?", fragte Max. „Ich weiß nicht", sagte Lisa mit einem Blick auf die Karte, „aber ich glaube, die Reise hat gerade erst begonnen." Mit einem letzten Blick zurück auf die Stadt, die langsam in der Dunkelheit verschwand, traten Max, Lisa und Bruno in den geheimen Wald ein, und das Abenteuer begann. Der Wald schien in dieser Nacht lebendig zu sein. Das Rascheln der Blätter war wie ein leises, einladendes Murmeln, das nur für sie bestimmt war. Doch gleichzeitig war da ein Gefühl der Unheimlichkeit -- als ob sie nicht alleine auf diesem Weg waren. Ihre Herzen klopften schneller, als sie sich tiefer in die Dunkelheit wagten. Und so begann ihre Reise -- ein Abenteuer, das sie nie vergessen würden.</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(3, 2)">← Zurück</button>
+                            <button class="nav-btn" data-prev="3-2">← Zurück</button>
                             <div class="section-counter">Abschnitt 3 von 3</div>
                             <button class="nav-btn" disabled>Weiter →</button>
                         </div>
@@ -599,7 +634,7 @@
                         <div class="navigation-buttons">
                             <button class="nav-btn" disabled>← Back</button>
                             <div class="section-counter">Section 1 of 3</div>
-                            <button class="nav-btn" onclick="showSection(3, 2)">Next →</button>
+                            <button class="nav-btn" data-next="3-2">Next →</button>
                         </div>
                     </div>
 
@@ -613,9 +648,9 @@
                             <p>Lisa, however, looked at the map and the old man suspiciously. "But what happens if we don't come back?" she asked quietly. The man looked at her with a knowing gaze. "You will return," he said gently. "But not as you went. You will be stronger, wiser, and perhaps also a little different. But that is the adventure." Max pulled Lisa somewhat impatiently by the sleeve. "Come on, Lisa! We can at least try!" Lisa sighed, but curiosity sparkled in her eyes. "Okay," she finally said. "But only if you also help us find the way." The old man nodded and then disappeared into the shadow of the alley, as if he had never been there. Max and Lisa stood indecisively for a moment, then turned together toward the forest.</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(3, 1)">← Back</button>
+                            <button class="nav-btn" data-prev="3-1">← Back</button>
                             <div class="section-counter">Section 2 of 3</div>
-                            <button class="nav-btn" onclick="showSection(3, 3)">Next →</button>
+                            <button class="nav-btn" data-next="3-3">Next →</button>
                         </div>
                     </div>
 
@@ -629,7 +664,7 @@
                             <p>Max took her hand, and together they followed the magical trail that the map showed them. But just as they took their first steps on the forest path, a soft, eerie crackling sounded in the air -- a sound that gave them the feeling they were not alone. "Are you ready?" Max asked. "I don't know," Lisa said, looking at the map, "but I think the journey has just begun." With one last look back at the town slowly disappearing into the darkness, Max, Lisa, and Bruno entered the secret forest, and the adventure began. The forest seemed alive that night. The rustling of the leaves was like a soft, inviting murmur meant only for them. But at the same time, there was a feeling of eeriness -- as if they were not alone on this path. Their hearts beat faster as they ventured deeper into the darkness. And so their journey began -- an adventure they would never forget.</p>
                         </div>
                         <div class="navigation-buttons">
-                            <button class="nav-btn" onclick="showSection(3, 2)">← Back</button>
+                            <button class="nav-btn" data-prev="3-2">← Back</button>
                             <div class="section-counter">Section 3 of 3</div>
                             <button class="nav-btn" disabled>Next →</button>
                         </div>
@@ -640,90 +675,152 @@
     </div>
 
     <script>
+        // Globale Variablen
         let currentBook = 1;
         let currentLanguage = 'de';
         let currentSection = 1;
 
+        // Event Listeners hinzufügen
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, setting up event listeners...');
+            
+            // Sprach-Buttons
+            document.getElementById('btn-de').addEventListener('click', function() {
+                switchLanguage('de');
+            });
+            
+            document.getElementById('btn-en').addEventListener('click', function() {
+                switchLanguage('en');
+            });
+            
+            // Buch-Buttons
+            document.getElementById('book-btn-1').addEventListener('click', function() {
+                switchBook(1);
+            });
+            
+            document.getElementById('book-btn-2').addEventListener('click', function() {
+                switchBook(2);
+            });
+            
+            document.getElementById('book-btn-3').addEventListener('click', function() {
+                switchBook(3);
+            });
+            
+            // Navigation Buttons für Abschnitte
+            document.querySelectorAll('[data-next]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const target = this.getAttribute('data-next');
+                    const parts = target.split('-');
+                    const book = parseInt(parts[0]);
+                    const section = parseInt(parts[1]);
+                    showSection(book, section);
+                });
+            });
+            
+            document.querySelectorAll('[data-prev]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const target = this.getAttribute('data-prev');
+                    const parts = target.split('-');
+                    const book = parseInt(parts[0]);
+                    const section = parseInt(parts[1]);
+                    showSection(book, section);
+                });
+            });
+            
+            // Initialisierung
+            showLanguageContent();
+        });
+
         function switchBook(bookNumber) {
-            // Hide all books
+            console.log('Switching to book:', bookNumber);
+            
+            // Alle Bücher verstecken
             document.querySelectorAll('.book-content').forEach(book => {
                 book.classList.remove('active');
             });
             
-            // Remove active class from all book buttons
+            // Alle Buch-Buttons deaktivieren
             document.querySelectorAll('.book-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             
-            // Show selected book
-            document.getElementById(`book${bookNumber}`).classList.add('active');
+            // Gewähltes Buch anzeigen
+            const selectedBook = document.getElementById(`book${bookNumber}`);
+            if (selectedBook) {
+                selectedBook.classList.add('active');
+            }
             
-            // Activate corresponding button
-            document.querySelectorAll('.book-btn')[bookNumber - 1].classList.add('active');
+            // Entsprechenden Button aktivieren
+            const selectedButton = document.getElementById(`book-btn-${bookNumber}`);
+            if (selectedButton) {
+                selectedButton.classList.add('active');
+            }
             
             currentBook = bookNumber;
             currentSection = 1;
             
-            // Show first section and correct language
-            showSection(bookNumber, 1);
             showLanguageContent();
         }
 
         function switchLanguage(lang) {
+            console.log('Switching to language:', lang);
             currentLanguage = lang;
             
-            // Update flag buttons
+            // Alle Sprach-Buttons deaktivieren
             document.querySelectorAll('.flag-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             
-            document.querySelector(`[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            // Gewählten Sprach-Button aktivieren
+            const langButton = document.getElementById(`btn-${lang}`);
+            if (langButton) {
+                langButton.classList.add('active');
+            }
             
             showLanguageContent();
         }
 
         function showLanguageContent() {
-            // Hide all language versions
+            console.log('Showing language content for:', currentLanguage, 'book:', currentBook);
+            
+            // Alle Sprachversionen verstecken
             document.querySelectorAll('.lang-version').forEach(version => {
                 version.classList.add('hidden');
             });
             
-            // Show current language version for current book
+            // Aktuelle Sprachversion für aktuelles Buch anzeigen
             const currentBookElement = document.getElementById(`book${currentBook}`);
-            const languageVersion = currentBookElement.querySelector(`[data-lang="${currentLanguage}"]`);
-            if (languageVersion) {
-                languageVersion.classList.remove('hidden');
+            if (currentBookElement) {
+                const languageVersion = currentBookElement.querySelector(`[data-lang="${currentLanguage}"]`);
+                if (languageVersion) {
+                    languageVersion.classList.remove('hidden');
+                }
             }
             
-            // Show current section
+            // Aktuellen Abschnitt anzeigen
             showSection(currentBook, currentSection);
         }
 
         function showSection(bookNumber, sectionNumber) {
+            console.log('Showing section:', bookNumber, sectionNumber);
             currentSection = sectionNumber;
             
-            // Hide all sections in current book and language
+            // Alle Abschnitte im aktuellen Buch und Sprache verstecken
             const currentBookElement = document.getElementById(`book${bookNumber}`);
-            const currentLanguageVersion = currentBookElement.querySelector(`[data-lang="${currentLanguage}"]`);
-            
-            if (currentLanguageVersion) {
-                currentLanguageVersion.querySelectorAll('.section').forEach(section => {
-                    section.classList.remove('active');
-                });
+            if (currentBookElement) {
+                const currentLanguageVersion = currentBookElement.querySelector(`[data-lang="${currentLanguage}"]`);
                 
-                // Show selected section
-                const targetSection = currentLanguageVersion.querySelector(`[data-section="${sectionNumber}"]`);
-                if (targetSection) {
-                    targetSection.classList.add('active');
+                if (currentLanguageVersion) {
+                    currentLanguageVersion.querySelectorAll('.section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // Gewählten Abschnitt anzeigen
+                    const targetSection = currentLanguageVersion.querySelector(`[data-section="${sectionNumber}"]`);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
                 }
             }
         }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            switchBook(1);
-            switchLanguage('de');
-        });
     </script>
-</body>
-</html>
