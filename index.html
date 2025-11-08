@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Helmut Wegners Wortwelten - Geschichten mit Tiefe, Herz und Haltung. Kinderbücher, Fantasy, Krimis, Thriller und mehr von Autor Helmut Wegner.">
+    <meta name="author" content="Helmut Wegner">
+    <meta name="keywords" content="Helmut Wegner, Bücher, Kinderbücher, Fantasy, Krimis, Thriller, Jugendbuch, Romantik, New Adult">
     <title>Helmut Wegners Wortwelten - Geschichten mit Tiefe, Herz und Haltung</title>
     <style>
         * {
@@ -238,10 +241,32 @@
             margin-top: 4rem;
         }
 
+        .footer-content {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #FFD700;
+        }
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-menu {
-                display: none;
+                gap: 1rem;
             }
 
             .main-title {
@@ -261,6 +286,11 @@
                 padding: 2rem 1rem;
                 margin: 1rem;
             }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -271,7 +301,8 @@
                 <a href="index.html" class="logo">Helmut Wegners Wortwelten</a>
                 <nav>
                     <ul class="nav-menu">
-                        <li><a href="impressum.html" class="nav-link">Kontakt</a></li>
+                        <li><a href="impressum.html" class="nav-link">Impressum</a></li>
+                        <li><a href="datenschutz.html" class="nav-link">Datenschutz</a></li>
                     </ul>
                 </nav>
             </div>
@@ -284,7 +315,7 @@
             <p class="subtitle">Geschichten mit Tiefe, Herz und Haltung</p>
 
             <div class="author-photo">
-                <img src="helmut.jpg" alt="Helmut Wegner" class="author-img">
+                <img src="helmut.jpg" alt="Autor Helmut Wegner" class="author-img">
             </div>
 
             <p class="welcome-text">
@@ -321,7 +352,15 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Helmut Wegner - Helmut Wegners Wortwelten. Geschichten mit Tiefe, Herz und Haltung.</p>
+            <div class="footer-content">
+                <p>&copy; 2025 Helmut Wegner - Helmut Wegners Wortwelten</p>
+                <p>Geschichten mit Tiefe, Herz und Haltung</p>
+            </div>
+            <div class="footer-links">
+                <a href="impressum.html" class="footer-link">Impressum</a>
+                <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+                <a href="mailto:suderburg-heide@proton.me" class="footer-link">Kontakt</a>
+            </div>
         </div>
     </footer>
 </body>
