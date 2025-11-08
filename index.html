@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Helmut Wegners Wortwelten - Geschichten mit Tiefe, Herz und Haltung. Kinderbücher, Fantasy, Krimis, Thriller und mehr von Autor Helmut Wegner.">
-    <meta name="author" content="Helmut Wegner">
-    <meta name="keywords" content="Helmut Wegner, Bücher, Kinderbücher, Fantasy, Krimis, Thriller, Jugendbuch, Romantik, New Adult">
-    <title>Helmut Wegners Wortwelten - Geschichten mit Tiefe, Herz und Haltung</title>
+    <title>Datenschutzerklärung - Helmut Wegners Wortwelten</title>
     <style>
         * {
             margin: 0;
@@ -16,352 +13,166 @@
 
         body {
             font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: white;
+            line-height: 1.8;
+            color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #2c3e50;
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            background: #f8f9fa;
-            color: #667eea;
-        }
-
-        /* Main Content */
-        .main-content {
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .main-title {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            color: #f8f9fa;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            color: #f8f9fa;
-        }
-
-        /* Author Photo */
-        .author-photo {
-            margin: 2rem 0 3rem 0;
-        }
-
-        .author-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .author-img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Welcome Text */
-        .welcome-text {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 4rem auto;
-            line-height: 1.8;
-            opacity: 0.9;
-            color: #f8f9fa;
-        }
-
-        /* Genres Section */
-        .genres-section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 2rem auto;
             max-width: 900px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .genres-title {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: #FFD700;
-            font-weight: bold;
-        }
-
-        .genres-title::before {
-            content: "📚 ";
-            margin-right: 0.5rem;
-        }
-
-        .genres-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .genre-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 12px 24px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            font-size: 1rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .genre-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Individual genre colours */
-        .genre-btn.kinderbuecher {
-            background: rgba(76, 175, 80, 0.3);
-            border-color: #4CAF50;
-        }
-
-        .genre-btn.jugend-fantasy {
-            background: rgba(63, 81, 181, 0.3);
-            border-color: #3F51B5;
-        }
-
-        .genre-btn.fantasy {
-            background: rgba(156, 39, 176, 0.3);
-            border-color: #9C27B0;
-        }
-
-        .genre-btn.new-adult {
-            background: rgba(255, 193, 7, 0.3);
-            border-color: #FFC107;
-        }
-
-        .genre-btn.romantik {
-            background: rgba(233, 30, 99, 0.3);
-            border-color: #E91E63;
-        }
-
-        .genre-btn.krimis {
-            background: rgba(96, 125, 139, 0.3);
-            border-color: #607D8B;
-        }
-
-        .genre-btn.thriller {
-            background: rgba(244, 67, 54, 0.3);
-            border-color: #F44336;
-        }
-
-        .genre-btn.chroniken {
-            background: rgba(255, 152, 0, 0.3);
-            border-color: #FF9800;
-        }
-
-        .upcoming-section {
-            text-align: center;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
             margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
-        .upcoming-text {
-            font-size: 1rem;
-            opacity: 0.8;
-            color: #f8f9fa;
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 1rem;
         }
 
-        .upcoming-text::before {
-            content: "🔮 ";
-            margin-right: 0.5rem;
+        h2 {
+            color: #667eea;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
         }
 
-        /* Footer */
-        footer {
-            background: rgba(44, 62, 80, 0.9);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
+        h3 {
+            color: #764ba2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
-        .footer-content {
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        ul {
+            margin-left: 2rem;
             margin-bottom: 1rem;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
+        li {
+            margin-bottom: 0.5rem;
         }
 
-        .footer-link {
-            color: #fff;
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: #667eea;
+            color: white;
             text-decoration: none;
-            transition: color 0.3s ease;
+            border-radius: 5px;
+            transition: background 0.3s ease;
         }
 
-        .footer-link:hover {
-            color: #FFD700;
+        .back-link:hover {
+            background: #764ba2;
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-menu {
-                gap: 1rem;
-            }
+        .date {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
 
-            .main-title {
-                font-size: 2.5rem;
-            }
+        strong {
+            color: #2c3e50;
+        }
 
-            .genres-grid {
-                flex-direction: column;
-                align-items: center;
-            }
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
 
-            .genre-btn {
-                width: 200px;
-            }
-
-            .genres-section {
-                padding: 2rem 1rem;
-                margin: 1rem;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">Helmut Wegners Wortwelten</a>
-                <nav>
-                    <ul class="nav-menu">
-                        <li><a href="impressum.html" class="nav-link">Impressum</a></li>
-                        <li><a href="datenschutz.html" class="nav-link">Datenschutz</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <div class="container">
+        <h1>Datenschutzerklärung</h1>
+        <p class="date">Stand: November 2025</p>
 
-    <main class="main-content">
-        <div class="container">
-            <h1 class="main-title">Helmut Wegners Wortwelten</h1>
-            <p class="subtitle">Geschichten mit Tiefe, Herz und Haltung</p>
+        <h2>1. Datenschutz auf einen Blick</h2>
+        
+        <h3>Allgemeine Hinweise</h3>
+        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
 
-            <div class="author-photo">
-                <img src="helmut.jpg" alt="Autor Helmut Wegner" class="author-img">
-            </div>
+        <h3>Verantwortliche Stelle</h3>
+        <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+        <p>
+            <strong>Helmut Wegner</strong><br>
+            Bahnhofstraße 46<br>
+            29556 Suderburg<br>
+            Deutschland
+        </p>
+        <p>
+            E-Mail: hbwegner1@gmail.com
+        </p>
 
-            <p class="welcome-text">
-                Willkommen in einer Welt voller faszinierender Geschichten!
-                Entdecke einzigartige Erzählungen, die dich von magischen
-                Fantasiewelten über herzerwärmende Liebesgeschichten bis hin zu
-                spannungsgeladenen Krimis führen. Mit unserem mobil-optimierten
-                Lesesystem erlebst du jede Geschichte überall – perfekt zum 
-                Selbstlesen auf jedem Gerät und weltweit verfügbar. Hier
-                findest du Bücher, die das Herz berühren und unvergessliche
-                Momente schenken.
-            </p>
+        <h2>2. Hosting</h2>
+        <p>Diese Website wird auf <strong>GitHub Pages</strong> gehostet. GitHub Pages ist ein Dienst der GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA.</p>
+        <p>GitHub kann beim Besuch dieser Website technische Informationen einschließlich Ihrer IP-Adresse erfassen. Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/de/github/site-policy/github-privacy-statement" target="_blank">https://docs.github.com/de/github/site-policy/github-privacy-statement</a></p>
 
-            <div class="genres-section">
-                <h2 class="genres-title">Verfügbare Genres</h2>
+        <h2>3. Datenerfassung auf dieser Website</h2>
 
-                <div class="genres-grid">
-                    <a href="kinderbuecher.html" class="genre-btn kinderbuecher">📚 Kinderbücher</a>
-                    <a href="jugend-fantasy.html" class="genre-btn jugend-fantasy">🌟 Jugend Fantasy</a>
-                    <a href="high-fantasy.html" class="genre-btn fantasy">⚔️ High Fantasy</a>
-                    <a href="new-adult.html" class="genre-btn new-adult">💫 New Adult</a>
-                    <a href="romantik-fiktion.html" class="genre-btn romantik">💕 Romantik Fiktion</a>
-                    <a href="krimis.html" class="genre-btn krimis">🔍 Krimis</a>
-                    <a href="triller.html" class="genre-btn thriller">🔥 Thriller</a>
-                    <a href="#" class="genre-btn chroniken" title="Chroniken sind bald verfügbar">📜 Chroniken</a>
-                </div>
+        <h3>Welche Daten werden erfasst?</h3>
+        <p>Diese Website erfasst <strong>keine personenbezogenen Daten</strong> aktiv. Es werden keine Cookies gesetzt, keine Analysetools verwendet und keine Formulare bereitgestellt, die Daten übermitteln.</p>
 
-                <div class="upcoming-section">
-                    <p class="upcoming-text">Gedichtbände (Familiäre Angelegenheiten)</p>
-                </div>
-            </div>
-        </div>
-    </main>
+        <h3>Server-Log-Dateien</h3>
+        <p>Der Provider der Seiten (GitHub) erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dies sind:</p>
+        <ul>
+            <li>Browsertyp und Browserversion</li>
+            <li>Verwendetes Betriebssystem</li>
+            <li>Referrer URL (die zuvor besuchte Seite)</li>
+            <li>Hostname des zugreifenden Rechners</li>
+            <li>Uhrzeit der Serveranfrage</li>
+            <li>IP-Adresse</li>
+        </ul>
+        <p>Diese Daten werden nicht mit anderen Datenquellen zusammengeführt. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technischen Bereitstellung der Website).</p>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Helmut Wegner - Helmut Wegners Wortwelten</p>
-                <p>Geschichten mit Tiefe, Herz und Haltung</p>
-            </div>
-            <div class="footer-links">
-                <a href="impressum.html" class="footer-link">Impressum</a>
-                <a href="datenschutz.html" class="footer-link">Datenschutz</a>
-                <a href="mailto:hbwegner1@gmail.com" class="footer-link">Kontakt</a>
-            </div>
-        </div>
-    </footer>
+        <h2>4. Kontaktaufnahme</h2>
+        <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben aus der E-Mail einschließlich der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO).</p>
+
+        <h2>5. Ihre Rechte</h2>
+        <p>Sie haben folgende Rechte:</p>
+        <ul>
+            <li><strong>Auskunftsrecht:</strong> Sie können Auskunft über Ihre gespeicherten personenbezogenen Daten verlangen.</li>
+            <li><strong>Berichtigungsrecht:</strong> Sie können die Berichtigung unrichtiger Daten verlangen.</li>
+            <li><strong>Löschungsrecht:</strong> Sie können die Löschung Ihrer Daten verlangen.</li>
+            <li><strong>Einschränkung der Verarbeitung:</strong> Sie können eine Einschränkung der Verarbeitung verlangen.</li>
+            <li><strong>Widerspruchsrecht:</strong> Sie können der Verarbeitung widersprechen.</li>
+            <li><strong>Datenübertragbarkeit:</strong> Sie können Ihre Daten in einem strukturierten, gängigen Format erhalten.</li>
+        </ul>
+        <p>Für die Ausübung Ihrer Rechte wenden Sie sich bitte an: hbwegner1@gmail.com</p>
+
+        <h2>6. Beschwerderecht bei einer Aufsichtsbehörde</h2>
+        <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren.</p>
+
+        <h2>7. Externe Links</h2>
+        <p>Diese Website kann Links zu externen Websites Dritter enthalten, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft, rechtswidrige Inhalte waren nicht erkennbar.</p>
+
+        <h2>8. Keine Verwendung von Cookies oder Tracking-Tools</h2>
+        <p>Diese Website verwendet <strong>keine Cookies</strong>, keine Analyse-Tools (wie Google Analytics), keine Social-Media-Plugins und keine sonstigen Tracking-Mechanismen. Es werden keine Daten für Werbezwecke oder zur Profilbildung erhoben.</p>
+
+        <h2>9. Änderungen dieser Datenschutzerklärung</h2>
+        <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.</p>
+
+        <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+    </div>
 </body>
 </html>
